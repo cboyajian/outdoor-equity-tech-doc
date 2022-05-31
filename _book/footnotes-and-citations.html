@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 11 Footnotes and citations | Outdoor Equity App Technical Documentation</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 11 Footnotes and citations | Outdoor Equity App Technical Documentation" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="cboyajian/outdoor-equity-tech-doc" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 11 Footnotes and citations | Outdoor Equity App Technical Documentation" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Clarissa Boyajian and Halina Do-Linh" />
+
+
+<meta name="date" content="2022-05-31" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="archive-access.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/header-attrs-2.10.6/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Outdoor Equity App Technical Documentation</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Abstract</a></li>
+<li class="chapter" data-level="2" data-path="executive-summary.html"><a href="executive-summary.html"><i class="fa fa-check"></i><b>2</b> Executive Summary</a></li>
+<li class="chapter" data-level="3" data-path="problem-statement.html"><a href="problem-statement.html"><i class="fa fa-check"></i><b>3</b> Problem Statement</a></li>
+<li class="chapter" data-level="4" data-path="specific-objectives.html"><a href="specific-objectives.html"><i class="fa fa-check"></i><b>4</b> Specific Objectives</a></li>
+<li class="chapter" data-level="5" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html"><i class="fa fa-check"></i><b>5</b> Summary of Solution Design</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#access-data"><i class="fa fa-check"></i><b>5.1</b> Access Data</a></li>
+<li class="chapter" data-level="5.2" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#clean-and-wrangle-data"><i class="fa fa-check"></i><b>5.2</b> Clean and Wrangle Data</a></li>
+<li class="chapter" data-level="5.3" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#analysis-and-visualizations"><i class="fa fa-check"></i><b>5.3</b> Analysis and Visualizations</a></li>
+<li class="chapter" data-level="5.4" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#outdoor-equity-app"><i class="fa fa-check"></i><b>5.4</b> Outdoor Equity App</a></li>
+<li class="chapter" data-level="5.5" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#user-guide-and-technical-documentation"><i class="fa fa-check"></i><b>5.5</b> User Guide and Technical Documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html"><i class="fa fa-check"></i><b>6</b> Products and Deliverables</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html#r-shiny-app"><i class="fa fa-check"></i><b>6.1</b> R Shiny App</a></li>
+<li class="chapter" data-level="6.2" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html#metadata"><i class="fa fa-check"></i><b>6.2</b> Metadata</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="summary-of-testing.html"><a href="summary-of-testing.html"><i class="fa fa-check"></i><b>7</b> Summary of Testing</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="summary-of-testing.html"><a href="summary-of-testing.html#unit-tests"><i class="fa fa-check"></i><b>7.1</b> Unit Tests</a></li>
+<li class="chapter" data-level="7.2" data-path="summary-of-testing.html"><a href="summary-of-testing.html#data-integrity"><i class="fa fa-check"></i><b>7.2</b> Data Integrity</a></li>
+<li class="chapter" data-level="7.3" data-path="summary-of-testing.html"><a href="summary-of-testing.html#code-review"><i class="fa fa-check"></i><b>7.3</b> Code Review</a></li>
+<li class="chapter" data-level="7.4" data-path="summary-of-testing.html"><a href="summary-of-testing.html#product-testing"><i class="fa fa-check"></i><b>7.4</b> Product Testing</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="user-documentation.html"><a href="user-documentation.html"><i class="fa fa-check"></i><b>8</b> User Documentation</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="user-documentation.html"><a href="user-documentation.html#overview-of-the-outdoor-equity-application"><i class="fa fa-check"></i><b>8.1</b> Overview of the Outdoor Equity Application</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="user-documentation.html"><a href="user-documentation.html#background"><i class="fa fa-check"></i><b>8.1.1</b> Background</a></li>
+<li class="chapter" data-level="8.1.2" data-path="user-documentation.html"><a href="user-documentation.html#purpose"><i class="fa fa-check"></i><b>8.1.2</b> Purpose</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="user-documentation.html"><a href="user-documentation.html#how-to-use-the-outdoor-equity-app"><i class="fa fa-check"></i><b>8.2</b> How to Use the Outdoor Equity App</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="user-documentation.html"><a href="user-documentation.html#about-the-app"><i class="fa fa-check"></i><b>8.2.1</b> About the APP</a></li>
+<li class="chapter" data-level="8.2.2" data-path="user-documentation.html"><a href="user-documentation.html#metadata-1"><i class="fa fa-check"></i><b>8.2.2</b> Metadata</a></li>
+<li class="chapter" data-level="8.2.3" data-path="user-documentation.html"><a href="user-documentation.html#data-summary"><i class="fa fa-check"></i><b>8.2.3</b> Data Summary</a></li>
+<li class="chapter" data-level="8.2.4" data-path="user-documentation.html"><a href="user-documentation.html#data-relationships"><i class="fa fa-check"></i><b>8.2.4</b> Data Relationships</a></li>
+<li class="chapter" data-level="8.2.5" data-path="user-documentation.html"><a href="user-documentation.html#visitorshed-maps"><i class="fa fa-check"></i><b>8.2.5</b> Visitorshed Maps</a></li>
+<li class="chapter" data-level="8.2.6" data-path="user-documentation.html"><a href="user-documentation.html#data-download"><i class="fa fa-check"></i><b>8.2.6</b> Data Download</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="user-documentation.html"><a href="user-documentation.html#how-to-maintain-the-outdoor-equity-app"><i class="fa fa-check"></i><b>8.3</b> How to Maintain the Outdoor Equity App</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="user-documentation.html"><a href="user-documentation.html#data-preparation-methods"><i class="fa fa-check"></i><b>8.3.1</b> Data Preparation Methods</a></li>
+<li class="chapter" data-level="8.3.2" data-path="user-documentation.html"><a href="user-documentation.html#statistical-analysis-and-data-wrangling-for-plots"><i class="fa fa-check"></i><b>8.3.2</b> Statistical Analysis and Data Wrangling for Plots</a></li>
+<li class="chapter" data-level="8.3.3" data-path="user-documentation.html"><a href="user-documentation.html#data-limitations"><i class="fa fa-check"></i><b>8.3.3</b> Data Limitations</a></li>
+<li class="chapter" data-level="8.3.4" data-path="user-documentation.html"><a href="user-documentation.html#data-updates"><i class="fa fa-check"></i><b>8.3.4</b> Data updates</a></li>
+<li class="chapter" data-level="8.3.5" data-path="user-documentation.html"><a href="user-documentation.html#server-hosting"><i class="fa fa-check"></i><b>8.3.5</b> Server Hosting</a></li>
+<li class="chapter" data-level="8.3.6" data-path="user-documentation.html"><a href="user-documentation.html#shiny-code-directory"><i class="fa fa-check"></i><b>8.3.6</b> Shiny Code Directory</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="user-documentation.html"><a href="user-documentation.html#how-to-expand-the-outdoor-equity-app"><i class="fa fa-check"></i><b>8.4</b> How to Expand the Outdoor Equity App</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="user-documentation.html"><a href="user-documentation.html#temporal-expansions"><i class="fa fa-check"></i><b>8.4.1</b> Temporal Expansions</a></li>
+<li class="chapter" data-level="8.4.2" data-path="user-documentation.html"><a href="user-documentation.html#spatial-expansions"><i class="fa fa-check"></i><b>8.4.2</b> Spatial Expansions</a></li>
+<li class="chapter" data-level="8.4.3" data-path="user-documentation.html"><a href="user-documentation.html#statistical-analysis"><i class="fa fa-check"></i><b>8.4.3</b> Statistical Analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="additional-challenges.html"><a href="additional-challenges.html"><i class="fa fa-check"></i><b>9</b> Additional Challenges</a></li>
+<li class="chapter" data-level="10" data-path="archive-access.html"><a href="archive-access.html"><i class="fa fa-check"></i><b>10</b> Archive Access</a></li>
+<li class="chapter" data-level="11" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>11</b> Footnotes and citations</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#footnotes"><i class="fa fa-check"></i><b>11.1</b> Footnotes</a></li>
+<li class="chapter" data-level="11.2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#citations"><i class="fa fa-check"></i><b>11.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Outdoor Equity App Technical Documentation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="footnotes-and-citations" class="section level1" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Footnotes and citations</h1>
+<div id="footnotes" class="section level2" number="11.1">
+<h2><span class="header-section-number">11.1</span> Footnotes</h2>
+<p>Footnotes are put inside the square brackets after a caret <code>^[]</code>. Like this one.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+</div>
+<div id="citations" class="section level2" number="11.2">
+<h2><span class="header-section-number">11.2</span> Citations</h2>
+<p>Reference items in your bibliography file(s) using <code>@key</code>.</p>
+<p>For example, we are using the <strong>bookdown</strong> package <span class="citation">(<a href="#ref-R-bookdown" role="doc-biblioref">Xie 2021a</a>)</span> (check out the last code chunk in index.Rmd to see how this citation key was added) in this sample book, which was built on top of R Markdown and <strong>knitr</strong> <span class="citation">(<a href="#ref-xie2015" role="doc-biblioref">Xie 2015a</a>)</span> (this citation was added manually in an external file book.bib).
+Note that the <code>.bib</code> files need to be listed in the index.Rmd with the YAML <code>bibliography</code> key.</p>
+<p>The RStudio Visual Markdown Editor can also make it easier to insert citations: <a href="https://rstudio.github.io/visual-markdown-editing/#/citations" class="uri">https://rstudio.github.io/visual-markdown-editing/#/citations</a></p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-xie2015" class="csl-entry">
+———. 2015a. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.org/knitr/">http://yihui.org/knitr/</a>.
+</div>
+<div id="ref-R-bookdown" class="csl-entry">
+———. 2021a. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>This is a footnote.<a href="footnotes-and-citations.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="archive-access.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/10-citations.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

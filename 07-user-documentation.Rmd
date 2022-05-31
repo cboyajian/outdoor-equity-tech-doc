@@ -1,0 +1,97 @@
+# User Documentation
+
+## Overview of the Outdoor Equity Application
+
+### Background
+
+
+
+### Purpose
+
+
+
+## How to Use the Outdoor Equity App
+
+### About the APP
+
+
+
+### Metadata
+
+
+
+### Data Summary
+
+
+
+### Data Relationships
+
+
+
+### Visitorshed Maps
+
+
+### Data Download
+
+
+
+## How to Maintain the Outdoor Equity App
+
+### Data Preparation Methods
+
+
+
+#### RIDB Data
+
+
+
+#### U.S. Census Data
+
+
+
+#### Data Joining
+
+
+
+### Statistical Analysis and Data Wrangling for Plots
+
+#### Data Summary
+
+
+
+#### Data Relationships
+
+
+
+#### Spatial analysis
+
+
+
+### Data Limitations
+
+
+
+### Data updates
+
+
+
+### Server Hosting
+
+
+
+### Shiny Code Directory
+
+
+
+## How to Expand the Outdoor Equity App
+
+### Temporal Expansions
+
+
+
+### Spatial Expansions
+
+
+
+### Statistical Analysis
+

@@ -1,10 +1,11 @@
 --- 
-title: "A Minimal Book Example"
-author: "John Doe"
+title: "Outdoor Equity App Technical Documentation"
+author: "Clarissa Boyajian and Halina Do-Linh"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
+#nocite: '@*'
 # url: your book url like https://bookdown.org/yihui/bookdown
 # cover-image: path to the social sharing image like images/cover.jpg
 description: |
@@ -12,42 +13,17 @@ description: |
   The HTML output format for this example is bookdown::gitbook,
   set in the _output.yml file.
 link-citations: yes
-github-repo: rstudio/bookdown-demo
+github-repo: cboyajian/outdoor-equity-tech-doc
 ---
 
-# About
+# Abstract
 
-This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports; for example, a math equation $a^2 + b^2 = c^2$.
+Outdoor recreation and access to nature have well-documented positive impacts on mental and physical well-being. Federal public land management agencies in the United States offer a variety of outdoor recreation activities to visitors. However, people from different socioeconomic and identity groups access federal public lands unequally due to historical discrimination and current inequities. This project uses data from the [Recreation Information Database (RIDB)](https://ridb.recreation.gov/landing) and the [United States Census Bureau (US Census)](https://www.census.gov/data.html) to explore patterns of visitor use of reservable overnight sites (such as campgrounds, cabins, hike-in, and more). Specifically, we used 2018 reservation data and US Census data from the next available year to 2018 (i.e. 2018 median income data, 2015 language data). We created the interactive [Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/) that gives users tools to summarize data, explore relationships between RIDB and US Census variables, view maps of where visitors are coming from for reservable sites in California, and download subset data. This technical documentation includes information on metadata, application maintenance, and next steps for expanding the app to include visitor data from more locations and time periods. 
 
-## Usage 
-
-Each **bookdown** chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter *must* start with a first-level heading: `# A good chapter`, and can contain one (and only one) first-level heading.
-
-Use second-level and higher headings within chapters like: `## A short section` or `### An even shorter section`.
-
-The `index.Rmd` file is required, and is also your first book chapter. It will be the homepage when you render the book.
-
-## Render book
-
-You can render the HTML version of this example book without changing anything:
-
-1. Find the **Build** pane in the RStudio IDE, and
-
-1. Click on **Build Book**, then select your output format, or select "All formats" if you'd like to use multiple formats from the same book source files.
-
-Or build the book from the R console:
-
-```{r, eval=FALSE}
-bookdown::render_book()
-```
-
-To render this example to PDF as a `bookdown::pdf_book`, you'll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.org/tinytex/>.
-
-## Preview book
-
-As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in "Preview book", or from the R console:
-
-```{r eval=FALSE}
+```{r, include=FALSE, eval=FALSE}
+# As you work, you may start a local server to live preview this HTML book. 
+# This preview will update as you edit the book when you save individual .Rmd files. 
+# You can start the server in a work session by using the RStudio add-in "Preview book", or from the R console:
 bookdown::serve_book()
 ```
 
@@ -55,6 +31,13 @@ bookdown::serve_book()
 ```{r include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+  .packages(), 
+  'bookdown', 'knitr', 'rmarkdown', 
+  "tidyverse", "janitor", "lubridate", "scales", "here", "vroom", 
+  "tidycensus", "zipcodeR", "tmap", "sf", "rmapshaper", "tigris",
+  "DT", "collections", "plotly",
+  "rsconnect", "bslib",  "shiny", "shinydashboard", "shinydashboardPlus", 
+  "shinyWidgets", "shinycssloaders", "shinyjs", 
+  "reactlog"  
 ), 'packages.bib')
 ```

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Problem Statement | Outdoor Equity App Technical Documentation</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Problem Statement | Outdoor Equity App Technical Documentation" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="cboyajian/outdoor-equity-tech-doc" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Problem Statement | Outdoor Equity App Technical Documentation" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Clarissa Boyajian and Halina Do-Linh" />
+
+
+<meta name="date" content="2022-05-31" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="executive-summary.html"/>
+<link rel="next" href="specific-objectives.html"/>
+<script src="libs/header-attrs-2.10.6/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Outdoor Equity App Technical Documentation</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Abstract</a></li>
+<li class="chapter" data-level="2" data-path="executive-summary.html"><a href="executive-summary.html"><i class="fa fa-check"></i><b>2</b> Executive Summary</a></li>
+<li class="chapter" data-level="3" data-path="problem-statement.html"><a href="problem-statement.html"><i class="fa fa-check"></i><b>3</b> Problem Statement</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="problem-statement.html"><a href="problem-statement.html#background"><i class="fa fa-check"></i><b>3.1</b> Background</a></li>
+<li class="chapter" data-level="3.2" data-path="problem-statement.html"><a href="problem-statement.html#significance"><i class="fa fa-check"></i><b>3.2</b> Significance</a></li>
+<li class="chapter" data-level="3.3" data-path="problem-statement.html"><a href="problem-statement.html#figures"><i class="fa fa-check"></i><b>3.3</b> Figures</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="specific-objectives.html"><a href="specific-objectives.html"><i class="fa fa-check"></i><b>4</b> Specific Objectives</a></li>
+<li class="chapter" data-level="5" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html"><i class="fa fa-check"></i><b>5</b> Summary of Solution Design</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#access-data"><i class="fa fa-check"></i><b>5.1</b> Access Data</a></li>
+<li class="chapter" data-level="5.2" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#clean-and-wrangle-data"><i class="fa fa-check"></i><b>5.2</b> Clean and Wrangle Data</a></li>
+<li class="chapter" data-level="5.3" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#analysis-and-visualizations"><i class="fa fa-check"></i><b>5.3</b> Analysis and Visualizations</a></li>
+<li class="chapter" data-level="5.4" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#outdoor-equity-app"><i class="fa fa-check"></i><b>5.4</b> Outdoor Equity App</a></li>
+<li class="chapter" data-level="5.5" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#user-guide-and-technical-documentation"><i class="fa fa-check"></i><b>5.5</b> User Guide and Technical Documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html"><i class="fa fa-check"></i><b>6</b> Products and Deliverables</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html#r-shiny-app"><i class="fa fa-check"></i><b>6.1</b> R Shiny App</a></li>
+<li class="chapter" data-level="6.2" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html#metadata"><i class="fa fa-check"></i><b>6.2</b> Metadata</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="summary-of-testing.html"><a href="summary-of-testing.html"><i class="fa fa-check"></i><b>7</b> Summary of Testing</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="summary-of-testing.html"><a href="summary-of-testing.html#unit-tests"><i class="fa fa-check"></i><b>7.1</b> Unit Tests</a></li>
+<li class="chapter" data-level="7.2" data-path="summary-of-testing.html"><a href="summary-of-testing.html#data-integrity"><i class="fa fa-check"></i><b>7.2</b> Data Integrity</a></li>
+<li class="chapter" data-level="7.3" data-path="summary-of-testing.html"><a href="summary-of-testing.html#code-review"><i class="fa fa-check"></i><b>7.3</b> Code Review</a></li>
+<li class="chapter" data-level="7.4" data-path="summary-of-testing.html"><a href="summary-of-testing.html#product-testing"><i class="fa fa-check"></i><b>7.4</b> Product Testing</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="user-documentation.html"><a href="user-documentation.html"><i class="fa fa-check"></i><b>8</b> User Documentation</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="user-documentation.html"><a href="user-documentation.html#overview-of-the-outdoor-equity-application"><i class="fa fa-check"></i><b>8.1</b> Overview of the Outdoor Equity Application</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="user-documentation.html"><a href="user-documentation.html#background-1"><i class="fa fa-check"></i><b>8.1.1</b> Background</a></li>
+<li class="chapter" data-level="8.1.2" data-path="user-documentation.html"><a href="user-documentation.html#purpose"><i class="fa fa-check"></i><b>8.1.2</b> Purpose</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="user-documentation.html"><a href="user-documentation.html#how-to-use-the-outdoor-equity-app"><i class="fa fa-check"></i><b>8.2</b> How to Use the Outdoor Equity App</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="user-documentation.html"><a href="user-documentation.html#about-the-app"><i class="fa fa-check"></i><b>8.2.1</b> About the APP</a></li>
+<li class="chapter" data-level="8.2.2" data-path="user-documentation.html"><a href="user-documentation.html#metadata-1"><i class="fa fa-check"></i><b>8.2.2</b> Metadata</a></li>
+<li class="chapter" data-level="8.2.3" data-path="user-documentation.html"><a href="user-documentation.html#data-summary"><i class="fa fa-check"></i><b>8.2.3</b> Data Summary</a></li>
+<li class="chapter" data-level="8.2.4" data-path="user-documentation.html"><a href="user-documentation.html#data-relationships"><i class="fa fa-check"></i><b>8.2.4</b> Data Relationships</a></li>
+<li class="chapter" data-level="8.2.5" data-path="user-documentation.html"><a href="user-documentation.html#visitorshed-maps"><i class="fa fa-check"></i><b>8.2.5</b> Visitorshed Maps</a></li>
+<li class="chapter" data-level="8.2.6" data-path="user-documentation.html"><a href="user-documentation.html#data-download"><i class="fa fa-check"></i><b>8.2.6</b> Data Download</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="user-documentation.html"><a href="user-documentation.html#how-to-maintain-the-outdoor-equity-app"><i class="fa fa-check"></i><b>8.3</b> How to Maintain the Outdoor Equity App</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="user-documentation.html"><a href="user-documentation.html#data-preparation-methods"><i class="fa fa-check"></i><b>8.3.1</b> Data Preparation Methods</a></li>
+<li class="chapter" data-level="8.3.2" data-path="user-documentation.html"><a href="user-documentation.html#statistical-analysis-and-data-wrangling-for-plots"><i class="fa fa-check"></i><b>8.3.2</b> Statistical Analysis and Data Wrangling for Plots</a></li>
+<li class="chapter" data-level="8.3.3" data-path="user-documentation.html"><a href="user-documentation.html#data-limitations"><i class="fa fa-check"></i><b>8.3.3</b> Data Limitations</a></li>
+<li class="chapter" data-level="8.3.4" data-path="user-documentation.html"><a href="user-documentation.html#data-updates"><i class="fa fa-check"></i><b>8.3.4</b> Data updates</a></li>
+<li class="chapter" data-level="8.3.5" data-path="user-documentation.html"><a href="user-documentation.html#server-hosting"><i class="fa fa-check"></i><b>8.3.5</b> Server Hosting</a></li>
+<li class="chapter" data-level="8.3.6" data-path="user-documentation.html"><a href="user-documentation.html#shiny-code-directory"><i class="fa fa-check"></i><b>8.3.6</b> Shiny Code Directory</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="user-documentation.html"><a href="user-documentation.html#how-to-expand-the-outdoor-equity-app"><i class="fa fa-check"></i><b>8.4</b> How to Expand the Outdoor Equity App</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="user-documentation.html"><a href="user-documentation.html#temporal-expansions"><i class="fa fa-check"></i><b>8.4.1</b> Temporal Expansions</a></li>
+<li class="chapter" data-level="8.4.2" data-path="user-documentation.html"><a href="user-documentation.html#spatial-expansions"><i class="fa fa-check"></i><b>8.4.2</b> Spatial Expansions</a></li>
+<li class="chapter" data-level="8.4.3" data-path="user-documentation.html"><a href="user-documentation.html#statistical-analysis"><i class="fa fa-check"></i><b>8.4.3</b> Statistical Analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="additional-challenges.html"><a href="additional-challenges.html"><i class="fa fa-check"></i><b>9</b> Additional Challenges</a></li>
+<li class="chapter" data-level="10" data-path="archive-access.html"><a href="archive-access.html"><i class="fa fa-check"></i><b>10</b> Archive Access</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Outdoor Equity App Technical Documentation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="problem-statement" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Problem Statement</h1>
+<div id="background" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Background</h2>
+<p>Outdoor recreation provides critical health and well-being benefits to communities, and in the United States, federal public lands play an important role in providing access to nature. However, access is not equal for all people <span class="citation"><a href="#ref-Ewert1990" role="doc-biblioref">Ewert and Hollenhorst</a> (<a href="#ref-Ewert1990" role="doc-biblioref">1990</a>)</span>; <span class="citation"><a href="#ref-Flores2018" role="doc-biblioref">Flores et al.</a> (<a href="#ref-Flores2018" role="doc-biblioref">2018</a>)</span>, which has been recognized as an environmental injustice <span class="citation"><a href="#ref-Floyd2002" role="doc-biblioref">Floyd and Johnson</a> (<a href="#ref-Floyd2002" role="doc-biblioref">2002</a>)</span>. Many studies have shown that federally managed public land is accessed unequally due to historical discrimination and current inequities <span class="citation"><a href="#ref-Floyd2002" role="doc-biblioref">Floyd and Johnson</a> (<a href="#ref-Floyd2002" role="doc-biblioref">2002</a>)</span>; <span class="citation"><a href="#ref-Shelby1989" role="doc-biblioref">Shelby, Whittaker, and Danley</a> (<a href="#ref-Shelby1989" role="doc-biblioref">1989</a>)</span>; <span class="citation"><a href="#ref-Xiao2021" role="doc-biblioref">Xiao, Lee, and Larson</a> (<a href="#ref-Xiao2021" role="doc-biblioref">2021</a>)</span>.</p>
+<p>The challenge now facing public land management agencies is how to allocate quality visitor experiences to a more diverse user base. Simply increasing recreation opportunities on public land is not a viable solution to this rising demand. Many land management agencies in the U.S. are tasked with the dual mandate of providing recreational opportunities for visitors while also preserving and conserving natural resources and places <span class="citation"><a href="#ref-Shartaj2020" role="doc-biblioref">Shartaj and Suter</a> (<a href="#ref-Shartaj2020" role="doc-biblioref">2020</a>)</span>. For over a century, striking the balance necessary to uphold this mandate has proven a challenge for federal agencies like the National Parks Service <span class="citation"><a href="#ref-Meinecke1937" role="doc-biblioref">Meinecke</a> (<a href="#ref-Meinecke1937" role="doc-biblioref">1937</a>)</span>; <span class="citation"><a href="#ref-Sax1980" role="doc-biblioref">Sax</a> (<a href="#ref-Sax1980" role="doc-biblioref">1980</a>)</span>, and the recent growth of recreation (Figure <a href="problem-statement.html#fig:fig1">3.1</a>) has renewed concerns about its potential negative environmental impacts and changes to the visitor experience <span class="citation"><a href="#ref-Hammitt2015" role="doc-biblioref">Hammitt, Cole, and Monz</a> (<a href="#ref-Hammitt2015" role="doc-biblioref">2015</a>)</span>; <span class="citation"><a href="#ref-Timmons2019" role="doc-biblioref">Timmons</a> (<a href="#ref-Timmons2019" role="doc-biblioref">2019</a>)</span>.</p>
+<p>While managers seek to allocate existing resources (e.g. campsites) through the fairest means possible, including reservation systems, equal opportunities do not translate to equitable access <span class="citation"><a href="#ref-Shelby1989" role="doc-biblioref">Shelby, Whittaker, and Danley</a> (<a href="#ref-Shelby1989" role="doc-biblioref">1989</a>)</span>. Historically, policies of segregation barred certain racial groups from using federal public lands and the legacy of these policies has perpetuated inequitable access for certain racial groups to this day <span class="citation"><a href="#ref-Xiao2021" role="doc-biblioref">Xiao, Lee, and Larson</a> (<a href="#ref-Xiao2021" role="doc-biblioref">2021</a>)</span>. Additionally, previous and current inequities like lack of time, disposable income, access to technology, and lack of social or institutional knowledge about reservation systems impact access to federal public lands <span class="citation"><a href="#ref-Scott2018" role="doc-biblioref">Scott and Lee</a> (<a href="#ref-Scott2018" role="doc-biblioref">2018</a>)</span>. At present, park visitation and camping are seeing a surge in popularity, heightened even more by the COVID-19 pandemic, and this rapid increase in demand for recreation opportunities may only further these inequities.</p>
+</div>
+<div id="significance" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Significance</h2>
+<p>Currently, much of our understanding about trends in recreation on public lands comes from the <a href="https://irma.nps.gov/Portal/">Integrated Resource Management Applications (IRMA) Portal</a>, which the National Parks Service uses to monitor visitor counts over time <span class="citation"><a href="#ref-Bergstrom2020" role="doc-biblioref">Bergstrom, Stowers, and Shonkwiler</a> (<a href="#ref-Bergstrom2020" role="doc-biblioref">2020</a>)</span>. However, these data lack information on where visitors are coming from. This project leverages the <a href="https://ridb.recreation.gov/landing">Recreation Information Database (RIDB)</a>, managed by Recreation One Stop, an inter-agency partnership that provides reservation services and trip-planning tools on <a href="https://www.recreation.gov/">Recreation.gov</a>. The RIDB is far more robust, including data from other land management agencies, and information on visitor zip codes, costs, group sizes, and dates of both reservations and recreation activities. While it is available for public download, there are few robust data-driven analytical tools to understand the patterns and relationships of these inequities within individual recreation areas.</p>
+<p>Previous research has demonstrated the value of RIDB data in forecasting future recreation demand for single park units <span class="citation"><a href="#ref-Rice2019" role="doc-biblioref">Rice et al.</a> (<a href="#ref-Rice2019" role="doc-biblioref">2019</a>)</span> and analyzing preferential characteristics for popular recreational facilities <span class="citation"><a href="#ref-Rice2021" role="doc-biblioref">Rice and Park</a> (<a href="#ref-Rice2021" role="doc-biblioref">2021</a>)</span>. A recent study summarizing RIDB data from national parks <span class="citation"><a href="#ref-Walls2018" role="doc-biblioref">Walls, Wichman, and Ankney</a> (<a href="#ref-Walls2018" role="doc-biblioref">2018</a>)</span> also identified broad patterns in reservations. For example, campsite reservations are made far in advance, but many are canceled last minute (Figure <a href="problem-statement.html#fig:fig2">3.2</a>); visitors tend to visit national parks near their homes (Figure <a href="problem-statement.html#fig:fig3">3.3</a>); and the distribution of incomes of campers appears to be similar to the U.S. population as a whole (Figure <a href="problem-statement.html#fig:fig4">3.4</a>). However, overall, the vast RIDB data has received limited system-level research attention to date, and this work will be the first to explore issues of equity with RIDB data.</p>
+<p>Furthermore, much of the existing research on outdoor recreation focuses on National Park Service lands (e.g., <span class="citation"><a href="#ref-Walls2018" role="doc-biblioref">Walls, Wichman, and Ankney</a> (<a href="#ref-Walls2018" role="doc-biblioref">2018</a>)</span>), which is only a small percentage of all federal land used by the public. The other land management agencies, including US Forest Service, Bureau of Land Management, and Army Corps of Engineers, often lack the capacity and funding to process reservation data, and are less frequently the subjects of outside research. Little is known about how patterns of access and demand vary across land management types. The RIDB includes data from all federal land management agencies, and therefore has tremendous promise to inform our understanding of patterns and trends in recreation across space and time and to inform policies for more equitable campground access for all federal public lands.</p>
+<p>Our overarching objective for this project is to utilize data from RIDB and US Census to analyze spatial and demand patterns of visitor access at reservable overnight sites (such as campgrounds, cabins, hike-in, and more). We chose to focus on reservable sites since recent studies have shown this type of outdoor recreation to be a good proxy for visitation to federal public lands <span class="citation"><a href="#ref-Walls2018" role="doc-biblioref">Walls, Wichman, and Ankney</a> (<a href="#ref-Walls2018" role="doc-biblioref">2018</a>)</span>. These analyses will provide federal public managers an opportunity to explore relationships between and within socioeconomic and reservation variables.</p>
+</div>
+<div id="figures" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Figures</h2>
+<div class="figure"><span style="display:block;" id="fig:fig1"></span>
+<img src="images/problem_statement_figure_1.png" alt="Total annual visitors to the National Park Service system, since its inception through 2020. Visitation has been rapidly increasing, particularly within the last decade. (Source: [IRMA](https://irma.nps.gov/Portal/))" width="360" />
+<p class="caption">
+Figure 3.1: Total annual visitors to the National Park Service system, since its inception through 2020. Visitation has been rapidly increasing, particularly within the last decade. (Source: <a href="https://irma.nps.gov/Portal/">IRMA</a>)
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:fig2"></span>
+<img src="images/problem_statement_figure_2.png" alt="Reproduced from @Walls2018. Days in advance that National Park campsite reservations are made from 2014 to 2016. Reservations are made far in advance, but many reservations are canceled at the last minute." width="432" />
+<p class="caption">
+Figure 3.2: Reproduced from <span class="citation"><a href="#ref-Walls2018" role="doc-biblioref">Walls, Wichman, and Ankney</a> (<a href="#ref-Walls2018" role="doc-biblioref">2018</a>)</span>. Days in advance that National Park campsite reservations are made from 2014 to 2016. Reservations are made far in advance, but many reservations are canceled at the last minute.
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:fig3"></span>
+<img src="images/problem_statement_figure_3.png" alt="Reproduced from @Walls2018. Distance traveled and duration of stay for National Park camping visits from 2014 to 2016. Visitors tend to visit national parks near their homes and stay only two nights, and longer trips are rare." width="720" />
+<p class="caption">
+Figure 3.3: Reproduced from <span class="citation"><a href="#ref-Walls2018" role="doc-biblioref">Walls, Wichman, and Ankney</a> (<a href="#ref-Walls2018" role="doc-biblioref">2018</a>)</span>. Distance traveled and duration of stay for National Park camping visits from 2014 to 2016. Visitors tend to visit national parks near their homes and stay only two nights, and longer trips are rare.
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:fig4"></span>
+<img src="images/problem_statement_figure_4.png" alt="Reproduced from @Walls2018. Median household income (by zip code) for National Park campers and for US Population. The black line estimates the distribution of median household (HH) income of campers from 2014 to 2016. The red line estimates the distribution of median household for all zip codes in the U.S. using average median household income from 2014 to 2016 where each zip code is an observation." width="280" />
+<p class="caption">
+Figure 3.4: Reproduced from <span class="citation"><a href="#ref-Walls2018" role="doc-biblioref">Walls, Wichman, and Ankney</a> (<a href="#ref-Walls2018" role="doc-biblioref">2018</a>)</span>. Median household income (by zip code) for National Park campers and for US Population. The black line estimates the distribution of median household (HH) income of campers from 2014 to 2016. The red line estimates the distribution of median household for all zip codes in the U.S. using average median household income from 2014 to 2016 where each zip code is an observation.
+</p>
+</div>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Bergstrom2020" class="csl-entry">
+Bergstrom, John C., Matthew Stowers, and Scott J. Shonkwiler. 2020. <span>“What Does the Future Hold for u.s. National Park Visitation? Estimation and Assessment of Demand Determinants and New Projections”</span> 45 (1): 38–55. https://doi.org/<a href="https://doi.org/10.22004/AG.ECON.298433">https://doi.org/10.22004/AG.ECON.298433</a>.
+</div>
+<div id="ref-Ewert1990" class="csl-entry">
+Ewert, Alan, and Steve Hollenhorst. 1990. <span>“Resource Allocation: Inequities in Wildland Recreation”</span> 61 (8): 32–36. https://doi.org/<a href="https://doi.org/10.1080/07303084.1990.10604598">https://doi.org/10.1080/07303084.1990.10604598</a>.
+</div>
+<div id="ref-Flores2018" class="csl-entry">
+Flores, David, Gennaro Falco, Nina S. Roberts, and III Francisco P. Valenzuela. 2018. <span>“Recreation Equity: Is the Forest Service Serving Its Diverse Publics?”</span> 116 (3): 266–72. https://doi.org/<a href="https://doi.org/10.1093/jofore/fvx016">https://doi.org/10.1093/jofore/fvx016</a>.
+</div>
+<div id="ref-Floyd2002" class="csl-entry">
+Floyd, Myron, and Cassandra Y. Johnson. 2002. <span>“Coming to Terms with Environmental Justice in Outdoor Recreation: A Conceptual Discussion with Research Implications”</span> 24 (1): 59–77. https://doi.org/<a href="https://doi.org/10.1080/01490400252772836">https://doi.org/10.1080/01490400252772836</a>.
+</div>
+<div id="ref-Hammitt2015" class="csl-entry">
+Hammitt, William E., David N. Cole, and Christopher A. Monz. 2015. <em>Wildland Recreation: Ecology and Management</em>. Oxford, UK: John Wiley; Sons.
+</div>
+<div id="ref-Meinecke1937" class="csl-entry">
+Meinecke, E. P. 1937. <span>“Recreation Planning: A Discussion.”</span> 35 (12): 1120–28. https://doi.org/<a href="https://doi.org/10.1093/jof/35.12.1120">https://doi.org/10.1093/jof/35.12.1120</a>.
+</div>
+<div id="ref-Rice2021" class="csl-entry">
+Rice, William L., and So Young Park. 2021. <span>“Big Data Spatial Analysis of Campers’ Landscape Preferences: Examining Demand for Amenities”</span> 292 (15). https://doi.org/<a href="https://doi.org/10.1016/j.jenvman.2021.112773">https://doi.org/10.1016/j.jenvman.2021.112773</a>.
+</div>
+<div id="ref-Rice2019" class="csl-entry">
+Rice, William L., So Young Park, Bing Pan, and Peter Newman. 2019. <span>“Forecasting Campground Demand in US National Parks”</span> 75: 424–38. https://doi.org/<a href="https://doi.org/10.1016/j.annals.2019.01.013">https://doi.org/10.1016/j.annals.2019.01.013</a>.
+</div>
+<div id="ref-Sax1980" class="csl-entry">
+Sax, Joseph L. 1980. <em>Mountains Without Handrails: Reflections on the National Parks</em>. Ann Arbor, MI: University of Michigan Press.
+</div>
+<div id="ref-Scott2018" class="csl-entry">
+Scott, David, and KangJae Jerry Lee. 2018. <span>“People of Color and Their Constraints to National Parks Visitation”</span> 35 (1): 73–82.
+</div>
+<div id="ref-Shartaj2020" class="csl-entry">
+Shartaj, Mostafa, and Jordan F. Suter. 2020. <span>“Exploring the Local Determinants of Campground Utilization on National Forest Land”</span> 18 (2): 114–28. https://doi.org/<a href="https://doi.org/10.22004/ag.econ.308121">https://doi.org/10.22004/ag.econ.308121</a>.
+</div>
+<div id="ref-Shelby1989" class="csl-entry">
+Shelby, Bo, Doug Whittaker, and Mark Danley. 1989. <span>“Idealism Versus Pragmatism in User Evaluations of Allocation Systems”</span> 11 (1): 61–70. https://doi.org/<a href="https://doi.org/10.1080/01490408909512205">https://doi.org/10.1080/01490408909512205</a>.
+</div>
+<div id="ref-Timmons2019" class="csl-entry">
+Timmons, Abby L. 2019. <span>“Too Much of a Good Thing: Overcrowding at America’s National Parks”</span> 94 (2): 985–1017.
+</div>
+<div id="ref-Walls2018" class="csl-entry">
+Walls, Margaret, Casey Wichman, and Kevin Ankney. 2018. <span>“Nature-Based Recreation: Understanding Campsite Reservations in National Parks.”</span> Resources for the Future.
+</div>
+<div id="ref-Xiao2021" class="csl-entry">
+Xiao, Xiao, KangJae Jerry Lee, and Lincoln R. Larson. 2021. <span>“Who Visits u.s. National Parks (and Who Doesn’t)? A National Study of Perceived Constraints and Vacation Preferences Across Diverse Populations”</span> 53 (3): 404–25. https://doi.org/<a href="https://doi.org/10.1080/00222216.2021.1899776">https://doi.org/10.1080/00222216.2021.1899776</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="executive-summary.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="specific-objectives.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-problem_statement.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

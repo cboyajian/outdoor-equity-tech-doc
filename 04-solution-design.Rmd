@@ -1,0 +1,21 @@
+# Summary of Solution Design
+
+Throughout this document we define “reservable sites” as traditional campgrounds, single remote campsites, overnight boat mooring, equestrian sites, cabins, and other shelters listed in the RIDB data.
+
+## Access Data
+
+
+
+## Clean and Wrangle Data
+
+
+
+## Analysis and Visualizations
+
+
+
+## Outdoor Equity App
+
+
+
+## User Guide and Technical Documentation
