@@ -29,7 +29,7 @@ knitr::kable(glossary_df,
 
 ## Access, Clean, and Wrangle Data
 
-[RIDB data](https://ridb.recreation.gov/) and [US Census American Communities Survey (ACS) data](https://www.census.gov/programs-surveys/acs/data.html) are freely available online to the public. We accessed, cleaned, and wrangled all data outside of the [Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/) using an .Rmd file  and 18 custom-made functions (Tables \@ref(tab:func-table1), \@ref(tab:func-table2), \@ref(tab:func-table3), \@ref(tab:func-table4)). We downloaded RIDB data in CSV format from Recreation.gov and ACS data through API using the R package `tidycensus` [@R-tidycensus]. We first subsetted RIDB and ACS datasets to include only the variables relevant to our objectives. 
+[RIDB data](https://ridb.recreation.gov/) and [US Census American Communities Survey (ACS) data](https://www.census.gov/programs-surveys/acs/data.html) are freely available online to the public. We accessed, cleaned, and wrangled all data outside of the [Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/) using an .Rmd file  and 18 custom-made functions (Tables \@ref(tab:func-table1), \@ref(tab:func-table2), \@ref(tab:func-table3), \@ref(tab:func-table4)). We downloaded RIDB data in CSV format from Recreation.gov and ACS data through API using the R package `tidycensus` [@R-tidycensus]. We first subsetted RIDB and ACS datasets to include only the variables relevant to our objectives. We then normalized, aggregated, and calculated variables as necessary. Once both datasets are cleaned and wrangled, we joined them using ZIP codes as the key (common value in both datasets). Finally we wrangled the joined RIDB and ACS dataset to ready them for creating data relationship plots.
 
 
 ```{r, func-table1, echo=FALSE}
@@ -44,54 +44,9 @@ acs_functions_df <-
     "function_acs_top_quartile_education.R", "Calculate weighted third quartile value of California census education percentages",
     "function_acs_top_quartile_language.R", "Calculate weighted third quartile value of California census language percentages",
     "function_acs_top_quartile_race.R", "Calculate weighted third quartile value of California census race percentages",
-  )
-
-knitr::kable(acs_functions_df,
-             align = "l",
-             caption = "A table of the 8 custom cleaning and wrangling functions created to wrangle the ACS data.",
-             row.names = FALSE)
-```
-
-
-We then normalized, aggregated, and calculated variables as necessary.
-
-```{r, func-table2, echo=FALSE}
-ridb_functions_df <- 
-  tribble(
-    ~Script, ~Purpose,
     "function_ridb_subset-pre2018.R", "Subset RIDB data",
-    "function_ridb_variable_calculate-pre2018.R", "Define, standardize, and aggregate values and calculated additional derived variables"
-  )
-
-knitr::kable(ridb_functions_df,
-             align = "l",
-             caption = "A table of the 2 custom cleaning and wrangling functions created to wrangle the RIDB.",
-             row.names = FALSE)
-```
-
-
-Once both datasets are cleaned and wrangled, we joined them using ZIP codes as the key (common value in both datasets).
-
-```{r, func-table3, echo=FALSE}
-ridb_functions_df <- 
-  tribble(
-    ~Script, ~Purpose,
-    "function_join_ridb_acs.R", "Join RIDB and ACS data"
-  )
-
-knitr::kable(ridb_functions_df,
-             align = "l",
-             caption = "A table of the single custom function created to combine RIDB and ACS data.",
-             row.names = FALSE)
-```
-
-
-Finally we wrangled the joined RIDB and ACS dataset to ready them for creating data relationship plots.
-
-```{r, func-table4, echo=FALSE}
-ridb_functions_df <- 
-  tribble(
-    ~Script, ~Purpose,
+    "function_ridb_variable_calculate-pre2018.R", "Define, standardize, and aggregate values and calculated additional derived variables",
+    "function_join_ridb_acs.R", "Join RIDB and ACS data",
     "function_map_ca_data.R", "Create dataset for California ZIP code visitorshed map",
     "function_map_us_data.R", "Create dataset for US State visitorshed map",
     "function_ridb_deciles_median_income.R", "Create dataset for median-income data relationship plots",
@@ -100,9 +55,9 @@ ridb_functions_df <-
     "function_ridb_top_quartile_race.R", "Create dataset for race data relationship plots"
   )
 
-knitr::kable(ridb_functions_df,
+knitr::kable(acs_functions_df,
              align = "l",
-             caption = "A table of the 6 custom cleaning and wrangling functions to create data sets for visitorshed maps and data relationship plots.",
+             caption = "A table of the 11 custom cleaning and wrangling functions created for the ACS and RIDB data and the 6 custom cleaning and wrangling functions to create data sets for visitorshed maps and data relationship plots.",
              row.names = FALSE)
 ```
 
@@ -145,7 +100,7 @@ knitr::include_graphics("images/screenshot_data-download.png")
 
 The [Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/) includes a user guide and metadata information. The user guide section includes a quick overview of the app and helper text on how to start creating visuals. 
 
-This technical documentation is created with the `bookdown` package [@R-bookdown] and is linked in the user guide section of the Outdoor Equity App. Metadata for all variables used within the app are also available on the app Metadata tab and in the [Products and Deliverables Section][Products and Deliverables] of this document. 
+This technical documentation is created with the `bookdown` package [@R-bookdown] and is linked in the About tab of the Outdoor Equity App. Metadata for all variables used within the app are also available on the app Metadata tab and in the [Products and Deliverables Section][Products and Deliverables] of this document. 
 
 
 

@@ -4,9 +4,6 @@ fig:fig3
 fig:fig4
 tab:glossary-table
 tab:func-table1
-tab:func-table2
-tab:func-table3
-tab:func-table4
 fig:app-screenshot1
 fig:app-screenshot2
 fig:app-screenshot3

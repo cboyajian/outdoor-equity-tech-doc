@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.6.1)  1 JUN 2022 06:42
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.6.1)  1 JUN 2022 22:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -753,81 +753,77 @@ Overfull \hbox (256.95004pt too wide) in paragraph at lines 194--217
  [][] 
  []
 
+
+LaTeX Warning: Reference `tab:func-table2' on page 19 undefined on input line 222.
+
+
+LaTeX Warning: Reference `tab:func-table3' on page 19 undefined on input line 222.
+
+
+LaTeX Warning: Reference `tab:func-table4' on page 19 undefined on input line 222.
+
 [19]
-Overfull \hbox (218.54007pt too wide) in paragraph at lines 228--249
+Overfull \hbox (246.76003pt too wide) in paragraph at lines 228--267
  [][] 
  []
-
-
-Overfull \hbox (246.76003pt too wide) in paragraph at lines 257--266
- [][] 
- []
-
-
-Overfull \hbox (113.78004pt too wide) in paragraph at lines 289--306
- [][] 
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [20]
 File: images/screenshot_about.png Graphic file (type bmp)
 <images/screenshot_about.png>
 
-Overfull \hbox (1301.14603pt too wide) in paragraph at lines 319--319
+Overfull \hbox (1301.14603pt too wide) in paragraph at lines 280--280
 [][] 
  []
 
 File: images/screenshot_data-summary.png Graphic file (type bmp)
 <images/screenshot_data-summary.png>
 
-Overfull \hbox (840.1216pt too wide) in paragraph at lines 323--323
+Overfull \hbox (840.1216pt too wide) in paragraph at lines 284--284
 [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 24.08902pt on input line 324.
+LaTeX Warning: Float too large for page by 24.08902pt on input line 285.
 
 File: images/screenshot_data-relationship.png Graphic file (type bmp)
 <images/screenshot_data-relationship.png>
 
-Overfull \hbox (857.75964pt too wide) in paragraph at lines 327--327
+Overfull \hbox (857.75964pt too wide) in paragraph at lines 288--288
 [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 24.10248pt on input line 328.
+LaTeX Warning: Float too large for page by 24.10248pt on input line 289.
 
 File: images/screenshot_visitorshed.png Graphic file (type bmp)
 <images/screenshot_visitorshed.png>
 
-Overfull \hbox (823.58008pt too wide) in paragraph at lines 331--331
+Overfull \hbox (823.58008pt too wide) in paragraph at lines 292--292
 [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 24.06404pt on input line 332.
+LaTeX Warning: Float too large for page by 24.06404pt on input line 293.
 
 File: images/screenshot_metadata.png Graphic file (type bmp)
 <images/screenshot_metadata.png>
 
-Overfull \hbox (1165.31273pt too wide) in paragraph at lines 335--335
+Overfull \hbox (1165.31273pt too wide) in paragraph at lines 296--296
 [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 24.10078pt on input line 336.
+LaTeX Warning: Float too large for page by 24.10078pt on input line 297.
 
 File: images/screenshot_data-download.png Graphic file (type bmp)
 <images/screenshot_data-download.png>
 
-Overfull \hbox (860.07646pt too wide) in paragraph at lines 339--339
+Overfull \hbox (860.07646pt too wide) in paragraph at lines 300--300
 [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 24.09181pt on input line 340.
+LaTeX Warning: Float too large for page by 24.09181pt on input line 301.
 
 [21] [22] [23] [24] [25] [26] [27] [28
 
@@ -858,13 +854,16 @@ Chapter 10.
 (./_main.bbl [37] [38
 
 ] [39]) [40] (./_main.aux)
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `_main.out' has not changed.
 (rerunfilecheck)             Checksum: F0980CA9C80746E54BE1BA2FB00FE6CA;4855.
  ) 
 Here is how much of TeX's memory you used:
  17215 strings out of 478126
  319656 string characters out of 5852738
- 770123 words of memory out of 5000000
+ 769884 words of memory out of 5000000
  37643 multiletter control sequences out of 15000+600000
  475718 words of font info for 82 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
