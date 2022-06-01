@@ -4,33 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Summary of Solution Design | Outdoor Equity App Technical Documentation</title>
-  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+  <title>Section 5 Summary of Solution Design | Outdoor Equity App Technical Documentation</title>
+  <meta name="description" content="Section 5 Summary of Solution Design | Outdoor Equity App Technical Documentation" />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Summary of Solution Design | Outdoor Equity App Technical Documentation" />
+  <meta property="og:title" content="Section 5 Summary of Solution Design | Outdoor Equity App Technical Documentation" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+  
   <meta name="github-repo" content="cboyajian/outdoor-equity-tech-doc" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Summary of Solution Design | Outdoor Equity App Technical Documentation" />
+  <meta name="twitter:title" content="Section 5 Summary of Solution Design | Outdoor Equity App Technical Documentation" />
   
-  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+  
   
 
 <meta name="author" content="Clarissa Boyajian and Halina Do-Linh" />
 
 
-<meta name="date" content="2022-05-31" />
+<meta name="date" content="2022-06-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -98,10 +92,15 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Outdoor Equity App Technical Documentation</a></li>
+<li><a href="./">Outdoor Equity App</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Abstract</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#abstract"><i class="fa fa-check"></i><b>1.1</b> Abstract</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#about-the-authors"><i class="fa fa-check"></i><b>1.2</b> About the Authors</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#helpful-links-and-resources"><i class="fa fa-check"></i><b>1.3</b> Helpful Links and Resources</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="executive-summary.html"><a href="executive-summary.html"><i class="fa fa-check"></i><b>2</b> Executive Summary</a></li>
 <li class="chapter" data-level="3" data-path="problem-statement.html"><a href="problem-statement.html"><i class="fa fa-check"></i><b>3</b> Problem Statement</a>
 <ul>
@@ -112,8 +111,8 @@ div.csl-indent {
 <li class="chapter" data-level="4" data-path="specific-objectives.html"><a href="specific-objectives.html"><i class="fa fa-check"></i><b>4</b> Specific Objectives</a></li>
 <li class="chapter" data-level="5" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html"><i class="fa fa-check"></i><b>5</b> Summary of Solution Design</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#access-data"><i class="fa fa-check"></i><b>5.1</b> Access Data</a></li>
-<li class="chapter" data-level="5.2" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#clean-and-wrangle-data"><i class="fa fa-check"></i><b>5.2</b> Clean and Wrangle Data</a></li>
+<li class="chapter" data-level="5.1" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#glossary-and-definitions"><i class="fa fa-check"></i><b>5.1</b> Glossary and Definitions</a></li>
+<li class="chapter" data-level="5.2" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#access-clean-and-wrangle-data"><i class="fa fa-check"></i><b>5.2</b> Access, Clean, and Wrangle Data</a></li>
 <li class="chapter" data-level="5.3" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#analysis-and-visualizations"><i class="fa fa-check"></i><b>5.3</b> Analysis and Visualizations</a></li>
 <li class="chapter" data-level="5.4" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#outdoor-equity-app"><i class="fa fa-check"></i><b>5.4</b> Outdoor Equity App</a></li>
 <li class="chapter" data-level="5.5" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#user-guide-and-technical-documentation"><i class="fa fa-check"></i><b>5.5</b> User Guide and Technical Documentation</a></li>
@@ -186,23 +185,262 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="summary-of-solution-design" class="section level1" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Summary of Solution Design</h1>
-<p>Throughout this document we define “reservable sites” as traditional campgrounds, single remote campsites, overnight boat-in sites or mooring, equestrian sites, cabins, and other shelters listed in the RIDB data.</p>
-<div id="access-data" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Access Data</h2>
+<h1><span class="header-section-number">Section 5</span> Summary of Solution Design</h1>
+<div id="glossary-and-definitions" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Glossary and Definitions</h2>
+<p>Throughout this document we define “reservable sites” as traditional campgrounds, single remote campsites, overnight boat-in sites or mooring, equestrian sites, cabins, and other shelters listed in the <a href="https://ridb.recreation.gov/">RIDB data</a>.</p>
+<table>
+<caption><span id="tab:glossary-table">Table 5.1: </span>A table of abbreviations, their definitions, and source URLS.</caption>
+<colgroup>
+<col width="10%" />
+<col width="31%" />
+<col width="57%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Abbreviation</th>
+<th align="left">Definition</th>
+<th align="left">Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">ACS</td>
+<td align="left">American Community Survey</td>
+<td align="left"><a href="https://www.census.gov/programs-surveys/acs" class="uri">https://www.census.gov/programs-surveys/acs</a></td>
+</tr>
+<tr class="even">
+<td align="left">BLM</td>
+<td align="left">Bureau of Land Management</td>
+<td align="left"><a href="https://www.blm.gov/" class="uri">https://www.blm.gov/</a></td>
+</tr>
+<tr class="odd">
+<td align="left">BOR</td>
+<td align="left">Bureau of Reclamation</td>
+<td align="left"><a href="https://www.usbr.gov/" class="uri">https://www.usbr.gov/</a></td>
+</tr>
+<tr class="even">
+<td align="left">MEDS</td>
+<td align="left">Master of Environmental Data Science</td>
+<td align="left"><a href="https://bren.ucsb.edu/masters-programs/master-environmental-data-science" class="uri">https://bren.ucsb.edu/masters-programs/master-environmental-data-science</a></td>
+</tr>
+<tr class="odd">
+<td align="left">NPS</td>
+<td align="left">National Park Service</td>
+<td align="left"><a href="https://www.nps.gov/index.htm" class="uri">https://www.nps.gov/index.htm</a></td>
+</tr>
+<tr class="even">
+<td align="left">R1S</td>
+<td align="left">Recreation One Stop</td>
+<td align="left"><a href="https://www.recreation.gov/" class="uri">https://www.recreation.gov/</a></td>
+</tr>
+<tr class="odd">
+<td align="left">UCSB</td>
+<td align="left">University of California, Santa Barbara</td>
+<td align="left"><a href="https://www.ucsb.edu/" class="uri">https://www.ucsb.edu/</a></td>
+</tr>
+<tr class="even">
+<td align="left">USACE</td>
+<td align="left">United States Army Corps of Engineers</td>
+<td align="left"><a href="https://www.usace.army.mil/" class="uri">https://www.usace.army.mil/</a></td>
+</tr>
+<tr class="odd">
+<td align="left">USFS</td>
+<td align="left">United States Forest Service</td>
+<td align="left"><a href="https://www.fs.usda.gov/" class="uri">https://www.fs.usda.gov/</a></td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="clean-and-wrangle-data" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Clean and Wrangle Data</h2>
+<div id="access-clean-and-wrangle-data" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Access, Clean, and Wrangle Data</h2>
+<p><a href="https://ridb.recreation.gov/">RIDB data</a> and <a href="https://www.census.gov/programs-surveys/acs/data.html">US Census American Communities Survey (ACS) data</a> are freely available online to the public. We accessed, cleaned, and wrangled all data outside of the <a href="https://shinyapps.bren.ucsb.edu/oe_app/">Outdoor Equity App</a> using an .Rmd file and 18 custom-made functions (Tables <a href="summary-of-solution-design.html#tab:func-table1">5.2</a>, <a href="summary-of-solution-design.html#tab:func-table2">5.3</a>, <a href="summary-of-solution-design.html#tab:func-table3">5.4</a>, <a href="summary-of-solution-design.html#tab:func-table4">5.5</a>). We downloaded RIDB data in CSV format from Recreation.gov and ACS data through API using the R package <code>tidycensus</code> <span class="citation">(<a href="#ref-R-tidycensus" role="doc-biblioref">Walker and Herman 2021</a>)</span>. We first subsetted RIDB and ACS datasets to include only the variables relevant to our objectives.</p>
+<table>
+<caption><span id="tab:func-table1">Table 5.2: </span>A table of the 8 custom cleaning and wrangling functions created to wrangle the ACS data.</caption>
+<colgroup>
+<col width="31%" />
+<col width="68%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Script</th>
+<th align="left">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">function_acs_deciles_median_income.R</td>
+<td align="left">Calculate decile values of California census household median-income</td>
+</tr>
+<tr class="even">
+<td align="left">function_acs_education.R</td>
+<td align="left">Call and calculate education percentages for given geographic area and state</td>
+</tr>
+<tr class="odd">
+<td align="left">function_acs_language.R</td>
+<td align="left">Call and calculate language percentages for given geographic area and state</td>
+</tr>
+<tr class="even">
+<td align="left">function_acs_median_income.R</td>
+<td align="left">Call and calculate median-income percentages for given geographic area and state</td>
+</tr>
+<tr class="odd">
+<td align="left">function_acs_race.R</td>
+<td align="left">Call and calculate race percentages for given geographic area and state</td>
+</tr>
+<tr class="even">
+<td align="left">function_acs_top_quartile_education.R</td>
+<td align="left">Calculate weighted third quartile value of California census education percentages</td>
+</tr>
+<tr class="odd">
+<td align="left">function_acs_top_quartile_language.R</td>
+<td align="left">Calculate weighted third quartile value of California census language percentages</td>
+</tr>
+<tr class="even">
+<td align="left">function_acs_top_quartile_race.R</td>
+<td align="left">Calculate weighted third quartile value of California census race percentages</td>
+</tr>
+</tbody>
+</table>
+<p>We then normalized, aggregated, and calculated variables as necessary.</p>
+<table>
+<caption><span id="tab:func-table2">Table 5.3: </span>A table of the 2 custom cleaning and wrangling functions created to wrangle the RIDB.</caption>
+<colgroup>
+<col width="33%" />
+<col width="66%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Script</th>
+<th align="left">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">function_ridb_subset-pre2018.R</td>
+<td align="left">Subset RIDB data</td>
+</tr>
+<tr class="even">
+<td align="left">function_ridb_variable_calculate-pre2018.R</td>
+<td align="left">Define, standardize, and aggregate values and calculated additional derived variables</td>
+</tr>
+</tbody>
+</table>
+<p>Once both datasets are cleaned and wrangled, we joined them using ZIP codes as the key (common value in both datasets).</p>
+<table>
+<caption><span id="tab:func-table3">Table 5.4: </span>A table of the single custom function created to combine RIDB and ACS data.</caption>
+<thead>
+<tr class="header">
+<th align="left">Script</th>
+<th align="left">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">function_join_ridb_acs.R</td>
+<td align="left">Join RIDB and ACS data</td>
+</tr>
+</tbody>
+</table>
+<p>Finally we wrangled the joined RIDB and ACS dataset to ready them for creating data relationship plots.</p>
+<table>
+<caption><span id="tab:func-table4">Table 5.5: </span>A table of the 6 custom cleaning and wrangling functions to create data sets for visitorshed maps and data relationship plots.</caption>
+<colgroup>
+<col width="40%" />
+<col width="59%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Script</th>
+<th align="left">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">function_map_ca_data.R</td>
+<td align="left">Create dataset for California ZIP code visitorshed map</td>
+</tr>
+<tr class="even">
+<td align="left">function_map_us_data.R</td>
+<td align="left">Create dataset for US State visitorshed map</td>
+</tr>
+<tr class="odd">
+<td align="left">function_ridb_deciles_median_income.R</td>
+<td align="left">Create dataset for median-income data relationship plots</td>
+</tr>
+<tr class="even">
+<td align="left">function_ridb_top_quartile_education.R</td>
+<td align="left">Create dataset for education data relationship plots</td>
+</tr>
+<tr class="odd">
+<td align="left">function_ridb_top_quartile_language.R</td>
+<td align="left">Create dataset for language data relationship plots</td>
+</tr>
+<tr class="even">
+<td align="left">function_ridb_top_quartile_race.R</td>
+<td align="left">Create dataset for race data relationship plots</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="analysis-and-visualizations" class="section level2" number="5.3">
 <h2><span class="header-section-number">5.3</span> Analysis and Visualizations</h2>
+<p>The <a href="https://shinyapps.bren.ucsb.edu/oe_app/">Outdoor Equity App</a> features interactive maps and plots. Users of this app can select a single reservable site to create custom plots that show a data summary of a single variable or a data relationship between two variables. Visualizations of multiple reservable sites appear as separate plots. Users can also select a single site to create a visitorshed map for the full United States and for the state in which the site is located.</p>
 </div>
 <div id="outdoor-equity-app" class="section level2" number="5.4">
 <h2><span class="header-section-number">5.4</span> Outdoor Equity App</h2>
+<p>The app has a navigation bar with four tabs: About, Analysis, Metadata and Data Download. Nested under the Analysis tab are the subtabs of Data Summary, Data Relationship, and Visitorshed Maps. The app opens automatically to the About tab.</p>
+<div class="figure"><span style="display:block;" id="fig:app-screenshot1"></span>
+<img src="images/screenshot_about.png" alt="Screenshot of the About page of the Outdoor Equity App" width="820" />
+<p class="caption">
+Figure 5.1: Screenshot of the About page of the Outdoor Equity App
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:app-screenshot2"></span>
+<img src="images/screenshot_data-summary.png" alt="Screenshot of the Analysis page of the Outdoor Equity App" width="822" />
+<p class="caption">
+Figure 5.2: Screenshot of the Analysis page of the Outdoor Equity App
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:app-screenshot3"></span>
+<img src="images/screenshot_data-relationship.png" alt="Screenshot of the Analysis page of the Outdoor Equity App" width="820" />
+<p class="caption">
+Figure 5.3: Screenshot of the Analysis page of the Outdoor Equity App
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:app-screenshot4"></span>
+<img src="images/screenshot_visitorshed.png" alt="Screenshot of the Analysis page of the Outdoor Equity App" width="818" />
+<p class="caption">
+Figure 5.4: Screenshot of the Analysis page of the Outdoor Equity App
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:app-screenshot5"></span>
+<img src="images/screenshot_metadata.png" alt="Screenshot of the Metadata page of the Outdoor Equity App" width="821" />
+<p class="caption">
+Figure 5.5: Screenshot of the Metadata page of the Outdoor Equity App
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:app-screenshot6"></span>
+<img src="images/screenshot_data-download.png" alt="Screenshot of the Metadata page of the Outdoor Equity App" width="820" />
+<p class="caption">
+Figure 5.6: Screenshot of the Metadata page of the Outdoor Equity App
+</p>
+</div>
 </div>
 <div id="user-guide-and-technical-documentation" class="section level2" number="5.5">
 <h2><span class="header-section-number">5.5</span> User Guide and Technical Documentation</h2>
+<p>The <a href="https://shinyapps.bren.ucsb.edu/oe_app/">Outdoor Equity App</a> includes a user guide and metadata information. The user guide section includes a quick overview of the app and helper text on how to start creating visuals.</p>
+<p>This technical documentation is created with the <code>bookdown</code> package <span class="citation">(<a href="#ref-R-bookdown" role="doc-biblioref">Xie 2021</a>)</span> and is linked in the user guide section of the Outdoor Equity App. Metadata for all variables used within the app are also available on the app Metadata tab and in <a href="products-and-deliverables.html#products-and-deliverables">Products and Deliverables Section</a>.</p>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-tidycensus" class="csl-entry">
+Walker, Kyle, and Matt Herman. 2021. <em>Tidycensus: Load US Census Boundary and Attribute Data as Tidyverse and Sf-Ready Data Frames</em>. <a href="https://walker-data.com/tidycensus/">https://walker-data.com/tidycensus/</a>.
+</div>
+<div id="ref-R-bookdown" class="csl-entry">
+Xie, Yihui. 2021. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.
 </div>
 </div>
             </section>

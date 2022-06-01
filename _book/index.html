@@ -5,32 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Outdoor Equity App Technical Documentation</title>
-  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+  <meta name="description" content="Outdoor Equity App Technical Documentation" />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Outdoor Equity App Technical Documentation" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+  
   <meta name="github-repo" content="cboyajian/outdoor-equity-tech-doc" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Outdoor Equity App Technical Documentation" />
   
-  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+  
   
 
 <meta name="author" content="Clarissa Boyajian and Halina Do-Linh" />
 
 
-<meta name="date" content="2022-05-31" />
+<meta name="date" content="2022-06-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -98,10 +92,15 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Outdoor Equity App Technical Documentation</a></li>
+<li><a href="./">Outdoor Equity App</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Abstract</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#abstract"><i class="fa fa-check"></i><b>1.1</b> Abstract</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#about-the-authors"><i class="fa fa-check"></i><b>1.2</b> About the Authors</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#helpful-links-and-resources"><i class="fa fa-check"></i><b>1.3</b> Helpful Links and Resources</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="executive-summary.html"><a href="executive-summary.html"><i class="fa fa-check"></i><b>2</b> Executive Summary</a></li>
 <li class="chapter" data-level="3" data-path="problem-statement.html"><a href="problem-statement.html"><i class="fa fa-check"></i><b>3</b> Problem Statement</a>
 <ul>
@@ -112,8 +111,8 @@ div.csl-indent {
 <li class="chapter" data-level="4" data-path="specific-objectives.html"><a href="specific-objectives.html"><i class="fa fa-check"></i><b>4</b> Specific Objectives</a></li>
 <li class="chapter" data-level="5" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html"><i class="fa fa-check"></i><b>5</b> Summary of Solution Design</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#access-data"><i class="fa fa-check"></i><b>5.1</b> Access Data</a></li>
-<li class="chapter" data-level="5.2" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#clean-and-wrangle-data"><i class="fa fa-check"></i><b>5.2</b> Clean and Wrangle Data</a></li>
+<li class="chapter" data-level="5.1" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#glossary-and-definitions"><i class="fa fa-check"></i><b>5.1</b> Glossary and Definitions</a></li>
+<li class="chapter" data-level="5.2" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#access-clean-and-wrangle-data"><i class="fa fa-check"></i><b>5.2</b> Access, Clean, and Wrangle Data</a></li>
 <li class="chapter" data-level="5.3" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#analysis-and-visualizations"><i class="fa fa-check"></i><b>5.3</b> Analysis and Visualizations</a></li>
 <li class="chapter" data-level="5.4" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#outdoor-equity-app"><i class="fa fa-check"></i><b>5.4</b> Outdoor Equity App</a></li>
 <li class="chapter" data-level="5.5" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#user-guide-and-technical-documentation"><i class="fa fa-check"></i><b>5.5</b> User Guide and Technical Documentation</a></li>
@@ -188,12 +187,30 @@ div.csl-indent {
 <div id="header">
 <h1 class="title">Outdoor Equity App Technical Documentation</h1>
 <p class="author"><em>Clarissa Boyajian and Halina Do-Linh</em></p>
-<p class="date"><em>2022-05-31</em></p>
+<p class="date"><em>2022-06-01</em></p>
 </div>
-<div id="abstract" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Abstract</h1>
+<div id="about" class="section level1" number="1">
+<h1><span class="header-section-number">Section 1</span> About</h1>
+<div id="abstract" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Abstract</h2>
 <p>Outdoor recreation and access to nature have well-documented positive impacts on mental and physical well-being. Federal public land management agencies in the United States offer a variety of outdoor recreation activities to visitors. However, people from different socioeconomic and identity groups access federal public lands unequally due to historical discrimination and current inequities. This project uses data from the <a href="https://ridb.recreation.gov/landing">Recreation Information Database (RIDB)</a> and the <a href="https://www.census.gov/data.html">United States Census Bureau (US Census)</a> to explore patterns of visitor use of reservable overnight sites (such as campgrounds, cabins, hike-in, and more). Specifically, we used 2018 reservation data and US Census data from the next available year to 2018 (i.e. 2018 median income data, 2015 language data). We created the interactive <a href="https://shinyapps.bren.ucsb.edu/oe_app/">Outdoor Equity App</a> that gives users tools to summarize data, explore relationships between RIDB and US Census variables, view maps of where visitors are coming from for reservable sites in California, and download subset data. This technical documentation includes information on metadata, application maintenance, and next steps for expanding the app to include visitor data from more locations and time periods.</p>
+</div>
+<div id="about-the-authors" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> About the Authors</h2>
+<p>This technical documentation for the <a href="https://shinyapps.bren.ucsb.edu/oe_app/">Outdoor Equity App</a> was created by <a href="https://cboyajian.github.io/">Clarissa Boyajian</a> and <a href="https://hdolinh.github.io/">Halina Do-Linh</a>. The app was created as the final <a href="https://bren.ucsb.edu/projects/visualizing-visitor-use-trends-california-campsites-explore-equitable-access">capstone project</a> for their <a href="https://bren.ucsb.edu/masters-programs/master-environmental-data-science">Master of Environmental Data Science</a> degrees from the University of California’s <a href="https://bren.ucsb.edu/">Bren School of Environmental Science &amp; Management</a>. Both women are passionate about environmental justice, open science, the art of data visualizations, and spending time recreating outdoors. Please reach out to either of both of us with any questions.</p>
+<p>This project could not have been completed without the support and guidance of the Bren School advisors <a href="https://bren.ucsb.edu/people/frank-davis">Dr. Frank Davis</a> and <a href="https://bren.ucsb.edu/people/allison-horst">Dr. Allison Horst</a> and our external advisors <a href="https://gaynorlab.weebly.com/people.html">Dr. Kaitlyn Gaynor</a> and <a href="https://www.willrice.us/">Dr. Will Rice</a>.</p>
+</div>
+<div id="helpful-links-and-resources" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Helpful Links and Resources</h2>
+<p>The <a href="https://shinyapps.bren.ucsb.edu/oe_app/">Outdoor Equity App</a> is was created with the <code>shiny</code> package <span class="citation">(<a href="#ref-R-shiny" role="doc-biblioref">Chang et al. 2021</a>)</span> using RStudio version 1.4.1717-3. This technical documentation is hosted using GitHub Pages. The GitHub repository containing all code relating to this technical documentation can be found <a href="https://github.com/cboyajian/outdoor-equity-tech-doc">here</a> and the GitHub repository containing all code relating to Outdoor Equity App can be found <a href="https://github.com/outdoor-equity/outdoor-equity">here</a>.</p>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-shiny" class="csl-entry">
+Chang, Winston, Joe Cheng, JJ Allaire, Carson Sievert, Barret Schloerke, Yihui Xie, Jeff Allen, Jonathan McPherson, Alan Dipert, and Barbara Borges. 2021. <em>Shiny: Web Application Framework for r</em>. <a href="https://shiny.rstudio.com/">https://shiny.rstudio.com/</a>.
+</div>
 </div>
             </section>
 

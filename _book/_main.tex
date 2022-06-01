@@ -77,7 +77,7 @@
 
 \title{Outdoor Equity App Technical Documentation}
 \author{Clarissa Boyajian and Halina Do-Linh}
-\date{2022-05-31}
+\date{2022-06-01}
 
 \begin{document}
 \maketitle
@@ -86,10 +86,25 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
+\hypertarget{about}{%
+\chapter{About}\label{about}}
+
 \hypertarget{abstract}{%
-\chapter{Abstract}\label{abstract}}
+\section{Abstract}\label{abstract}}
 
 Outdoor recreation and access to nature have well-documented positive impacts on mental and physical well-being. Federal public land management agencies in the United States offer a variety of outdoor recreation activities to visitors. However, people from different socioeconomic and identity groups access federal public lands unequally due to historical discrimination and current inequities. This project uses data from the \href{https://ridb.recreation.gov/landing}{Recreation Information Database (RIDB)} and the \href{https://www.census.gov/data.html}{United States Census Bureau (US Census)} to explore patterns of visitor use of reservable overnight sites (such as campgrounds, cabins, hike-in, and more). Specifically, we used 2018 reservation data and US Census data from the next available year to 2018 (i.e.~2018 median income data, 2015 language data). We created the interactive \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App} that gives users tools to summarize data, explore relationships between RIDB and US Census variables, view maps of where visitors are coming from for reservable sites in California, and download subset data. This technical documentation includes information on metadata, application maintenance, and next steps for expanding the app to include visitor data from more locations and time periods.
+
+\hypertarget{about-the-authors}{%
+\section{About the Authors}\label{about-the-authors}}
+
+This technical documentation for the \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App} was created by \href{https://cboyajian.github.io/}{Clarissa Boyajian} and \href{https://hdolinh.github.io/}{Halina Do-Linh}. The app was created as the final \href{https://bren.ucsb.edu/projects/visualizing-visitor-use-trends-california-campsites-explore-equitable-access}{capstone project} for their \href{https://bren.ucsb.edu/masters-programs/master-environmental-data-science}{Master of Environmental Data Science} degrees from the University of California's \href{https://bren.ucsb.edu/}{Bren School of Environmental Science \& Management}. Both women are passionate about environmental justice, open science, the art of data visualizations, and spending time recreating outdoors. Please reach out to either of both of us with any questions.
+
+This project could not have been completed without the support and guidance of the Bren School advisors \href{https://bren.ucsb.edu/people/frank-davis}{Dr.~Frank Davis} and \href{https://bren.ucsb.edu/people/allison-horst}{Dr.~Allison Horst} and our external advisors \href{https://gaynorlab.weebly.com/people.html}{Dr.~Kaitlyn Gaynor} and \href{https://www.willrice.us/}{Dr.~Will Rice}.
+
+\hypertarget{helpful-links-and-resources}{%
+\section{Helpful Links and Resources}\label{helpful-links-and-resources}}
+
+The \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App} is was created with the \texttt{shiny} package \citep{R-shiny} using RStudio version 1.4.1717-3. This technical documentation is hosted using GitHub Pages. The GitHub repository containing all code relating to this technical documentation can be found \href{https://github.com/cboyajian/outdoor-equity-tech-doc}{here} and the GitHub repository containing all code relating to Outdoor Equity App can be found \href{https://github.com/outdoor-equity/outdoor-equity}{here}.
 
 \hypertarget{executive-summary}{%
 \chapter{Executive Summary}\label{executive-summary}}
@@ -167,22 +182,169 @@ Federal lands in the United States provide important recreation opportunities to
 \hypertarget{summary-of-solution-design}{%
 \chapter{Summary of Solution Design}\label{summary-of-solution-design}}
 
-Throughout this document we define ``reservable sites'' as traditional campgrounds, single remote campsites, overnight boat-in sites or mooring, equestrian sites, cabins, and other shelters listed in the RIDB data.
+\hypertarget{glossary-and-definitions}{%
+\section{Glossary and Definitions}\label{glossary-and-definitions}}
 
-\hypertarget{access-data}{%
-\section{Access Data}\label{access-data}}
+Throughout this document we define ``reservable sites'' as traditional campgrounds, single remote campsites, overnight boat-in sites or mooring, equestrian sites, cabins, and other shelters listed in the \href{https://ridb.recreation.gov/}{RIDB data}.
 
-\hypertarget{clean-and-wrangle-data}{%
-\section{Clean and Wrangle Data}\label{clean-and-wrangle-data}}
+\begin{table}
+
+\caption{\label{tab:glossary-table}A table of abbreviations, their definitions, and source URLS.}
+\centering
+\begin{tabular}[t]{l|l|l}
+\hline
+Abbreviation & Definition & Source\\
+\hline
+ACS & American Community Survey & https://www.census.gov/programs-surveys/acs\\
+\hline
+BLM & Bureau of Land Management & https://www.blm.gov/\\
+\hline
+BOR & Bureau of Reclamation & https://www.usbr.gov/\\
+\hline
+MEDS & Master of Environmental Data Science & https://bren.ucsb.edu/masters-programs/master-environmental-data-science\\
+\hline
+NPS & National Park Service & https://www.nps.gov/index.htm\\
+\hline
+R1S & Recreation One Stop & https://www.recreation.gov/\\
+\hline
+UCSB & University of California, Santa Barbara & https://www.ucsb.edu/\\
+\hline
+USACE & United States Army Corps of Engineers & https://www.usace.army.mil/\\
+\hline
+USFS & United States Forest Service & https://www.fs.usda.gov/\\
+\hline
+\end{tabular}
+\end{table}
+
+\hypertarget{access-clean-and-wrangle-data}{%
+\section{Access, Clean, and Wrangle Data}\label{access-clean-and-wrangle-data}}
+
+\href{https://ridb.recreation.gov/}{RIDB data} and \href{https://www.census.gov/programs-surveys/acs/data.html}{US Census American Communities Survey (ACS) data} are freely available online to the public. We accessed, cleaned, and wrangled all data outside of the \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App} using an .Rmd file and 18 custom-made functions (Tables \ref{tab:func-table1}, \ref{tab:func-table2}, \ref{tab:func-table3}, \ref{tab:func-table4}). We downloaded RIDB data in CSV format from Recreation.gov and ACS data through API using the R package \texttt{tidycensus} \citep{R-tidycensus}. We first subsetted RIDB and ACS datasets to include only the variables relevant to our objectives.
+
+\begin{table}
+
+\caption{\label{tab:func-table1}A table of the 8 custom cleaning and wrangling functions created to wrangle the ACS data.}
+\centering
+\begin{tabular}[t]{l|l}
+\hline
+Script & Purpose\\
+\hline
+function\_acs\_deciles\_median\_income.R & Calculate decile values of California census household median-income\\
+\hline
+function\_acs\_education.R & Call and calculate education percentages for given geographic area and state\\
+\hline
+function\_acs\_language.R & Call and calculate language percentages for given geographic area and state\\
+\hline
+function\_acs\_median\_income.R & Call and calculate median-income percentages for given geographic area and state\\
+\hline
+function\_acs\_race.R & Call and calculate race percentages for given geographic area and state\\
+\hline
+function\_acs\_top\_quartile\_education.R & Calculate weighted third quartile value of California census education percentages\\
+\hline
+function\_acs\_top\_quartile\_language.R & Calculate weighted third quartile value of California census language percentages\\
+\hline
+function\_acs\_top\_quartile\_race.R & Calculate weighted third quartile value of California census race percentages\\
+\hline
+\end{tabular}
+\end{table}
+
+We then normalized, aggregated, and calculated variables as necessary.
+
+\begin{table}
+
+\caption{\label{tab:func-table2}A table of the 2 custom cleaning and wrangling functions created to wrangle the RIDB.}
+\centering
+\begin{tabular}[t]{l|l}
+\hline
+Script & Purpose\\
+\hline
+function\_ridb\_subset-pre2018.R & Subset RIDB data\\
+\hline
+function\_ridb\_variable\_calculate-pre2018.R & Define, standardize, and aggregate values and calculated additional derived variables\\
+\hline
+\end{tabular}
+\end{table}
+
+Once both datasets are cleaned and wrangled, we joined them using ZIP codes as the key (common value in both datasets).
+
+\begin{table}
+
+\caption{\label{tab:func-table3}A table of the single custom function created to combine RIDB and ACS data.}
+\centering
+\begin{tabular}[t]{l|l}
+\hline
+Script & Purpose\\
+\hline
+function\_join\_ridb\_acs.R & Join RIDB and ACS data\\
+\hline
+\end{tabular}
+\end{table}
+
+Finally we wrangled the joined RIDB and ACS dataset to ready them for creating data relationship plots.
+
+\begin{table}
+
+\caption{\label{tab:func-table4}A table of the 6 custom cleaning and wrangling functions to create data sets for visitorshed maps and data relationship plots.}
+\centering
+\begin{tabular}[t]{l|l}
+\hline
+Script & Purpose\\
+\hline
+function\_map\_ca\_data.R & Create dataset for California ZIP code visitorshed map\\
+\hline
+function\_map\_us\_data.R & Create dataset for US State visitorshed map\\
+\hline
+function\_ridb\_deciles\_median\_income.R & Create dataset for median-income data relationship plots\\
+\hline
+function\_ridb\_top\_quartile\_education.R & Create dataset for education data relationship plots\\
+\hline
+function\_ridb\_top\_quartile\_language.R & Create dataset for language data relationship plots\\
+\hline
+function\_ridb\_top\_quartile\_race.R & Create dataset for race data relationship plots\\
+\hline
+\end{tabular}
+\end{table}
 
 \hypertarget{analysis-and-visualizations}{%
 \section{Analysis and Visualizations}\label{analysis-and-visualizations}}
 
+The \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App} features interactive maps and plots. Users of this app can select a single reservable site to create custom plots that show a data summary of a single variable or a data relationship between two variables. Visualizations of multiple reservable sites appear as separate plots. Users can also select a single site to create a visitorshed map for the full United States and for the state in which the site is located.
+
 \hypertarget{outdoor-equity-app}{%
 \section{Outdoor Equity App}\label{outdoor-equity-app}}
 
+The app has a navigation bar with four tabs: About, Analysis, Metadata and Data Download. Nested under the Analysis tab are the subtabs of Data Summary, Data Relationship, and Visitorshed Maps. The app opens automatically to the About tab.
+
+\begin{figure}
+\includegraphics[width=22.78in]{images/screenshot_about} \caption{Screenshot of the About page of the Outdoor Equity App}\label{fig:app-screenshot1}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=22.83in]{images/screenshot_data-summary} \caption{Screenshot of the Analysis page of the Outdoor Equity App}\label{fig:app-screenshot2}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=22.78in]{images/screenshot_data-relationship} \caption{Screenshot of the Analysis page of the Outdoor Equity App}\label{fig:app-screenshot3}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=22.72in]{images/screenshot_visitorshed} \caption{Screenshot of the Analysis page of the Outdoor Equity App}\label{fig:app-screenshot4}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=22.81in]{images/screenshot_metadata} \caption{Screenshot of the Metadata page of the Outdoor Equity App}\label{fig:app-screenshot5}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=22.79in]{images/screenshot_data-download} \caption{Screenshot of the Metadata page of the Outdoor Equity App}\label{fig:app-screenshot6}
+\end{figure}
+
 \hypertarget{user-guide-and-technical-documentation}{%
 \section{User Guide and Technical Documentation}\label{user-guide-and-technical-documentation}}
+
+The \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App} includes a user guide and metadata information. The user guide section includes a quick overview of the app and helper text on how to start creating visuals.
+
+This technical documentation is created with the \texttt{bookdown} package \citep{R-bookdown} and is linked in the user guide section of the Outdoor Equity App. Metadata for all variables used within the app are also available on the app Metadata tab and in \protect\hyperlink{products-and-deliverables}{Products and Deliverables Section}.
 
 \hypertarget{products-and-deliverables}{%
 \chapter{Products and Deliverables}\label{products-and-deliverables}}

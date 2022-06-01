@@ -1,13 +1,3 @@
 Welcome! 
 
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). 
-
-This template provides a skeleton file structure that you can edit to create your book. 
-
-The contents inside the .Rmd files provide some pointers to help you get started, but feel free to also delete the content in each file and start fresh.
-
-Additional resources:
-
-The **bookdown** book: https://bookdown.org/yihui/bookdown/
-
-The **bookdown** package reference site: https://pkgs.rstudio.com/bookdown
+This technical documentation is provided to our advisers, clients, and those who may want to use or expand the Outdoor Equity App. The [Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/) was created as a [capstone project](https://bren.ucsb.edu/projects/visualizing-visitor-use-trends-california-campsites-explore-equitable-access) for the [Master of Environmental Data Science program](https://bren.ucsb.edu/masters-programs/master-environmental-data-science) at the University of California, Santa Barbara's [Bren School of Environmental Science & Management](https://bren.ucsb.edu/). 
