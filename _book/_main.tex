@@ -571,13 +571,16 @@ The function then selects only the necessary variables, including information ab
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# select variables}
-\FunctionTok{select}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"agency"}\NormalTok{, }\StringTok{"parent\_location"}\NormalTok{, }\StringTok{"region\_description"}\NormalTok{, }\StringTok{"park"}\NormalTok{,}
-         \StringTok{"site\_type"}\NormalTok{, }\StringTok{"facility\_id"}\NormalTok{, }\StringTok{"facility\_state"}\NormalTok{, }\StringTok{"facility\_longitude"}\NormalTok{,}
-         \StringTok{"facility\_latitude"}\NormalTok{, }\StringTok{"customer\_zip"}\NormalTok{, }\StringTok{"total\_paid"}\NormalTok{, }\StringTok{"start\_date"}\NormalTok{,}
+\FunctionTok{select}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"agency"}\NormalTok{, }\StringTok{"parent\_location"}\NormalTok{, }\StringTok{"region\_description"}\NormalTok{, }
+         \StringTok{"park"}\NormalTok{, }\StringTok{"site\_type"}\NormalTok{, }\StringTok{"facility\_id"}\NormalTok{, }\StringTok{"facility\_state"}\NormalTok{, }
+         \StringTok{"facility\_longitude"}\NormalTok{, }\StringTok{"facility\_latitude"}\NormalTok{, }
+         \StringTok{"customer\_zip"}\NormalTok{, }\StringTok{"total\_paid"}\NormalTok{, }\StringTok{"start\_date"}\NormalTok{,}
          \StringTok{"end\_date"}\NormalTok{, }\StringTok{"order\_date"}\NormalTok{, }\StringTok{"number\_of\_people"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{site\_type =} \FunctionTok{tolower}\NormalTok{(site\_type)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\NormalTok{site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"historic tour"}\NormalTok{, }\StringTok{"hiking zone"}\NormalTok{, }\StringTok{"group picnic area"}\NormalTok{, }\StringTok{"cave tour"}\NormalTok{,}
-                           \StringTok{"management"}\NormalTok{, }\StringTok{"picnic"}\NormalTok{, }\StringTok{"entry point"}\NormalTok{, }\StringTok{"trailhead"}\NormalTok{))}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\NormalTok{site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"historic tour"}\NormalTok{, }\StringTok{"hiking zone"}\NormalTok{, }
+                           \StringTok{"group picnic area"}\NormalTok{, }\StringTok{"cave tour"}\NormalTok{,}
+                           \StringTok{"management"}\NormalTok{, }\StringTok{"picnic"}\NormalTok{, }
+                           \StringTok{"entry point"}\NormalTok{, }\StringTok{"trailhead"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -606,8 +609,10 @@ A second custom function is then utilized to calculate and manipulate variables 
        \AttributeTok{end\_date =} \FunctionTok{as.Date}\NormalTok{(end\_date),}
        \AttributeTok{order\_date =} \FunctionTok{as.Date}\NormalTok{(order\_date),}
        \CommentTok{\# calculate new variables}
-       \AttributeTok{length\_of\_stay =} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{difftime}\NormalTok{(end\_date, start\_date), }\AttributeTok{units =} \StringTok{"days"}\NormalTok{),}
-       \AttributeTok{booking\_window =} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{difftime}\NormalTok{(start\_date, order\_date), }\AttributeTok{units =} \StringTok{"days"}\NormalTok{))}
+       \AttributeTok{length\_of\_stay =} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{difftime}\NormalTok{(end\_date, start\_date), }
+                                   \AttributeTok{units =} \StringTok{"days"}\NormalTok{),}
+       \AttributeTok{booking\_window =} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{difftime}\NormalTok{(start\_date, order\_date), }
+                                   \AttributeTok{units =} \StringTok{"days"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -627,19 +632,27 @@ Site types are aggregated to create 7 broader site categories.
 \begin{Highlighting}[]
 \CommentTok{\# aggregate site type}
 \FunctionTok{mutate}\NormalTok{(}\AttributeTok{aggregated\_site\_type =} 
-         \FunctionTok{case\_when}\NormalTok{(site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"walk to"}\NormalTok{, }\StringTok{"hike to"}\NormalTok{, }\StringTok{"group hike to"}\NormalTok{, }\StringTok{"group walk to"}
+         \FunctionTok{case\_when}\NormalTok{(site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"walk to"}\NormalTok{, }\StringTok{"hike to"}\NormalTok{, }
+                                    \StringTok{"group hike to"}\NormalTok{, }\StringTok{"group walk to"}
 \NormalTok{         ) }\SpecialCharTok{\textasciitilde{}} \StringTok{"remote"}\NormalTok{,}
-\NormalTok{         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"cabin nonelectric"}\NormalTok{, }\StringTok{"cabin electric"}\NormalTok{, }\StringTok{"yurt"}\NormalTok{,}\StringTok{"shelter nonelectric"}
+\NormalTok{         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"cabin nonelectric"}\NormalTok{, }\StringTok{"cabin electric"}\NormalTok{, }
+                          \StringTok{"yurt"}\NormalTok{,}\StringTok{"shelter nonelectric"}
 \NormalTok{         ) }\SpecialCharTok{\textasciitilde{}} \StringTok{"shelter"}\NormalTok{,}
 \NormalTok{         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"boat in"}\NormalTok{, }\StringTok{"anchorage"}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"water"}\NormalTok{,}
-\NormalTok{         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"group equestrian"}\NormalTok{, }\StringTok{"equestrian nonelectric"}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"equestrian"}\NormalTok{,}
-\NormalTok{         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"rv nonelectric"}\NormalTok{, }\StringTok{"rv electric"}\NormalTok{, }\StringTok{"group rv area nonelectric"}
+\NormalTok{         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"group equestrian"}\NormalTok{, }
+                          \StringTok{"equestrian nonelectric"}
+\NormalTok{         ) }\SpecialCharTok{\textasciitilde{}} \StringTok{"equestrian"}\NormalTok{,}
+\NormalTok{         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"rv nonelectric"}\NormalTok{, }\StringTok{"rv electric"}\NormalTok{, }
+                          \StringTok{"group rv area nonelectric"}
 \NormalTok{         ) }\SpecialCharTok{\textasciitilde{}} \StringTok{"rv only"}\NormalTok{,}
-\NormalTok{         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"group standard nonelectric"}\NormalTok{, }\StringTok{"standard nonelectric"}\NormalTok{,}
-                          \StringTok{"standard electric"}\NormalTok{, }\StringTok{"group standard area nonelectric"}\NormalTok{,}
+\NormalTok{         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"group standard nonelectric"}\NormalTok{, }
+                          \StringTok{"standard nonelectric"}\NormalTok{,}
+                          \StringTok{"standard electric"}\NormalTok{, }
+                          \StringTok{"group standard area nonelectric"}\NormalTok{,}
                           \StringTok{"group standard electric"}
 \NormalTok{         ) }\SpecialCharTok{\textasciitilde{}} \StringTok{"rv or tent"}\NormalTok{,}
-\NormalTok{         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"tent only nonelectric"}\NormalTok{, }\StringTok{"group tent only area nonelectric"}\NormalTok{,}
+\NormalTok{         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"tent only nonelectric"}\NormalTok{, }
+                          \StringTok{"group tent only area nonelectric"}\NormalTok{,}
                           \StringTok{"tent only electric"}
 \NormalTok{         ) }\SpecialCharTok{\textasciitilde{}} \StringTok{"tent only"}\NormalTok{))}
 \end{Highlighting}
@@ -649,8 +662,11 @@ The administrative unit variable is created by combining the \texttt{parent\_loc
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{mutate}\NormalTok{(}\AttributeTok{admin\_unit =} \FunctionTok{case\_when}\NormalTok{(agency }\SpecialCharTok{==} \StringTok{"USFS"} \SpecialCharTok{\textasciitilde{}}\NormalTok{ parent\_location,}
-\NormalTok{                              agency }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"NPS"}\NormalTok{, }\StringTok{"BOR"}\NormalTok{, }\StringTok{"USACE"}\NormalTok{) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ region\_description)) }\SpecialCharTok{\%\textgreater{}\%} 
+\FunctionTok{mutate}\NormalTok{(}\AttributeTok{admin\_unit =} 
+         \FunctionTok{case\_when}\NormalTok{(agency }\SpecialCharTok{==} \StringTok{"USFS"} \SpecialCharTok{\textasciitilde{}}\NormalTok{ parent\_location,}
+\NormalTok{                   agency }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}
+                     \StringTok{"NPS"}\NormalTok{, }\StringTok{"BOR"}\NormalTok{, }\StringTok{"USACE"}
+\NormalTok{                   ) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ region\_description)) }\SpecialCharTok{\%\textgreater{}\%} 
   \CommentTok{\# edit values}
   \FunctionTok{mutate}\NormalTok{(}
     \CommentTok{\# agency abbreviations to names}
@@ -668,8 +684,9 @@ The administrative unit variable is created by combining the \texttt{parent\_loc
                          \AttributeTok{replacement =} \StringTok{"Bureau of Reclamation"}\NormalTok{),}
     \CommentTok{\# update admin\_unit values (generic)}
     \AttributeTok{admin\_unit =} \FunctionTok{str\_replace}\NormalTok{(}\AttributeTok{string =}\NormalTok{ admin\_unit,}
-                             \AttributeTok{pattern =} \FunctionTok{paste}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"NF {-} FS"}\NormalTok{, }\StringTok{"NF {-}FS"}\NormalTok{, }\StringTok{"NF{-} FS"}\NormalTok{, }
-                                               \StringTok{"NF{-}FS"}\NormalTok{, }\StringTok{"{-}FS"}\NormalTok{, }\StringTok{" {-} FS"}\NormalTok{), }
+                             \AttributeTok{pattern =} \FunctionTok{paste}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"NF {-} FS"}\NormalTok{, }\StringTok{"NF {-}FS"}\NormalTok{, }
+                                               \StringTok{"NF{-} FS"}\NormalTok{, }\StringTok{"NF{-}FS"}\NormalTok{, }
+                                               \StringTok{"{-}FS"}\NormalTok{, }\StringTok{" {-} FS"}\NormalTok{), }
                                              \AttributeTok{collapse =} \StringTok{"|"}\NormalTok{),}
                              \AttributeTok{replacement =} \StringTok{"National Forest"}\NormalTok{),}
     \AttributeTok{admin\_unit =} \FunctionTok{str\_to\_title}\NormalTok{(admin\_unit),}
@@ -680,7 +697,8 @@ The administrative unit variable is created by combining the \texttt{parent\_loc
     \AttributeTok{park =} \FunctionTok{str\_remove}\NormalTok{(}\AttributeTok{string =}\NormalTok{ park,}
                       \AttributeTok{pattern =} \FunctionTok{paste}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{(.*"}\NormalTok{, }\StringTok{" }\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{(.*"}\NormalTok{,}
                                         \StringTok{"{-}{-}{-}.*"}\NormalTok{, }\StringTok{" {-}{-}{-}.*"}\NormalTok{,}
-                                        \StringTok{",.*"}\NormalTok{), }\AttributeTok{collapse =} \StringTok{"|"}\NormalTok{)),}
+                                        \StringTok{",.*"}\NormalTok{), }
+                                      \AttributeTok{collapse =} \StringTok{"|"}\NormalTok{)),}
     \AttributeTok{park =} \FunctionTok{str\_to\_title}\NormalTok{(park),}
     \AttributeTok{park =} \FunctionTok{str\_replace}\NormalTok{(}\AttributeTok{string =}\NormalTok{ park,}
                        \AttributeTok{pattern =} \StringTok{"Cg"}\NormalTok{,}
@@ -705,10 +723,7 @@ The administrative unit variable is created by combining the \texttt{parent\_loc
                                       \AttributeTok{collapse =} \StringTok{"|"}\NormalTok{)),}
     \AttributeTok{park =} \FunctionTok{str\_replace}\NormalTok{(}\AttributeTok{string =}\NormalTok{ park,}
                        \AttributeTok{pattern =} \StringTok{"Tunnel Mills Il"}\NormalTok{,}
-                       \AttributeTok{replacement =} \StringTok{"Tunnel Mills"}\NormalTok{),}
-    \AttributeTok{admin\_unit =} \FunctionTok{str\_replace}\NormalTok{(}\AttributeTok{string =}\NormalTok{ admin\_unit,}
-                             \AttributeTok{pattern =} \StringTok{"Sequoia \& Kings Canyon National Park$"}\NormalTok{, }
-                             \AttributeTok{replacement =} \StringTok{"Sequoia \& Kings Canyon National Parks"}\NormalTok{))}
+                       \AttributeTok{replacement =} \StringTok{"Tunnel Mills"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -723,10 +738,12 @@ Distance traveled is calculated by measuring the distance from the latitude and 
   \FunctionTok{st\_transform}\NormalTok{(}\AttributeTok{crs =} \DecValTok{4269}\NormalTok{) }\CommentTok{\# using NAD83 because measured in meters}
 
 \CommentTok{\# get centroid of geometries for all US ZIP codes }
-\NormalTok{df\_zip\_centroids\_us }\OtherTok{\textless{}{-}} \FunctionTok{get\_acs}\NormalTok{(}\AttributeTok{geography =} \StringTok{"zcta"}\NormalTok{, }\AttributeTok{year =} \DecValTok{2018}\NormalTok{, }\AttributeTok{geometry =} \ConstantTok{TRUE}\NormalTok{, }
-                               \AttributeTok{summary\_var =} \StringTok{"B01001\_001"}\NormalTok{,}
-                               \AttributeTok{survey =} \StringTok{"acs5"}\NormalTok{,}
-                               \AttributeTok{variables =} \FunctionTok{c}\NormalTok{(}\AttributeTok{male =} \StringTok{"B01001\_002"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{df\_zip\_centroids\_us }\OtherTok{\textless{}{-}} 
+  \FunctionTok{get\_acs}\NormalTok{(}\AttributeTok{geography =} \StringTok{"zcta"}\NormalTok{, }\AttributeTok{year =} \DecValTok{2018}\NormalTok{, }
+          \AttributeTok{geometry =} \ConstantTok{TRUE}\NormalTok{, }
+          \AttributeTok{summary\_var =} \StringTok{"B01001\_001"}\NormalTok{,}
+          \AttributeTok{survey =} \StringTok{"acs5"}\NormalTok{,}
+          \AttributeTok{variables =} \FunctionTok{c}\NormalTok{(}\AttributeTok{male =} \StringTok{"B01001\_002"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
   \FunctionTok{select}\NormalTok{(NAME, geometry) }\SpecialCharTok{\%\textgreater{}\%} 
   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{zip\_code =} \FunctionTok{str\_sub}\NormalTok{(NAME, }\AttributeTok{start =} \SpecialCharTok{{-}}\DecValTok{5}\NormalTok{, }\AttributeTok{end =} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
   \FunctionTok{select}\NormalTok{(zip\_code, geometry) }\SpecialCharTok{\%\textgreater{}\%} 
@@ -750,28 +767,33 @@ And finally, a variable is added indicating in which state or territory each cus
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# create df of fips and full state names}
-\NormalTok{fips\_list }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"01"}\NormalTok{, }\StringTok{"02"}\NormalTok{, }\StringTok{"04"}\NormalTok{, }\StringTok{"05"}\NormalTok{, }\StringTok{"06"}\NormalTok{, }\StringTok{"08"}\NormalTok{, }\StringTok{"09"}\NormalTok{, }\StringTok{"10"}\NormalTok{, }\StringTok{"11"}\NormalTok{, }\StringTok{"12"}\NormalTok{, }
-               \StringTok{"13"}\NormalTok{, }\StringTok{"15"}\NormalTok{, }\StringTok{"16"}\NormalTok{, }\StringTok{"17"}\NormalTok{, }\StringTok{"18"}\NormalTok{, }\StringTok{"19"}\NormalTok{, }\StringTok{"20"}\NormalTok{, }\StringTok{"21"}\NormalTok{, }\StringTok{"22"}\NormalTok{, }\StringTok{"23"}\NormalTok{, }
-               \StringTok{"24"}\NormalTok{, }\StringTok{"25"}\NormalTok{, }\StringTok{"26"}\NormalTok{, }\StringTok{"27"}\NormalTok{, }\StringTok{"28"}\NormalTok{, }\StringTok{"29"}\NormalTok{, }\StringTok{"30"}\NormalTok{, }\StringTok{"31"}\NormalTok{, }\StringTok{"32"}\NormalTok{, }\StringTok{"33"}\NormalTok{, }
-               \StringTok{"34"}\NormalTok{, }\StringTok{"35"}\NormalTok{, }\StringTok{"36"}\NormalTok{, }\StringTok{"37"}\NormalTok{, }\StringTok{"38"}\NormalTok{, }\StringTok{"39"}\NormalTok{, }\StringTok{"40"}\NormalTok{, }\StringTok{"41"}\NormalTok{, }\StringTok{"42"}\NormalTok{, }\StringTok{"44"}\NormalTok{, }
-               \StringTok{"45"}\NormalTok{, }\StringTok{"46"}\NormalTok{, }\StringTok{"47"}\NormalTok{, }\StringTok{"48"}\NormalTok{, }\StringTok{"49"}\NormalTok{, }\StringTok{"50"}\NormalTok{, }\StringTok{"51"}\NormalTok{, }\StringTok{"53"}\NormalTok{, }\StringTok{"54"}\NormalTok{, }\StringTok{"55"}\NormalTok{, }
-               \StringTok{"56"}\NormalTok{, }\StringTok{"72"}\NormalTok{)}
-\NormalTok{state\_list }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"AL"}\NormalTok{, }\StringTok{"AK"}\NormalTok{, }\StringTok{"AZ"}\NormalTok{, }\StringTok{"AR"}\NormalTok{, }\StringTok{"CA"}\NormalTok{, }\StringTok{"CO"}\NormalTok{, }\StringTok{"CT"}\NormalTok{, }\StringTok{"DE"}\NormalTok{, }\StringTok{"DC"}\NormalTok{, }\StringTok{"FL"}\NormalTok{,}
-                \StringTok{"GA"}\NormalTok{, }\StringTok{"HI"}\NormalTok{, }\StringTok{"ID"}\NormalTok{, }\StringTok{"IL"}\NormalTok{, }\StringTok{"IN"}\NormalTok{, }\StringTok{"IA"}\NormalTok{, }\StringTok{"KS"}\NormalTok{, }\StringTok{"KY"}\NormalTok{, }\StringTok{"LA"}\NormalTok{, }\StringTok{"ME"}\NormalTok{,}
-                \StringTok{"MD"}\NormalTok{, }\StringTok{"MA"}\NormalTok{, }\StringTok{"MI"}\NormalTok{, }\StringTok{"MN"}\NormalTok{, }\StringTok{"MS"}\NormalTok{, }\StringTok{"MO"}\NormalTok{, }\StringTok{"MT"}\NormalTok{, }\StringTok{"NE"}\NormalTok{, }\StringTok{"NV"}\NormalTok{, }\StringTok{"NH"}\NormalTok{,}
-                \StringTok{"NJ"}\NormalTok{, }\StringTok{"NM"}\NormalTok{, }\StringTok{"NY"}\NormalTok{, }\StringTok{"NC"}\NormalTok{, }\StringTok{"ND"}\NormalTok{, }\StringTok{"OH"}\NormalTok{, }\StringTok{"OK"}\NormalTok{, }\StringTok{"OR"}\NormalTok{, }\StringTok{"PA"}\NormalTok{, }\StringTok{"RI"}\NormalTok{,}
-                \StringTok{"SC"}\NormalTok{, }\StringTok{"SD"}\NormalTok{, }\StringTok{"TN"}\NormalTok{, }\StringTok{"TX"}\NormalTok{, }\StringTok{"UT"}\NormalTok{, }\StringTok{"VT"}\NormalTok{, }\StringTok{"VA"}\NormalTok{, }\StringTok{"WA"}\NormalTok{, }\StringTok{"WV"}\NormalTok{, }\StringTok{"WI"}\NormalTok{,}
-                \StringTok{"WY"}\NormalTok{, }\StringTok{"PR"}\NormalTok{)}
-\NormalTok{states\_names\_list }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Alabama"}\NormalTok{, }\StringTok{"Alaska"}\NormalTok{, }\StringTok{"Arizona"}\NormalTok{, }\StringTok{"Arkansas"}\NormalTok{, }\StringTok{"California"}\NormalTok{, }
-                       \StringTok{"Colorado"}\NormalTok{, }\StringTok{"Connecticut"}\NormalTok{, }\StringTok{"Delaware"}\NormalTok{, }\StringTok{"District of Columbia"}\NormalTok{, }
-                       \StringTok{"Florida"}\NormalTok{,}\StringTok{"Georgia"}\NormalTok{, }\StringTok{"Hawaii"}\NormalTok{, }\StringTok{"Idaho"}\NormalTok{, }\StringTok{"Illinois"}\NormalTok{, }\StringTok{"Indiana"}\NormalTok{, }
-                       \StringTok{"Iowa"}\NormalTok{, }\StringTok{"Kansas"}\NormalTok{, }\StringTok{"Kentucky"}\NormalTok{, }\StringTok{"Louisiana"}\NormalTok{, }\StringTok{"Maine"}\NormalTok{,}\StringTok{"Maryland"}\NormalTok{, }
-                       \StringTok{"Massachusetts"}\NormalTok{, }\StringTok{"Michigan"}\NormalTok{, }\StringTok{"Minnesota"}\NormalTok{, }\StringTok{"Mississippi"}\NormalTok{, }\StringTok{"Missouri"}\NormalTok{, }
-                       \StringTok{"Montana"}\NormalTok{, }\StringTok{"Nebraska"}\NormalTok{, }\StringTok{"Nevada"}\NormalTok{, }\StringTok{"New Hampshire"}\NormalTok{,}\StringTok{"New Jersey"}\NormalTok{, }
-                       \StringTok{"New Mexico"}\NormalTok{, }\StringTok{"New York"}\NormalTok{, }\StringTok{"North Carolina"}\NormalTok{, }\StringTok{"North Dakota"}\NormalTok{, }\StringTok{"Ohio"}\NormalTok{, }
-                       \StringTok{"Oklahoma"}\NormalTok{, }\StringTok{"Oregon"}\NormalTok{, }\StringTok{"Pennsylvania"}\NormalTok{, }\StringTok{"Rhode Island"}\NormalTok{,}\StringTok{"South Carolina"}\NormalTok{, }
-                       \StringTok{"South Dakota"}\NormalTok{, }\StringTok{"Tennessee"}\NormalTok{, }\StringTok{"Texas"}\NormalTok{, }\StringTok{"Utah"}\NormalTok{, }\StringTok{"Vermont"}\NormalTok{, }\StringTok{"Virginia"}\NormalTok{, }
-                       \StringTok{"Washington"}\NormalTok{, }\StringTok{"West Virginia"}\NormalTok{, }\StringTok{"Wisconsin"}\NormalTok{,}\StringTok{"Wyoming"}\NormalTok{, }\StringTok{"Puerto Rico"}\NormalTok{)}
+\NormalTok{fips\_list }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
+  \StringTok{"01"}\NormalTok{, }\StringTok{"02"}\NormalTok{, }\StringTok{"04"}\NormalTok{, }\StringTok{"05"}\NormalTok{, }\StringTok{"06"}\NormalTok{, }\StringTok{"08"}\NormalTok{, }\StringTok{"09"}\NormalTok{, }\StringTok{"10"}\NormalTok{, }\StringTok{"11"}\NormalTok{, }\StringTok{"12"}\NormalTok{, }
+  \StringTok{"13"}\NormalTok{, }\StringTok{"15"}\NormalTok{, }\StringTok{"16"}\NormalTok{, }\StringTok{"17"}\NormalTok{, }\StringTok{"18"}\NormalTok{, }\StringTok{"19"}\NormalTok{, }\StringTok{"20"}\NormalTok{, }\StringTok{"21"}\NormalTok{, }\StringTok{"22"}\NormalTok{, }\StringTok{"23"}\NormalTok{, }
+  \StringTok{"24"}\NormalTok{, }\StringTok{"25"}\NormalTok{, }\StringTok{"26"}\NormalTok{, }\StringTok{"27"}\NormalTok{, }\StringTok{"28"}\NormalTok{, }\StringTok{"29"}\NormalTok{, }\StringTok{"30"}\NormalTok{, }\StringTok{"31"}\NormalTok{, }\StringTok{"32"}\NormalTok{, }\StringTok{"33"}\NormalTok{, }
+  \StringTok{"34"}\NormalTok{, }\StringTok{"35"}\NormalTok{, }\StringTok{"36"}\NormalTok{, }\StringTok{"37"}\NormalTok{, }\StringTok{"38"}\NormalTok{, }\StringTok{"39"}\NormalTok{, }\StringTok{"40"}\NormalTok{, }\StringTok{"41"}\NormalTok{, }\StringTok{"42"}\NormalTok{, }\StringTok{"44"}\NormalTok{, }
+  \StringTok{"45"}\NormalTok{, }\StringTok{"46"}\NormalTok{, }\StringTok{"47"}\NormalTok{, }\StringTok{"48"}\NormalTok{, }\StringTok{"49"}\NormalTok{, }\StringTok{"50"}\NormalTok{, }\StringTok{"51"}\NormalTok{, }\StringTok{"53"}\NormalTok{, }\StringTok{"54"}\NormalTok{, }\StringTok{"55"}\NormalTok{, }
+  \StringTok{"56"}\NormalTok{, }\StringTok{"72"}\NormalTok{)}
+\NormalTok{state\_list }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
+  \StringTok{"AL"}\NormalTok{, }\StringTok{"AK"}\NormalTok{, }\StringTok{"AZ"}\NormalTok{, }\StringTok{"AR"}\NormalTok{, }\StringTok{"CA"}\NormalTok{, }\StringTok{"CO"}\NormalTok{, }\StringTok{"CT"}\NormalTok{, }\StringTok{"DE"}\NormalTok{, }\StringTok{"DC"}\NormalTok{, }\StringTok{"FL"}\NormalTok{,}
+  \StringTok{"GA"}\NormalTok{, }\StringTok{"HI"}\NormalTok{, }\StringTok{"ID"}\NormalTok{, }\StringTok{"IL"}\NormalTok{, }\StringTok{"IN"}\NormalTok{, }\StringTok{"IA"}\NormalTok{, }\StringTok{"KS"}\NormalTok{, }\StringTok{"KY"}\NormalTok{, }\StringTok{"LA"}\NormalTok{, }\StringTok{"ME"}\NormalTok{,}
+  \StringTok{"MD"}\NormalTok{, }\StringTok{"MA"}\NormalTok{, }\StringTok{"MI"}\NormalTok{, }\StringTok{"MN"}\NormalTok{, }\StringTok{"MS"}\NormalTok{, }\StringTok{"MO"}\NormalTok{, }\StringTok{"MT"}\NormalTok{, }\StringTok{"NE"}\NormalTok{, }\StringTok{"NV"}\NormalTok{, }\StringTok{"NH"}\NormalTok{,}
+  \StringTok{"NJ"}\NormalTok{, }\StringTok{"NM"}\NormalTok{, }\StringTok{"NY"}\NormalTok{, }\StringTok{"NC"}\NormalTok{, }\StringTok{"ND"}\NormalTok{, }\StringTok{"OH"}\NormalTok{, }\StringTok{"OK"}\NormalTok{, }\StringTok{"OR"}\NormalTok{, }\StringTok{"PA"}\NormalTok{, }\StringTok{"RI"}\NormalTok{,}
+  \StringTok{"SC"}\NormalTok{, }\StringTok{"SD"}\NormalTok{, }\StringTok{"TN"}\NormalTok{, }\StringTok{"TX"}\NormalTok{, }\StringTok{"UT"}\NormalTok{, }\StringTok{"VT"}\NormalTok{, }\StringTok{"VA"}\NormalTok{, }\StringTok{"WA"}\NormalTok{, }\StringTok{"WV"}\NormalTok{, }\StringTok{"WI"}\NormalTok{,}
+  \StringTok{"WY"}\NormalTok{, }\StringTok{"PR"}\NormalTok{)}
+\NormalTok{states\_names\_list }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
+  \StringTok{"Alabama"}\NormalTok{, }\StringTok{"Alaska"}\NormalTok{, }\StringTok{"Arizona"}\NormalTok{, }\StringTok{"Arkansas"}\NormalTok{, }\StringTok{"California"}\NormalTok{, }
+  \StringTok{"Colorado"}\NormalTok{, }\StringTok{"Connecticut"}\NormalTok{, }\StringTok{"Delaware"}\NormalTok{, }
+  \StringTok{"District of Columbia"}\NormalTok{, }\StringTok{"Florida"}\NormalTok{,}\StringTok{"Georgia"}\NormalTok{, }\StringTok{"Hawaii"}\NormalTok{, }
+  \StringTok{"Idaho"}\NormalTok{, }\StringTok{"Illinois"}\NormalTok{, }\StringTok{"Indiana"}\NormalTok{, }\StringTok{"Iowa"}\NormalTok{, }\StringTok{"Kansas"}\NormalTok{, }
+  \StringTok{"Kentucky"}\NormalTok{, }\StringTok{"Louisiana"}\NormalTok{, }\StringTok{"Maine"}\NormalTok{,}\StringTok{"Maryland"}\NormalTok{, }
+  \StringTok{"Massachusetts"}\NormalTok{, }\StringTok{"Michigan"}\NormalTok{, }\StringTok{"Minnesota"}\NormalTok{, }\StringTok{"Mississippi"}\NormalTok{, }
+  \StringTok{"Missouri"}\NormalTok{, }\StringTok{"Montana"}\NormalTok{, }\StringTok{"Nebraska"}\NormalTok{, }\StringTok{"Nevada"}\NormalTok{, }\StringTok{"New Hampshire"}\NormalTok{,}
+  \StringTok{"New Jersey"}\NormalTok{, }\StringTok{"New Mexico"}\NormalTok{, }\StringTok{"New York"}\NormalTok{, }\StringTok{"North Carolina"}\NormalTok{, }
+  \StringTok{"North Dakota"}\NormalTok{, }\StringTok{"Ohio"}\NormalTok{, }\StringTok{"Oklahoma"}\NormalTok{, }\StringTok{"Oregon"}\NormalTok{, }\StringTok{"Pennsylvania"}\NormalTok{, }
+  \StringTok{"Rhode Island"}\NormalTok{,}\StringTok{"South Carolina"}\NormalTok{, }\StringTok{"South Dakota"}\NormalTok{, }\StringTok{"Tennessee"}\NormalTok{, }
+  \StringTok{"Texas"}\NormalTok{, }\StringTok{"Utah"}\NormalTok{, }\StringTok{"Vermont"}\NormalTok{, }\StringTok{"Virginia"}\NormalTok{, }\StringTok{"Washington"}\NormalTok{, }
+  \StringTok{"West Virginia"}\NormalTok{, }\StringTok{"Wisconsin"}\NormalTok{,}\StringTok{"Wyoming"}\NormalTok{, }\StringTok{"Puerto Rico"}\NormalTok{)}
 \NormalTok{df\_states\_fips }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{fips =}\NormalTok{ fips\_list,}
                                      \AttributeTok{state =}\NormalTok{ state\_list,}
                                      \AttributeTok{state\_full =}\NormalTok{ states\_names\_list))}
@@ -824,19 +846,20 @@ The variables included in the App include median-income, race, language(s) spoke
 \begin{Highlighting}[]
 \CommentTok{\# import variables for race}
 \NormalTok{acs\_df }\OtherTok{\textless{}{-}} 
-  \FunctionTok{get\_acs}\NormalTok{(}\AttributeTok{geography =} \StringTok{"zcta"}\NormalTok{, }\AttributeTok{year =} \DecValTok{2018}\NormalTok{,}
-          \AttributeTok{state =} \StringTok{"CA"}\NormalTok{, }\AttributeTok{survey =} \StringTok{"acs5"}\NormalTok{,}
-          \AttributeTok{summary\_var =} \StringTok{"B03002\_001"}\NormalTok{, }\CommentTok{\#Estimate!!Total: }
-          \AttributeTok{variables =} \FunctionTok{c}\NormalTok{(}
-            \AttributeTok{white =} \StringTok{"B03002\_003"}\NormalTok{, }\CommentTok{\#Estimate!!Total!!Not Hispanic or Latino!!White alone}
-            \AttributeTok{black =} \StringTok{"B03002\_004"}\NormalTok{, }\CommentTok{\# Estimate!!Total:!!Not Hispanic or Latino!!Black or African American alone}
-            \AttributeTok{native\_american =} \StringTok{"B03002\_005"}\NormalTok{, }\CommentTok{\# Estimate!!Total:!!Not Hispanic or Latino!!American Indian and Alaska Native alone}
-            \AttributeTok{asian =} \StringTok{"B03002\_006"}\NormalTok{, }\CommentTok{\# Estimate!!Total:!!Not Hispanic or Latino!!Asian alone}
-            \AttributeTok{pacific\_islander =} \StringTok{"B03002\_007"}\NormalTok{, }\CommentTok{\# Estimate!!Total:!!Not Hispanic or Latino!!Native Hawaiian and Other Pacific Islander alone}
-            \AttributeTok{other =} \StringTok{"B03002\_008"}\NormalTok{, }\CommentTok{\# Estimate!!Total:!!Not Hispanic or Latino!!Some other race alone}
-            \AttributeTok{multiracial =} \StringTok{"B03002\_009"}\NormalTok{, }\CommentTok{\# Estimate!!Total:!!Not Hispanic or Latino!!Two or more races}
-            \AttributeTok{hispanic\_latinx =} \StringTok{"B03002\_012"} \CommentTok{\# Estimate!!Total!!Hispanic or Latino}
-\NormalTok{          ))}
+  \FunctionTok{get\_acs}\NormalTok{(}
+    \AttributeTok{geography =} \StringTok{"zcta"}\NormalTok{, }\AttributeTok{year =} \DecValTok{2018}\NormalTok{,}
+    \AttributeTok{state =} \StringTok{"CA"}\NormalTok{, }\AttributeTok{survey =} \StringTok{"acs5"}\NormalTok{,}
+    \AttributeTok{summary\_var =} \StringTok{"B03002\_001"}\NormalTok{, }\CommentTok{\#Estimate!!Total: }
+    \AttributeTok{variables =} \FunctionTok{c}\NormalTok{(}
+      \AttributeTok{white =} \StringTok{"B03002\_003"}\NormalTok{, }\CommentTok{\#White alone}
+      \AttributeTok{black =} \StringTok{"B03002\_004"}\NormalTok{, }\CommentTok{\#Black or African American alone}
+      \AttributeTok{native\_american =} \StringTok{"B03002\_005"}\NormalTok{, }\CommentTok{\#American Indian and Alaska Native alone}
+      \AttributeTok{asian =} \StringTok{"B03002\_006"}\NormalTok{, }\CommentTok{\#Asian alone}
+      \AttributeTok{pacific\_islander =} \StringTok{"B03002\_007"}\NormalTok{, }\CommentTok{\#Native Hawaiian and Other Pacific Islander alone}
+      \AttributeTok{other =} \StringTok{"B03002\_008"}\NormalTok{, }\CommentTok{\#Some other race alone}
+      \AttributeTok{multiracial =} \StringTok{"B03002\_009"}\NormalTok{, }\CommentTok{\#Two or more races}
+      \AttributeTok{hispanic\_latinx =} \StringTok{"B03002\_012"} \CommentTok{\#Hispanic or Latino}
+\NormalTok{    ))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -844,27 +867,31 @@ The variables included in the App include median-income, race, language(s) spoke
 ## Getting data from the 2014-2018 5-year ACS
 \end{verbatim}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{head}\NormalTok{(acs\_df, }\DecValTok{10}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 10 x 7
-##    GEOID NAME        variable         estimate   moe summary_est summary_moe
-##    <chr> <chr>       <chr>               <dbl> <dbl>       <dbl>       <dbl>
-##  1 90001 ZCTA5 90001 white                 413   165       58975        1725
-##  2 90001 ZCTA5 90001 black                5138   646       58975        1725
-##  3 90001 ZCTA5 90001 native_american        37    42       58975        1725
-##  4 90001 ZCTA5 90001 asian                  67    38       58975        1725
-##  5 90001 ZCTA5 90001 pacific_islander        0    29       58975        1725
-##  6 90001 ZCTA5 90001 other                 168   169       58975        1725
-##  7 90001 ZCTA5 90001 multiracial            66    44       58975        1725
-##  8 90001 ZCTA5 90001 hispanic_latinx     53086  1591       58975        1725
-##  9 90002 ZCTA5 90002 white                 223    81       53111        2031
-## 10 90002 ZCTA5 90002 black               10110   876       53111        2031
-\end{verbatim}
+\begin{tabular}{l|l|l|r|r|r|r}
+\hline
+GEOID & NAME & variable & estimate & moe & summary\_est & summary\_moe\\
+\hline
+90001 & ZCTA5 90001 & white & 413 & 165 & 58975 & 1725\\
+\hline
+90001 & ZCTA5 90001 & black & 5138 & 646 & 58975 & 1725\\
+\hline
+90001 & ZCTA5 90001 & native\_american & 37 & 42 & 58975 & 1725\\
+\hline
+90001 & ZCTA5 90001 & asian & 67 & 38 & 58975 & 1725\\
+\hline
+90001 & ZCTA5 90001 & pacific\_islander & 0 & 29 & 58975 & 1725\\
+\hline
+90001 & ZCTA5 90001 & other & 168 & 169 & 58975 & 1725\\
+\hline
+90001 & ZCTA5 90001 & multiracial & 66 & 44 & 58975 & 1725\\
+\hline
+90001 & ZCTA5 90001 & hispanic\_latinx & 53086 & 1591 & 58975 & 1725\\
+\hline
+90002 & ZCTA5 90002 & white & 223 & 81 & 53111 & 2031\\
+\hline
+90002 & ZCTA5 90002 & black & 10110 & 876 & 53111 & 2031\\
+\hline
+\end{tabular}
 
 Percentages for the categories within each ACS variable are calculated for race, language(s) spoken in the home, and highest level of education by dividing the estimate for a category by the estimated total population for that ZIP code.
 

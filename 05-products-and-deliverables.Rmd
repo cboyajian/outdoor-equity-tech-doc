@@ -13,12 +13,6 @@ The [Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/) was built usin
 ## Metadata
 
 ```{r, echo=FALSE, message=FALSE}
-## Note (HD): Should I move this to index.Rmd? ##
-# get metadata csv and create csv in r
-# data_joined_2018_metadata <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/19ZQiaTlSoo1-KlPibeIoVbo0IT0ZU2soFa0XGAEHF88/edit?usp=sharing")
-# data_joined_2018_metadata_r <- data_joined_2018_metadata %>%
-#   write_csv(here("../outdoor-equity/outdoor-equity-app/oe_app/data/data_joined_2018_metadata.csv"))
-
 # read in metadata
 data_joined_2018_metadata_df <- 
   read_csv(here("../outdoor-equity/outdoor-equity-app/oe_app/data/data_joined_2018_metadata.csv")) %>% 

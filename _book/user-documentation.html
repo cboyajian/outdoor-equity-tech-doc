@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Section 8 User Documentation | Outdoor Equity App Technical Documentation</title>
   <meta name="description" content="Section 8 User Documentation | Outdoor Equity App Technical Documentation" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Section 8 User Documentation | Outdoor Equity App Technical Documentation" />
   <meta property="og:type" content="book" />
@@ -33,9 +33,8 @@
   
 <link rel="prev" href="summary-of-testing.html"/>
 <link rel="next" href="additional-challenges.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/header-attrs-2.10.6/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -43,6 +42,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
 
 
 
@@ -280,13 +280,16 @@ div.csl-indent {
 <span id="cb1-4"><a href="user-documentation.html#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(use_type <span class="sc">==</span> <span class="st">&quot;Overnight&quot;</span>)</span></code></pre></div>
 <p>The function then selects only the necessary variables, including information about the site (agency, park or forest name, site name, site type, and site location) and information about the reservation (home ZIP come, total paid, visit start and end dates, visit order date, and number of people in party).</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="user-documentation.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select variables</span></span>
-<span id="cb2-2"><a href="user-documentation.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(<span class="fu">c</span>(<span class="st">&quot;agency&quot;</span>, <span class="st">&quot;parent_location&quot;</span>, <span class="st">&quot;region_description&quot;</span>, <span class="st">&quot;park&quot;</span>,</span>
-<span id="cb2-3"><a href="user-documentation.html#cb2-3" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;site_type&quot;</span>, <span class="st">&quot;facility_id&quot;</span>, <span class="st">&quot;facility_state&quot;</span>, <span class="st">&quot;facility_longitude&quot;</span>,</span>
-<span id="cb2-4"><a href="user-documentation.html#cb2-4" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;facility_latitude&quot;</span>, <span class="st">&quot;customer_zip&quot;</span>, <span class="st">&quot;total_paid&quot;</span>, <span class="st">&quot;start_date&quot;</span>,</span>
-<span id="cb2-5"><a href="user-documentation.html#cb2-5" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;end_date&quot;</span>, <span class="st">&quot;order_date&quot;</span>, <span class="st">&quot;number_of_people&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb2-6"><a href="user-documentation.html#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">site_type =</span> <span class="fu">tolower</span>(site_type)) <span class="sc">%&gt;%</span></span>
-<span id="cb2-7"><a href="user-documentation.html#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>site_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;historic tour&quot;</span>, <span class="st">&quot;hiking zone&quot;</span>, <span class="st">&quot;group picnic area&quot;</span>, <span class="st">&quot;cave tour&quot;</span>,</span>
-<span id="cb2-8"><a href="user-documentation.html#cb2-8" aria-hidden="true" tabindex="-1"></a>                           <span class="st">&quot;management&quot;</span>, <span class="st">&quot;picnic&quot;</span>, <span class="st">&quot;entry point&quot;</span>, <span class="st">&quot;trailhead&quot;</span>))</span></code></pre></div>
+<span id="cb2-2"><a href="user-documentation.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(<span class="fu">c</span>(<span class="st">&quot;agency&quot;</span>, <span class="st">&quot;parent_location&quot;</span>, <span class="st">&quot;region_description&quot;</span>, </span>
+<span id="cb2-3"><a href="user-documentation.html#cb2-3" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;park&quot;</span>, <span class="st">&quot;site_type&quot;</span>, <span class="st">&quot;facility_id&quot;</span>, <span class="st">&quot;facility_state&quot;</span>, </span>
+<span id="cb2-4"><a href="user-documentation.html#cb2-4" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;facility_longitude&quot;</span>, <span class="st">&quot;facility_latitude&quot;</span>, </span>
+<span id="cb2-5"><a href="user-documentation.html#cb2-5" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;customer_zip&quot;</span>, <span class="st">&quot;total_paid&quot;</span>, <span class="st">&quot;start_date&quot;</span>,</span>
+<span id="cb2-6"><a href="user-documentation.html#cb2-6" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;end_date&quot;</span>, <span class="st">&quot;order_date&quot;</span>, <span class="st">&quot;number_of_people&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-7"><a href="user-documentation.html#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">site_type =</span> <span class="fu">tolower</span>(site_type)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-8"><a href="user-documentation.html#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>site_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;historic tour&quot;</span>, <span class="st">&quot;hiking zone&quot;</span>, </span>
+<span id="cb2-9"><a href="user-documentation.html#cb2-9" aria-hidden="true" tabindex="-1"></a>                           <span class="st">&quot;group picnic area&quot;</span>, <span class="st">&quot;cave tour&quot;</span>,</span>
+<span id="cb2-10"><a href="user-documentation.html#cb2-10" aria-hidden="true" tabindex="-1"></a>                           <span class="st">&quot;management&quot;</span>, <span class="st">&quot;picnic&quot;</span>, </span>
+<span id="cb2-11"><a href="user-documentation.html#cb2-11" aria-hidden="true" tabindex="-1"></a>                           <span class="st">&quot;entry point&quot;</span>, <span class="st">&quot;trailhead&quot;</span>))</span></code></pre></div>
 <p>The customer ZIP code values are then normalized. This includes filtering for only US ZIP codes and shortening all 9 digit ZIP codes to include only the first 5 digits.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="user-documentation.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out invalid ZIP codes</span></span>
 <span id="cb3-2"><a href="user-documentation.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(<span class="fu">str_detect</span>(<span class="at">string =</span> customer_zip,</span>
@@ -302,8 +305,10 @@ div.csl-indent {
 <span id="cb4-2"><a href="user-documentation.html#cb4-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">end_date =</span> <span class="fu">as.Date</span>(end_date),</span>
 <span id="cb4-3"><a href="user-documentation.html#cb4-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">order_date =</span> <span class="fu">as.Date</span>(order_date),</span>
 <span id="cb4-4"><a href="user-documentation.html#cb4-4" aria-hidden="true" tabindex="-1"></a>       <span class="co"># calculate new variables</span></span>
-<span id="cb4-5"><a href="user-documentation.html#cb4-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">length_of_stay =</span> <span class="fu">as.numeric</span>(<span class="fu">difftime</span>(end_date, start_date), <span class="at">units =</span> <span class="st">&quot;days&quot;</span>),</span>
-<span id="cb4-6"><a href="user-documentation.html#cb4-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">booking_window =</span> <span class="fu">as.numeric</span>(<span class="fu">difftime</span>(start_date, order_date), <span class="at">units =</span> <span class="st">&quot;days&quot;</span>))</span></code></pre></div>
+<span id="cb4-5"><a href="user-documentation.html#cb4-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">length_of_stay =</span> <span class="fu">as.numeric</span>(<span class="fu">difftime</span>(end_date, start_date), </span>
+<span id="cb4-6"><a href="user-documentation.html#cb4-6" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">units =</span> <span class="st">&quot;days&quot;</span>),</span>
+<span id="cb4-7"><a href="user-documentation.html#cb4-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">booking_window =</span> <span class="fu">as.numeric</span>(<span class="fu">difftime</span>(start_date, order_date), </span>
+<span id="cb4-8"><a href="user-documentation.html#cb4-8" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">units =</span> <span class="st">&quot;days&quot;</span>))</span></code></pre></div>
 <p>Total costs are divided by lengths of stay to calculate cost per day and cost per day per visitor.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="user-documentation.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate new variables</span></span>
 <span id="cb5-2"><a href="user-documentation.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">daily_cost =</span> total_paid <span class="sc">/</span> length_of_stay,</span>
@@ -311,83 +316,93 @@ div.csl-indent {
 <p>Site types are aggregated to create 7 broader site categories.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="user-documentation.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># aggregate site type</span></span>
 <span id="cb6-2"><a href="user-documentation.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">aggregated_site_type =</span> </span>
-<span id="cb6-3"><a href="user-documentation.html#cb6-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">case_when</span>(site_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;walk to&quot;</span>, <span class="st">&quot;hike to&quot;</span>, <span class="st">&quot;group hike to&quot;</span>, <span class="st">&quot;group walk to&quot;</span></span>
-<span id="cb6-4"><a href="user-documentation.html#cb6-4" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">~</span> <span class="st">&quot;remote&quot;</span>,</span>
-<span id="cb6-5"><a href="user-documentation.html#cb6-5" aria-hidden="true" tabindex="-1"></a>         site_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;cabin nonelectric&quot;</span>, <span class="st">&quot;cabin electric&quot;</span>, <span class="st">&quot;yurt&quot;</span>,<span class="st">&quot;shelter nonelectric&quot;</span></span>
-<span id="cb6-6"><a href="user-documentation.html#cb6-6" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">~</span> <span class="st">&quot;shelter&quot;</span>,</span>
-<span id="cb6-7"><a href="user-documentation.html#cb6-7" aria-hidden="true" tabindex="-1"></a>         site_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;boat in&quot;</span>, <span class="st">&quot;anchorage&quot;</span>) <span class="sc">~</span> <span class="st">&quot;water&quot;</span>,</span>
-<span id="cb6-8"><a href="user-documentation.html#cb6-8" aria-hidden="true" tabindex="-1"></a>         site_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;group equestrian&quot;</span>, <span class="st">&quot;equestrian nonelectric&quot;</span>) <span class="sc">~</span> <span class="st">&quot;equestrian&quot;</span>,</span>
-<span id="cb6-9"><a href="user-documentation.html#cb6-9" aria-hidden="true" tabindex="-1"></a>         site_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;rv nonelectric&quot;</span>, <span class="st">&quot;rv electric&quot;</span>, <span class="st">&quot;group rv area nonelectric&quot;</span></span>
-<span id="cb6-10"><a href="user-documentation.html#cb6-10" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">~</span> <span class="st">&quot;rv only&quot;</span>,</span>
-<span id="cb6-11"><a href="user-documentation.html#cb6-11" aria-hidden="true" tabindex="-1"></a>         site_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;group standard nonelectric&quot;</span>, <span class="st">&quot;standard nonelectric&quot;</span>,</span>
-<span id="cb6-12"><a href="user-documentation.html#cb6-12" aria-hidden="true" tabindex="-1"></a>                          <span class="st">&quot;standard electric&quot;</span>, <span class="st">&quot;group standard area nonelectric&quot;</span>,</span>
-<span id="cb6-13"><a href="user-documentation.html#cb6-13" aria-hidden="true" tabindex="-1"></a>                          <span class="st">&quot;group standard electric&quot;</span></span>
-<span id="cb6-14"><a href="user-documentation.html#cb6-14" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">~</span> <span class="st">&quot;rv or tent&quot;</span>,</span>
-<span id="cb6-15"><a href="user-documentation.html#cb6-15" aria-hidden="true" tabindex="-1"></a>         site_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;tent only nonelectric&quot;</span>, <span class="st">&quot;group tent only area nonelectric&quot;</span>,</span>
-<span id="cb6-16"><a href="user-documentation.html#cb6-16" aria-hidden="true" tabindex="-1"></a>                          <span class="st">&quot;tent only electric&quot;</span></span>
-<span id="cb6-17"><a href="user-documentation.html#cb6-17" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">~</span> <span class="st">&quot;tent only&quot;</span>))</span></code></pre></div>
+<span id="cb6-3"><a href="user-documentation.html#cb6-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">case_when</span>(site_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;walk to&quot;</span>, <span class="st">&quot;hike to&quot;</span>, </span>
+<span id="cb6-4"><a href="user-documentation.html#cb6-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">&quot;group hike to&quot;</span>, <span class="st">&quot;group walk to&quot;</span></span>
+<span id="cb6-5"><a href="user-documentation.html#cb6-5" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">~</span> <span class="st">&quot;remote&quot;</span>,</span>
+<span id="cb6-6"><a href="user-documentation.html#cb6-6" aria-hidden="true" tabindex="-1"></a>         site_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;cabin nonelectric&quot;</span>, <span class="st">&quot;cabin electric&quot;</span>, </span>
+<span id="cb6-7"><a href="user-documentation.html#cb6-7" aria-hidden="true" tabindex="-1"></a>                          <span class="st">&quot;yurt&quot;</span>,<span class="st">&quot;shelter nonelectric&quot;</span></span>
+<span id="cb6-8"><a href="user-documentation.html#cb6-8" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">~</span> <span class="st">&quot;shelter&quot;</span>,</span>
+<span id="cb6-9"><a href="user-documentation.html#cb6-9" aria-hidden="true" tabindex="-1"></a>         site_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;boat in&quot;</span>, <span class="st">&quot;anchorage&quot;</span>) <span class="sc">~</span> <span class="st">&quot;water&quot;</span>,</span>
+<span id="cb6-10"><a href="user-documentation.html#cb6-10" aria-hidden="true" tabindex="-1"></a>         site_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;group equestrian&quot;</span>, </span>
+<span id="cb6-11"><a href="user-documentation.html#cb6-11" aria-hidden="true" tabindex="-1"></a>                          <span class="st">&quot;equestrian nonelectric&quot;</span></span>
+<span id="cb6-12"><a href="user-documentation.html#cb6-12" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">~</span> <span class="st">&quot;equestrian&quot;</span>,</span>
+<span id="cb6-13"><a href="user-documentation.html#cb6-13" aria-hidden="true" tabindex="-1"></a>         site_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;rv nonelectric&quot;</span>, <span class="st">&quot;rv electric&quot;</span>, </span>
+<span id="cb6-14"><a href="user-documentation.html#cb6-14" aria-hidden="true" tabindex="-1"></a>                          <span class="st">&quot;group rv area nonelectric&quot;</span></span>
+<span id="cb6-15"><a href="user-documentation.html#cb6-15" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">~</span> <span class="st">&quot;rv only&quot;</span>,</span>
+<span id="cb6-16"><a href="user-documentation.html#cb6-16" aria-hidden="true" tabindex="-1"></a>         site_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;group standard nonelectric&quot;</span>, </span>
+<span id="cb6-17"><a href="user-documentation.html#cb6-17" aria-hidden="true" tabindex="-1"></a>                          <span class="st">&quot;standard nonelectric&quot;</span>,</span>
+<span id="cb6-18"><a href="user-documentation.html#cb6-18" aria-hidden="true" tabindex="-1"></a>                          <span class="st">&quot;standard electric&quot;</span>, </span>
+<span id="cb6-19"><a href="user-documentation.html#cb6-19" aria-hidden="true" tabindex="-1"></a>                          <span class="st">&quot;group standard area nonelectric&quot;</span>,</span>
+<span id="cb6-20"><a href="user-documentation.html#cb6-20" aria-hidden="true" tabindex="-1"></a>                          <span class="st">&quot;group standard electric&quot;</span></span>
+<span id="cb6-21"><a href="user-documentation.html#cb6-21" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">~</span> <span class="st">&quot;rv or tent&quot;</span>,</span>
+<span id="cb6-22"><a href="user-documentation.html#cb6-22" aria-hidden="true" tabindex="-1"></a>         site_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;tent only nonelectric&quot;</span>, </span>
+<span id="cb6-23"><a href="user-documentation.html#cb6-23" aria-hidden="true" tabindex="-1"></a>                          <span class="st">&quot;group tent only area nonelectric&quot;</span>,</span>
+<span id="cb6-24"><a href="user-documentation.html#cb6-24" aria-hidden="true" tabindex="-1"></a>                          <span class="st">&quot;tent only electric&quot;</span></span>
+<span id="cb6-25"><a href="user-documentation.html#cb6-25" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">~</span> <span class="st">&quot;tent only&quot;</span>))</span></code></pre></div>
 <p>The administrative unit variable is created by combining the <code>parent_location</code> and <code>region_description</code> variables as different federal agencies track the administrative unit information in different variables. Then the <code>agency</code>, <code>admin_uni</code> and <code>park</code> variables character strings are updated using multiple functions from the <code>stringr</code> package <span class="citation">(<a href="#ref-R-stringr" role="doc-biblioref">Wickham 2019</a>)</span>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="user-documentation.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">admin_unit =</span> <span class="fu">case_when</span>(agency <span class="sc">==</span> <span class="st">&quot;USFS&quot;</span> <span class="sc">~</span> parent_location,</span>
-<span id="cb7-2"><a href="user-documentation.html#cb7-2" aria-hidden="true" tabindex="-1"></a>                              agency <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;NPS&quot;</span>, <span class="st">&quot;BOR&quot;</span>, <span class="st">&quot;USACE&quot;</span>) <span class="sc">~</span> region_description)) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a href="user-documentation.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># edit values</span></span>
-<span id="cb7-4"><a href="user-documentation.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb7-5"><a href="user-documentation.html#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># agency abbreviations to names</span></span>
-<span id="cb7-6"><a href="user-documentation.html#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">agency =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> agency,</span>
-<span id="cb7-7"><a href="user-documentation.html#cb7-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">pattern =</span> <span class="st">&quot;NPS&quot;</span>,</span>
-<span id="cb7-8"><a href="user-documentation.html#cb7-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">replacement =</span> <span class="st">&quot;National Park Service&quot;</span>),</span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="user-documentation.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">admin_unit =</span> </span>
+<span id="cb7-2"><a href="user-documentation.html#cb7-2" aria-hidden="true" tabindex="-1"></a>         <span class="fu">case_when</span>(agency <span class="sc">==</span> <span class="st">&quot;USFS&quot;</span> <span class="sc">~</span> parent_location,</span>
+<span id="cb7-3"><a href="user-documentation.html#cb7-3" aria-hidden="true" tabindex="-1"></a>                   agency <span class="sc">%in%</span> <span class="fu">c</span>(</span>
+<span id="cb7-4"><a href="user-documentation.html#cb7-4" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;NPS&quot;</span>, <span class="st">&quot;BOR&quot;</span>, <span class="st">&quot;USACE&quot;</span></span>
+<span id="cb7-5"><a href="user-documentation.html#cb7-5" aria-hidden="true" tabindex="-1"></a>                   ) <span class="sc">~</span> region_description)) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-6"><a href="user-documentation.html#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># edit values</span></span>
+<span id="cb7-7"><a href="user-documentation.html#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-8"><a href="user-documentation.html#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># agency abbreviations to names</span></span>
 <span id="cb7-9"><a href="user-documentation.html#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">agency =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> agency,</span>
-<span id="cb7-10"><a href="user-documentation.html#cb7-10" aria-hidden="true" tabindex="-1"></a>                         <span class="at">pattern =</span> <span class="st">&quot;USFS&quot;</span>, </span>
-<span id="cb7-11"><a href="user-documentation.html#cb7-11" aria-hidden="true" tabindex="-1"></a>                         <span class="at">replacement =</span> <span class="st">&quot;US Forest Service&quot;</span>),</span>
+<span id="cb7-10"><a href="user-documentation.html#cb7-10" aria-hidden="true" tabindex="-1"></a>                         <span class="at">pattern =</span> <span class="st">&quot;NPS&quot;</span>,</span>
+<span id="cb7-11"><a href="user-documentation.html#cb7-11" aria-hidden="true" tabindex="-1"></a>                         <span class="at">replacement =</span> <span class="st">&quot;National Park Service&quot;</span>),</span>
 <span id="cb7-12"><a href="user-documentation.html#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">agency =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> agency,</span>
-<span id="cb7-13"><a href="user-documentation.html#cb7-13" aria-hidden="true" tabindex="-1"></a>                         <span class="at">pattern =</span> <span class="st">&quot;USACE&quot;</span>,</span>
-<span id="cb7-14"><a href="user-documentation.html#cb7-14" aria-hidden="true" tabindex="-1"></a>                         <span class="at">replacement =</span> <span class="st">&quot;US Army Corps of Engineers&quot;</span>),</span>
+<span id="cb7-13"><a href="user-documentation.html#cb7-13" aria-hidden="true" tabindex="-1"></a>                         <span class="at">pattern =</span> <span class="st">&quot;USFS&quot;</span>, </span>
+<span id="cb7-14"><a href="user-documentation.html#cb7-14" aria-hidden="true" tabindex="-1"></a>                         <span class="at">replacement =</span> <span class="st">&quot;US Forest Service&quot;</span>),</span>
 <span id="cb7-15"><a href="user-documentation.html#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">agency =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> agency,</span>
-<span id="cb7-16"><a href="user-documentation.html#cb7-16" aria-hidden="true" tabindex="-1"></a>                         <span class="at">pattern =</span> <span class="st">&quot;BOR&quot;</span>,</span>
-<span id="cb7-17"><a href="user-documentation.html#cb7-17" aria-hidden="true" tabindex="-1"></a>                         <span class="at">replacement =</span> <span class="st">&quot;Bureau of Reclamation&quot;</span>),</span>
-<span id="cb7-18"><a href="user-documentation.html#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># update admin_unit values (generic)</span></span>
-<span id="cb7-19"><a href="user-documentation.html#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">admin_unit =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> admin_unit,</span>
-<span id="cb7-20"><a href="user-documentation.html#cb7-20" aria-hidden="true" tabindex="-1"></a>                             <span class="at">pattern =</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot;NF - FS&quot;</span>, <span class="st">&quot;NF -FS&quot;</span>, <span class="st">&quot;NF- FS&quot;</span>, </span>
-<span id="cb7-21"><a href="user-documentation.html#cb7-21" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">&quot;NF-FS&quot;</span>, <span class="st">&quot;-FS&quot;</span>, <span class="st">&quot; - FS&quot;</span>), </span>
-<span id="cb7-22"><a href="user-documentation.html#cb7-22" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">collapse =</span> <span class="st">&quot;|&quot;</span>),</span>
-<span id="cb7-23"><a href="user-documentation.html#cb7-23" aria-hidden="true" tabindex="-1"></a>                             <span class="at">replacement =</span> <span class="st">&quot;National Forest&quot;</span>),</span>
-<span id="cb7-24"><a href="user-documentation.html#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">admin_unit =</span> <span class="fu">str_to_title</span>(admin_unit),</span>
-<span id="cb7-25"><a href="user-documentation.html#cb7-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">admin_unit =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> admin_unit,</span>
-<span id="cb7-26"><a href="user-documentation.html#cb7-26" aria-hidden="true" tabindex="-1"></a>                             <span class="at">pattern =</span> <span class="st">&quot;And&quot;</span>,</span>
-<span id="cb7-27"><a href="user-documentation.html#cb7-27" aria-hidden="true" tabindex="-1"></a>                             <span class="at">replacement =</span> <span class="st">&quot;&amp;&quot;</span>),</span>
-<span id="cb7-28"><a href="user-documentation.html#cb7-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># update park values (generic)</span></span>
-<span id="cb7-29"><a href="user-documentation.html#cb7-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">park =</span> <span class="fu">str_remove</span>(<span class="at">string =</span> park,</span>
-<span id="cb7-30"><a href="user-documentation.html#cb7-30" aria-hidden="true" tabindex="-1"></a>                      <span class="at">pattern =</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">(.*&quot;</span>, <span class="st">&quot; </span><span class="sc">\\</span><span class="st">(.*&quot;</span>,</span>
-<span id="cb7-31"><a href="user-documentation.html#cb7-31" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">&quot;---.*&quot;</span>, <span class="st">&quot; ---.*&quot;</span>,</span>
-<span id="cb7-32"><a href="user-documentation.html#cb7-32" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">&quot;,.*&quot;</span>), <span class="at">collapse =</span> <span class="st">&quot;|&quot;</span>)),</span>
-<span id="cb7-33"><a href="user-documentation.html#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">park =</span> <span class="fu">str_to_title</span>(park),</span>
-<span id="cb7-34"><a href="user-documentation.html#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">park =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> park,</span>
-<span id="cb7-35"><a href="user-documentation.html#cb7-35" aria-hidden="true" tabindex="-1"></a>                       <span class="at">pattern =</span> <span class="st">&quot;Cg&quot;</span>,</span>
-<span id="cb7-36"><a href="user-documentation.html#cb7-36" aria-hidden="true" tabindex="-1"></a>                       <span class="at">replacement =</span> <span class="st">&quot;Campground&quot;</span>),</span>
-<span id="cb7-37"><a href="user-documentation.html#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">park =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> park,</span>
-<span id="cb7-38"><a href="user-documentation.html#cb7-38" aria-hidden="true" tabindex="-1"></a>                       <span class="at">pattern =</span> <span class="st">&quot;Nhp&quot;</span>,</span>
-<span id="cb7-39"><a href="user-documentation.html#cb7-39" aria-hidden="true" tabindex="-1"></a>                       <span class="at">replacement =</span> <span class="st">&quot;National Historic Park&quot;</span>),</span>
-<span id="cb7-40"><a href="user-documentation.html#cb7-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">park =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> park,</span>
-<span id="cb7-41"><a href="user-documentation.html#cb7-41" aria-hidden="true" tabindex="-1"></a>                       <span class="at">pattern =</span> <span class="st">&quot;@&quot;</span>,</span>
-<span id="cb7-42"><a href="user-documentation.html#cb7-42" aria-hidden="true" tabindex="-1"></a>                       <span class="at">replacement =</span> <span class="st">&quot;At&quot;</span>),</span>
-<span id="cb7-43"><a href="user-documentation.html#cb7-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">park =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> park,</span>
-<span id="cb7-44"><a href="user-documentation.html#cb7-44" aria-hidden="true" tabindex="-1"></a>                       <span class="at">pattern =</span> <span class="st">&quot;&amp;&quot;</span>,</span>
-<span id="cb7-45"><a href="user-documentation.html#cb7-45" aria-hidden="true" tabindex="-1"></a>                       <span class="at">replacement =</span> <span class="st">&quot;And&quot;</span>),</span>
-<span id="cb7-46"><a href="user-documentation.html#cb7-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">park =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> park,</span>
-<span id="cb7-47"><a href="user-documentation.html#cb7-47" aria-hidden="true" tabindex="-1"></a>                       <span class="at">pattern =</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot;/&quot;</span>, <span class="st">&quot; / &quot;</span>), <span class="at">collapse =</span> <span class="st">&quot;|&quot;</span>),</span>
-<span id="cb7-48"><a href="user-documentation.html#cb7-48" aria-hidden="true" tabindex="-1"></a>                       <span class="at">replacement =</span> <span class="st">&quot; &quot;</span>),</span>
-<span id="cb7-49"><a href="user-documentation.html#cb7-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">park =</span> <span class="fu">str_remove_all</span>(<span class="at">string =</span> park,</span>
-<span id="cb7-50"><a href="user-documentation.html#cb7-50" aria-hidden="true" tabindex="-1"></a>                          <span class="at">pattern =</span> <span class="st">&quot; </span><span class="sc">\\</span><span class="st">d.*&quot;</span>),</span>
-<span id="cb7-51"><a href="user-documentation.html#cb7-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># update park values (CA specific)</span></span>
-<span id="cb7-52"><a href="user-documentation.html#cb7-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">park =</span> <span class="fu">str_remove</span>(<span class="at">string =</span> park,</span>
-<span id="cb7-53"><a href="user-documentation.html#cb7-53" aria-hidden="true" tabindex="-1"></a>                      <span class="at">pattern =</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot; - Angeles Nf&quot;</span>, <span class="st">&quot; -Hwy&quot;</span>), </span>
-<span id="cb7-54"><a href="user-documentation.html#cb7-54" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">collapse =</span> <span class="st">&quot;|&quot;</span>)),</span>
-<span id="cb7-55"><a href="user-documentation.html#cb7-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">park =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> park,</span>
-<span id="cb7-56"><a href="user-documentation.html#cb7-56" aria-hidden="true" tabindex="-1"></a>                       <span class="at">pattern =</span> <span class="st">&quot;Tunnel Mills Il&quot;</span>,</span>
-<span id="cb7-57"><a href="user-documentation.html#cb7-57" aria-hidden="true" tabindex="-1"></a>                       <span class="at">replacement =</span> <span class="st">&quot;Tunnel Mills&quot;</span>),</span>
-<span id="cb7-58"><a href="user-documentation.html#cb7-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">admin_unit =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> admin_unit,</span>
-<span id="cb7-59"><a href="user-documentation.html#cb7-59" aria-hidden="true" tabindex="-1"></a>                             <span class="at">pattern =</span> <span class="st">&quot;Sequoia &amp; Kings Canyon National Park$&quot;</span>, </span>
-<span id="cb7-60"><a href="user-documentation.html#cb7-60" aria-hidden="true" tabindex="-1"></a>                             <span class="at">replacement =</span> <span class="st">&quot;Sequoia &amp; Kings Canyon National Parks&quot;</span>))</span></code></pre></div>
-<p>Distance traveled is calculated by measuring the distance from the latitude and longitude facility coordinate locations to the centroid of the home ZIP code, which is accessed via the <code>tidycensus</code> package <span class="citation">(<a href="#ref-R-tidycensus" role="doc-biblioref">Walker and Herman 2022</a>)</span>.</p>
+<span id="cb7-16"><a href="user-documentation.html#cb7-16" aria-hidden="true" tabindex="-1"></a>                         <span class="at">pattern =</span> <span class="st">&quot;USACE&quot;</span>,</span>
+<span id="cb7-17"><a href="user-documentation.html#cb7-17" aria-hidden="true" tabindex="-1"></a>                         <span class="at">replacement =</span> <span class="st">&quot;US Army Corps of Engineers&quot;</span>),</span>
+<span id="cb7-18"><a href="user-documentation.html#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">agency =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> agency,</span>
+<span id="cb7-19"><a href="user-documentation.html#cb7-19" aria-hidden="true" tabindex="-1"></a>                         <span class="at">pattern =</span> <span class="st">&quot;BOR&quot;</span>,</span>
+<span id="cb7-20"><a href="user-documentation.html#cb7-20" aria-hidden="true" tabindex="-1"></a>                         <span class="at">replacement =</span> <span class="st">&quot;Bureau of Reclamation&quot;</span>),</span>
+<span id="cb7-21"><a href="user-documentation.html#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># update admin_unit values (generic)</span></span>
+<span id="cb7-22"><a href="user-documentation.html#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">admin_unit =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> admin_unit,</span>
+<span id="cb7-23"><a href="user-documentation.html#cb7-23" aria-hidden="true" tabindex="-1"></a>                             <span class="at">pattern =</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot;NF - FS&quot;</span>, <span class="st">&quot;NF -FS&quot;</span>, </span>
+<span id="cb7-24"><a href="user-documentation.html#cb7-24" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">&quot;NF- FS&quot;</span>, <span class="st">&quot;NF-FS&quot;</span>, </span>
+<span id="cb7-25"><a href="user-documentation.html#cb7-25" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">&quot;-FS&quot;</span>, <span class="st">&quot; - FS&quot;</span>), </span>
+<span id="cb7-26"><a href="user-documentation.html#cb7-26" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">collapse =</span> <span class="st">&quot;|&quot;</span>),</span>
+<span id="cb7-27"><a href="user-documentation.html#cb7-27" aria-hidden="true" tabindex="-1"></a>                             <span class="at">replacement =</span> <span class="st">&quot;National Forest&quot;</span>),</span>
+<span id="cb7-28"><a href="user-documentation.html#cb7-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">admin_unit =</span> <span class="fu">str_to_title</span>(admin_unit),</span>
+<span id="cb7-29"><a href="user-documentation.html#cb7-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">admin_unit =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> admin_unit,</span>
+<span id="cb7-30"><a href="user-documentation.html#cb7-30" aria-hidden="true" tabindex="-1"></a>                             <span class="at">pattern =</span> <span class="st">&quot;And&quot;</span>,</span>
+<span id="cb7-31"><a href="user-documentation.html#cb7-31" aria-hidden="true" tabindex="-1"></a>                             <span class="at">replacement =</span> <span class="st">&quot;&amp;&quot;</span>),</span>
+<span id="cb7-32"><a href="user-documentation.html#cb7-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># update park values (generic)</span></span>
+<span id="cb7-33"><a href="user-documentation.html#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">park =</span> <span class="fu">str_remove</span>(<span class="at">string =</span> park,</span>
+<span id="cb7-34"><a href="user-documentation.html#cb7-34" aria-hidden="true" tabindex="-1"></a>                      <span class="at">pattern =</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">(.*&quot;</span>, <span class="st">&quot; </span><span class="sc">\\</span><span class="st">(.*&quot;</span>,</span>
+<span id="cb7-35"><a href="user-documentation.html#cb7-35" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">&quot;---.*&quot;</span>, <span class="st">&quot; ---.*&quot;</span>,</span>
+<span id="cb7-36"><a href="user-documentation.html#cb7-36" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">&quot;,.*&quot;</span>), </span>
+<span id="cb7-37"><a href="user-documentation.html#cb7-37" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">collapse =</span> <span class="st">&quot;|&quot;</span>)),</span>
+<span id="cb7-38"><a href="user-documentation.html#cb7-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">park =</span> <span class="fu">str_to_title</span>(park),</span>
+<span id="cb7-39"><a href="user-documentation.html#cb7-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">park =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> park,</span>
+<span id="cb7-40"><a href="user-documentation.html#cb7-40" aria-hidden="true" tabindex="-1"></a>                       <span class="at">pattern =</span> <span class="st">&quot;Cg&quot;</span>,</span>
+<span id="cb7-41"><a href="user-documentation.html#cb7-41" aria-hidden="true" tabindex="-1"></a>                       <span class="at">replacement =</span> <span class="st">&quot;Campground&quot;</span>),</span>
+<span id="cb7-42"><a href="user-documentation.html#cb7-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">park =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> park,</span>
+<span id="cb7-43"><a href="user-documentation.html#cb7-43" aria-hidden="true" tabindex="-1"></a>                       <span class="at">pattern =</span> <span class="st">&quot;Nhp&quot;</span>,</span>
+<span id="cb7-44"><a href="user-documentation.html#cb7-44" aria-hidden="true" tabindex="-1"></a>                       <span class="at">replacement =</span> <span class="st">&quot;National Historic Park&quot;</span>),</span>
+<span id="cb7-45"><a href="user-documentation.html#cb7-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">park =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> park,</span>
+<span id="cb7-46"><a href="user-documentation.html#cb7-46" aria-hidden="true" tabindex="-1"></a>                       <span class="at">pattern =</span> <span class="st">&quot;@&quot;</span>,</span>
+<span id="cb7-47"><a href="user-documentation.html#cb7-47" aria-hidden="true" tabindex="-1"></a>                       <span class="at">replacement =</span> <span class="st">&quot;At&quot;</span>),</span>
+<span id="cb7-48"><a href="user-documentation.html#cb7-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">park =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> park,</span>
+<span id="cb7-49"><a href="user-documentation.html#cb7-49" aria-hidden="true" tabindex="-1"></a>                       <span class="at">pattern =</span> <span class="st">&quot;&amp;&quot;</span>,</span>
+<span id="cb7-50"><a href="user-documentation.html#cb7-50" aria-hidden="true" tabindex="-1"></a>                       <span class="at">replacement =</span> <span class="st">&quot;And&quot;</span>),</span>
+<span id="cb7-51"><a href="user-documentation.html#cb7-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">park =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> park,</span>
+<span id="cb7-52"><a href="user-documentation.html#cb7-52" aria-hidden="true" tabindex="-1"></a>                       <span class="at">pattern =</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot;/&quot;</span>, <span class="st">&quot; / &quot;</span>), <span class="at">collapse =</span> <span class="st">&quot;|&quot;</span>),</span>
+<span id="cb7-53"><a href="user-documentation.html#cb7-53" aria-hidden="true" tabindex="-1"></a>                       <span class="at">replacement =</span> <span class="st">&quot; &quot;</span>),</span>
+<span id="cb7-54"><a href="user-documentation.html#cb7-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">park =</span> <span class="fu">str_remove_all</span>(<span class="at">string =</span> park,</span>
+<span id="cb7-55"><a href="user-documentation.html#cb7-55" aria-hidden="true" tabindex="-1"></a>                          <span class="at">pattern =</span> <span class="st">&quot; </span><span class="sc">\\</span><span class="st">d.*&quot;</span>),</span>
+<span id="cb7-56"><a href="user-documentation.html#cb7-56" aria-hidden="true" tabindex="-1"></a>    <span class="co"># update park values (CA specific)</span></span>
+<span id="cb7-57"><a href="user-documentation.html#cb7-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">park =</span> <span class="fu">str_remove</span>(<span class="at">string =</span> park,</span>
+<span id="cb7-58"><a href="user-documentation.html#cb7-58" aria-hidden="true" tabindex="-1"></a>                      <span class="at">pattern =</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot; - Angeles Nf&quot;</span>, <span class="st">&quot; -Hwy&quot;</span>), </span>
+<span id="cb7-59"><a href="user-documentation.html#cb7-59" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">collapse =</span> <span class="st">&quot;|&quot;</span>)),</span>
+<span id="cb7-60"><a href="user-documentation.html#cb7-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">park =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> park,</span>
+<span id="cb7-61"><a href="user-documentation.html#cb7-61" aria-hidden="true" tabindex="-1"></a>                       <span class="at">pattern =</span> <span class="st">&quot;Tunnel Mills Il&quot;</span>,</span>
+<span id="cb7-62"><a href="user-documentation.html#cb7-62" aria-hidden="true" tabindex="-1"></a>                       <span class="at">replacement =</span> <span class="st">&quot;Tunnel Mills&quot;</span>))</span></code></pre></div>
+<p>Distance traveled is calculated by measuring the distance from the latitude and longitude facility coordinate locations to the centroid of the home ZIP code, which is accessed via the <code>tidycensus</code> package <span class="citation">(<a href="#ref-R-tidycensus" role="doc-biblioref">Walker and Herman 2021</a>)</span>.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="user-documentation.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bootstrap geometries and reproject to NAD 83</span></span>
 <span id="cb8-2"><a href="user-documentation.html#cb8-2" aria-hidden="true" tabindex="-1"></a>df_geometries <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
 <span id="cb8-3"><a href="user-documentation.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;facility_longitude&quot;</span>, <span class="st">&quot;facility_latitude&quot;</span>),</span>
@@ -395,75 +410,82 @@ div.csl-indent {
 <span id="cb8-5"><a href="user-documentation.html#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="at">crs =</span> <span class="dv">4269</span>) <span class="co"># using NAD83 because measured in meters</span></span>
 <span id="cb8-6"><a href="user-documentation.html#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-7"><a href="user-documentation.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># get centroid of geometries for all US ZIP codes </span></span>
-<span id="cb8-8"><a href="user-documentation.html#cb8-8" aria-hidden="true" tabindex="-1"></a>df_zip_centroids_us <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;zcta&quot;</span>, <span class="at">year =</span> <span class="dv">2018</span>, <span class="at">geometry =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb8-9"><a href="user-documentation.html#cb8-9" aria-hidden="true" tabindex="-1"></a>                               <span class="at">summary_var =</span> <span class="st">&quot;B01001_001&quot;</span>,</span>
-<span id="cb8-10"><a href="user-documentation.html#cb8-10" aria-hidden="true" tabindex="-1"></a>                               <span class="at">survey =</span> <span class="st">&quot;acs5&quot;</span>,</span>
-<span id="cb8-11"><a href="user-documentation.html#cb8-11" aria-hidden="true" tabindex="-1"></a>                               <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">male =</span> <span class="st">&quot;B01001_002&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-12"><a href="user-documentation.html#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(NAME, geometry) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-13"><a href="user-documentation.html#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">zip_code =</span> <span class="fu">str_sub</span>(NAME, <span class="at">start =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">end =</span> <span class="sc">-</span><span class="dv">1</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-14"><a href="user-documentation.html#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(zip_code, geometry) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-15"><a href="user-documentation.html#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_centroid</span>()</span>
-<span id="cb8-16"><a href="user-documentation.html#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-17"><a href="user-documentation.html#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co"># join data and calculate `distance_traveled` variable</span></span>
-<span id="cb8-18"><a href="user-documentation.html#cb8-18" aria-hidden="true" tabindex="-1"></a>df_joined_geometries <span class="ot">&lt;-</span> </span>
-<span id="cb8-19"><a href="user-documentation.html#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(<span class="at">x =</span> df_geometries <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>(),</span>
-<span id="cb8-20"><a href="user-documentation.html#cb8-20" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> df_zip_centroids_us <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>(), </span>
-<span id="cb8-21"><a href="user-documentation.html#cb8-21" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;customer_zip&quot;</span> <span class="ot">=</span> <span class="st">&quot;zip_code&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-22"><a href="user-documentation.html#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_sf</span>(<span class="at">sf_column_name =</span> <span class="st">&#39;geometry.x&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-23"><a href="user-documentation.html#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">distance_traveled_m =</span> <span class="fu">st_distance</span>(<span class="at">x =</span> geometry.x, </span>
-<span id="cb8-24"><a href="user-documentation.html#cb8-24" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">y =</span> geometry.y,</span>
-<span id="cb8-25"><a href="user-documentation.html#cb8-25" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">by_element =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb8-26"><a href="user-documentation.html#cb8-26" aria-hidden="true" tabindex="-1"></a>         <span class="at">distance_traveled_m =</span> <span class="fu">as.numeric</span>(distance_traveled_m)) </span></code></pre></div>
-<p>And finally, a variable is added indicating in which state or territory each customer zip code is located. This portion of the code utilizes the <code>zipcodeR</code> package <span class="citation">(<a href="#ref-R-zipcodeR" role="doc-biblioref">Rozzi 2022</a>)</span>.</p>
+<span id="cb8-8"><a href="user-documentation.html#cb8-8" aria-hidden="true" tabindex="-1"></a>df_zip_centroids_us <span class="ot">&lt;-</span> </span>
+<span id="cb8-9"><a href="user-documentation.html#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;zcta&quot;</span>, <span class="at">year =</span> <span class="dv">2018</span>, </span>
+<span id="cb8-10"><a href="user-documentation.html#cb8-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">geometry =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb8-11"><a href="user-documentation.html#cb8-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">summary_var =</span> <span class="st">&quot;B01001_001&quot;</span>,</span>
+<span id="cb8-12"><a href="user-documentation.html#cb8-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">survey =</span> <span class="st">&quot;acs5&quot;</span>,</span>
+<span id="cb8-13"><a href="user-documentation.html#cb8-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">male =</span> <span class="st">&quot;B01001_002&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-14"><a href="user-documentation.html#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(NAME, geometry) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-15"><a href="user-documentation.html#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">zip_code =</span> <span class="fu">str_sub</span>(NAME, <span class="at">start =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">end =</span> <span class="sc">-</span><span class="dv">1</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-16"><a href="user-documentation.html#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(zip_code, geometry) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-17"><a href="user-documentation.html#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_centroid</span>()</span>
+<span id="cb8-18"><a href="user-documentation.html#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="user-documentation.html#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"># join data and calculate `distance_traveled` variable</span></span>
+<span id="cb8-20"><a href="user-documentation.html#cb8-20" aria-hidden="true" tabindex="-1"></a>df_joined_geometries <span class="ot">&lt;-</span> </span>
+<span id="cb8-21"><a href="user-documentation.html#cb8-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(<span class="at">x =</span> df_geometries <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>(),</span>
+<span id="cb8-22"><a href="user-documentation.html#cb8-22" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> df_zip_centroids_us <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>(), </span>
+<span id="cb8-23"><a href="user-documentation.html#cb8-23" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;customer_zip&quot;</span> <span class="ot">=</span> <span class="st">&quot;zip_code&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-24"><a href="user-documentation.html#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_sf</span>(<span class="at">sf_column_name =</span> <span class="st">&#39;geometry.x&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-25"><a href="user-documentation.html#cb8-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">distance_traveled_m =</span> <span class="fu">st_distance</span>(<span class="at">x =</span> geometry.x, </span>
+<span id="cb8-26"><a href="user-documentation.html#cb8-26" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">y =</span> geometry.y,</span>
+<span id="cb8-27"><a href="user-documentation.html#cb8-27" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">by_element =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb8-28"><a href="user-documentation.html#cb8-28" aria-hidden="true" tabindex="-1"></a>         <span class="at">distance_traveled_m =</span> <span class="fu">as.numeric</span>(distance_traveled_m)) </span></code></pre></div>
+<p>And finally, a variable is added indicating in which state or territory each customer zip code is located. This portion of the code utilizes the <code>zipcodeR</code> package <span class="citation">(<a href="#ref-R-zipcodeR" role="doc-biblioref">Rozzi 2021</a>)</span>.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="user-documentation.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create df of fips and full state names</span></span>
-<span id="cb9-2"><a href="user-documentation.html#cb9-2" aria-hidden="true" tabindex="-1"></a>fips_list <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;01&quot;</span>, <span class="st">&quot;02&quot;</span>, <span class="st">&quot;04&quot;</span>, <span class="st">&quot;05&quot;</span>, <span class="st">&quot;06&quot;</span>, <span class="st">&quot;08&quot;</span>, <span class="st">&quot;09&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;11&quot;</span>, <span class="st">&quot;12&quot;</span>, </span>
-<span id="cb9-3"><a href="user-documentation.html#cb9-3" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;13&quot;</span>, <span class="st">&quot;15&quot;</span>, <span class="st">&quot;16&quot;</span>, <span class="st">&quot;17&quot;</span>, <span class="st">&quot;18&quot;</span>, <span class="st">&quot;19&quot;</span>, <span class="st">&quot;20&quot;</span>, <span class="st">&quot;21&quot;</span>, <span class="st">&quot;22&quot;</span>, <span class="st">&quot;23&quot;</span>, </span>
-<span id="cb9-4"><a href="user-documentation.html#cb9-4" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;24&quot;</span>, <span class="st">&quot;25&quot;</span>, <span class="st">&quot;26&quot;</span>, <span class="st">&quot;27&quot;</span>, <span class="st">&quot;28&quot;</span>, <span class="st">&quot;29&quot;</span>, <span class="st">&quot;30&quot;</span>, <span class="st">&quot;31&quot;</span>, <span class="st">&quot;32&quot;</span>, <span class="st">&quot;33&quot;</span>, </span>
-<span id="cb9-5"><a href="user-documentation.html#cb9-5" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;34&quot;</span>, <span class="st">&quot;35&quot;</span>, <span class="st">&quot;36&quot;</span>, <span class="st">&quot;37&quot;</span>, <span class="st">&quot;38&quot;</span>, <span class="st">&quot;39&quot;</span>, <span class="st">&quot;40&quot;</span>, <span class="st">&quot;41&quot;</span>, <span class="st">&quot;42&quot;</span>, <span class="st">&quot;44&quot;</span>, </span>
-<span id="cb9-6"><a href="user-documentation.html#cb9-6" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;45&quot;</span>, <span class="st">&quot;46&quot;</span>, <span class="st">&quot;47&quot;</span>, <span class="st">&quot;48&quot;</span>, <span class="st">&quot;49&quot;</span>, <span class="st">&quot;50&quot;</span>, <span class="st">&quot;51&quot;</span>, <span class="st">&quot;53&quot;</span>, <span class="st">&quot;54&quot;</span>, <span class="st">&quot;55&quot;</span>, </span>
-<span id="cb9-7"><a href="user-documentation.html#cb9-7" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;56&quot;</span>, <span class="st">&quot;72&quot;</span>)</span>
-<span id="cb9-8"><a href="user-documentation.html#cb9-8" aria-hidden="true" tabindex="-1"></a>state_list <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AL&quot;</span>, <span class="st">&quot;AK&quot;</span>, <span class="st">&quot;AZ&quot;</span>, <span class="st">&quot;AR&quot;</span>, <span class="st">&quot;CA&quot;</span>, <span class="st">&quot;CO&quot;</span>, <span class="st">&quot;CT&quot;</span>, <span class="st">&quot;DE&quot;</span>, <span class="st">&quot;DC&quot;</span>, <span class="st">&quot;FL&quot;</span>,</span>
-<span id="cb9-9"><a href="user-documentation.html#cb9-9" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;GA&quot;</span>, <span class="st">&quot;HI&quot;</span>, <span class="st">&quot;ID&quot;</span>, <span class="st">&quot;IL&quot;</span>, <span class="st">&quot;IN&quot;</span>, <span class="st">&quot;IA&quot;</span>, <span class="st">&quot;KS&quot;</span>, <span class="st">&quot;KY&quot;</span>, <span class="st">&quot;LA&quot;</span>, <span class="st">&quot;ME&quot;</span>,</span>
-<span id="cb9-10"><a href="user-documentation.html#cb9-10" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;MD&quot;</span>, <span class="st">&quot;MA&quot;</span>, <span class="st">&quot;MI&quot;</span>, <span class="st">&quot;MN&quot;</span>, <span class="st">&quot;MS&quot;</span>, <span class="st">&quot;MO&quot;</span>, <span class="st">&quot;MT&quot;</span>, <span class="st">&quot;NE&quot;</span>, <span class="st">&quot;NV&quot;</span>, <span class="st">&quot;NH&quot;</span>,</span>
-<span id="cb9-11"><a href="user-documentation.html#cb9-11" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;NJ&quot;</span>, <span class="st">&quot;NM&quot;</span>, <span class="st">&quot;NY&quot;</span>, <span class="st">&quot;NC&quot;</span>, <span class="st">&quot;ND&quot;</span>, <span class="st">&quot;OH&quot;</span>, <span class="st">&quot;OK&quot;</span>, <span class="st">&quot;OR&quot;</span>, <span class="st">&quot;PA&quot;</span>, <span class="st">&quot;RI&quot;</span>,</span>
-<span id="cb9-12"><a href="user-documentation.html#cb9-12" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;SC&quot;</span>, <span class="st">&quot;SD&quot;</span>, <span class="st">&quot;TN&quot;</span>, <span class="st">&quot;TX&quot;</span>, <span class="st">&quot;UT&quot;</span>, <span class="st">&quot;VT&quot;</span>, <span class="st">&quot;VA&quot;</span>, <span class="st">&quot;WA&quot;</span>, <span class="st">&quot;WV&quot;</span>, <span class="st">&quot;WI&quot;</span>,</span>
-<span id="cb9-13"><a href="user-documentation.html#cb9-13" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;WY&quot;</span>, <span class="st">&quot;PR&quot;</span>)</span>
-<span id="cb9-14"><a href="user-documentation.html#cb9-14" aria-hidden="true" tabindex="-1"></a>states_names_list <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Alabama&quot;</span>, <span class="st">&quot;Alaska&quot;</span>, <span class="st">&quot;Arizona&quot;</span>, <span class="st">&quot;Arkansas&quot;</span>, <span class="st">&quot;California&quot;</span>, </span>
-<span id="cb9-15"><a href="user-documentation.html#cb9-15" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;Colorado&quot;</span>, <span class="st">&quot;Connecticut&quot;</span>, <span class="st">&quot;Delaware&quot;</span>, <span class="st">&quot;District of Columbia&quot;</span>, </span>
-<span id="cb9-16"><a href="user-documentation.html#cb9-16" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;Florida&quot;</span>,<span class="st">&quot;Georgia&quot;</span>, <span class="st">&quot;Hawaii&quot;</span>, <span class="st">&quot;Idaho&quot;</span>, <span class="st">&quot;Illinois&quot;</span>, <span class="st">&quot;Indiana&quot;</span>, </span>
-<span id="cb9-17"><a href="user-documentation.html#cb9-17" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;Iowa&quot;</span>, <span class="st">&quot;Kansas&quot;</span>, <span class="st">&quot;Kentucky&quot;</span>, <span class="st">&quot;Louisiana&quot;</span>, <span class="st">&quot;Maine&quot;</span>,<span class="st">&quot;Maryland&quot;</span>, </span>
-<span id="cb9-18"><a href="user-documentation.html#cb9-18" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;Massachusetts&quot;</span>, <span class="st">&quot;Michigan&quot;</span>, <span class="st">&quot;Minnesota&quot;</span>, <span class="st">&quot;Mississippi&quot;</span>, <span class="st">&quot;Missouri&quot;</span>, </span>
-<span id="cb9-19"><a href="user-documentation.html#cb9-19" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;Montana&quot;</span>, <span class="st">&quot;Nebraska&quot;</span>, <span class="st">&quot;Nevada&quot;</span>, <span class="st">&quot;New Hampshire&quot;</span>,<span class="st">&quot;New Jersey&quot;</span>, </span>
-<span id="cb9-20"><a href="user-documentation.html#cb9-20" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;New Mexico&quot;</span>, <span class="st">&quot;New York&quot;</span>, <span class="st">&quot;North Carolina&quot;</span>, <span class="st">&quot;North Dakota&quot;</span>, <span class="st">&quot;Ohio&quot;</span>, </span>
-<span id="cb9-21"><a href="user-documentation.html#cb9-21" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;Oklahoma&quot;</span>, <span class="st">&quot;Oregon&quot;</span>, <span class="st">&quot;Pennsylvania&quot;</span>, <span class="st">&quot;Rhode Island&quot;</span>,<span class="st">&quot;South Carolina&quot;</span>, </span>
-<span id="cb9-22"><a href="user-documentation.html#cb9-22" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;South Dakota&quot;</span>, <span class="st">&quot;Tennessee&quot;</span>, <span class="st">&quot;Texas&quot;</span>, <span class="st">&quot;Utah&quot;</span>, <span class="st">&quot;Vermont&quot;</span>, <span class="st">&quot;Virginia&quot;</span>, </span>
-<span id="cb9-23"><a href="user-documentation.html#cb9-23" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;Washington&quot;</span>, <span class="st">&quot;West Virginia&quot;</span>, <span class="st">&quot;Wisconsin&quot;</span>,<span class="st">&quot;Wyoming&quot;</span>, <span class="st">&quot;Puerto Rico&quot;</span>)</span>
-<span id="cb9-24"><a href="user-documentation.html#cb9-24" aria-hidden="true" tabindex="-1"></a>df_states_fips <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">list</span>(<span class="at">fips =</span> fips_list,</span>
-<span id="cb9-25"><a href="user-documentation.html#cb9-25" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">state =</span> state_list,</span>
-<span id="cb9-26"><a href="user-documentation.html#cb9-26" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">state_full =</span> states_names_list))</span>
-<span id="cb9-27"><a href="user-documentation.html#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-28"><a href="user-documentation.html#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="co"># loop through state df to get all ZIP codes w/in state</span></span>
-<span id="cb9-29"><a href="user-documentation.html#cb9-29" aria-hidden="true" tabindex="-1"></a>df_states_zip_codes <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
-<span id="cb9-30"><a href="user-documentation.html#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-31"><a href="user-documentation.html#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(fips_list)){</span>
-<span id="cb9-32"><a href="user-documentation.html#cb9-32" aria-hidden="true" tabindex="-1"></a>  state <span class="ot">&lt;-</span> zipcodeR<span class="sc">::</span><span class="fu">search_fips</span>(<span class="at">state_fips =</span> fips_list[[i]]) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-33"><a href="user-documentation.html#cb9-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(zipcode, state)</span>
-<span id="cb9-34"><a href="user-documentation.html#cb9-34" aria-hidden="true" tabindex="-1"></a>  df_states_zip_codes <span class="ot">&lt;-</span> <span class="fu">rbind</span>(df_states_zip_codes, state)</span>
-<span id="cb9-35"><a href="user-documentation.html#cb9-35" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb9-36"><a href="user-documentation.html#cb9-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-37"><a href="user-documentation.html#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="co"># add full state name and fips code to list of all ZIP codes for each state</span></span>
-<span id="cb9-38"><a href="user-documentation.html#cb9-38" aria-hidden="true" tabindex="-1"></a>df_states_fips_zip_codes <span class="ot">&lt;-</span> </span>
-<span id="cb9-39"><a href="user-documentation.html#cb9-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(<span class="at">x =</span> df_states_zip_codes,</span>
-<span id="cb9-40"><a href="user-documentation.html#cb9-40" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> df_states_fips,</span>
-<span id="cb9-41"><a href="user-documentation.html#cb9-41" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="st">&quot;state&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-42"><a href="user-documentation.html#cb9-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>fips) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-43"><a href="user-documentation.html#cb9-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">customer_zip_state =</span> state,</span>
-<span id="cb9-44"><a href="user-documentation.html#cb9-44" aria-hidden="true" tabindex="-1"></a>         <span class="at">customer_zip_state_full =</span> state_full,</span>
-<span id="cb9-45"><a href="user-documentation.html#cb9-45" aria-hidden="true" tabindex="-1"></a>         <span class="at">zip_code =</span> zipcode)</span></code></pre></div>
+<span id="cb9-2"><a href="user-documentation.html#cb9-2" aria-hidden="true" tabindex="-1"></a>fips_list <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb9-3"><a href="user-documentation.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;01&quot;</span>, <span class="st">&quot;02&quot;</span>, <span class="st">&quot;04&quot;</span>, <span class="st">&quot;05&quot;</span>, <span class="st">&quot;06&quot;</span>, <span class="st">&quot;08&quot;</span>, <span class="st">&quot;09&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;11&quot;</span>, <span class="st">&quot;12&quot;</span>, </span>
+<span id="cb9-4"><a href="user-documentation.html#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;13&quot;</span>, <span class="st">&quot;15&quot;</span>, <span class="st">&quot;16&quot;</span>, <span class="st">&quot;17&quot;</span>, <span class="st">&quot;18&quot;</span>, <span class="st">&quot;19&quot;</span>, <span class="st">&quot;20&quot;</span>, <span class="st">&quot;21&quot;</span>, <span class="st">&quot;22&quot;</span>, <span class="st">&quot;23&quot;</span>, </span>
+<span id="cb9-5"><a href="user-documentation.html#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;24&quot;</span>, <span class="st">&quot;25&quot;</span>, <span class="st">&quot;26&quot;</span>, <span class="st">&quot;27&quot;</span>, <span class="st">&quot;28&quot;</span>, <span class="st">&quot;29&quot;</span>, <span class="st">&quot;30&quot;</span>, <span class="st">&quot;31&quot;</span>, <span class="st">&quot;32&quot;</span>, <span class="st">&quot;33&quot;</span>, </span>
+<span id="cb9-6"><a href="user-documentation.html#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;34&quot;</span>, <span class="st">&quot;35&quot;</span>, <span class="st">&quot;36&quot;</span>, <span class="st">&quot;37&quot;</span>, <span class="st">&quot;38&quot;</span>, <span class="st">&quot;39&quot;</span>, <span class="st">&quot;40&quot;</span>, <span class="st">&quot;41&quot;</span>, <span class="st">&quot;42&quot;</span>, <span class="st">&quot;44&quot;</span>, </span>
+<span id="cb9-7"><a href="user-documentation.html#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;45&quot;</span>, <span class="st">&quot;46&quot;</span>, <span class="st">&quot;47&quot;</span>, <span class="st">&quot;48&quot;</span>, <span class="st">&quot;49&quot;</span>, <span class="st">&quot;50&quot;</span>, <span class="st">&quot;51&quot;</span>, <span class="st">&quot;53&quot;</span>, <span class="st">&quot;54&quot;</span>, <span class="st">&quot;55&quot;</span>, </span>
+<span id="cb9-8"><a href="user-documentation.html#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;56&quot;</span>, <span class="st">&quot;72&quot;</span>)</span>
+<span id="cb9-9"><a href="user-documentation.html#cb9-9" aria-hidden="true" tabindex="-1"></a>state_list <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb9-10"><a href="user-documentation.html#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;AL&quot;</span>, <span class="st">&quot;AK&quot;</span>, <span class="st">&quot;AZ&quot;</span>, <span class="st">&quot;AR&quot;</span>, <span class="st">&quot;CA&quot;</span>, <span class="st">&quot;CO&quot;</span>, <span class="st">&quot;CT&quot;</span>, <span class="st">&quot;DE&quot;</span>, <span class="st">&quot;DC&quot;</span>, <span class="st">&quot;FL&quot;</span>,</span>
+<span id="cb9-11"><a href="user-documentation.html#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;GA&quot;</span>, <span class="st">&quot;HI&quot;</span>, <span class="st">&quot;ID&quot;</span>, <span class="st">&quot;IL&quot;</span>, <span class="st">&quot;IN&quot;</span>, <span class="st">&quot;IA&quot;</span>, <span class="st">&quot;KS&quot;</span>, <span class="st">&quot;KY&quot;</span>, <span class="st">&quot;LA&quot;</span>, <span class="st">&quot;ME&quot;</span>,</span>
+<span id="cb9-12"><a href="user-documentation.html#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;MD&quot;</span>, <span class="st">&quot;MA&quot;</span>, <span class="st">&quot;MI&quot;</span>, <span class="st">&quot;MN&quot;</span>, <span class="st">&quot;MS&quot;</span>, <span class="st">&quot;MO&quot;</span>, <span class="st">&quot;MT&quot;</span>, <span class="st">&quot;NE&quot;</span>, <span class="st">&quot;NV&quot;</span>, <span class="st">&quot;NH&quot;</span>,</span>
+<span id="cb9-13"><a href="user-documentation.html#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;NJ&quot;</span>, <span class="st">&quot;NM&quot;</span>, <span class="st">&quot;NY&quot;</span>, <span class="st">&quot;NC&quot;</span>, <span class="st">&quot;ND&quot;</span>, <span class="st">&quot;OH&quot;</span>, <span class="st">&quot;OK&quot;</span>, <span class="st">&quot;OR&quot;</span>, <span class="st">&quot;PA&quot;</span>, <span class="st">&quot;RI&quot;</span>,</span>
+<span id="cb9-14"><a href="user-documentation.html#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;SC&quot;</span>, <span class="st">&quot;SD&quot;</span>, <span class="st">&quot;TN&quot;</span>, <span class="st">&quot;TX&quot;</span>, <span class="st">&quot;UT&quot;</span>, <span class="st">&quot;VT&quot;</span>, <span class="st">&quot;VA&quot;</span>, <span class="st">&quot;WA&quot;</span>, <span class="st">&quot;WV&quot;</span>, <span class="st">&quot;WI&quot;</span>,</span>
+<span id="cb9-15"><a href="user-documentation.html#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;WY&quot;</span>, <span class="st">&quot;PR&quot;</span>)</span>
+<span id="cb9-16"><a href="user-documentation.html#cb9-16" aria-hidden="true" tabindex="-1"></a>states_names_list <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb9-17"><a href="user-documentation.html#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Alabama&quot;</span>, <span class="st">&quot;Alaska&quot;</span>, <span class="st">&quot;Arizona&quot;</span>, <span class="st">&quot;Arkansas&quot;</span>, <span class="st">&quot;California&quot;</span>, </span>
+<span id="cb9-18"><a href="user-documentation.html#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Colorado&quot;</span>, <span class="st">&quot;Connecticut&quot;</span>, <span class="st">&quot;Delaware&quot;</span>, </span>
+<span id="cb9-19"><a href="user-documentation.html#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;District of Columbia&quot;</span>, <span class="st">&quot;Florida&quot;</span>,<span class="st">&quot;Georgia&quot;</span>, <span class="st">&quot;Hawaii&quot;</span>, </span>
+<span id="cb9-20"><a href="user-documentation.html#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Idaho&quot;</span>, <span class="st">&quot;Illinois&quot;</span>, <span class="st">&quot;Indiana&quot;</span>, <span class="st">&quot;Iowa&quot;</span>, <span class="st">&quot;Kansas&quot;</span>, </span>
+<span id="cb9-21"><a href="user-documentation.html#cb9-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Kentucky&quot;</span>, <span class="st">&quot;Louisiana&quot;</span>, <span class="st">&quot;Maine&quot;</span>,<span class="st">&quot;Maryland&quot;</span>, </span>
+<span id="cb9-22"><a href="user-documentation.html#cb9-22" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Massachusetts&quot;</span>, <span class="st">&quot;Michigan&quot;</span>, <span class="st">&quot;Minnesota&quot;</span>, <span class="st">&quot;Mississippi&quot;</span>, </span>
+<span id="cb9-23"><a href="user-documentation.html#cb9-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Missouri&quot;</span>, <span class="st">&quot;Montana&quot;</span>, <span class="st">&quot;Nebraska&quot;</span>, <span class="st">&quot;Nevada&quot;</span>, <span class="st">&quot;New Hampshire&quot;</span>,</span>
+<span id="cb9-24"><a href="user-documentation.html#cb9-24" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;New Jersey&quot;</span>, <span class="st">&quot;New Mexico&quot;</span>, <span class="st">&quot;New York&quot;</span>, <span class="st">&quot;North Carolina&quot;</span>, </span>
+<span id="cb9-25"><a href="user-documentation.html#cb9-25" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;North Dakota&quot;</span>, <span class="st">&quot;Ohio&quot;</span>, <span class="st">&quot;Oklahoma&quot;</span>, <span class="st">&quot;Oregon&quot;</span>, <span class="st">&quot;Pennsylvania&quot;</span>, </span>
+<span id="cb9-26"><a href="user-documentation.html#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Rhode Island&quot;</span>,<span class="st">&quot;South Carolina&quot;</span>, <span class="st">&quot;South Dakota&quot;</span>, <span class="st">&quot;Tennessee&quot;</span>, </span>
+<span id="cb9-27"><a href="user-documentation.html#cb9-27" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Texas&quot;</span>, <span class="st">&quot;Utah&quot;</span>, <span class="st">&quot;Vermont&quot;</span>, <span class="st">&quot;Virginia&quot;</span>, <span class="st">&quot;Washington&quot;</span>, </span>
+<span id="cb9-28"><a href="user-documentation.html#cb9-28" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;West Virginia&quot;</span>, <span class="st">&quot;Wisconsin&quot;</span>,<span class="st">&quot;Wyoming&quot;</span>, <span class="st">&quot;Puerto Rico&quot;</span>)</span>
+<span id="cb9-29"><a href="user-documentation.html#cb9-29" aria-hidden="true" tabindex="-1"></a>df_states_fips <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">list</span>(<span class="at">fips =</span> fips_list,</span>
+<span id="cb9-30"><a href="user-documentation.html#cb9-30" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">state =</span> state_list,</span>
+<span id="cb9-31"><a href="user-documentation.html#cb9-31" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">state_full =</span> states_names_list))</span>
+<span id="cb9-32"><a href="user-documentation.html#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-33"><a href="user-documentation.html#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="co"># loop through state df to get all ZIP codes w/in state</span></span>
+<span id="cb9-34"><a href="user-documentation.html#cb9-34" aria-hidden="true" tabindex="-1"></a>df_states_zip_codes <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb9-35"><a href="user-documentation.html#cb9-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-36"><a href="user-documentation.html#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(fips_list)){</span>
+<span id="cb9-37"><a href="user-documentation.html#cb9-37" aria-hidden="true" tabindex="-1"></a>  state <span class="ot">&lt;-</span> zipcodeR<span class="sc">::</span><span class="fu">search_fips</span>(<span class="at">state_fips =</span> fips_list[[i]]) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-38"><a href="user-documentation.html#cb9-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(zipcode, state)</span>
+<span id="cb9-39"><a href="user-documentation.html#cb9-39" aria-hidden="true" tabindex="-1"></a>  df_states_zip_codes <span class="ot">&lt;-</span> <span class="fu">rbind</span>(df_states_zip_codes, state)</span>
+<span id="cb9-40"><a href="user-documentation.html#cb9-40" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-41"><a href="user-documentation.html#cb9-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-42"><a href="user-documentation.html#cb9-42" aria-hidden="true" tabindex="-1"></a><span class="co"># add full state name and fips code to list of all ZIP codes for each state</span></span>
+<span id="cb9-43"><a href="user-documentation.html#cb9-43" aria-hidden="true" tabindex="-1"></a>df_states_fips_zip_codes <span class="ot">&lt;-</span> </span>
+<span id="cb9-44"><a href="user-documentation.html#cb9-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(<span class="at">x =</span> df_states_zip_codes,</span>
+<span id="cb9-45"><a href="user-documentation.html#cb9-45" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> df_states_fips,</span>
+<span id="cb9-46"><a href="user-documentation.html#cb9-46" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="st">&quot;state&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-47"><a href="user-documentation.html#cb9-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>fips) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-48"><a href="user-documentation.html#cb9-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">customer_zip_state =</span> state,</span>
+<span id="cb9-49"><a href="user-documentation.html#cb9-49" aria-hidden="true" tabindex="-1"></a>         <span class="at">customer_zip_state_full =</span> state_full,</span>
+<span id="cb9-50"><a href="user-documentation.html#cb9-50" aria-hidden="true" tabindex="-1"></a>         <span class="at">zip_code =</span> zipcode)</span></code></pre></div>
 </div>
 <div id="u.s.-census-data" class="section level4" number="8.3.1.2">
 <h4><span class="header-section-number">8.3.1.2</span> U.S. Census Data</h4>
-<p>US Census data is publicly accessible in many ways. Our product utilizes the R package <code>tidycensus</code> <span class="citation">(<a href="#ref-R-tidycensus" role="doc-biblioref">Walker and Herman 2022</a>)</span> to access the necessary variables from the 2018 <a href="https://www.census.gov/programs-surveys/acs/data.html">American Community Survey (ACS)</a> via API. API access requires an api key, which can be .</p>
+<p>US Census data is publicly accessible in many ways. Our product utilizes the R package <code>tidycensus</code> <span class="citation">(<a href="#ref-R-tidycensus" role="doc-biblioref">Walker and Herman 2021</a>)</span> to access the necessary variables from the 2018 <a href="https://www.census.gov/programs-surveys/acs/data.html">American Community Survey (ACS)</a> via API. API access requires an api key, which can be .</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="user-documentation.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># API set up</span></span>
 <span id="cb10-2"><a href="user-documentation.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ONLY HAVE TO RUN THE FIRST TIME USING THIS RMD on a new machine</span></span>
 <span id="cb10-3"><a href="user-documentation.html#cb10-3" aria-hidden="true" tabindex="-1"></a>census_api <span class="ot">&lt;-</span> <span class="fu">source</span>(<span class="st">&quot;private/census-api.R&quot;</span>)</span>
@@ -477,34 +499,280 @@ div.csl-indent {
 <p>The variables included in the App include median-income, race, language(s) spoken at home, and highest level of education attained. All variables are represented as estimates in numeric format for a ZIP code tabulation area. Data are called by geographic region, in our case the ZIP code tabulation area, and include an estimated number of people that fall into each category within each ZIP code, a margin of error, and an estimated number of total people in the area. Within our custom functions <code>function_acs_education.R</code>, <code>function_acs_language.R</code>, <code>function_acs_median_income.R</code>, and <code>function_acs_race.R</code> we first imported just the necessary columns for each ACS variable.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="user-documentation.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import variables for race</span></span>
 <span id="cb11-2"><a href="user-documentation.html#cb11-2" aria-hidden="true" tabindex="-1"></a>acs_df <span class="ot">&lt;-</span> </span>
-<span id="cb11-3"><a href="user-documentation.html#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;zcta&quot;</span>, <span class="at">year =</span> <span class="dv">2018</span>,</span>
-<span id="cb11-4"><a href="user-documentation.html#cb11-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">state =</span> <span class="st">&quot;CA&quot;</span>, <span class="at">survey =</span> <span class="st">&quot;acs5&quot;</span>,</span>
-<span id="cb11-5"><a href="user-documentation.html#cb11-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">summary_var =</span> <span class="st">&quot;B03002_001&quot;</span>, <span class="co">#Estimate!!Total: </span></span>
-<span id="cb11-6"><a href="user-documentation.html#cb11-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">variables =</span> <span class="fu">c</span>(</span>
-<span id="cb11-7"><a href="user-documentation.html#cb11-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">white =</span> <span class="st">&quot;B03002_003&quot;</span>, <span class="co">#Estimate!!Total!!Not Hispanic or Latino!!White alone</span></span>
-<span id="cb11-8"><a href="user-documentation.html#cb11-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">black =</span> <span class="st">&quot;B03002_004&quot;</span>, <span class="co"># Estimate!!Total:!!Not Hispanic or Latino!!Black or African American alone</span></span>
-<span id="cb11-9"><a href="user-documentation.html#cb11-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">native_american =</span> <span class="st">&quot;B03002_005&quot;</span>, <span class="co"># Estimate!!Total:!!Not Hispanic or Latino!!American Indian and Alaska Native alone</span></span>
-<span id="cb11-10"><a href="user-documentation.html#cb11-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">asian =</span> <span class="st">&quot;B03002_006&quot;</span>, <span class="co"># Estimate!!Total:!!Not Hispanic or Latino!!Asian alone</span></span>
-<span id="cb11-11"><a href="user-documentation.html#cb11-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">pacific_islander =</span> <span class="st">&quot;B03002_007&quot;</span>, <span class="co"># Estimate!!Total:!!Not Hispanic or Latino!!Native Hawaiian and Other Pacific Islander alone</span></span>
-<span id="cb11-12"><a href="user-documentation.html#cb11-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">other =</span> <span class="st">&quot;B03002_008&quot;</span>, <span class="co"># Estimate!!Total:!!Not Hispanic or Latino!!Some other race alone</span></span>
-<span id="cb11-13"><a href="user-documentation.html#cb11-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">multiracial =</span> <span class="st">&quot;B03002_009&quot;</span>, <span class="co"># Estimate!!Total:!!Not Hispanic or Latino!!Two or more races</span></span>
-<span id="cb11-14"><a href="user-documentation.html#cb11-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">hispanic_latinx =</span> <span class="st">&quot;B03002_012&quot;</span> <span class="co"># Estimate!!Total!!Hispanic or Latino</span></span>
-<span id="cb11-15"><a href="user-documentation.html#cb11-15" aria-hidden="true" tabindex="-1"></a>          ))</span></code></pre></div>
+<span id="cb11-3"><a href="user-documentation.html#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_acs</span>(</span>
+<span id="cb11-4"><a href="user-documentation.html#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">geography =</span> <span class="st">&quot;zcta&quot;</span>, <span class="at">year =</span> <span class="dv">2018</span>,</span>
+<span id="cb11-5"><a href="user-documentation.html#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">state =</span> <span class="st">&quot;CA&quot;</span>, <span class="at">survey =</span> <span class="st">&quot;acs5&quot;</span>,</span>
+<span id="cb11-6"><a href="user-documentation.html#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">summary_var =</span> <span class="st">&quot;B03002_001&quot;</span>, <span class="co">#Estimate!!Total: </span></span>
+<span id="cb11-7"><a href="user-documentation.html#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">variables =</span> <span class="fu">c</span>(</span>
+<span id="cb11-8"><a href="user-documentation.html#cb11-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">white =</span> <span class="st">&quot;B03002_003&quot;</span>, <span class="co">#White alone</span></span>
+<span id="cb11-9"><a href="user-documentation.html#cb11-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">black =</span> <span class="st">&quot;B03002_004&quot;</span>, <span class="co">#Black or African American alone</span></span>
+<span id="cb11-10"><a href="user-documentation.html#cb11-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">native_american =</span> <span class="st">&quot;B03002_005&quot;</span>, <span class="co">#American Indian and Alaska Native alone</span></span>
+<span id="cb11-11"><a href="user-documentation.html#cb11-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">asian =</span> <span class="st">&quot;B03002_006&quot;</span>, <span class="co">#Asian alone</span></span>
+<span id="cb11-12"><a href="user-documentation.html#cb11-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">pacific_islander =</span> <span class="st">&quot;B03002_007&quot;</span>, <span class="co">#Native Hawaiian and Other Pacific Islander alone</span></span>
+<span id="cb11-13"><a href="user-documentation.html#cb11-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">other =</span> <span class="st">&quot;B03002_008&quot;</span>, <span class="co">#Some other race alone</span></span>
+<span id="cb11-14"><a href="user-documentation.html#cb11-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">multiracial =</span> <span class="st">&quot;B03002_009&quot;</span>, <span class="co">#Two or more races</span></span>
+<span id="cb11-15"><a href="user-documentation.html#cb11-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">hispanic_latinx =</span> <span class="st">&quot;B03002_012&quot;</span> <span class="co">#Hispanic or Latino</span></span>
+<span id="cb11-16"><a href="user-documentation.html#cb11-16" aria-hidden="true" tabindex="-1"></a>    ))</span></code></pre></div>
 <pre><code>## Getting data from the 2014-2018 5-year ACS</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="user-documentation.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(acs_df, <span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 10 × 7
-##    GEOID NAME        variable         estimate   moe summary_est summary_moe
-##    &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;               &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
-##  1 90001 ZCTA5 90001 white                 413   165       58975        1725
-##  2 90001 ZCTA5 90001 black                5138   646       58975        1725
-##  3 90001 ZCTA5 90001 native_american        37    42       58975        1725
-##  4 90001 ZCTA5 90001 asian                  67    38       58975        1725
-##  5 90001 ZCTA5 90001 pacific_islander        0    29       58975        1725
-##  6 90001 ZCTA5 90001 other                 168   169       58975        1725
-##  7 90001 ZCTA5 90001 multiracial            66    44       58975        1725
-##  8 90001 ZCTA5 90001 hispanic_latinx     53086  1591       58975        1725
-##  9 90002 ZCTA5 90002 white                 223    81       53111        2031
-## 10 90002 ZCTA5 90002 black               10110   876       53111        2031</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+GEOID
+</th>
+<th style="text-align:left;">
+NAME
+</th>
+<th style="text-align:left;">
+variable
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+moe
+</th>
+<th style="text-align:right;">
+summary_est
+</th>
+<th style="text-align:right;">
+summary_moe
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+90001
+</td>
+<td style="text-align:left;">
+ZCTA5 90001
+</td>
+<td style="text-align:left;">
+white
+</td>
+<td style="text-align:right;">
+413
+</td>
+<td style="text-align:right;">
+165
+</td>
+<td style="text-align:right;">
+58975
+</td>
+<td style="text-align:right;">
+1725
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+90001
+</td>
+<td style="text-align:left;">
+ZCTA5 90001
+</td>
+<td style="text-align:left;">
+black
+</td>
+<td style="text-align:right;">
+5138
+</td>
+<td style="text-align:right;">
+646
+</td>
+<td style="text-align:right;">
+58975
+</td>
+<td style="text-align:right;">
+1725
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+90001
+</td>
+<td style="text-align:left;">
+ZCTA5 90001
+</td>
+<td style="text-align:left;">
+native_american
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:right;">
+58975
+</td>
+<td style="text-align:right;">
+1725
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+90001
+</td>
+<td style="text-align:left;">
+ZCTA5 90001
+</td>
+<td style="text-align:left;">
+asian
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+58975
+</td>
+<td style="text-align:right;">
+1725
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+90001
+</td>
+<td style="text-align:left;">
+ZCTA5 90001
+</td>
+<td style="text-align:left;">
+pacific_islander
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+58975
+</td>
+<td style="text-align:right;">
+1725
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+90001
+</td>
+<td style="text-align:left;">
+ZCTA5 90001
+</td>
+<td style="text-align:left;">
+other
+</td>
+<td style="text-align:right;">
+168
+</td>
+<td style="text-align:right;">
+169
+</td>
+<td style="text-align:right;">
+58975
+</td>
+<td style="text-align:right;">
+1725
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+90001
+</td>
+<td style="text-align:left;">
+ZCTA5 90001
+</td>
+<td style="text-align:left;">
+multiracial
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+58975
+</td>
+<td style="text-align:right;">
+1725
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+90001
+</td>
+<td style="text-align:left;">
+ZCTA5 90001
+</td>
+<td style="text-align:left;">
+hispanic_latinx
+</td>
+<td style="text-align:right;">
+53086
+</td>
+<td style="text-align:right;">
+1591
+</td>
+<td style="text-align:right;">
+58975
+</td>
+<td style="text-align:right;">
+1725
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+90002
+</td>
+<td style="text-align:left;">
+ZCTA5 90002
+</td>
+<td style="text-align:left;">
+white
+</td>
+<td style="text-align:right;">
+223
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+53111
+</td>
+<td style="text-align:right;">
+2031
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+90002
+</td>
+<td style="text-align:left;">
+ZCTA5 90002
+</td>
+<td style="text-align:left;">
+black
+</td>
+<td style="text-align:right;">
+10110
+</td>
+<td style="text-align:right;">
+876
+</td>
+<td style="text-align:right;">
+53111
+</td>
+<td style="text-align:right;">
+2031
+</td>
+</tr>
+</tbody>
+</table>
 <p>Percentages for the categories within each ACS variable are calculated for race, language(s) spoken in the home, and highest level of education by dividing the estimate for a category by the estimated total population for that ZIP code.</p>
 <p>For median-income, the estimated median-income is used as is, without further adjustments.</p>
 <p>ACS data are then pivoted wider, moving the different categories and percentages (ex: racial groups) to their own columns to create a single row for each ZIP code. This is necessary for joining the ACS data sets to the RIDS data set.</p>
@@ -559,10 +827,10 @@ div.csl-indent {
 Bureau, United States Census. 2022. <span>“American Community Survey 5-Year Data (2009-2020).”</span> website.
 </div>
 <div id="ref-R-zipcodeR" class="csl-entry">
-Rozzi, Gavin. 2022. <em>zipcodeR: Data &amp; Functions for Working with US ZIP Codes</em>.
+Rozzi, Gavin. 2021. <em>zipcodeR: Data &amp; Functions for Working with US ZIP Codes</em>. <a href="https://CRAN.R-project.org/package=zipcodeR">https://CRAN.R-project.org/package=zipcodeR</a>.
 </div>
 <div id="ref-R-tidycensus" class="csl-entry">
-Walker, Kyle, and Matt Herman. 2022. <em>Tidycensus: Load US Census Boundary and Attribute Data as Tidyverse and Sf-Ready Data Frames</em>. <a href="https://walker-data.com/tidycensus/">https://walker-data.com/tidycensus/</a>.
+Walker, Kyle, and Matt Herman. 2021. <em>Tidycensus: Load US Census Boundary and Attribute Data as Tidyverse and Sf-Ready Data Frames</em>. <a href="https://walker-data.com/tidycensus/">https://walker-data.com/tidycensus/</a>.
 </div>
 <div id="ref-R-stringr" class="csl-entry">
 Wickham, Hadley. 2019. <em>Stringr: Simple, Consistent Wrappers for Common String Operations</em>. <a href="https://CRAN.R-project.org/package=stringr">https://CRAN.R-project.org/package=stringr</a>.
@@ -581,6 +849,7 @@ Wickham, Hadley. 2019. <em>Stringr: Simple, Consistent Wrappers for Common Strin
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -621,7 +890,7 @@ gitbook.start({
 },
 "download": ["_main.pdf", "_main.epub"],
 "search": {
-"engine": "fuse",
+"engine": "lunr",
 "options": null
 },
 "toc": {

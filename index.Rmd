@@ -55,7 +55,6 @@ library(tmap)
 library(sf)
 library(rmapshaper)
 library(tigris)
-library(googlesheets4) # read in metadata sheets
 library(kableExtra)
 
 #-- IMPORT DATA -- ##
