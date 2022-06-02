@@ -30,6 +30,7 @@ user-guide-and-technical-documentation
 products-and-deliverables
 r-shiny-app
 metadata
+package-versions
 summary-of-testing
 data-integrity
 code-review

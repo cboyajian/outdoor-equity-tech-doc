@@ -53,6 +53,8 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -185,6 +187,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="6.1" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html#r-shiny-app"><i class="fa fa-check"></i><b>6.1</b> R Shiny App</a></li>
 <li class="chapter" data-level="6.2" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html#metadata"><i class="fa fa-check"></i><b>6.2</b> Metadata</a></li>
+<li class="chapter" data-level="6.3" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html#package-versions"><i class="fa fa-check"></i><b>6.3</b> Package Versions</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="summary-of-testing.html"><a href="summary-of-testing.html"><i class="fa fa-check"></i><b>7</b> Summary of Testing</a>
 <ul>
@@ -263,7 +266,7 @@ div.csl-indent {
 <p>Due to time constraints, we were not able to implement all testing methods we wanted. We recommend the following testing strategies to make the app more robust and for smoother functionality.</p>
 <ul>
 <li>Use the R package <code>testthat</code> <span class="citation">(<a href="#ref-R-testthat" role="doc-biblioref">Wickham 2022</a>)</span> to conduct unit tests on the scripts used to create Tidy datasets and for subsetted datasets for visualization. This type of testing may be important to avoid silent failures and to ensure that the datasets are aggregating correctly.</li>
-<li>Use <code>gremlin.js</code>, a JavaScript library used for “Monkey testing” to test the behavior of the R Shiny App. This package is compatible with <code>shiny</code> <span class="citation">(<a href="#ref-R-shiny" role="doc-biblioref">Chang et al. 2021</a>)</span> and does not require any external installation. “Monkey testing” is a type of testing where random, automated tests provide random inputs and then checks the behavior of the app (i.e. if the system or application crashes). We were able to find some finicky bugs through our own testing of random inputs, but “Monkey testing” is the formal process.</li>
+<li>Use <a href="https://github.com/marmelab/gremlins.js"><code>gremlin.js</code></a>), a JavaScript library used for “Monkey testing” to test the behavior of the R Shiny App. This package is compatible with <code>shiny</code> <span class="citation">(<a href="#ref-R-shiny" role="doc-biblioref">Chang et al. 2021</a>)</span> and does not require any external installation. “Monkey testing” is a type of testing where random, automated tests provide random inputs and then checks the behavior of the app (i.e. if the system or application crashes). We were able to find some finicky bugs through our own testing of random inputs, but “Monkey testing” is the formal process.</li>
 <li>Employ user testing with federal public land managers, researchers, and those who are not familiar with RIDB data to further enhance the user experience and design.</li>
 </ul>
 

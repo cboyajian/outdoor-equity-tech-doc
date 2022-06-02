@@ -271,6 +271,62 @@ df_states_fips_zip_codes <-
 
 #### U.S. Census Data
 
+US Census data is publicly accessible in many ways. Our product utilizes the R package `tidycensus` [@R-tidycensus] to access the necessary variables from the 2018 [American Community Survey (ACS)](https://www.census.gov/programs-surveys/acs/data.html) via API. API access requires an api key, which can be . 
+
+```{r, eval=FALSE, message=FALSE}
+# API set up
+# ONLY HAVE TO RUN THE FIRST TIME USING THIS RMD on a new machine
+census_api <- source("private/census-api.R")
+census_api_key(key = census_api[[1]], install = TRUE, overwrite = TRUE)
+# run in console:
+readRenviron("~/.Renviron")
+
+# look at option variables
+#View(load_variables(2018, "acs5", cache = TRUE))
+```
+
+Sample data are collected for the ACS each year and includes many variables that cover social, economic, housing, and demographic characteristics. The Outdoor Equity App utilizes the [ACS 5-year data](https://www.census.gov/data/developers/data-sets/acs-5year.html), which is an estimate representing data collected over the designated 5 year period. We used the 5-year ACS data over the 1-year ACS data because it increases "statistical reliability of the data for less populated areas and small population subgroups" [@ACS].
+
+The variables included in the App include median-income, race, language(s) spoken at home, and highest level of education attained. All variables are represented as estimates in numeric format for a ZIP code tabulation area. Data are called by geographic region, in our case the ZIP code tabulation area, and include an estimated number of people that fall into each category within each ZIP code, a margin of error, and an estimated number of total people in the area. Within our custom functions `function_acs_education.R`, `function_acs_language.R`, `function_acs_median_income.R`, and `function_acs_race.R` we first imported just the necessary columns for each ACS variable. 
+
+```{r}
+# import variables for race
+acs_df <- 
+  get_acs(geography = "zcta", year = 2018,
+          state = "CA", survey = "acs5",
+          summary_var = "B03002_001", #Estimate!!Total: 
+          variables = c(
+            white = "B03002_003", #Estimate!!Total!!Not Hispanic or Latino!!White alone
+            black = "B03002_004", # Estimate!!Total:!!Not Hispanic or Latino!!Black or African American alone
+            native_american = "B03002_005", # Estimate!!Total:!!Not Hispanic or Latino!!American Indian and Alaska Native alone
+            asian = "B03002_006", # Estimate!!Total:!!Not Hispanic or Latino!!Asian alone
+            pacific_islander = "B03002_007", # Estimate!!Total:!!Not Hispanic or Latino!!Native Hawaiian and Other Pacific Islander alone
+            other = "B03002_008", # Estimate!!Total:!!Not Hispanic or Latino!!Some other race alone
+            multiracial = "B03002_009", # Estimate!!Total:!!Not Hispanic or Latino!!Two or more races
+            hispanic_latinx = "B03002_012" # Estimate!!Total!!Hispanic or Latino
+          ))
+
+head(acs_df, 10)
+```
+
+Percentages for the categories within each ACS variable are calculated for race, language(s) spoken in the home, and highest level of education by dividing the estimate for a category by the estimated total population for that ZIP code. 
+
+```{r}
+
+```
+
+For median-income, the estimated median-income is used as is, without further adjustments. 
+
+```{r}
+
+```
+
+ACS data are then pivoted wider, moving the different categories and percentages (ex: racial groups) to their own columns to create a single row for each ZIP code. This is necessary for joining the ACS data sets to the RIDS data set. 
+
+```{r}
+
+```
+
 
 
 #### Data Joining

@@ -56,6 +56,7 @@ library(sf)
 library(rmapshaper)
 library(tigris)
 library(googlesheets4) # read in metadata sheets
+library(kableExtra)
 
 #-- IMPORT DATA -- ##
 # RIDB raw data
@@ -90,8 +91,8 @@ knitr::write_bib(
     "tidycensus", "zipcodeR", "tigris", "plotly", "tmap", "sf", "rmapshaper", 
     "DT", "collections", "rsconnect", "bslib",  "shiny", "shinydashboard", 
     "shinydashboardPlus", "shinyWidgets", "shinycssloaders", "shinyjs", 
-    "reactlog", "shinytest", "shinyloadtest", "gremlin.js", "testthat", 
-    "tictoc"
+    "reactlog", "shinytest", "shinyloadtest",
+    "testthat", "tictoc"
     ), 
   'packages.bib')
 ```

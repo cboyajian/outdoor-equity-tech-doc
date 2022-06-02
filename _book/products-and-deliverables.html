@@ -53,6 +53,8 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -185,6 +187,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="6.1" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html#r-shiny-app"><i class="fa fa-check"></i><b>6.1</b> R Shiny App</a></li>
 <li class="chapter" data-level="6.2" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html#metadata"><i class="fa fa-check"></i><b>6.2</b> Metadata</a></li>
+<li class="chapter" data-level="6.3" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html#package-versions"><i class="fa fa-check"></i><b>6.3</b> Package Versions</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="summary-of-testing.html"><a href="summary-of-testing.html"><i class="fa fa-check"></i><b>7</b> Summary of Testing</a>
 <ul>
@@ -245,7 +248,7 @@ div.csl-indent {
 <h1><span class="header-section-number">Section 6</span> Products and Deliverables</h1>
 <div id="r-shiny-app" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> R Shiny App</h2>
-<p>The <a href="https://shinyapps.bren.ucsb.edu/oe_app/">Outdoor Equity App</a> was built using the R <code>shiny</code> package <span class="citation">(<a href="#ref-R-shiny" role="doc-biblioref">Chang et al. 2021</a>)</span> and has the following functionality:</p>
+<p>The <a href="https://shinyapps.bren.ucsb.edu/oe_app/">Outdoor Equity App</a> was built using the <code>shiny</code> package <span class="citation">(<a href="#ref-R-shiny" role="doc-biblioref">Chang et al. 2021</a>)</span> and has the following functionality:</p>
 <ul>
 <li>Visualize statistical distributions of <a href="https://ridb.recreation.gov/download">RIDB</a> and <a href="https://www.census.gov/programs-surveys/acs/data.html">US Census American Community Survey (ACS)</a> variables</li>
 <li>Visualize relationships between RIDB and ACS variables</li>
@@ -256,453 +259,1152 @@ div.csl-indent {
 </div>
 <div id="metadata" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Metadata</h2>
-<table style="width:100%;">
-<caption><span id="tab:unnamed-chunk-4">Table 6.1: </span>Metadata of joined RIDB-ACS dataset</caption>
-<colgroup>
-<col width="8%" />
-<col width="4%" />
-<col width="40%" />
-<col width="3%" />
-<col width="3%" />
-<col width="4%" />
-<col width="23%" />
-<col width="6%" />
-<col width="6%" />
-</colgroup>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:500px; ">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-4">Table 6.1: </span>Metadata of joined RIDB-ACS dataset
+</caption>
 <thead>
-<tr class="header">
-<th align="left">variable name</th>
-<th align="left">data_source</th>
-<th align="left">definition</th>
-<th align="left">unit</th>
-<th align="left">class</th>
-<th align="left">data_type</th>
-<th align="left">provenance (which scripts if used to created this var)</th>
-<th align="left">missing_value_code</th>
-<th align="left">total_unique_values</th>
+<tr>
+<th style="text-align:left;">
+Variable Name
+</th>
+<th style="text-align:left;">
+Data Source
+</th>
+<th style="text-align:left;">
+Definition
+</th>
+<th style="text-align:left;">
+Unit
+</th>
+<th style="text-align:left;">
+Class
+</th>
+<th style="text-align:left;">
+Data Type
+</th>
+<th style="text-align:left;">
+Provenance
+</th>
+<th style="text-align:left;">
+Missing Value Code
+</th>
+<th style="text-align:left;">
+Total Unique Values
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">agency</td>
-<td align="left">ridb</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">character</td>
-<td align="left">categorical</td>
-<td align="left">none</td>
-<td align="left">NA</td>
-<td align="left">4</td>
+<tr>
+<td style="text-align:left;">
+agency
+</td>
+<td style="text-align:left;">
+ridb
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+categorical
+</td>
+<td style="text-align:left;">
+none
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+4
+</td>
 </tr>
-<tr class="even">
-<td align="left">admin_unit</td>
-<td align="left">ridb</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">character</td>
-<td align="left">categorical</td>
-<td align="left">none</td>
-<td align="left">NA</td>
-<td align="left">43</td>
+<tr>
+<td style="text-align:left;">
+admin_unit
+</td>
+<td style="text-align:left;">
+ridb
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+categorical
+</td>
+<td style="text-align:left;">
+none
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+43
+</td>
 </tr>
-<tr class="odd">
-<td align="left">park</td>
-<td align="left">ridb</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">character</td>
-<td align="left">categorical</td>
-<td align="left">none</td>
-<td align="left">NA</td>
-<td align="left">447</td>
+<tr>
+<td style="text-align:left;">
+park
+</td>
+<td style="text-align:left;">
+ridb
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+categorical
+</td>
+<td style="text-align:left;">
+none
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+447
+</td>
 </tr>
-<tr class="even">
-<td align="left">aggregated_site_type</td>
-<td align="left">ridb</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">character</td>
-<td align="left">categorical</td>
-<td align="left">data_preparation/functions/function_ridb_variable_calculate-pre2018.R</td>
-<td align="left">NA</td>
-<td align="left">7</td>
+<tr>
+<td style="text-align:left;">
+aggregated_site_type
+</td>
+<td style="text-align:left;">
+ridb
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+categorical
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_ridb_variable_calculate-pre2018.R
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+7
+</td>
 </tr>
-<tr class="odd">
-<td align="left">facility_id</td>
-<td align="left">ridb</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<tr>
+<td style="text-align:left;">
+facility_id
+</td>
+<td style="text-align:left;">
+ridb
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td align="left">facility_state</td>
-<td align="left">ridb</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">character</td>
-<td align="left">categorical</td>
-<td align="left">none</td>
-<td align="left">NA</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:left;">
+facility_state
+</td>
+<td style="text-align:left;">
+ridb
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+categorical
+</td>
+<td style="text-align:left;">
+none
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">customer_zip</td>
-<td align="left">ridb</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">character</td>
-<td align="left">categorical</td>
-<td align="left">none</td>
-<td align="left">NA</td>
-<td align="left">15861</td>
+<tr>
+<td style="text-align:left;">
+customer_zip
+</td>
+<td style="text-align:left;">
+ridb
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+categorical
+</td>
+<td style="text-align:left;">
+none
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+15861
+</td>
 </tr>
-<tr class="even">
-<td align="left">customer_zip_state</td>
-<td align="left">acs</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<tr>
+<td style="text-align:left;">
+customer_zip_state
+</td>
+<td style="text-align:left;">
+acs
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
-<tr class="odd">
-<td align="left">customer_zip_state_full</td>
-<td align="left">acs</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<tr>
+<td style="text-align:left;">
+customer_zip_state_full
+</td>
+<td style="text-align:left;">
+acs
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td align="left">total_paid</td>
-<td align="left">ridb</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">numeric</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">1567</td>
+<tr>
+<td style="text-align:left;">
+total_paid
+</td>
+<td style="text-align:left;">
+ridb
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1567
+</td>
 </tr>
-<tr class="odd">
-<td align="left">start_date</td>
-<td align="left">ridb</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">date</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">734</td>
+<tr>
+<td style="text-align:left;">
+start_date
+</td>
+<td style="text-align:left;">
+ridb
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+date
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+734
+</td>
 </tr>
-<tr class="even">
-<td align="left">end_date</td>
-<td align="left">ridb</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">date</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">731</td>
+<tr>
+<td style="text-align:left;">
+end_date
+</td>
+<td style="text-align:left;">
+ridb
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+date
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+731
+</td>
 </tr>
-<tr class="odd">
-<td align="left">order_date</td>
-<td align="left">ridb</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">date</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">364</td>
+<tr>
+<td style="text-align:left;">
+order_date
+</td>
+<td style="text-align:left;">
+ridb
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+date
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+364
+</td>
 </tr>
-<tr class="even">
-<td align="left">number_of_people</td>
-<td align="left">ridb</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">numeric</td>
-<td align="left">NA</td>
-<td align="left">none</td>
-<td align="left">NA</td>
-<td align="left">80</td>
+<tr>
+<td style="text-align:left;">
+number_of_people
+</td>
+<td style="text-align:left;">
+ridb
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+none
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+80
+</td>
 </tr>
-<tr class="odd">
-<td align="left">length_of_stay</td>
-<td align="left">ridb</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">numeric</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">21</td>
+<tr>
+<td style="text-align:left;">
+length_of_stay
+</td>
+<td style="text-align:left;">
+ridb
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+21
+</td>
 </tr>
-<tr class="even">
-<td align="left">booking_window</td>
-<td align="left">ridb</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">numeric</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">444</td>
+<tr>
+<td style="text-align:left;">
+booking_window
+</td>
+<td style="text-align:left;">
+ridb
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+444
+</td>
 </tr>
-<tr class="odd">
-<td align="left">daily_cost_per_visitor</td>
-<td align="left">ridb</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">numeric</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">5095</td>
+<tr>
+<td style="text-align:left;">
+daily_cost_per_visitor
+</td>
+<td style="text-align:left;">
+ridb
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+5095
+</td>
 </tr>
-<tr class="even">
-<td align="left">facility_latitude</td>
-<td align="left">ridb</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">none</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<tr>
+<td style="text-align:left;">
+facility_latitude
+</td>
+<td style="text-align:left;">
+ridb
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+none
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
-<tr class="odd">
-<td align="left">facility_longitude</td>
-<td align="left">ridb</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">none</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<tr>
+<td style="text-align:left;">
+facility_longitude
+</td>
+<td style="text-align:left;">
+ridb
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+none
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td align="left">distance_traveled_m</td>
-<td align="left">ridb</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">numeric</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<tr>
+<td style="text-align:left;">
+distance_traveled_m
+</td>
+<td style="text-align:left;">
+ridb
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
-<tr class="odd">
-<td align="left">zip_code_population.x</td>
-<td align="left">acs</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<tr>
+<td style="text-align:left;">
+zip_code_population.x
+</td>
+<td style="text-align:left;">
+acs
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td align="left">asian</td>
-<td align="left">acs</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">numeric</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<tr>
+<td style="text-align:left;">
+asian
+</td>
+<td style="text-align:left;">
+acs
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
-<tr class="odd">
-<td align="left">black</td>
-<td align="left">acs</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">numeric</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<tr>
+<td style="text-align:left;">
+black
+</td>
+<td style="text-align:left;">
+acs
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td align="left">hispanic_latinx</td>
-<td align="left">acs</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">numeric</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<tr>
+<td style="text-align:left;">
+hispanic_latinx
+</td>
+<td style="text-align:left;">
+acs
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
-<tr class="odd">
-<td align="left">multiracial</td>
-<td align="left">acs</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">numeric</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<tr>
+<td style="text-align:left;">
+multiracial
+</td>
+<td style="text-align:left;">
+acs
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td align="left">native_american</td>
-<td align="left">acs</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">numeric</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<tr>
+<td style="text-align:left;">
+native_american
+</td>
+<td style="text-align:left;">
+acs
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
-<tr class="odd">
-<td align="left">other</td>
-<td align="left">acs</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">numeric</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<tr>
+<td style="text-align:left;">
+other
+</td>
+<td style="text-align:left;">
+acs
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td align="left">pacific_islander</td>
-<td align="left">acs</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">numeric</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<tr>
+<td style="text-align:left;">
+pacific_islander
+</td>
+<td style="text-align:left;">
+acs
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
-<tr class="odd">
-<td align="left">white</td>
-<td align="left">acs</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">numeric</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<tr>
+<td style="text-align:left;">
+white
+</td>
+<td style="text-align:left;">
+acs
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td align="left">zip_code_population.y</td>
-<td align="left">acs</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<tr>
+<td style="text-align:left;">
+zip_code_population.y
+</td>
+<td style="text-align:left;">
+acs
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
-<tr class="odd">
-<td align="left">college</td>
-<td align="left">acs</td>
-<td align="left">estimated percentage of population with a college degree in a zip code</td>
-<td align="left">percentage</td>
-<td align="left">numeric</td>
-<td align="left">continuous</td>
-<td align="left">data_preparation/functions/function_acs_education.R</td>
-<td align="left">NA</td>
-<td align="left">11641</td>
+<tr>
+<td style="text-align:left;">
+college
+</td>
+<td style="text-align:left;">
+acs
+</td>
+<td style="text-align:left;">
+estimated percentage of population with a college degree in a zip code
+</td>
+<td style="text-align:left;">
+percentage
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_acs_education.R
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+11641
+</td>
 </tr>
-<tr class="even">
-<td align="left">hs_GED_or_below</td>
-<td align="left">acs</td>
-<td align="left">estimated percentage of population with a high school General Educational Development (GED) degree or below in a zip code</td>
-<td align="left">percentage</td>
-<td align="left">numeric</td>
-<td align="left">continuous</td>
-<td align="left">data_preparation/functions/function_acs_education.R</td>
-<td align="left">NA</td>
-<td align="left">11705</td>
+<tr>
+<td style="text-align:left;">
+hs_GED_or_below
+</td>
+<td style="text-align:left;">
+acs
+</td>
+<td style="text-align:left;">
+estimated percentage of population with a high school General Educational Development (GED) degree or below in a zip code
+</td>
+<td style="text-align:left;">
+percentage
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_acs_education.R
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+11705
+</td>
 </tr>
-<tr class="odd">
-<td align="left">master_or_above</td>
-<td align="left">acs</td>
-<td align="left">estimated percentage of population with a master degree or above in a zip code</td>
-<td align="left">percentage</td>
-<td align="left">numeric</td>
-<td align="left">continuous</td>
-<td align="left">data_preparation/functions/function_acs_education.R</td>
-<td align="left">NA</td>
-<td align="left">11445</td>
+<tr>
+<td style="text-align:left;">
+master_or_above
+</td>
+<td style="text-align:left;">
+acs
+</td>
+<td style="text-align:left;">
+estimated percentage of population with a master degree or above in a zip code
+</td>
+<td style="text-align:left;">
+percentage
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_acs_education.R
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+11445
+</td>
 </tr>
-<tr class="even">
-<td align="left">some_college</td>
-<td align="left">acs</td>
-<td align="left">estimated percentage of population with some college education in a zip code</td>
-<td align="left">percentage</td>
-<td align="left">numeric</td>
-<td align="left">continuous</td>
-<td align="left">data_preparation/functions/function_acs_education.R</td>
-<td align="left">NA</td>
-<td align="left">11631</td>
+<tr>
+<td style="text-align:left;">
+some_college
+</td>
+<td style="text-align:left;">
+acs
+</td>
+<td style="text-align:left;">
+estimated percentage of population with some college education in a zip code
+</td>
+<td style="text-align:left;">
+percentage
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_acs_education.R
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+11631
+</td>
 </tr>
-<tr class="odd">
-<td align="left">median_income</td>
-<td align="left">acs</td>
-<td align="left">median household income in the past 12 months in 2019 inflation-adjusted dollars</td>
-<td align="left">dollars</td>
-<td align="left">numeric</td>
-<td align="left">continuous</td>
-<td align="left">data_preparation/functions/function_acs_median_income.R</td>
-<td align="left">NA</td>
-<td align="left">10439</td>
+<tr>
+<td style="text-align:left;">
+median_income
+</td>
+<td style="text-align:left;">
+acs
+</td>
+<td style="text-align:left;">
+median household income in the past 12 months in 2019 inflation-adjusted dollars
+</td>
+<td style="text-align:left;">
+dollars
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_acs_median_income.R
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+10439
+</td>
 </tr>
-<tr class="even">
-<td align="left">zip_code_population</td>
-<td align="left">acs</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">numeric</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<tr>
+<td style="text-align:left;">
+zip_code_population
+</td>
+<td style="text-align:left;">
+acs
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
 </tr>
-<tr class="odd">
-<td align="left">english_only</td>
-<td align="left">acs</td>
-<td align="left">estimated percentage of population that speak only english in the home in a zip code</td>
-<td align="left">percentage</td>
-<td align="left">numeric</td>
-<td align="left">continuous</td>
-<td align="left">data_preparation/functions/function_acs_language.R</td>
-<td align="left">NA</td>
-<td align="left">11469</td>
+<tr>
+<td style="text-align:left;">
+english_only
+</td>
+<td style="text-align:left;">
+acs
+</td>
+<td style="text-align:left;">
+estimated percentage of population that speak only english in the home in a zip code
+</td>
+<td style="text-align:left;">
+percentage
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_acs_language.R
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+11469
+</td>
 </tr>
-<tr class="even">
-<td align="left">not_english_only</td>
-<td align="left">acs</td>
-<td align="left">estimated percentage of population that speak a language other than english in the home in a zip code</td>
-<td align="left">percentage</td>
-<td align="left">numeric</td>
-<td align="left">continuous</td>
-<td align="left">data_preparation/functions/function_acs_language.R</td>
-<td align="left">NA</td>
-<td align="left">11469</td>
+<tr>
+<td style="text-align:left;">
+not_english_only
+</td>
+<td style="text-align:left;">
+acs
+</td>
+<td style="text-align:left;">
+estimated percentage of population that speak a language other than english in the home in a zip code
+</td>
+<td style="text-align:left;">
+percentage
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_acs_language.R
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+11469
+</td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div id="package-versions" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Package Versions</h2>
+<p>The table below includes information on the specific package versions used to create the Outdoor Equity App.</p>
 
 </div>
 </div>

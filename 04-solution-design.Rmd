@@ -57,7 +57,7 @@ acs_functions_df <-
 
 knitr::kable(acs_functions_df,
              align = "l",
-             caption = "A table of the 11 custom cleaning and wrangling functions created for the ACS and RIDB data and the 6 custom cleaning and wrangling functions to create data sets for visitorshed maps and data relationship plots.",
+             caption = "A table of the cleaning and wrangling functions created for the ACS and RIDB data and functions to create data sets for visitorshed maps and data relationship plots.",
              row.names = FALSE)
 ```
 
