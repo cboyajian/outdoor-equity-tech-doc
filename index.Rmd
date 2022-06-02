@@ -90,7 +90,8 @@ knitr::write_bib(
     "tidycensus", "zipcodeR", "tigris", "plotly", "tmap", "sf", "rmapshaper", 
     "DT", "collections", "rsconnect", "bslib",  "shiny", "shinydashboard", 
     "shinydashboardPlus", "shinyWidgets", "shinycssloaders", "shinyjs", 
-    "reactlog", "shinytest"
+    "reactlog", "shinytest", "shinyloadtest", "gremlin.js", "testthat", 
+    "tictoc"
     ), 
   'packages.bib')
 ```

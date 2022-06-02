@@ -353,56 +353,24 @@ This technical documentation is created with the \texttt{bookdown} package \cite
 \hypertarget{r-shiny-app}{%
 \section{R Shiny App}\label{r-shiny-app}}
 
-The Outdoor Equity Shiny App has the following functionality:
+The \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App} was built using the R \texttt{shiny} package \citep{R-shiny} and has the following functionality:
 
 \begin{itemize}
 \tightlist
 \item
-  Visualize statistical distributions of RIDB and US Census variables
+  Visualize statistical distributions of \href{https://ridb.recreation.gov/download}{RIDB} and \href{https://www.census.gov/programs-surveys/acs/data.html}{US Census American Community Survey (ACS)} variables
 \item
-  Visualize relationships between RIDB and US census variables
+  Visualize relationships between RIDB and ACS variables
 \item
-  Created visualizations can be downloaded as png
+  Download visualizations as PNG images
 \item
-  View visitorshed maps of reservable sites both nationally and within state site is located in
+  View visitorshed maps of reservable sites both nationally and within the state where the campsite is located
 \item
   Download customized subsets of the data
 \end{itemize}
 
-Help documentation:
-
-\begin{itemize}
-\tightlist
-\item
-  User guide
-\item
-  Metadata
-\item
-  Background
-\end{itemize}
-
 \hypertarget{metadata}{%
 \section{Metadata}\label{metadata}}
-
-\begin{verbatim}
-## Rows: 38 Columns: 9-- Column specification --------------------------------------------------------
-## Delimiter: ","
-## chr (7): variable name, data_source, definition, unit, class, data_type, pro...
-## dbl (1): total_unique_values
-## lgl (1): missing_value_code
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# create table of metadata}
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(data\_joined\_2018\_metadata\_df,}
-             \AttributeTok{align =} \StringTok{"l"}\NormalTok{,}
-             \AttributeTok{caption =} \StringTok{"Metadata of joined RIDB{-}ACS dataset"}\NormalTok{,}
-             \AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{table}
 
@@ -511,7 +479,7 @@ We separated our workflows so that one person created scripts, and the other rev
 \hypertarget{product-testing}{%
 \section{Product Testing}\label{product-testing}}
 
-We used three packages to test our R Shiny app. We used \texttt{shinytest} to ensure our app is visualized the way we expect it to using the package's snapshot-based testing strategy. We used \texttt{shinyloadtest} to test the server hosting the R Shiny App to ensure that it responds in a reasonable amount of time based on the inputs a user provides. Similarly, we utilized the \texttt{tictoc} package during our data wrangling and cleaning, and when we initially created our plots, graphs, and maps to estimate an informed guess of how long it may take the app to run our scripts. Lastly, we used the \texttt{reactlog} package's diagnostic tool which creates a reactive visualizer for the app to make sure that reactive elements are working the way we expected them to. It is important to note that this diagnostic tool was not useful as our app functionality increased, as the reactive visualizer became impossible to read. There may be other options within \texttt{reactlog} to use the reactive visualizer in a different way, but we did not have enough time to research this.
+We used three packages to test our R Shiny app. We used \texttt{shinytest} \citep{R-shinytest} to ensure our app is visualized the way we expect it to using the package's snapshot-based testing strategy. We used \texttt{shinyloadtest} \citep{R-shinyloadtest} to test the server hosting the R Shiny App to ensure that it responds in a reasonable amount of time based on the inputs a user provides. Similarly, we utilized the \texttt{tictoc} \citep{R-tictoc} package during our data wrangling and cleaning, and when we initially created our plots, graphs, and maps to estimate an informed guess of how long it may take the app to run our scripts. Lastly, we used the \texttt{reactlog} \citep{R-reactlog} package's diagnostic tool which creates a reactive visualizer for the app to make sure that reactive elements are working the way we expected them to. It is important to note that this diagnostic tool was not useful as our app functionality increased, as the reactive visualizer became impossible to read. There may be other options within \texttt{reactlog} to use the reactive visualizer in a different way, but we did not have enough time to research this.
 
 We added temporary print statements to all functions in the app to ensure that the functions were working correctly were are outputting what we expect. We removed print statements from functions that were functioning with zero errors. We did this because print statements can take a long time to run and should not be left in functions or in the app permanently.
 
@@ -525,9 +493,9 @@ Due to time constraints, we were not able to implement all testing methods we wa
 \begin{itemize}
 \tightlist
 \item
-  Use the R package \texttt{testthat} to conduct unit tests on the scripts used to create Tidy datasets and for subsetted datasets for visualization. This type of testing may be important to avoid silent failures and to ensure that the datasets are aggregating correctly.
+  Use the R package \texttt{testthat} \citep{R-testthat} to conduct unit tests on the scripts used to create Tidy datasets and for subsetted datasets for visualization. This type of testing may be important to avoid silent failures and to ensure that the datasets are aggregating correctly.
 \item
-  Use \texttt{gremlin.js}, a JavaScript library used for ``Monkey testing'' to test the behavior of the R Shiny App. This package is compatible with \texttt{shiny} and does not require any external installation. ``Monkey testing'' is a type of testing where random, automated tests provide random inputs and then checks the behavior of the app (i.e.~if the system or application crashes). We were able to find some finicky bugs through our own testing of random inputs, but ``Monkey testing'' is the formal process.
+  Use \texttt{gremlin.js}, a JavaScript library used for ``Monkey testing'' to test the behavior of the R Shiny App. This package is compatible with \texttt{shiny} \citep{R-shiny} and does not require any external installation. ``Monkey testing'' is a type of testing where random, automated tests provide random inputs and then checks the behavior of the app (i.e.~if the system or application crashes). We were able to find some finicky bugs through our own testing of random inputs, but ``Monkey testing'' is the formal process.
 \item
   Employ user testing with federal public land managers, researchers, and those who are not familiar with RIDB data to further enhance the user experience and design.
 \end{itemize}
@@ -585,19 +553,13 @@ The function then selects only the necessary variables, including information ab
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# select variables}
-\FunctionTok{select}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"agency"}\NormalTok{, }\StringTok{"parent\_location"}\NormalTok{,}
-         \StringTok{"region\_description"}\NormalTok{, }\StringTok{"park"}\NormalTok{,}
-         \StringTok{"site\_type"}\NormalTok{, }\StringTok{"facility\_id"}\NormalTok{,}
-         \StringTok{"facility\_state"}\NormalTok{, }\StringTok{"facility\_longitude"}\NormalTok{,}
-         \StringTok{"facility\_latitude"}\NormalTok{, }\StringTok{"customer\_zip"}\NormalTok{,}
-         \StringTok{"total\_paid"}\NormalTok{, }\StringTok{"start\_date"}\NormalTok{,}
-         \StringTok{"end\_date"}\NormalTok{, }\StringTok{"order\_date"}\NormalTok{,}
-         \StringTok{"number\_of\_people"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{select}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"agency"}\NormalTok{, }\StringTok{"parent\_location"}\NormalTok{, }\StringTok{"region\_description"}\NormalTok{, }\StringTok{"park"}\NormalTok{,}
+         \StringTok{"site\_type"}\NormalTok{, }\StringTok{"facility\_id"}\NormalTok{, }\StringTok{"facility\_state"}\NormalTok{, }\StringTok{"facility\_longitude"}\NormalTok{,}
+         \StringTok{"facility\_latitude"}\NormalTok{, }\StringTok{"customer\_zip"}\NormalTok{, }\StringTok{"total\_paid"}\NormalTok{, }\StringTok{"start\_date"}\NormalTok{,}
+         \StringTok{"end\_date"}\NormalTok{, }\StringTok{"order\_date"}\NormalTok{, }\StringTok{"number\_of\_people"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{site\_type =} \FunctionTok{tolower}\NormalTok{(site\_type)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\NormalTok{site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"historic tour"}\NormalTok{, }\StringTok{"hiking zone"}\NormalTok{,}
-                           \StringTok{"group picnic area"}\NormalTok{, }\StringTok{"cave tour"}\NormalTok{,}
-                           \StringTok{"management"}\NormalTok{, }\StringTok{"picnic"}\NormalTok{,}
-                           \StringTok{"entry point"}\NormalTok{, }\StringTok{"trailhead"}\NormalTok{))}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\NormalTok{site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"historic tour"}\NormalTok{, }\StringTok{"hiking zone"}\NormalTok{, }\StringTok{"group picnic area"}\NormalTok{, }\StringTok{"cave tour"}\NormalTok{,}
+                           \StringTok{"management"}\NormalTok{, }\StringTok{"picnic"}\NormalTok{, }\StringTok{"entry point"}\NormalTok{, }\StringTok{"trailhead"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -626,10 +588,8 @@ A second custom function is then utilized to calculate and manipulate variables 
        \AttributeTok{end\_date =} \FunctionTok{as.Date}\NormalTok{(end\_date),}
        \AttributeTok{order\_date =} \FunctionTok{as.Date}\NormalTok{(order\_date),}
        \CommentTok{\# calculate new variables}
-       \AttributeTok{length\_of\_stay =} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{difftime}\NormalTok{(end\_date, start\_date), }
-                                   \AttributeTok{units =} \StringTok{"days"}\NormalTok{),}
-       \AttributeTok{booking\_window =} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{difftime}\NormalTok{(start\_date, order\_date), }
-                                   \AttributeTok{units =} \StringTok{"days"}\NormalTok{))}
+       \AttributeTok{length\_of\_stay =} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{difftime}\NormalTok{(end\_date, start\_date), }\AttributeTok{units =} \StringTok{"days"}\NormalTok{),}
+       \AttributeTok{booking\_window =} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{difftime}\NormalTok{(start\_date, order\_date), }\AttributeTok{units =} \StringTok{"days"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -649,29 +609,21 @@ Site types are aggregated to create 7 broader site categories.
 \begin{Highlighting}[]
 \CommentTok{\# aggregate site type}
 \FunctionTok{mutate}\NormalTok{(}\AttributeTok{aggregated\_site\_type =} 
-               \FunctionTok{case\_when}\NormalTok{(site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"walk to"}\NormalTok{,}
-                                          \StringTok{"hike to"}\NormalTok{,}
-                                          \StringTok{"group hike to"}\NormalTok{,}
-                                          \StringTok{"group walk to"}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"remote"}\NormalTok{,}
-\NormalTok{                         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"cabin nonelectric"}\NormalTok{,}
-                                          \StringTok{"cabin electric"}\NormalTok{,}
-                                          \StringTok{"yurt"}\NormalTok{,}
-                                          \StringTok{"shelter nonelectric"}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"shelter"}\NormalTok{,}
-\NormalTok{                         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"boat in"}\NormalTok{,}
-                                          \StringTok{"anchorage"}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"water"}\NormalTok{,}
-\NormalTok{                         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"group equestrian"}\NormalTok{,}
-                                          \StringTok{"equestrian nonelectric"}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"equestrian"}\NormalTok{,}
-\NormalTok{                         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"rv nonelectric"}\NormalTok{,}
-                                          \StringTok{"rv electric"}\NormalTok{,}
-                                          \StringTok{"group rv area nonelectric"}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"rv only"}\NormalTok{,}
-\NormalTok{                         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"group standard nonelectric"}\NormalTok{,}
-                                          \StringTok{"standard nonelectric"}\NormalTok{,}
-                                          \StringTok{"standard electric"}\NormalTok{,}
-                                          \StringTok{"group standard area nonelectric"}\NormalTok{,}
-                                          \StringTok{"group standard electric"}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"rv or tent"}\NormalTok{,}
-\NormalTok{                         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"tent only nonelectric"}\NormalTok{,}
-                                          \StringTok{"group tent only area nonelectric"}\NormalTok{,}
-                                          \StringTok{"tent only electric"}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"tent only"}\NormalTok{))}
+         \FunctionTok{case\_when}\NormalTok{(site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"walk to"}\NormalTok{, }\StringTok{"hike to"}\NormalTok{, }\StringTok{"group hike to"}\NormalTok{, }\StringTok{"group walk to"}
+\NormalTok{         ) }\SpecialCharTok{\textasciitilde{}} \StringTok{"remote"}\NormalTok{,}
+\NormalTok{         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"cabin nonelectric"}\NormalTok{, }\StringTok{"cabin electric"}\NormalTok{, }\StringTok{"yurt"}\NormalTok{,}\StringTok{"shelter nonelectric"}
+\NormalTok{         ) }\SpecialCharTok{\textasciitilde{}} \StringTok{"shelter"}\NormalTok{,}
+\NormalTok{         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"boat in"}\NormalTok{, }\StringTok{"anchorage"}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"water"}\NormalTok{,}
+\NormalTok{         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"group equestrian"}\NormalTok{, }\StringTok{"equestrian nonelectric"}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"equestrian"}\NormalTok{,}
+\NormalTok{         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"rv nonelectric"}\NormalTok{, }\StringTok{"rv electric"}\NormalTok{, }\StringTok{"group rv area nonelectric"}
+\NormalTok{         ) }\SpecialCharTok{\textasciitilde{}} \StringTok{"rv only"}\NormalTok{,}
+\NormalTok{         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"group standard nonelectric"}\NormalTok{, }\StringTok{"standard nonelectric"}\NormalTok{,}
+                          \StringTok{"standard electric"}\NormalTok{, }\StringTok{"group standard area nonelectric"}\NormalTok{,}
+                          \StringTok{"group standard electric"}
+\NormalTok{         ) }\SpecialCharTok{\textasciitilde{}} \StringTok{"rv or tent"}\NormalTok{,}
+\NormalTok{         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"tent only nonelectric"}\NormalTok{, }\StringTok{"group tent only area nonelectric"}\NormalTok{,}
+                          \StringTok{"tent only electric"}
+\NormalTok{         ) }\SpecialCharTok{\textasciitilde{}} \StringTok{"tent only"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 

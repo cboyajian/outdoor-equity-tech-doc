@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.6.1)  2 JUN 2022 05:40
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.6.1)  2 JUN 2022 17:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -836,68 +836,57 @@ LaTeX Warning: Float too large for page by 24.09181pt on input line 341.
 ]
 Chapter 6.
 
-Overfull \hbox (190.5pt too wide) in paragraph at lines 395--395
-[]\TU/lmtt/m/n/10 ## Rows: 38 Columns: 9-- Column specification --------------------------------------------------------[] 
- []
-
-
-Overfull \hbox (85.5pt too wide) in paragraph at lines 395--395
-[]\TU/lmtt/m/n/10 ## chr (7): variable name, data_source, definition, unit, class, data_type, pro...[] 
- []
-
-
-Overfull \hbox (43.5pt too wide) in paragraph at lines 395--395
-[]\TU/lmtt/m/n/10 ## i Use `spec()` to retrieve the full column specification for this data.[] 
- []
-
-
-Overfull \hbox (96.0pt too wide) in paragraph at lines 395--395
-[]\TU/lmtt/m/n/10 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.[] 
- []
-
-[29]
-Overfull \hbox (1123.34013pt too wide) in paragraph at lines 411--492
+Overfull \hbox (1123.34013pt too wide) in paragraph at lines 379--460
  [][] 
  []
 
-[30] [31] [32
-
-]
+[29] [30]
 Chapter 7.
 
 Underfull \vbox (badness 2452) has occurred while \output is active []
 
-[33] [34]
-Chapter 8.
-[35
+[31
 
-] [36] [37] [38] [39] [40]
-LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 812.
-[41]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[42] [43] [44
+] [32] [33] [34
 
 ]
+Chapter 8.
+[35] [36] [37] [38]
+Underfull \vbox (badness 10000) detected at line 695
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 695
+ []
+
+[39] [40]
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 764.
+
+Overfull \vbox (1.18997pt too high) detected at line 780
+ []
+
+[41] [42]
 Chapter 9.
-[45] [46
+[43
+
+] [44
 
 ]
 Chapter 10.
-(./_main.bbl [47] [48
+(./_main.bbl [45] [46
 
-] [49]) [50] (./_main.aux)
+] [47] [48]) [49] (./_main.aux)
 Package rerunfilecheck Info: File `_main.out' has not changed.
 (rerunfilecheck)             Checksum: 0077E6965AD779A14754E6A6C0A63059;4702.
  ) 
 Here is how much of TeX's memory you used:
- 17724 strings out of 478126
- 327860 string characters out of 5852738
- 797701 words of memory out of 5000000
- 38140 multiletter control sequences out of 15000+600000
+ 17739 strings out of 478126
+ 328142 string characters out of 5852738
+ 797914 words of memory out of 5000000
+ 38155 multiletter control sequences out of 15000+600000
  475734 words of font info for 84 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 86i,8n,121p,1386b,533s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 86i,8n,121p,1386b,543s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on _main.pdf (50 pages).
+Output written on _main.pdf (49 pages).

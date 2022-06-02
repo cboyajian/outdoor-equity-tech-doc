@@ -255,19 +255,40 @@ div.csl-indent {
 </div>
 <div id="product-testing" class="section level2" number="7.3">
 <h2><span class="header-section-number">7.3</span> Product Testing</h2>
-<p>We used three packages to test our R Shiny app. We used <code>shinytest</code> to ensure our app is visualized the way we expect it to using the package’s snapshot-based testing strategy. We used <code>shinyloadtest</code> to test the server hosting the R Shiny App to ensure that it responds in a reasonable amount of time based on the inputs a user provides. Similarly, we utilized the <code>tictoc</code> package during our data wrangling and cleaning, and when we initially created our plots, graphs, and maps to estimate an informed guess of how long it may take the app to run our scripts. Lastly, we used the <code>reactlog</code> package’s diagnostic tool which creates a reactive visualizer for the app to make sure that reactive elements are working the way we expected them to. It is important to note that this diagnostic tool was not useful as our app functionality increased, as the reactive visualizer became impossible to read. There may be other options within <code>reactlog</code> to use the reactive visualizer in a different way, but we did not have enough time to research this.</p>
+<p>We used three packages to test our R Shiny app. We used <code>shinytest</code> <span class="citation">(<a href="#ref-R-shinytest" role="doc-biblioref">Chang, Csárdi, and Wickham 2021</a>)</span> to ensure our app is visualized the way we expect it to using the package’s snapshot-based testing strategy. We used <code>shinyloadtest</code> <span class="citation">(<a href="#ref-R-shinyloadtest" role="doc-biblioref">Schloerke, Dipert, and Borges 2021</a>)</span> to test the server hosting the R Shiny App to ensure that it responds in a reasonable amount of time based on the inputs a user provides. Similarly, we utilized the <code>tictoc</code> <span class="citation">(<a href="#ref-R-tictoc" role="doc-biblioref">Izrailev 2021</a>)</span> package during our data wrangling and cleaning, and when we initially created our plots, graphs, and maps to estimate an informed guess of how long it may take the app to run our scripts. Lastly, we used the <code>reactlog</code> <span class="citation">(<a href="#ref-R-reactlog" role="doc-biblioref">Schloerke 2020</a>)</span> package’s diagnostic tool which creates a reactive visualizer for the app to make sure that reactive elements are working the way we expected them to. It is important to note that this diagnostic tool was not useful as our app functionality increased, as the reactive visualizer became impossible to read. There may be other options within <code>reactlog</code> to use the reactive visualizer in a different way, but we did not have enough time to research this.</p>
 <p>We added temporary print statements to all functions in the app to ensure that the functions were working correctly were are outputting what we expect. We removed print statements from functions that were functioning with zero errors. We did this because print statements can take a long time to run and should not be left in functions or in the app permanently.</p>
 <p>Additionally, we held multiple meetings with the Recreation One Stop team to obtain real-time and focused feedback to improve user design and experience.</p>
 <div id="next-steps-for-testing" class="section level3" number="7.3.1">
 <h3><span class="header-section-number">7.3.1</span> Next steps for testing</h3>
 <p>Due to time constraints, we were not able to implement all testing methods we wanted. We recommend the following testing strategies to make the app more robust and for smoother functionality.</p>
 <ul>
-<li>Use the R package <code>testthat</code> to conduct unit tests on the scripts used to create Tidy datasets and for subsetted datasets for visualization. This type of testing may be important to avoid silent failures and to ensure that the datasets are aggregating correctly.</li>
-<li>Use <code>gremlin.js</code>, a JavaScript library used for “Monkey testing” to test the behavior of the R Shiny App. This package is compatible with <code>shiny</code> and does not require any external installation. “Monkey testing” is a type of testing where random, automated tests provide random inputs and then checks the behavior of the app (i.e. if the system or application crashes). We were able to find some finicky bugs through our own testing of random inputs, but “Monkey testing” is the formal process.</li>
+<li>Use the R package <code>testthat</code> <span class="citation">(<a href="#ref-R-testthat" role="doc-biblioref">Wickham 2022</a>)</span> to conduct unit tests on the scripts used to create Tidy datasets and for subsetted datasets for visualization. This type of testing may be important to avoid silent failures and to ensure that the datasets are aggregating correctly.</li>
+<li>Use <code>gremlin.js</code>, a JavaScript library used for “Monkey testing” to test the behavior of the R Shiny App. This package is compatible with <code>shiny</code> <span class="citation">(<a href="#ref-R-shiny" role="doc-biblioref">Chang et al. 2021</a>)</span> and does not require any external installation. “Monkey testing” is a type of testing where random, automated tests provide random inputs and then checks the behavior of the app (i.e. if the system or application crashes). We were able to find some finicky bugs through our own testing of random inputs, but “Monkey testing” is the formal process.</li>
 <li>Employ user testing with federal public land managers, researchers, and those who are not familiar with RIDB data to further enhance the user experience and design.</li>
 </ul>
 
 </div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-shiny" class="csl-entry">
+Chang, Winston, Joe Cheng, JJ Allaire, Carson Sievert, Barret Schloerke, Yihui Xie, Jeff Allen, Jonathan McPherson, Alan Dipert, and Barbara Borges. 2021. <em>Shiny: Web Application Framework for r</em>. <a href="https://shiny.rstudio.com/">https://shiny.rstudio.com/</a>.
+</div>
+<div id="ref-R-shinytest" class="csl-entry">
+Chang, Winston, Gábor Csárdi, and Hadley Wickham. 2021. <em>Shinytest: Test Shiny Apps</em>. <a href="https://github.com/rstudio/shinytest">https://github.com/rstudio/shinytest</a>.
+</div>
+<div id="ref-R-tictoc" class="csl-entry">
+Izrailev, Sergei. 2021. <em>Tictoc: Functions for Timing r Scripts, as Well as Implementations of Stack and List Structures</em>. <a href="https://github.com/collectivemedia/tictoc">https://github.com/collectivemedia/tictoc</a>.
+</div>
+<div id="ref-R-reactlog" class="csl-entry">
+Schloerke, Barret. 2020. <em>Reactlog: Reactivity Visualizer for Shiny</em>. <a href="https://CRAN.R-project.org/package=reactlog">https://CRAN.R-project.org/package=reactlog</a>.
+</div>
+<div id="ref-R-shinyloadtest" class="csl-entry">
+Schloerke, Barret, Alan Dipert, and Barbara Borges. 2021. <em>Shinyloadtest: Load Test Shiny Applications</em>. <a href="https://CRAN.R-project.org/package=shinyloadtest">https://CRAN.R-project.org/package=shinyloadtest</a>.
+</div>
+<div id="ref-R-testthat" class="csl-entry">
+———. 2022. <em>Testthat: Unit Testing for r</em>. <a href="https://CRAN.R-project.org/package=testthat">https://CRAN.R-project.org/package=testthat</a>.
 </div>
 </div>
             </section>

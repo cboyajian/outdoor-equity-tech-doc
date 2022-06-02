@@ -245,35 +245,17 @@ div.csl-indent {
 <h1><span class="header-section-number">Section 6</span> Products and Deliverables</h1>
 <div id="r-shiny-app" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> R Shiny App</h2>
-<p>The Outdoor Equity Shiny App has the following functionality:</p>
+<p>The <a href="https://shinyapps.bren.ucsb.edu/oe_app/">Outdoor Equity App</a> was built using the R <code>shiny</code> package <span class="citation">(<a href="#ref-R-shiny" role="doc-biblioref">Chang et al. 2021</a>)</span> and has the following functionality:</p>
 <ul>
-<li>Visualize statistical distributions of RIDB and US Census variables</li>
-<li>Visualize relationships between RIDB and US census variables</li>
-<li>Created visualizations can be downloaded as png</li>
-<li>View visitorshed maps of reservable sites both nationally and within state site is located in</li>
+<li>Visualize statistical distributions of <a href="https://ridb.recreation.gov/download">RIDB</a> and <a href="https://www.census.gov/programs-surveys/acs/data.html">US Census American Community Survey (ACS)</a> variables</li>
+<li>Visualize relationships between RIDB and ACS variables</li>
+<li>Download visualizations as PNG images</li>
+<li>View visitorshed maps of reservable sites both nationally and within the state where the campsite is located</li>
 <li>Download customized subsets of the data</li>
-</ul>
-<p>Help documentation:</p>
-<ul>
-<li>User guide</li>
-<li>Metadata</li>
-<li>Background</li>
 </ul>
 </div>
 <div id="metadata" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Metadata</h2>
-<pre><code>## Rows: 38 Columns: 9── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr (7): variable name, data_source, definition, unit, class, data_type, pro...
-## dbl (1): total_unique_values
-## lgl (1): missing_value_code
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="products-and-deliverables.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create table of metadata</span></span>
-<span id="cb2-2"><a href="products-and-deliverables.html#cb2-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data_joined_2018_metadata_df,</span>
-<span id="cb2-3"><a href="products-and-deliverables.html#cb2-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">align =</span> <span class="st">&quot;l&quot;</span>,</span>
-<span id="cb2-4"><a href="products-and-deliverables.html#cb2-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">&quot;Metadata of joined RIDB-ACS dataset&quot;</span>,</span>
-<span id="cb2-5"><a href="products-and-deliverables.html#cb2-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <table style="width:100%;">
 <caption><span id="tab:unnamed-chunk-4">Table 6.1: </span>Metadata of joined RIDB-ACS dataset</caption>
 <colgroup>
@@ -722,6 +704,12 @@ div.csl-indent {
 </tbody>
 </table>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-shiny" class="csl-entry">
+Chang, Winston, Joe Cheng, JJ Allaire, Carson Sievert, Barret Schloerke, Yihui Xie, Jeff Allen, Jonathan McPherson, Alan Dipert, and Barbara Borges. 2021. <em>Shiny: Web Application Framework for r</em>. <a href="https://shiny.rstudio.com/">https://shiny.rstudio.com/</a>.
 </div>
 </div>
             </section>
