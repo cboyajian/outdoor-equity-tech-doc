@@ -41,6 +41,46 @@
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
@@ -77,7 +117,7 @@
 
 \title{Outdoor Equity App Technical Documentation}
 \author{Clarissa Boyajian and Halina Do-Linh}
-\date{2022-06-01}
+\date{2022-06-02}
 
 \begin{document}
 \maketitle
@@ -313,8 +353,172 @@ This technical documentation is created with the \texttt{bookdown} package \cite
 \hypertarget{r-shiny-app}{%
 \section{R Shiny App}\label{r-shiny-app}}
 
+The Outdoor Equity Shiny App has the following functionality:
+
+\begin{itemize}
+\tightlist
+\item
+  Visualize statistical distributions of RIDB and US Census variables
+\item
+  Visualize relationships between RIDB and US census variables
+\item
+  Created visualizations can be downloaded as png
+\item
+  View visitorshed maps of reservable sites both nationally and within state site is located in
+\item
+  Download customized subsets of the data
+\end{itemize}
+
+Help documentation:
+
+\begin{itemize}
+\tightlist
+\item
+  User guide
+\item
+  Metadata
+\item
+  Background
+\end{itemize}
+
 \hypertarget{metadata}{%
 \section{Metadata}\label{metadata}}
+
+\begin{verbatim}
+## ! Using an auto-discovered, cached token.
+\end{verbatim}
+
+\begin{verbatim}
+##   To suppress this message, modify your code or options to clearly consent to
+##   the use of a cached token.
+\end{verbatim}
+
+\begin{verbatim}
+##   See gargle's "Non-interactive auth" vignette for more details:
+\end{verbatim}
+
+\begin{verbatim}
+##   <https://gargle.r-lib.org/articles/non-interactive-auth.html>
+\end{verbatim}
+
+\begin{verbatim}
+## i The googlesheets4 package is using a cached token for 'halina@ucsb.edu'.
+\end{verbatim}
+
+\begin{verbatim}
+## v Reading from "ridb-acs-joined-2018".
+\end{verbatim}
+
+\begin{verbatim}
+## v Range 'Sheet1'.
+\end{verbatim}
+
+\begin{verbatim}
+## Rows: 38 Columns: 9-- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr (7): variable name, data_source, definition, unit, class, data_type, pro...
+## dbl (1): total_unique_values
+## lgl (1): missing_value_code
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# create table of metadata}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(data\_joined\_2018\_metadata\_df,}
+             \AttributeTok{align =} \StringTok{"l"}\NormalTok{,}
+             \AttributeTok{caption =} \StringTok{"Metadata of joined RIDB{-}ACS dataset"}\NormalTok{,}
+             \AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-4}Metadata of joined RIDB-ACS dataset}
+\centering
+\begin{tabular}[t]{l|l|l|l|l|l|l|l|l}
+\hline
+variable name & data\_source & definition & unit & class & data\_type & provenance (which scripts if used to created this var) & missing\_value\_code & total\_unique\_values\\
+\hline
+agency & ridb & NA & NA & character & categorical & none & NA & 4\\
+\hline
+admin\_unit & ridb & NA & NA & character & categorical & none & NA & 43\\
+\hline
+park & ridb & NA & NA & character & categorical & none & NA & 447\\
+\hline
+aggregated\_site\_type & ridb & NA & NA & character & categorical & data\_preparation/functions/function\_ridb\_variable\_calculate-pre2018.R & NA & 7\\
+\hline
+facility\_id & ridb & NA & NA & NA & NA & NA & NA & NA\\
+\hline
+facility\_state & ridb & NA & NA & character & categorical & none & NA & 1\\
+\hline
+customer\_zip & ridb & NA & NA & character & categorical & none & NA & 15861\\
+\hline
+customer\_zip\_state & acs & NA & NA & NA & NA & NA & NA & NA\\
+\hline
+customer\_zip\_state\_full & acs & NA & NA & NA & NA & NA & NA & NA\\
+\hline
+total\_paid & ridb & NA & NA & numeric & NA & NA & NA & 1567\\
+\hline
+start\_date & ridb & NA & NA & date & NA & NA & NA & 734\\
+\hline
+end\_date & ridb & NA & NA & date & NA & NA & NA & 731\\
+\hline
+order\_date & ridb & NA & NA & date & NA & NA & NA & 364\\
+\hline
+number\_of\_people & ridb & NA & NA & numeric & NA & none & NA & 80\\
+\hline
+length\_of\_stay & ridb & NA & NA & numeric & NA & NA & NA & 21\\
+\hline
+booking\_window & ridb & NA & NA & numeric & NA & NA & NA & 444\\
+\hline
+daily\_cost\_per\_visitor & ridb & NA & NA & numeric & NA & NA & NA & 5095\\
+\hline
+facility\_latitude & ridb & NA & NA & NA & NA & none & NA & NA\\
+\hline
+facility\_longitude & ridb & NA & NA & NA & NA & none & NA & NA\\
+\hline
+distance\_traveled\_m & ridb & NA & NA & numeric & NA & NA & NA & NA\\
+\hline
+zip\_code\_population.x & acs & NA & NA & NA & NA & NA & NA & NA\\
+\hline
+asian & acs & NA & NA & numeric & NA & NA & NA & NA\\
+\hline
+black & acs & NA & NA & numeric & NA & NA & NA & NA\\
+\hline
+hispanic\_latinx & acs & NA & NA & numeric & NA & NA & NA & NA\\
+\hline
+multiracial & acs & NA & NA & numeric & NA & NA & NA & NA\\
+\hline
+native\_american & acs & NA & NA & numeric & NA & NA & NA & NA\\
+\hline
+other & acs & NA & NA & numeric & NA & NA & NA & NA\\
+\hline
+pacific\_islander & acs & NA & NA & numeric & NA & NA & NA & NA\\
+\hline
+white & acs & NA & NA & numeric & NA & NA & NA & NA\\
+\hline
+zip\_code\_population.y & acs & NA & NA & NA & NA & NA & NA & NA\\
+\hline
+college & acs & estimated percentage of population with a college degree in a zip code & percentage & numeric & continuous & data\_preparation/functions/function\_acs\_education.R & NA & 11641\\
+\hline
+hs\_GED\_or\_below & acs & estimated percentage of population with a high school General Educational Development (GED) degree or below in a zip code & percentage & numeric & continuous & data\_preparation/functions/function\_acs\_education.R & NA & 11705\\
+\hline
+master\_or\_above & acs & estimated percentage of population with a master degree or above in a zip code & percentage & numeric & continuous & data\_preparation/functions/function\_acs\_education.R & NA & 11445\\
+\hline
+some\_college & acs & estimated percentage of population with some college education in a zip code & percentage & numeric & continuous & data\_preparation/functions/function\_acs\_education.R & NA & 11631\\
+\hline
+median\_income & acs & median household income in the past 12 months in 2019 inflation-adjusted dollars & dollars & numeric & continuous & data\_preparation/functions/function\_acs\_median\_income.R & NA & 10439\\
+\hline
+zip\_code\_population & acs & NA & NA & numeric & NA & NA & NA & NA\\
+\hline
+english\_only & acs & estimated percentage of population that speak only english in the home in a zip code & percentage & numeric & continuous & data\_preparation/functions/function\_acs\_language.R & NA & 11469\\
+\hline
+not\_english\_only & acs & estimated percentage of population that speak a language other than english in the home in a zip code & percentage & numeric & continuous & data\_preparation/functions/function\_acs\_language.R & NA & 11469\\
+\hline
+\end{tabular}
+\end{table}
 
 \hypertarget{summary-of-testing}{%
 \chapter{Summary of Testing}\label{summary-of-testing}}
@@ -325,11 +529,32 @@ This technical documentation is created with the \texttt{bookdown} package \cite
 \hypertarget{data-integrity}{%
 \section{Data Integrity}\label{data-integrity}}
 
+We screened the data for outliers, by summarizing and visualizing the raw data, and assessed whether those outliers need to be removed. We consulted other researchers who are familiar with the RIDB datasets to confirm outliers or other anomalies in the data.
+
+Additionally, we documented the percent loss from data wrangling to ensure that our cleaning and wrangling of the data were reasonable.
+
 \hypertarget{code-review}{%
 \section{Code Review}\label{code-review}}
 
+We conducted code reviews within the team, and with faculty or external advisers. We reviewed specific code chunks and scripts related to the Outdoor Equity App.
+
+We also confirmed that the data matches how it is being described in the metadata. This confirmation is important as we want our client to be able to scale our product and workflows for future use.
+
 \hypertarget{product-testing}{%
 \section{Product Testing}\label{product-testing}}
+
+We used three packages to test our R Shiny app. We used \texttt{shinytest} to ensure our app is visualized the way we expect it to using the package's snapshot-based testing strategy. We used \texttt{shinyloadtest} to test the server hosting the R Shiny App to ensure that it responds in a reasonable amount of time based on the inputs a user provides. Similarly, we utilized the \texttt{tictoc} package during our data wrangling and cleaning, and when we initially created our plots, graphs, and maps to estimate an informed guess of how long it may take the app to run our scripts. Lastly, we used the \texttt{reactlog} package's diagnostic tool which creates a reactive visualizer for the app to make sure that reactive elements are working the way we expected them to. It is important to note that this diagnostic tool was not useful as our app functionality increased, as the reactive visualizer became impossible to read. There may be other options
+
+Additionally, we held multiple meetings with the Recreation One Stop team to obtain real-time and focused feedback to improve user design and experience.
+
+We have added temporary print statements to all functions in the app to ensure that the functions are working correctly and are outputting what we expect. Additionally,
+
+\hypertarget{next-steps-for-testing}{%
+\subsection{Next steps for testing}\label{next-steps-for-testing}}
+
+We used \texttt{gremlin.js}, a JavaScript library used for ``Monkey testing'' to test the behavior of the R Shiny App. This package is compatible with \texttt{shiny} and does not require any external installation.
+
+Finally, we will employ user testing with federal public land managers, researchers, and those who are not familiar with RIDB data. We will collect feedback in a survey.
 
 \hypertarget{user-documentation}{%
 \chapter{User Documentation}\label{user-documentation}}

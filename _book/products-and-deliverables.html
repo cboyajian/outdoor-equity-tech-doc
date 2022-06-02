@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Section 6 Products and Deliverables | Outdoor Equity App Technical Documentation</title>
   <meta name="description" content="Section 6 Products and Deliverables | Outdoor Equity App Technical Documentation" />
-  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Section 6 Products and Deliverables | Outdoor Equity App Technical Documentation" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Clarissa Boyajian and Halina Do-Linh" />
 
 
-<meta name="date" content="2022-06-01" />
+<meta name="date" content="2022-06-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,9 @@
   
 <link rel="prev" href="summary-of-solution-design.html"/>
 <link rel="next" href="summary-of-testing.html"/>
-<script src="libs/header-attrs-2.10.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,11 +51,74 @@
 
 
 
-
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
@@ -127,7 +191,10 @@ div.csl-indent {
 <li class="chapter" data-level="7.1" data-path="summary-of-testing.html"><a href="summary-of-testing.html#unit-tests"><i class="fa fa-check"></i><b>7.1</b> Unit Tests</a></li>
 <li class="chapter" data-level="7.2" data-path="summary-of-testing.html"><a href="summary-of-testing.html#data-integrity"><i class="fa fa-check"></i><b>7.2</b> Data Integrity</a></li>
 <li class="chapter" data-level="7.3" data-path="summary-of-testing.html"><a href="summary-of-testing.html#code-review"><i class="fa fa-check"></i><b>7.3</b> Code Review</a></li>
-<li class="chapter" data-level="7.4" data-path="summary-of-testing.html"><a href="summary-of-testing.html#product-testing"><i class="fa fa-check"></i><b>7.4</b> Product Testing</a></li>
+<li class="chapter" data-level="7.4" data-path="summary-of-testing.html"><a href="summary-of-testing.html#product-testing"><i class="fa fa-check"></i><b>7.4</b> Product Testing</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="summary-of-testing.html"><a href="summary-of-testing.html#next-steps-for-testing"><i class="fa fa-check"></i><b>7.4.1</b> Next steps for testing</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="user-documentation.html"><a href="user-documentation.html"><i class="fa fa-check"></i><b>8</b> User Documentation</a>
 <ul>
@@ -188,9 +255,490 @@ div.csl-indent {
 <h1><span class="header-section-number">Section 6</span> Products and Deliverables</h1>
 <div id="r-shiny-app" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> R Shiny App</h2>
+<p>The Outdoor Equity Shiny App has the following functionality:</p>
+<ul>
+<li>Visualize statistical distributions of RIDB and US Census variables</li>
+<li>Visualize relationships between RIDB and US census variables</li>
+<li>Created visualizations can be downloaded as png</li>
+<li>View visitorshed maps of reservable sites both nationally and within state site is located in</li>
+<li>Download customized subsets of the data</li>
+</ul>
+<p>Help documentation:</p>
+<ul>
+<li>User guide</li>
+<li>Metadata</li>
+<li>Background</li>
+</ul>
 </div>
 <div id="metadata" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Metadata</h2>
+<pre><code>## ! Using an auto-discovered, cached token.</code></pre>
+<pre><code>##   To suppress this message, modify your code or options to clearly consent to
+##   the use of a cached token.</code></pre>
+<pre><code>##   See gargle&#39;s &quot;Non-interactive auth&quot; vignette for more details:</code></pre>
+<pre><code>##   &lt;https://gargle.r-lib.org/articles/non-interactive-auth.html&gt;</code></pre>
+<pre><code>## ℹ The googlesheets4 package is using a cached token for &#39;halina@ucsb.edu&#39;.</code></pre>
+<pre><code>## ✔ Reading from &quot;ridb-acs-joined-2018&quot;.</code></pre>
+<pre><code>## ✔ Range &#39;Sheet1&#39;.</code></pre>
+<pre><code>## Rows: 38 Columns: 9── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (7): variable name, data_source, definition, unit, class, data_type, pro...
+## dbl (1): total_unique_values
+## lgl (1): missing_value_code
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="products-and-deliverables.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create table of metadata</span></span>
+<span id="cb9-2"><a href="products-and-deliverables.html#cb9-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data_joined_2018_metadata_df,</span>
+<span id="cb9-3"><a href="products-and-deliverables.html#cb9-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">align =</span> <span class="st">&quot;l&quot;</span>,</span>
+<span id="cb9-4"><a href="products-and-deliverables.html#cb9-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">&quot;Metadata of joined RIDB-ACS dataset&quot;</span>,</span>
+<span id="cb9-5"><a href="products-and-deliverables.html#cb9-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<table style="width:100%;">
+<caption><span id="tab:unnamed-chunk-4">Table 6.1: </span>Metadata of joined RIDB-ACS dataset</caption>
+<colgroup>
+<col width="8%" />
+<col width="4%" />
+<col width="40%" />
+<col width="3%" />
+<col width="3%" />
+<col width="4%" />
+<col width="23%" />
+<col width="6%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">variable name</th>
+<th align="left">data_source</th>
+<th align="left">definition</th>
+<th align="left">unit</th>
+<th align="left">class</th>
+<th align="left">data_type</th>
+<th align="left">provenance (which scripts if used to created this var)</th>
+<th align="left">missing_value_code</th>
+<th align="left">total_unique_values</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">agency</td>
+<td align="left">ridb</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">categorical</td>
+<td align="left">none</td>
+<td align="left">NA</td>
+<td align="left">4</td>
+</tr>
+<tr class="even">
+<td align="left">admin_unit</td>
+<td align="left">ridb</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">categorical</td>
+<td align="left">none</td>
+<td align="left">NA</td>
+<td align="left">43</td>
+</tr>
+<tr class="odd">
+<td align="left">park</td>
+<td align="left">ridb</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">categorical</td>
+<td align="left">none</td>
+<td align="left">NA</td>
+<td align="left">447</td>
+</tr>
+<tr class="even">
+<td align="left">aggregated_site_type</td>
+<td align="left">ridb</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">categorical</td>
+<td align="left">data_preparation/functions/function_ridb_variable_calculate-pre2018.R</td>
+<td align="left">NA</td>
+<td align="left">7</td>
+</tr>
+<tr class="odd">
+<td align="left">facility_id</td>
+<td align="left">ridb</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">facility_state</td>
+<td align="left">ridb</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">categorical</td>
+<td align="left">none</td>
+<td align="left">NA</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left">customer_zip</td>
+<td align="left">ridb</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">categorical</td>
+<td align="left">none</td>
+<td align="left">NA</td>
+<td align="left">15861</td>
+</tr>
+<tr class="even">
+<td align="left">customer_zip_state</td>
+<td align="left">acs</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">customer_zip_state_full</td>
+<td align="left">acs</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">total_paid</td>
+<td align="left">ridb</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">numeric</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">1567</td>
+</tr>
+<tr class="odd">
+<td align="left">start_date</td>
+<td align="left">ridb</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">date</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">734</td>
+</tr>
+<tr class="even">
+<td align="left">end_date</td>
+<td align="left">ridb</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">date</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">731</td>
+</tr>
+<tr class="odd">
+<td align="left">order_date</td>
+<td align="left">ridb</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">date</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">364</td>
+</tr>
+<tr class="even">
+<td align="left">number_of_people</td>
+<td align="left">ridb</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">numeric</td>
+<td align="left">NA</td>
+<td align="left">none</td>
+<td align="left">NA</td>
+<td align="left">80</td>
+</tr>
+<tr class="odd">
+<td align="left">length_of_stay</td>
+<td align="left">ridb</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">numeric</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">21</td>
+</tr>
+<tr class="even">
+<td align="left">booking_window</td>
+<td align="left">ridb</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">numeric</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">444</td>
+</tr>
+<tr class="odd">
+<td align="left">daily_cost_per_visitor</td>
+<td align="left">ridb</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">numeric</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">5095</td>
+</tr>
+<tr class="even">
+<td align="left">facility_latitude</td>
+<td align="left">ridb</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">none</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">facility_longitude</td>
+<td align="left">ridb</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">none</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">distance_traveled_m</td>
+<td align="left">ridb</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">numeric</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">zip_code_population.x</td>
+<td align="left">acs</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">asian</td>
+<td align="left">acs</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">numeric</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">black</td>
+<td align="left">acs</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">numeric</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">hispanic_latinx</td>
+<td align="left">acs</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">numeric</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">multiracial</td>
+<td align="left">acs</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">numeric</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">native_american</td>
+<td align="left">acs</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">numeric</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">other</td>
+<td align="left">acs</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">numeric</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">pacific_islander</td>
+<td align="left">acs</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">numeric</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">white</td>
+<td align="left">acs</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">numeric</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">zip_code_population.y</td>
+<td align="left">acs</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">college</td>
+<td align="left">acs</td>
+<td align="left">estimated percentage of population with a college degree in a zip code</td>
+<td align="left">percentage</td>
+<td align="left">numeric</td>
+<td align="left">continuous</td>
+<td align="left">data_preparation/functions/function_acs_education.R</td>
+<td align="left">NA</td>
+<td align="left">11641</td>
+</tr>
+<tr class="even">
+<td align="left">hs_GED_or_below</td>
+<td align="left">acs</td>
+<td align="left">estimated percentage of population with a high school General Educational Development (GED) degree or below in a zip code</td>
+<td align="left">percentage</td>
+<td align="left">numeric</td>
+<td align="left">continuous</td>
+<td align="left">data_preparation/functions/function_acs_education.R</td>
+<td align="left">NA</td>
+<td align="left">11705</td>
+</tr>
+<tr class="odd">
+<td align="left">master_or_above</td>
+<td align="left">acs</td>
+<td align="left">estimated percentage of population with a master degree or above in a zip code</td>
+<td align="left">percentage</td>
+<td align="left">numeric</td>
+<td align="left">continuous</td>
+<td align="left">data_preparation/functions/function_acs_education.R</td>
+<td align="left">NA</td>
+<td align="left">11445</td>
+</tr>
+<tr class="even">
+<td align="left">some_college</td>
+<td align="left">acs</td>
+<td align="left">estimated percentage of population with some college education in a zip code</td>
+<td align="left">percentage</td>
+<td align="left">numeric</td>
+<td align="left">continuous</td>
+<td align="left">data_preparation/functions/function_acs_education.R</td>
+<td align="left">NA</td>
+<td align="left">11631</td>
+</tr>
+<tr class="odd">
+<td align="left">median_income</td>
+<td align="left">acs</td>
+<td align="left">median household income in the past 12 months in 2019 inflation-adjusted dollars</td>
+<td align="left">dollars</td>
+<td align="left">numeric</td>
+<td align="left">continuous</td>
+<td align="left">data_preparation/functions/function_acs_median_income.R</td>
+<td align="left">NA</td>
+<td align="left">10439</td>
+</tr>
+<tr class="even">
+<td align="left">zip_code_population</td>
+<td align="left">acs</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">numeric</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">english_only</td>
+<td align="left">acs</td>
+<td align="left">estimated percentage of population that speak only english in the home in a zip code</td>
+<td align="left">percentage</td>
+<td align="left">numeric</td>
+<td align="left">continuous</td>
+<td align="left">data_preparation/functions/function_acs_language.R</td>
+<td align="left">NA</td>
+<td align="left">11469</td>
+</tr>
+<tr class="even">
+<td align="left">not_english_only</td>
+<td align="left">acs</td>
+<td align="left">estimated percentage of population that speak a language other than english in the home in a zip code</td>
+<td align="left">percentage</td>
+<td align="left">numeric</td>
+<td align="left">continuous</td>
+<td align="left">data_preparation/functions/function_acs_language.R</td>
+<td align="left">NA</td>
+<td align="left">11469</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>
@@ -204,7 +752,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -245,7 +792,7 @@ gitbook.start({
 },
 "download": ["_main.pdf", "_main.epub"],
 "search": {
-"engine": "lunr",
+"engine": "fuse",
 "options": null
 },
 "toc": {

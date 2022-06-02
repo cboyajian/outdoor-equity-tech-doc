@@ -10,6 +10,7 @@ fig:app-screenshot3
 fig:app-screenshot4
 fig:app-screenshot5
 fig:app-screenshot6
+tab:unnamed-chunk-4
 about
 abstract
 about-the-authors
@@ -34,6 +35,7 @@ unit-tests
 data-integrity
 code-review
 product-testing
+next-steps-for-testing
 user-documentation
 overview-of-the-outdoor-equity-application
 background-1
