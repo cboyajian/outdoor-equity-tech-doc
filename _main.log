@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2022.3.8)  2 JUN 2022 03:29
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2022.3.8)  2 JUN 2022 04:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -853,47 +853,27 @@ LaTeX Warning: Float too large for page by 24.09181pt on input line 341.
 ]
 Chapter 6.
 
-Overfull \hbox (75.0pt too wide) in paragraph at lines 394--394
-[]\TU/lmtt/m/n/10 ##   To suppress this message, modify your code or options to clearly consent to[] 
- []
-
-
-Overfull \hbox (6.75pt too wide) in paragraph at lines 398--398
-[]\TU/lmtt/m/n/10 ##   See gargle's "Non-interactive auth" vignette for more details:[] 
- []
-
-
-Overfull \hbox (1.5pt too wide) in paragraph at lines 402--402
-[]\TU/lmtt/m/n/10 ##   <https://gargle.r-lib.org/articles/non-interactive-auth.html>[] 
- []
-
-
-Overfull \hbox (59.25pt too wide) in paragraph at lines 406--406
-[]\TU/lmtt/m/n/10 ## i The googlesheets4 package is using a cached token for 'halina@ucsb.edu'.[] 
- []
-
-[29]
-Overfull \hbox (190.5pt too wide) in paragraph at lines 424--424
+Overfull \hbox (190.5pt too wide) in paragraph at lines 395--395
 []\TU/lmtt/m/n/10 ## Rows: 38 Columns: 9-- Column specification --------------------------------------------------------[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 424--424
+Overfull \hbox (85.5pt too wide) in paragraph at lines 395--395
 []\TU/lmtt/m/n/10 ## chr (7): variable name, data_source, definition, unit, class, data_type, pro...[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 424--424
+Overfull \hbox (43.5pt too wide) in paragraph at lines 395--395
 []\TU/lmtt/m/n/10 ## i Use `spec()` to retrieve the full column specification for this data.[] 
  []
 
 
-Overfull \hbox (96.0pt too wide) in paragraph at lines 424--424
+Overfull \hbox (96.0pt too wide) in paragraph at lines 395--395
 []\TU/lmtt/m/n/10 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.[] 
  []
 
-
-Overfull \hbox (1123.34013pt too wide) in paragraph at lines 440--521
+[29]
+Overfull \hbox (1123.34013pt too wide) in paragraph at lines 411--492
  [][] 
  []
 
@@ -901,6 +881,9 @@ Overfull \hbox (1123.34013pt too wide) in paragraph at lines 440--521
 
 ]
 Chapter 7.
+
+Underfull \vbox (badness 2452) has occurred while \output is active []
+
 [33] [34]
 Chapter 8.
 
@@ -909,7 +892,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [35
 
 ]
-Overfull \vbox (340.3469pt too high) has occurred while \output is active []
+Overfull \vbox (289.4169pt too high) has occurred while \output is active []
 
 [36]
 Chapter 9.
@@ -926,13 +909,13 @@ Chapter 10.
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: F0980CA9C80746E54BE1BA2FB00FE6CA;4855.
+(rerunfilecheck)             Checksum: 0F619D6B47B30F7C593832453AF192A3;4742.
  ) 
 Here is how much of TeX's memory you used:
- 17704 strings out of 478179
- 326645 string characters out of 5854110
- 790428 words of memory out of 5000000
- 38064 multiletter control sequences out of 15000+600000
+ 17701 strings out of 478179
+ 326609 string characters out of 5854110
+ 790302 words of memory out of 5000000
+ 38061 multiletter control sequences out of 15000+600000
  475726 words of font info for 83 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  86i,8n,121p,1386b,527s stack positions out of 5000i,500n,10000p,200000b,80000s
