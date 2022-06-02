@@ -29,7 +29,7 @@ data_joined_2018_metadata_df <-
          Unit = unit,
          Class = class,
          "Data Type" = data_type,
-         Provenance = "provenance (which scripts if used to created this var)",
+         Provenance = "provenance (which scripts to create this var) filepath",
          "Missing Value Code" = missing_value_code,
          "Total Unique Values" = total_unique_values)
 ```
