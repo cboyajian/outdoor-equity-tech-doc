@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.6.1)  2 JUN 2022 05:31
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.6.1)  2 JUN 2022 05:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -871,14 +871,10 @@ Underfull \vbox (badness 2452) has occurred while \output is active []
 Chapter 8.
 [35
 
-] [36] [37] [38]
+] [36] [37] [38] [39] [40]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 693.
-
-LaTeX Font Warning: Font shape `TU/lmtt/bx/it' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 693.
-
-[39] [40] [41]
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 812.
+[41]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [42] [43] [44
@@ -896,11 +892,11 @@ Package rerunfilecheck Info: File `_main.out' has not changed.
 (rerunfilecheck)             Checksum: 0077E6965AD779A14754E6A6C0A63059;4702.
  ) 
 Here is how much of TeX's memory you used:
- 17728 strings out of 478126
- 327941 string characters out of 5852738
+ 17724 strings out of 478126
+ 327860 string characters out of 5852738
  797701 words of memory out of 5000000
- 38142 multiletter control sequences out of 15000+600000
- 475742 words of font info for 85 fonts, out of 8000000 for 9000
+ 38140 multiletter control sequences out of 15000+600000
+ 475734 words of font info for 84 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  86i,8n,121p,1386b,533s stack positions out of 10000i,1000n,20000p,200000b,200000s
 

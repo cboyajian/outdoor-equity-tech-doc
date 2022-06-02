@@ -50,30 +50,13 @@ The function then selects only the necessary variables, including information ab
 
 ```{r, eval=FALSE}
 # select variables
-select(c("agency",
-         "parent_location",
-         "region_description",
-         "park",
-         "site_type",
-         "facility_id",
-         "facility_state",
-         "facility_longitude",
-         "facility_latitude",
-         "customer_zip",
-         "total_paid",
-         "start_date",
-         "end_date",
-         "order_date",
-         "number_of_people")) %>%
+select(c("agency", "parent_location", "region_description", "park",
+         "site_type", "facility_id", "facility_state", "facility_longitude",
+         "facility_latitude", "customer_zip", "total_paid", "start_date",
+         "end_date", "order_date", "number_of_people")) %>%
   mutate(site_type = tolower(site_type)) %>%
-  filter(!site_type %in% c("historic tour",
-                           "hiking zone",
-                           "group picnic area",
-                           "cave tour",
-                           "management",
-                           "picnic",
-                           "entry point",
-                           "trailhead"))
+  filter(!site_type %in% c("historic tour", "hiking zone", "group picnic area", "cave tour",
+                           "management", "picnic", "entry point", "trailhead"))
 ```
 
 The customer ZIP code values are then normalized. This includes filtering for only US ZIP codes and shortening all 9 digit ZIP codes to include only the first 5 digits.
@@ -94,7 +77,7 @@ This function results in the removal of `r comma(nrow(ridb_data_ca_overnight_onl
 
 ```{r, include=FALSE}
 no_valid_booking_window <- data_joined_2018 %>% 
-  mutate(booking_window = as.numeric(difftime(start_date, order_date), units = "days")) %>% 
+  mutate(booking_window = as.numeric(difftime(start_date, order_date),units = "days")) %>% 
   filter(booking_window < 0)
 ```
 
@@ -122,29 +105,21 @@ Site types are aggregated to create 7 broader site categories.
 ```{r, eval=FALSE}
 # aggregate site type
 mutate(aggregated_site_type = 
-               case_when(site_type %in% c("walk to",
-                                          "hike to",
-                                          "group hike to",
-                                          "group walk to") ~ "remote",
-                         site_type %in% c("cabin nonelectric",
-                                          "cabin electric",
-                                          "yurt",
-                                          "shelter nonelectric") ~ "shelter",
-                         site_type %in% c("boat in",
-                                          "anchorage") ~ "water",
-                         site_type %in% c("group equestrian",
-                                          "equestrian nonelectric") ~ "equestrian",
-                         site_type %in% c("rv nonelectric",
-                                          "rv electric",
-                                          "group rv area nonelectric") ~ "rv only",
-                         site_type %in% c("group standard nonelectric",
-                                          "standard nonelectric",
-                                          "standard electric",
-                                          "group standard area nonelectric",
-                                          "group standard electric") ~ "rv or tent",
-                         site_type %in% c("tent only nonelectric",
-                                          "group tent only area nonelectric",
-                                          "tent only electric") ~ "tent only"))
+         case_when(site_type %in% c("walk to", "hike to", "group hike to", "group walk to"
+         ) ~ "remote",
+         site_type %in% c("cabin nonelectric", "cabin electric", "yurt","shelter nonelectric"
+         ) ~ "shelter",
+         site_type %in% c("boat in", "anchorage") ~ "water",
+         site_type %in% c("group equestrian", "equestrian nonelectric") ~ "equestrian",
+         site_type %in% c("rv nonelectric", "rv electric", "group rv area nonelectric"
+         ) ~ "rv only",
+         site_type %in% c("group standard nonelectric", "standard nonelectric",
+                          "standard electric", "group standard area nonelectric",
+                          "group standard electric"
+         ) ~ "rv or tent",
+         site_type %in% c("tent only nonelectric", "group tent only area nonelectric",
+                          "tent only electric"
+         ) ~ "tent only"))
 ```
 
 The administrative unit variable is created by combining the `parent_location` and `region_description` variables as different federal agencies track the administrative unit information in different variables. Then the `agency`, `admin_uni` and `park` variables character strings are updated using multiple functions from the `stringr` package [@R-stringr].
