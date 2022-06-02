@@ -71,28 +71,28 @@ The [Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/) features inter
 
 The app has a navigation bar with four tabs: About, Analysis, Metadata and Data Download. Nested under the Analysis tab are the subtabs of Data Summary, Data Relationship, and Visitorshed Maps. The app opens automatically to the About tab. 
 
-```{r, app-screenshot1, echo=FALSE, fig.cap = "Screenshot of the About page of the Outdoor Equity App"}
-knitr::include_graphics("images/screenshot_about.png")
+```{r, app-screenshot1, echo=FALSE, fig.cap = "Screenshot of the About page of the Outdoor Equity App", fig.height=10}
+knitr::include_graphics("images/screenshot_about.png", dpi = 275)
 ```
 
 ```{r, app-screenshot2, echo=FALSE, fig.cap = "Screenshot of the Analysis page of the Outdoor Equity App"}
-knitr::include_graphics("images/screenshot_data-summary.png")
+knitr::include_graphics("images/screenshot_data-summary.png", dpi = 275)
 ```
 
 ```{r, app-screenshot3, echo=FALSE, fig.cap = "Screenshot of the Analysis page of the Outdoor Equity App"}
-knitr::include_graphics("images/screenshot_data-relationship.png")
+knitr::include_graphics("images/screenshot_data-relationship.png", dpi = 275)
 ```
 
 ```{r, app-screenshot4, echo=FALSE, fig.cap = "Screenshot of the Analysis page of the Outdoor Equity App"}
-knitr::include_graphics("images/screenshot_visitorshed.png")
+knitr::include_graphics("images/screenshot_visitorshed.png", dpi = 275)
 ```
 
 ```{r, app-screenshot5, echo=FALSE, fig.cap = "Screenshot of the Metadata page of the Outdoor Equity App"}
-knitr::include_graphics("images/screenshot_metadata.png")
+knitr::include_graphics("images/screenshot_metadata.png", dpi = 275)
 ```
 
 ```{r, app-screenshot6, echo=FALSE, fig.cap = "Screenshot of the Metadata page of the Outdoor Equity App"}
-knitr::include_graphics("images/screenshot_data-download.png")
+knitr::include_graphics("images/screenshot_data-download.png", dpi = 275)
 ```
 
 

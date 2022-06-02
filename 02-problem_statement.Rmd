@@ -22,19 +22,19 @@ Our overarching objective for this project is to utilize data from RIDB and US C
 ## Figures
 
 ```{r, fig1, echo=FALSE, fig.cap = "Total annual visitors to the National Park Service system, since its inception through 2020. Visitation has been rapidly increasing, particularly within the last decade. (Source: [IRMA](https://irma.nps.gov/Portal/))"}
-knitr::include_graphics("images/problem_statement_figure_1.png", dpi = 100)
+knitr::include_graphics("images/problem_statement_figure_1.png", dpi = 190)
 ```
 
 ```{r, fig2, echo=FALSE, fig.cap = "Reproduced from @Walls2018. Days in advance that National Park campsite reservations are made from 2014 to 2016. Reservations are made far in advance, but many reservations are canceled at the last minute."}
-knitr::include_graphics("images/problem_statement_figure_2.png")
+knitr::include_graphics("images/problem_statement_figure_2.png", dpi = 200)
 ```
 
 ```{r, fig3, echo=FALSE, fig.cap = "Reproduced from @Walls2018. Distance traveled and duration of stay for National Park camping visits from 2014 to 2016. Visitors tend to visit national parks near their homes and stay only two nights, and longer trips are rare."}
-knitr::include_graphics("images/problem_statement_figure_3.png")
+knitr::include_graphics("images/problem_statement_figure_3.png", dpi = 225)
 ```
 
 ```{r, fig4, echo=FALSE, fig.cap = "Reproduced from @Walls2018. Median household income (by zip code) for National Park campers and for US Population. The black line estimates the distribution of median household (HH) income of campers from 2014 to 2016. The red line estimates the distribution of median household for all zip codes in the U.S. using average median household income from 2014 to 2016 where each zip code is an observation."}
-knitr::include_graphics("images/problem_statement_figure_4.png")
+knitr::include_graphics("images/problem_statement_figure_4.png", dpi = 190)
 ```
 
 
