@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Section 6 Products and Deliverables | Outdoor Equity App Technical Documentation</title>
   <meta name="description" content="Section 6 Products and Deliverables | Outdoor Equity App Technical Documentation" />
-  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Section 6 Products and Deliverables | Outdoor Equity App Technical Documentation" />
   <meta property="og:type" content="book" />
@@ -33,8 +33,9 @@
   
 <link rel="prev" href="summary-of-solution-design.html"/>
 <link rel="next" href="summary-of-testing.html"/>
-<script src="libs/header-attrs-2.10.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -42,7 +43,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -221,7 +221,11 @@ div.csl-indent {
 <li class="chapter" data-level="8.4.3" data-path="user-documentation.html"><a href="user-documentation.html#statistical-analysis"><i class="fa fa-check"></i><b>8.4.3</b> Statistical Analysis</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="additional-challenges.html"><a href="additional-challenges.html"><i class="fa fa-check"></i><b>9</b> Additional Challenges</a></li>
+<li class="chapter" data-level="9" data-path="additional-challenges.html"><a href="additional-challenges.html"><i class="fa fa-check"></i><b>9</b> Additional Challenges</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="additional-challenges.html"><a href="additional-challenges.html#technical-challenges"><i class="fa fa-check"></i><b>9.1</b> Technical Challenges</a></li>
+<li class="chapter" data-level="9.2" data-path="additional-challenges.html"><a href="additional-challenges.html#future-challenges"><i class="fa fa-check"></i><b>9.2</b> Future Challenges</a></li>
+</ul></li>
 <li class="chapter" data-level="10" data-path="archive-access.html"><a href="archive-access.html"><i class="fa fa-check"></i><b>10</b> Archive Access</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -303,7 +307,7 @@ agency
 ridb
 </td>
 <td style="text-align:left;">
-NA
+the governing body that manages a type of US public land (i.e. national park, national forest)
 </td>
 <td style="text-align:left;">
 NA
@@ -315,7 +319,7 @@ character
 categorical
 </td>
 <td style="text-align:left;">
-none
+data_preparation/functions/function_ridb_variable_calculate-pre2018.R
 </td>
 <td style="text-align:left;">
 NA
@@ -332,7 +336,7 @@ admin_unit
 ridb
 </td>
 <td style="text-align:left;">
-NA
+the parent location or region description that a campsite belongs within
 </td>
 <td style="text-align:left;">
 NA
@@ -344,7 +348,7 @@ character
 categorical
 </td>
 <td style="text-align:left;">
-none
+data_preparation/functions/function_ridb_variable_calculate-pre2018.R
 </td>
 <td style="text-align:left;">
 NA
@@ -361,7 +365,7 @@ park
 ridb
 </td>
 <td style="text-align:left;">
-NA
+the name of a campsite
 </td>
 <td style="text-align:left;">
 NA
@@ -373,13 +377,13 @@ character
 categorical
 </td>
 <td style="text-align:left;">
-none
+data_preparation/functions/function_ridb_variable_calculate-pre2018.R
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-447
+448
 </td>
 </tr>
 <tr>
@@ -390,7 +394,7 @@ aggregated_site_type
 ridb
 </td>
 <td style="text-align:left;">
-NA
+type of site at a campsite; a campsite can have multiple site types
 </td>
 <td style="text-align:left;">
 NA
@@ -419,25 +423,25 @@ facility_id
 ridb
 </td>
 <td style="text-align:left;">
-NA
+unique id given to a campsite
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
+numeric
+</td>
+<td style="text-align:left;">
+discrete
+</td>
+<td style="text-align:left;">
+none
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
+451
 </td>
 </tr>
 <tr>
@@ -448,7 +452,7 @@ facility_state
 ridb
 </td>
 <td style="text-align:left;">
-NA
+the state that a campsite is located in
 </td>
 <td style="text-align:left;">
 NA
@@ -477,7 +481,7 @@ customer_zip
 ridb
 </td>
 <td style="text-align:left;">
-NA
+the numeric code of the area from where a visitor lives
 </td>
 <td style="text-align:left;">
 NA
@@ -489,7 +493,7 @@ character
 categorical
 </td>
 <td style="text-align:left;">
-none
+data_preparation/functions/function_ridb_subset-pre2018.R
 </td>
 <td style="text-align:left;">
 NA
@@ -506,25 +510,25 @@ customer_zip_state
 acs
 </td>
 <td style="text-align:left;">
-NA
+state acronym for home state of visitor
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
+character
+</td>
+<td style="text-align:left;">
+categorical
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_ridb_variable_calculate-pre2018.R
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
+53
 </td>
 </tr>
 <tr>
@@ -535,25 +539,25 @@ customer_zip_state_full
 acs
 </td>
 <td style="text-align:left;">
-NA
+full name of state for home state of visitor
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
+character
+</td>
+<td style="text-align:left;">
+categorical
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_ridb_variable_calculate-pre2018.R
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
+53
 </td>
 </tr>
 <tr>
@@ -564,19 +568,19 @@ total_paid
 ridb
 </td>
 <td style="text-align:left;">
-NA
+total amount of dollars paid for a reservation
 </td>
 <td style="text-align:left;">
-NA
+dollars
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-NA
+continuous
 </td>
 <td style="text-align:left;">
-NA
+none
 </td>
 <td style="text-align:left;">
 NA
@@ -593,19 +597,19 @@ start_date
 ridb
 </td>
 <td style="text-align:left;">
-NA
+date when booked reservation begins
 </td>
 <td style="text-align:left;">
-NA
+yyyy-mm-dd
 </td>
 <td style="text-align:left;">
 date
 </td>
 <td style="text-align:left;">
-NA
+discrete
 </td>
 <td style="text-align:left;">
-NA
+data_preparation/functions/function_ridb_variable_calculate-pre2018.R
 </td>
 <td style="text-align:left;">
 NA
@@ -622,19 +626,19 @@ end_date
 ridb
 </td>
 <td style="text-align:left;">
-NA
+date when booked reservation ends
 </td>
 <td style="text-align:left;">
-NA
+yyyy-mm-dd
 </td>
 <td style="text-align:left;">
 date
 </td>
 <td style="text-align:left;">
-NA
+discrete
 </td>
 <td style="text-align:left;">
-NA
+data_preparation/functions/function_ridb_variable_calculate-pre2018.R
 </td>
 <td style="text-align:left;">
 NA
@@ -651,19 +655,19 @@ order_date
 ridb
 </td>
 <td style="text-align:left;">
-NA
+date when reservation was booked and purchased
 </td>
 <td style="text-align:left;">
-NA
+yyyy-mm-dd
 </td>
 <td style="text-align:left;">
 date
 </td>
 <td style="text-align:left;">
-NA
+discrete
 </td>
 <td style="text-align:left;">
-NA
+data_preparation/functions/function_ridb_variable_calculate-pre2018.R
 </td>
 <td style="text-align:left;">
 NA
@@ -680,16 +684,16 @@ number_of_people
 ridb
 </td>
 <td style="text-align:left;">
-NA
+number of people reported when booking reservation
 </td>
 <td style="text-align:left;">
-NA
+person
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-NA
+discrete
 </td>
 <td style="text-align:left;">
 none
@@ -709,19 +713,19 @@ length_of_stay
 ridb
 </td>
 <td style="text-align:left;">
-NA
+the number of days a visit is; difference of end date from start date
 </td>
 <td style="text-align:left;">
-NA
+days
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-NA
+discrete
 </td>
 <td style="text-align:left;">
-NA
+data_preparation/functions/function_ridb_variable_calculate-pre2018.R
 </td>
 <td style="text-align:left;">
 NA
@@ -738,19 +742,19 @@ booking_window
 ridb
 </td>
 <td style="text-align:left;">
-NA
+the number of days a reservation is made before the start of the visit; difference of start date from order date
 </td>
 <td style="text-align:left;">
-NA
+days
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-NA
+discrete
 </td>
 <td style="text-align:left;">
-NA
+data_preparation/functions/function_ridb_variable_calculate-pre2018.R
 </td>
 <td style="text-align:left;">
 NA
@@ -761,31 +765,60 @@ NA
 </tr>
 <tr>
 <td style="text-align:left;">
+daily_cost
+</td>
+<td style="text-align:left;">
+ridb
+</td>
+<td style="text-align:left;">
+the total amount paid per day for a reservation
+</td>
+<td style="text-align:left;">
+dollars
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_ridb_variable_calculate-pre2018.R
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2321
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 daily_cost_per_visitor
 </td>
 <td style="text-align:left;">
 ridb
 </td>
 <td style="text-align:left;">
-NA
+the total amount paid per day for one person
 </td>
 <td style="text-align:left;">
-NA
+dollars
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-NA
+continuous
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_ridb_variable_calculate-pre2018.R
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-5095
+5112
 </td>
 </tr>
 <tr>
@@ -796,16 +829,16 @@ facility_latitude
 ridb
 </td>
 <td style="text-align:left;">
-NA
+latitude of the campsite, but note this may not be the center of the campsite
 </td>
 <td style="text-align:left;">
-NA
+degrees
 </td>
 <td style="text-align:left;">
-NA
+numeric
 </td>
 <td style="text-align:left;">
-NA
+continuous
 </td>
 <td style="text-align:left;">
 none
@@ -814,7 +847,7 @@ none
 NA
 </td>
 <td style="text-align:left;">
-NA
+421
 </td>
 </tr>
 <tr>
@@ -825,16 +858,16 @@ facility_longitude
 ridb
 </td>
 <td style="text-align:left;">
-NA
+longitude of the campsite, but note this may not be the center of the campsite
 </td>
 <td style="text-align:left;">
-NA
+degrees
 </td>
 <td style="text-align:left;">
-NA
+numeric
 </td>
 <td style="text-align:left;">
-NA
+continuous
 </td>
 <td style="text-align:left;">
 none
@@ -843,7 +876,7 @@ none
 NA
 </td>
 <td style="text-align:left;">
-NA
+419
 </td>
 </tr>
 <tr>
@@ -854,25 +887,25 @@ distance_traveled_m
 ridb
 </td>
 <td style="text-align:left;">
-NA
+distance between visitor home zip code and campsite
 </td>
 <td style="text-align:left;">
-NA
+meters
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-NA
+continuous
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_ridb_variable_calculate-pre2018.R
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
+144980
 </td>
 </tr>
 <tr>
@@ -883,25 +916,25 @@ zip_code_population.x
 acs
 </td>
 <td style="text-align:left;">
-NA
+the zip code population when get_acs() from tidycensus pulls in data for education variable. Note we take the average of zip code population x, zip code population y, and zip code population in our data wrangling script
+</td>
+<td style="text-align:left;">
+person
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+discrete
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_join_ridb_acs.R
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
+10286
 </td>
 </tr>
 <tr>
@@ -912,25 +945,25 @@ asian
 acs
 </td>
 <td style="text-align:left;">
-NA
+estimated percentage of asian population in a zip code
 </td>
 <td style="text-align:left;">
-NA
+percentage
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-NA
+continuous
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_acs_race.R
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
+10188
 </td>
 </tr>
 <tr>
@@ -941,25 +974,25 @@ black
 acs
 </td>
 <td style="text-align:left;">
-NA
+estimated percentage of black population in a zip code
 </td>
 <td style="text-align:left;">
-NA
+percentage
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-NA
+continuous
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_acs_race.R
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
+10336
 </td>
 </tr>
 <tr>
@@ -970,25 +1003,25 @@ hispanic_latinx
 acs
 </td>
 <td style="text-align:left;">
-NA
+estimated percentage of hispanic latinx population in a zip code
 </td>
 <td style="text-align:left;">
-NA
+percentage
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-NA
+continuous
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_acs_race.R
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
+11299
 </td>
 </tr>
 <tr>
@@ -999,25 +1032,25 @@ multiracial
 acs
 </td>
 <td style="text-align:left;">
-NA
+estimated percentage of multiracial population in a zip code
 </td>
 <td style="text-align:left;">
-NA
+percentage
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-NA
+continuous
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_acs_race.R
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
+10919
 </td>
 </tr>
 <tr>
@@ -1028,25 +1061,25 @@ native_american
 acs
 </td>
 <td style="text-align:left;">
-NA
+estimated percentage of native american population in a zip code
 </td>
 <td style="text-align:left;">
-NA
+percentage
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-NA
+continuous
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_acs_race.R
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
+8514
 </td>
 </tr>
 <tr>
@@ -1057,25 +1090,25 @@ other
 acs
 </td>
 <td style="text-align:left;">
-NA
+estimated percentage of other population in a zip code
 </td>
 <td style="text-align:left;">
-NA
+percentage
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-NA
+continuous
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_acs_race.R
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
+6564
 </td>
 </tr>
 <tr>
@@ -1086,25 +1119,25 @@ pacific_islander
 acs
 </td>
 <td style="text-align:left;">
-NA
+estimated percentage of pacific islander population in a zip code
 </td>
 <td style="text-align:left;">
-NA
+percentage
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-NA
+continuous
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_acs_race.R
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
+4217
 </td>
 </tr>
 <tr>
@@ -1115,25 +1148,25 @@ white
 acs
 </td>
 <td style="text-align:left;">
-NA
+estimated percentage of white population in a zip code
 </td>
 <td style="text-align:left;">
-NA
+percentage
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-NA
+continuous
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_acs_race.R
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
+11598
 </td>
 </tr>
 <tr>
@@ -1144,25 +1177,25 @@ zip_code_population.y
 acs
 </td>
 <td style="text-align:left;">
-NA
+the zip code population when get_acs() from tidycensus pulls in data for language variable. Note we take the average of zip code population x, zip code population y, and zip code population in our data wrangling script
+</td>
+<td style="text-align:left;">
+person
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+discrete
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_join_ridb_acs.R
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
+9654
 </td>
 </tr>
 <tr>
@@ -1318,25 +1351,25 @@ zip_code_population
 acs
 </td>
 <td style="text-align:left;">
-NA
+total number of people living in a zip code when get_acs() from tidycensus pulls in race variable. Note we take the average of zip code population x, zip code population y, and zip code population in our data wrangling script
 </td>
 <td style="text-align:left;">
-NA
+person
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-NA
+discrete
+</td>
+<td style="text-align:left;">
+data_preparation/functions/function_join_ridb_acs.R
 </td>
 <td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
+10153
 </td>
 </tr>
 <tr>
@@ -1422,7 +1455,6 @@ Chang, Winston, Joe Cheng, JJ Allaire, Carson Sievert, Barret Schloerke, Yihui X
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1463,7 +1495,7 @@ gitbook.start({
 },
 "download": ["_main.pdf", "_main.epub"],
 "search": {
-"engine": "lunr",
+"engine": "fuse",
 "options": null
 },
 "toc": {

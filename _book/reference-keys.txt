@@ -58,4 +58,6 @@ temporal-expansions
 spatial-expansions
 statistical-analysis
 additional-challenges
+technical-challenges
+future-challenges
 archive-access
