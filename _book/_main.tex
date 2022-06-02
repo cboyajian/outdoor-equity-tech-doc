@@ -259,7 +259,7 @@ USFS & United States Forest Service & https://www.fs.usda.gov/\\
 \hypertarget{access-clean-and-wrangle-data}{%
 \section{Access, Clean, and Wrangle Data}\label{access-clean-and-wrangle-data}}
 
-\href{https://ridb.recreation.gov/}{RIDB data} and \href{https://www.census.gov/programs-surveys/acs/data.html}{US Census American Communities Survey (ACS) data} are freely available online to the public. We accessed, cleaned, and wrangled all data outside of the \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App} using an .Rmd file and 18 custom-made functions (Tables \ref{tab:func-table1}, \ref{tab:func-table2}, \ref{tab:func-table3}, \ref{tab:func-table4}). We downloaded RIDB data in CSV format from Recreation.gov and ACS data through API using the R package \texttt{tidycensus} \citep{R-tidycensus}. We first subsetted RIDB and ACS datasets to include only the variables relevant to our objectives. We then normalized, aggregated, and calculated variables as necessary. Once both datasets are cleaned and wrangled, we joined them using ZIP codes as the key (common value in both datasets). Finally we wrangled the joined RIDB and ACS dataset to ready them for creating data relationship plots.
+\href{https://ridb.recreation.gov/}{RIDB data} and \href{https://www.census.gov/programs-surveys/acs/data.html}{US Census American Communities Survey (ACS) data} are freely available online to the public. We accessed, cleaned, and wrangled all data outside of the \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App} using the \texttt{data\_wrangle\_and\_clean.Rmd} document and 18 custom-made functions (Tables \ref{tab:func-table1}). We downloaded RIDB data in CSV format from Recreation.gov and ACS data through API using the R package \texttt{tidycensus} \citep{R-tidycensus}. We first subsetted RIDB and ACS datasets to include only the variables relevant to our objectives. We then normalized, aggregated, and calculated variables as necessary. Once both datasets are cleaned and wrangled, we joined them using ZIP codes as the key (common value in both datasets). Finally we wrangled the joined RIDB and ACS dataset to ready them for creating data relationship plots.
 
 \begin{table}
 
@@ -267,41 +267,41 @@ USFS & United States Forest Service & https://www.fs.usda.gov/\\
 \centering
 \begin{tabular}[t]{l|l}
 \hline
-Script & Purpose\\
+Script Location & Purpose\\
 \hline
-function\_acs\_deciles\_median\_income.R & Calculate decile values of California census household median-income\\
+data\_preparation/functions/function\_acs\_deciles\_median\_income.R & Calculate decile values of California census household median-income\\
 \hline
-function\_acs\_education.R & Call and calculate education percentages for given geographic area and state\\
+data\_preparation/functions/function\_acs\_education.R & Call and calculate education percentages for given geographic area and state\\
 \hline
-function\_acs\_language.R & Call and calculate language percentages for given geographic area and state\\
+data\_preparation/functions/function\_acs\_language.R & Call and calculate language percentages for given geographic area and state\\
 \hline
-function\_acs\_median\_income.R & Call and calculate median-income percentages for given geographic area and state\\
+data\_preparation/functions/function\_acs\_median\_income.R & Call and calculate median-income percentages for given geographic area and state\\
 \hline
-function\_acs\_race.R & Call and calculate race percentages for given geographic area and state\\
+data\_preparation/functions/function\_acs\_race.R & Call and calculate race percentages for given geographic area and state\\
 \hline
-function\_acs\_top\_quartile\_education.R & Calculate weighted third quartile value of California census education percentages\\
+data\_preparation/functions/function\_acs\_top\_quartile\_education.R & Calculate weighted third quartile value of California census education percentages\\
 \hline
-function\_acs\_top\_quartile\_language.R & Calculate weighted third quartile value of California census language percentages\\
+data\_preparation/functions/function\_acs\_top\_quartile\_language.R & Calculate weighted third quartile value of California census language percentages\\
 \hline
-function\_acs\_top\_quartile\_race.R & Calculate weighted third quartile value of California census race percentages\\
+data\_preparation/functions/function\_acs\_top\_quartile\_race.R & Calculate weighted third quartile value of California census race percentages\\
 \hline
-function\_ridb\_subset-pre2018.R & Subset RIDB data\\
+data\_preparation/functions/function\_ridb\_subset-pre2018.R & Subset RIDB data\\
 \hline
-function\_ridb\_variable\_calculate-pre2018.R & Define, standardize, and aggregate values and calculated additional derived variables\\
+data\_preparation/functions/function\_ridb\_variable\_calculate-pre2018.R & Define, standardize, and aggregate values and calculated additional derived variables\\
 \hline
-function\_join\_ridb\_acs.R & Join RIDB and ACS data\\
+data\_preparation/functions/function\_join\_ridb\_acs.R & Join RIDB and ACS data\\
 \hline
-function\_map\_ca\_data.R & Create dataset for California ZIP code visitorshed map\\
+data\_preparation/functions/function\_map\_ca\_data.R & Create dataset for California ZIP code visitorshed map\\
 \hline
-function\_map\_us\_data.R & Create dataset for US State visitorshed map\\
+data\_preparation/functions/function\_map\_us\_data.R & Create dataset for US State visitorshed map\\
 \hline
-function\_ridb\_deciles\_median\_income.R & Create dataset for median-income data relationship plots\\
+data\_preparation/functions/function\_ridb\_deciles\_median\_income.R & Create dataset for median-income data relationship plots\\
 \hline
-function\_ridb\_top\_quartile\_education.R & Create dataset for education data relationship plots\\
+data\_preparation/functions/function\_ridb\_top\_quartile\_education.R & Create dataset for education data relationship plots\\
 \hline
-function\_ridb\_top\_quartile\_language.R & Create dataset for language data relationship plots\\
+data\_preparation/functions/function\_ridb\_top\_quartile\_language.R & Create dataset for language data relationship plots\\
 \hline
-function\_ridb\_top\_quartile\_race.R & Create dataset for race data relationship plots\\
+data\_preparation/functions/function\_ridb\_top\_quartile\_race.R & Create dataset for race data relationship plots\\
 \hline
 \end{tabular}
 \end{table}
@@ -535,29 +535,26 @@ Due to time constraints, we were not able to implement all testing methods we wa
 \hypertarget{user-documentation}{%
 \chapter{User Documentation}\label{user-documentation}}
 
-\hypertarget{purpose-of-the-outdoor-equity-application}{%
-\section{Purpose of the Outdoor Equity Application}\label{purpose-of-the-outdoor-equity-application}}
+\hypertarget{purpose-of-the-outdoor-equity-app}{%
+\section{Purpose of the Outdoor Equity App}\label{purpose-of-the-outdoor-equity-app}}
+
+The \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App} provides users with tools to explore trends at different overnight reservable sites to analyze access to these sites. The intended audience is federal public land managers and researchers as well as nonprofit organizations and recreation users.
+
+The \href{https://ridb.recreation.gov/landing}{Recreation Information Database (RIDB) data} are comprehensive when it comes to information regarding the site and reservation, but do not include information about the visitor outside of their home ZIP code. \href{https://www.census.gov/programs-surveys/acs/data.html}{US Census American Community Survey (ACS) data} is used to approximate socioeconomic demographics by joining information about the visitors' home ZIP code to the RIDB data.
 
 \hypertarget{how-to-use-the-outdoor-equity-app}{%
 \section{How to Use the Outdoor Equity App}\label{how-to-use-the-outdoor-equity-app}}
 
 \hypertarget{about-the-app}{%
-\subsection{About the APP}\label{about-the-app}}
+\subsection{About the App}\label{about-the-app}}
 
-\hypertarget{metadata-1}{%
-\subsection{Metadata}\label{metadata-1}}
+The About tab of the \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App} includes background information about what the App is, why outdoor recreation is important, the App creators, and what data is used in the App. These sections are similar to the \protect\hyperlink{about}{About Section} of this technical documentation. The About tab also includes example questions that a user might explore through the different parts of the Analysis tab.
 
-\hypertarget{data-summary}{%
-\subsection{Data Summary}\label{data-summary}}
+The Analysis tab of the App consists of three parts Data Summary, Data Relationship and Visitorshed Maps. Each of these pages includes a brief explanatory section of how to interpret the plot or graph, a section to subset the data to the desired campsite, and the plot or map outputs.
 
-\hypertarget{data-relationships}{%
-\subsection{Data Relationships}\label{data-relationships}}
+The Metadata tab of the App includes metadata for all variables in the combined RIDB and ACS dataset. This section mirrors the Metadata section in the \protect\hyperlink{products-and-deliverables}{Products and Deliverables Section} of this document.
 
-\hypertarget{visitorshed-maps}{%
-\subsection{Visitorshed Maps}\label{visitorshed-maps}}
-
-\hypertarget{data-download}{%
-\subsection{Data Download}\label{data-download}}
+The Data Download section of the App allows a user to download a subset of data include as many or as few campsites and variables as they require for further analysis or use.
 
 \hypertarget{how-to-maintain-the-outdoor-equity-app}{%
 \section{How to Maintain the Outdoor Equity App}\label{how-to-maintain-the-outdoor-equity-app}}
@@ -568,6 +565,277 @@ Due to time constraints, we were not able to implement all testing methods we wa
 \hypertarget{ridb-data}{%
 \subsubsection{RIDB Data}\label{ridb-data}}
 
+\href{https://ridb.recreation.gov/landing}{RIDB data} data are available through direct download as CSV files or via the API as JSON files via Recreation.gov. API access requires creating a Recreation.gov account and requesting second tier API access via the Recreation.gov website's Contact Us page. CSV files are readily available for download via the \href{https://ridb.recreation.gov/download}{Recreation.gov website}. Data are collected each time a visitor makes a reservation through Recreation.gov. Data packages are posted annually in the spring by R1S and contain the previous fiscal year's reservations (ex: the 2018 package includes 2018-10-01 through 2018-09-30). Data packages are available for download from 2006 to present. Each annual data package file contains a range between 2 million and 5 million observations (or reservations) and includes variables in character, numeric, and date/time formats about each reservation. A shift in the data collection and storage processes occurred in 2019, changing what variables are available and how they are labeled. Currently, the Outdoor Equity App contains only data for reservable sites in California and reservations for fiscal year 2018.
+
+A reproducible workflow for cleaning and wrangling data is employed in the \texttt{data\_wrangle\_and\_clean.Rmd} document that sources custom functions to prepare RIDB data for joining with ACS data. All custom functions locations within the repository are listed in the \protect\hyperlink{access-clean-and-wrangle-data}{Access, Clean, and Wrangle Data Section} of this document. These functions rely heavily on functions from the \texttt{tidyverse} collection of packages \citep{R-tidyverse}.
+
+First, a the \texttt{function\_ridb\_subset-pre2018.R} is used to subset the RIDB data, filtering only reservations within the selected state that are listed as ``Overnight'' reservations within the \texttt{use\_type} variable. For the 2018 California dataset this results in a starting ``raw'' data frame with 521,682 reservations
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# filter for state}
+\FunctionTok{filter}\NormalTok{(facility\_state }\SpecialCharTok{==}\NormalTok{ state\_abbrev) }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# filter for use type}
+  \FunctionTok{filter}\NormalTok{(use\_type }\SpecialCharTok{==} \StringTok{"Overnight"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The function then selects only the necessary variables, including information about the site (agency, park or forest name, site name, site type, and site location) and information about the reservation (home ZIP come, total paid, visit start and end dates, visit order date, and number of people in party).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# select variables}
+\FunctionTok{select}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"agency"}\NormalTok{,}
+         \StringTok{"parent\_location"}\NormalTok{,}
+         \StringTok{"region\_description"}\NormalTok{,}
+         \StringTok{"park"}\NormalTok{,}
+         \StringTok{"site\_type"}\NormalTok{,}
+         \StringTok{"facility\_id"}\NormalTok{,}
+         \StringTok{"facility\_state"}\NormalTok{,}
+         \StringTok{"facility\_longitude"}\NormalTok{,}
+         \StringTok{"facility\_latitude"}\NormalTok{,}
+         \StringTok{"customer\_zip"}\NormalTok{,}
+         \StringTok{"total\_paid"}\NormalTok{,}
+         \StringTok{"start\_date"}\NormalTok{,}
+         \StringTok{"end\_date"}\NormalTok{,}
+         \StringTok{"order\_date"}\NormalTok{,}
+         \StringTok{"number\_of\_people"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{site\_type =} \FunctionTok{tolower}\NormalTok{(site\_type)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\NormalTok{site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"historic tour"}\NormalTok{,}
+                           \StringTok{"hiking zone"}\NormalTok{,}
+                           \StringTok{"group picnic area"}\NormalTok{,}
+                           \StringTok{"cave tour"}\NormalTok{,}
+                           \StringTok{"management"}\NormalTok{,}
+                           \StringTok{"picnic"}\NormalTok{,}
+                           \StringTok{"entry point"}\NormalTok{,}
+                           \StringTok{"trailhead"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+The customer ZIP code values are then normalized. This includes filtering for only US ZIP codes and shortening all 9 digit ZIP codes to include only the first 5 digits.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# filter out invalid ZIP codes}
+\FunctionTok{filter}\NormalTok{(}\FunctionTok{str\_detect}\NormalTok{(}\AttributeTok{string =}\NormalTok{ customer\_zip,}
+                  \AttributeTok{pattern =} \StringTok{"\^{}[:digit:]\{5\}(?!.)"}\NormalTok{) }\SpecialCharTok{|}
+         \FunctionTok{str\_detect}\NormalTok{(}\AttributeTok{string =}\NormalTok{ customer\_zip,}
+                    \AttributeTok{pattern =} \StringTok{"\^{}[:digit:]\{5\}(?={-})"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\NormalTok{customer\_zip }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"00000"}\NormalTok{, }\StringTok{"99999"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{customer\_zip =} \FunctionTok{str\_extract}\NormalTok{(}\AttributeTok{string =}\NormalTok{ customer\_zip,}
+                                    \AttributeTok{pattern =} \StringTok{"[:digit:]\{5\}"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+This function results in the removal of 24,866 reservations (or 4.77\%) from the original ``raw'' dataset that included all reservations for reservable overnight campsites in California.
+
+A second custom function is then utilized to calculate and manipulate variables of interest. Start, end, and order dates calculate the lengths of stay and booking windows (number of days from order to start date) of each reservation. The booking window calculations return a number of results that are negative. This is a known issue that others working with the RIDB data have encountered. This resulted in 4,530 reservations (or 0.87\%) without a valid booking window.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mutate}\NormalTok{(}\AttributeTok{start\_date =} \FunctionTok{as.Date}\NormalTok{(start\_date),}
+       \AttributeTok{end\_date =} \FunctionTok{as.Date}\NormalTok{(end\_date),}
+       \AttributeTok{order\_date =} \FunctionTok{as.Date}\NormalTok{(order\_date),}
+       \CommentTok{\# calculate new variables}
+       \AttributeTok{length\_of\_stay =} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{difftime}\NormalTok{(end\_date, start\_date), }\AttributeTok{units =} \StringTok{"days"}\NormalTok{),}
+       \AttributeTok{booking\_window =} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{difftime}\NormalTok{(start\_date, order\_date), }\AttributeTok{units =} \StringTok{"days"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Total costs are divided by lengths of stay to calculate cost per day and cost per day per visitor.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# calculate new variables}
+\FunctionTok{mutate}\NormalTok{(}\AttributeTok{daily\_cost =}\NormalTok{ total\_paid }\SpecialCharTok{/}\NormalTok{ length\_of\_stay,}
+       \AttributeTok{daily\_cost\_per\_visitor =}\NormalTok{ daily\_cost }\SpecialCharTok{/}\NormalTok{ number\_of\_people)}
+\end{Highlighting}
+\end{Shaded}
+
+Site types are aggregated to create 7 broader site categories.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# aggregate site type}
+\FunctionTok{mutate}\NormalTok{(}\AttributeTok{aggregated\_site\_type =} 
+               \FunctionTok{case\_when}\NormalTok{(site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"walk to"}\NormalTok{,}
+                                          \StringTok{"hike to"}\NormalTok{,}
+                                          \StringTok{"group hike to"}\NormalTok{,}
+                                          \StringTok{"group walk to"}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"remote"}\NormalTok{,}
+\NormalTok{                         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"cabin nonelectric"}\NormalTok{,}
+                                          \StringTok{"cabin electric"}\NormalTok{,}
+                                          \StringTok{"yurt"}\NormalTok{,}
+                                          \StringTok{"shelter nonelectric"}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"shelter"}\NormalTok{,}
+\NormalTok{                         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"boat in"}\NormalTok{,}
+                                          \StringTok{"anchorage"}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"water"}\NormalTok{,}
+\NormalTok{                         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"group equestrian"}\NormalTok{,}
+                                          \StringTok{"equestrian nonelectric"}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"equestrian"}\NormalTok{,}
+\NormalTok{                         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"rv nonelectric"}\NormalTok{,}
+                                          \StringTok{"rv electric"}\NormalTok{,}
+                                          \StringTok{"group rv area nonelectric"}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"rv only"}\NormalTok{,}
+\NormalTok{                         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"group standard nonelectric"}\NormalTok{,}
+                                          \StringTok{"standard nonelectric"}\NormalTok{,}
+                                          \StringTok{"standard electric"}\NormalTok{,}
+                                          \StringTok{"group standard area nonelectric"}\NormalTok{,}
+                                          \StringTok{"group standard electric"}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"rv or tent"}\NormalTok{,}
+\NormalTok{                         site\_type }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"tent only nonelectric"}\NormalTok{,}
+                                          \StringTok{"group tent only area nonelectric"}\NormalTok{,}
+                                          \StringTok{"tent only electric"}\NormalTok{) }\SpecialCharTok{\textasciitilde{}} \StringTok{"tent only"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+The administrative unit variable is created by combining the \texttt{parent\_location} and \texttt{region\_description} variables as different federal agencies track the administrative unit information in different variables. Then the \texttt{agency}, \texttt{admin\_uni} and \texttt{park} variables character strings are updated using multiple functions from the \texttt{stringr} package \citep{R-stringr}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mutate}\NormalTok{(}\AttributeTok{admin\_unit =} \FunctionTok{case\_when}\NormalTok{(agency }\SpecialCharTok{==} \StringTok{"USFS"} \SpecialCharTok{\textasciitilde{}}\NormalTok{ parent\_location,}
+\NormalTok{                              agency }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"NPS"}\NormalTok{, }\StringTok{"BOR"}\NormalTok{, }\StringTok{"USACE"}\NormalTok{) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ region\_description)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \DocumentationTok{\#\# {-}{-} edit values {-}{-} \#\#}
+  \FunctionTok{mutate}\NormalTok{(}
+    \CommentTok{\# agency abbreviations to names}
+    \AttributeTok{agency =} \FunctionTok{str\_replace}\NormalTok{(}\AttributeTok{string =}\NormalTok{ agency,}
+                         \AttributeTok{pattern =} \StringTok{"NPS"}\NormalTok{,}
+                         \AttributeTok{replacement =} \StringTok{"National Park Service"}\NormalTok{),}
+    \AttributeTok{agency =} \FunctionTok{str\_replace}\NormalTok{(}\AttributeTok{string =}\NormalTok{ agency,}
+                         \AttributeTok{pattern =} \StringTok{"USFS"}\NormalTok{, }
+                         \AttributeTok{replacement =} \StringTok{"US Forest Service"}\NormalTok{),}
+    \AttributeTok{agency =} \FunctionTok{str\_replace}\NormalTok{(}\AttributeTok{string =}\NormalTok{ agency,}
+                         \AttributeTok{pattern =} \StringTok{"USACE"}\NormalTok{,}
+                         \AttributeTok{replacement =} \StringTok{"US Army Corps of Engineers"}\NormalTok{),}
+    \AttributeTok{agency =} \FunctionTok{str\_replace}\NormalTok{(}\AttributeTok{string =}\NormalTok{ agency,}
+                         \AttributeTok{pattern =} \StringTok{"BOR"}\NormalTok{,}
+                         \AttributeTok{replacement =} \StringTok{"Bureau of Reclamation"}\NormalTok{),}
+    \CommentTok{\# update admin\_unit values (generic)}
+    \AttributeTok{admin\_unit =} \FunctionTok{str\_replace}\NormalTok{(}\AttributeTok{string =}\NormalTok{ admin\_unit,}
+                             \AttributeTok{pattern =} \FunctionTok{paste}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"NF {-} FS"}\NormalTok{, }\StringTok{"NF {-}FS"}\NormalTok{, }\StringTok{"NF{-} FS"}\NormalTok{, }
+                                               \StringTok{"NF{-}FS"}\NormalTok{, }\StringTok{"{-}FS"}\NormalTok{, }\StringTok{" {-} FS"}\NormalTok{), }
+                                             \AttributeTok{collapse =} \StringTok{"|"}\NormalTok{),}
+                             \AttributeTok{replacement =} \StringTok{"National Forest"}\NormalTok{),}
+    \AttributeTok{admin\_unit =} \FunctionTok{str\_to\_title}\NormalTok{(admin\_unit),}
+    \AttributeTok{admin\_unit =} \FunctionTok{str\_replace}\NormalTok{(}\AttributeTok{string =}\NormalTok{ admin\_unit,}
+                             \AttributeTok{pattern =} \StringTok{"And"}\NormalTok{,}
+                             \AttributeTok{replacement =} \StringTok{"\&"}\NormalTok{),}
+    \CommentTok{\# update park values (generic)}
+    \AttributeTok{park =} \FunctionTok{str\_remove}\NormalTok{(}\AttributeTok{string =}\NormalTok{ park,}
+                      \AttributeTok{pattern =} \FunctionTok{paste}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{(.*"}\NormalTok{, }\StringTok{" }\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{(.*"}\NormalTok{,}
+                                        \StringTok{"{-}{-}{-}.*"}\NormalTok{, }\StringTok{" {-}{-}{-}.*"}\NormalTok{,}
+                                        \StringTok{",.*"}\NormalTok{), }\AttributeTok{collapse =} \StringTok{"|"}\NormalTok{)),}
+    \AttributeTok{park =} \FunctionTok{str\_to\_title}\NormalTok{(park),}
+    \AttributeTok{park =} \FunctionTok{str\_replace}\NormalTok{(}\AttributeTok{string =}\NormalTok{ park,}
+                       \AttributeTok{pattern =} \StringTok{"Cg"}\NormalTok{,}
+                       \AttributeTok{replacement =} \StringTok{"Campground"}\NormalTok{),}
+    \AttributeTok{park =} \FunctionTok{str\_replace}\NormalTok{(}\AttributeTok{string =}\NormalTok{ park,}
+                       \AttributeTok{pattern =} \StringTok{"Nhp"}\NormalTok{,}
+                       \AttributeTok{replacement =} \StringTok{"National Historic Park"}\NormalTok{),}
+    \AttributeTok{park =} \FunctionTok{str\_replace}\NormalTok{(}\AttributeTok{string =}\NormalTok{ park,}
+                       \AttributeTok{pattern =} \StringTok{"@"}\NormalTok{,}
+                       \AttributeTok{replacement =} \StringTok{"At"}\NormalTok{),}
+    \AttributeTok{park =} \FunctionTok{str\_replace}\NormalTok{(}\AttributeTok{string =}\NormalTok{ park,}
+                       \AttributeTok{pattern =} \StringTok{"\&"}\NormalTok{,}
+                       \AttributeTok{replacement =} \StringTok{"And"}\NormalTok{),}
+    \AttributeTok{park =} \FunctionTok{str\_replace}\NormalTok{(}\AttributeTok{string =}\NormalTok{ park,}
+                       \AttributeTok{pattern =} \FunctionTok{paste}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"/"}\NormalTok{, }\StringTok{" / "}\NormalTok{), }\AttributeTok{collapse =} \StringTok{"|"}\NormalTok{),}
+                       \AttributeTok{replacement =} \StringTok{" "}\NormalTok{),}
+    \AttributeTok{park =} \FunctionTok{str\_remove\_all}\NormalTok{(}\AttributeTok{string =}\NormalTok{ park,}
+                          \AttributeTok{pattern =} \StringTok{" }\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d.*"}\NormalTok{),}
+    \CommentTok{\# update park values (CA specific)}
+    \AttributeTok{park =} \FunctionTok{str\_remove}\NormalTok{(}\AttributeTok{string =}\NormalTok{ park,}
+                      \AttributeTok{pattern =} \FunctionTok{paste}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{" {-} Angeles Nf"}\NormalTok{, }\StringTok{" {-}Hwy"}\NormalTok{), }
+                                      \AttributeTok{collapse =} \StringTok{"|"}\NormalTok{)),}
+    \AttributeTok{park =} \FunctionTok{str\_replace}\NormalTok{(}\AttributeTok{string =}\NormalTok{ park,}
+                       \AttributeTok{pattern =} \StringTok{"Tunnel Mills Il"}\NormalTok{,}
+                       \AttributeTok{replacement =} \StringTok{"Tunnel Mills"}\NormalTok{),}
+    \AttributeTok{admin\_unit =} \FunctionTok{str\_replace}\NormalTok{(}\AttributeTok{string =}\NormalTok{ admin\_unit,}
+                             \AttributeTok{pattern =} \StringTok{"Sequoia \& Kings Canyon National Park$"}\NormalTok{, }
+                             \AttributeTok{replacement =} \StringTok{"Sequoia \& Kings Canyon National Parks"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Distance traveled is calculated by measuring the distance from the latitude and longitude facility coordinate locations to the centroid of the home ZIP code, which is accessed via the \texttt{tidycensus} package \citep{R-tidycensus}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# bootstrap geometries and reproject to NAD 83}
+\NormalTok{df\_geometries }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{st\_as\_sf}\NormalTok{(}\AttributeTok{coords =} \FunctionTok{c}\NormalTok{(}\StringTok{"facility\_longitude"}\NormalTok{, }\StringTok{"facility\_latitude"}\NormalTok{),}
+           \AttributeTok{crs =} \DecValTok{4326}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{st\_transform}\NormalTok{(}\AttributeTok{crs =} \DecValTok{4269}\NormalTok{) }\CommentTok{\# using NAD83 because measured in meters}
+
+\CommentTok{\# get centroid of geometries for all US ZIP codes }
+\NormalTok{df\_zip\_centroids\_us }\OtherTok{\textless{}{-}} \FunctionTok{get\_acs}\NormalTok{(}\AttributeTok{geography =} \StringTok{"zcta"}\NormalTok{, }\AttributeTok{year =} \DecValTok{2018}\NormalTok{, }\AttributeTok{geometry =} \ConstantTok{TRUE}\NormalTok{, }
+                               \AttributeTok{summary\_var =} \StringTok{"B01001\_001"}\NormalTok{,}
+                               \AttributeTok{survey =} \StringTok{"acs5"}\NormalTok{,}
+                               \AttributeTok{variables =} \FunctionTok{c}\NormalTok{(}\AttributeTok{male =} \StringTok{"B01001\_002"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(NAME, geometry) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{zip\_code =} \FunctionTok{str\_sub}\NormalTok{(NAME, }\AttributeTok{start =} \SpecialCharTok{{-}}\DecValTok{5}\NormalTok{, }\AttributeTok{end =} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(zip\_code, geometry) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{st\_centroid}\NormalTok{()}
+
+\CommentTok{\# join data and calculate \textasciigrave{}distance\_traveled\textasciigrave{} variable}
+\NormalTok{df\_joined\_geometries }\OtherTok{\textless{}{-}} 
+  \FunctionTok{left\_join}\NormalTok{(}\AttributeTok{x =}\NormalTok{ df\_geometries }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{as.data.frame}\NormalTok{(),}
+            \AttributeTok{y =}\NormalTok{ df\_zip\_centroids\_us }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{as.data.frame}\NormalTok{(), }
+            \AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"customer\_zip"} \OtherTok{=} \StringTok{"zip\_code"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{st\_sf}\NormalTok{(}\AttributeTok{sf\_column\_name =} \StringTok{\textquotesingle{}geometry.x\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{distance\_traveled\_m =} \FunctionTok{st\_distance}\NormalTok{(}\AttributeTok{x =}\NormalTok{ geometry.x, }
+                                           \AttributeTok{y =}\NormalTok{ geometry.y,}
+                                           \AttributeTok{by\_element =} \ConstantTok{TRUE}\NormalTok{),}
+         \AttributeTok{distance\_traveled\_m =} \FunctionTok{as.numeric}\NormalTok{(distance\_traveled\_m)) }
+\end{Highlighting}
+\end{Shaded}
+
+And finally, a variable is added indicating in which state or territory each customer zip code is located. This portion of the code utilizes the \texttt{zipcodeR} package \citep{R-zipcodeR}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# create df of fips and full state names}
+\NormalTok{fips\_list }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"01"}\NormalTok{, }\StringTok{"02"}\NormalTok{, }\StringTok{"04"}\NormalTok{, }\StringTok{"05"}\NormalTok{, }\StringTok{"06"}\NormalTok{, }\StringTok{"08"}\NormalTok{, }\StringTok{"09"}\NormalTok{, }\StringTok{"10"}\NormalTok{, }\StringTok{"11"}\NormalTok{, }\StringTok{"12"}\NormalTok{, }
+               \StringTok{"13"}\NormalTok{, }\StringTok{"15"}\NormalTok{, }\StringTok{"16"}\NormalTok{, }\StringTok{"17"}\NormalTok{, }\StringTok{"18"}\NormalTok{, }\StringTok{"19"}\NormalTok{, }\StringTok{"20"}\NormalTok{, }\StringTok{"21"}\NormalTok{, }\StringTok{"22"}\NormalTok{, }\StringTok{"23"}\NormalTok{, }
+               \StringTok{"24"}\NormalTok{, }\StringTok{"25"}\NormalTok{, }\StringTok{"26"}\NormalTok{, }\StringTok{"27"}\NormalTok{, }\StringTok{"28"}\NormalTok{, }\StringTok{"29"}\NormalTok{, }\StringTok{"30"}\NormalTok{, }\StringTok{"31"}\NormalTok{, }\StringTok{"32"}\NormalTok{, }\StringTok{"33"}\NormalTok{, }
+               \StringTok{"34"}\NormalTok{, }\StringTok{"35"}\NormalTok{, }\StringTok{"36"}\NormalTok{, }\StringTok{"37"}\NormalTok{, }\StringTok{"38"}\NormalTok{, }\StringTok{"39"}\NormalTok{, }\StringTok{"40"}\NormalTok{, }\StringTok{"41"}\NormalTok{, }\StringTok{"42"}\NormalTok{, }\StringTok{"44"}\NormalTok{, }
+               \StringTok{"45"}\NormalTok{, }\StringTok{"46"}\NormalTok{, }\StringTok{"47"}\NormalTok{, }\StringTok{"48"}\NormalTok{, }\StringTok{"49"}\NormalTok{, }\StringTok{"50"}\NormalTok{, }\StringTok{"51"}\NormalTok{, }\StringTok{"53"}\NormalTok{, }\StringTok{"54"}\NormalTok{, }\StringTok{"55"}\NormalTok{, }
+               \StringTok{"56"}\NormalTok{, }\StringTok{"72"}\NormalTok{)}
+\NormalTok{state\_list }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"AL"}\NormalTok{, }\StringTok{"AK"}\NormalTok{, }\StringTok{"AZ"}\NormalTok{, }\StringTok{"AR"}\NormalTok{, }\StringTok{"CA"}\NormalTok{, }\StringTok{"CO"}\NormalTok{, }\StringTok{"CT"}\NormalTok{, }\StringTok{"DE"}\NormalTok{, }\StringTok{"DC"}\NormalTok{, }\StringTok{"FL"}\NormalTok{,}
+                \StringTok{"GA"}\NormalTok{, }\StringTok{"HI"}\NormalTok{, }\StringTok{"ID"}\NormalTok{, }\StringTok{"IL"}\NormalTok{, }\StringTok{"IN"}\NormalTok{, }\StringTok{"IA"}\NormalTok{, }\StringTok{"KS"}\NormalTok{, }\StringTok{"KY"}\NormalTok{, }\StringTok{"LA"}\NormalTok{, }\StringTok{"ME"}\NormalTok{,}
+                \StringTok{"MD"}\NormalTok{, }\StringTok{"MA"}\NormalTok{, }\StringTok{"MI"}\NormalTok{, }\StringTok{"MN"}\NormalTok{, }\StringTok{"MS"}\NormalTok{, }\StringTok{"MO"}\NormalTok{, }\StringTok{"MT"}\NormalTok{, }\StringTok{"NE"}\NormalTok{, }\StringTok{"NV"}\NormalTok{, }\StringTok{"NH"}\NormalTok{,}
+                \StringTok{"NJ"}\NormalTok{, }\StringTok{"NM"}\NormalTok{, }\StringTok{"NY"}\NormalTok{, }\StringTok{"NC"}\NormalTok{, }\StringTok{"ND"}\NormalTok{, }\StringTok{"OH"}\NormalTok{, }\StringTok{"OK"}\NormalTok{, }\StringTok{"OR"}\NormalTok{, }\StringTok{"PA"}\NormalTok{, }\StringTok{"RI"}\NormalTok{,}
+                \StringTok{"SC"}\NormalTok{, }\StringTok{"SD"}\NormalTok{, }\StringTok{"TN"}\NormalTok{, }\StringTok{"TX"}\NormalTok{, }\StringTok{"UT"}\NormalTok{, }\StringTok{"VT"}\NormalTok{, }\StringTok{"VA"}\NormalTok{, }\StringTok{"WA"}\NormalTok{, }\StringTok{"WV"}\NormalTok{, }\StringTok{"WI"}\NormalTok{,}
+                \StringTok{"WY"}\NormalTok{, }\StringTok{"PR"}\NormalTok{)}
+\NormalTok{states\_names\_list }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Alabama"}\NormalTok{, }\StringTok{"Alaska"}\NormalTok{, }\StringTok{"Arizona"}\NormalTok{, }\StringTok{"Arkansas"}\NormalTok{, }\StringTok{"California"}\NormalTok{, }
+                       \StringTok{"Colorado"}\NormalTok{, }\StringTok{"Connecticut"}\NormalTok{, }\StringTok{"Delaware"}\NormalTok{, }\StringTok{"District of Columbia"}\NormalTok{, }
+                       \StringTok{"Florida"}\NormalTok{,}\StringTok{"Georgia"}\NormalTok{, }\StringTok{"Hawaii"}\NormalTok{, }\StringTok{"Idaho"}\NormalTok{, }\StringTok{"Illinois"}\NormalTok{, }\StringTok{"Indiana"}\NormalTok{, }
+                       \StringTok{"Iowa"}\NormalTok{, }\StringTok{"Kansas"}\NormalTok{, }\StringTok{"Kentucky"}\NormalTok{, }\StringTok{"Louisiana"}\NormalTok{, }\StringTok{"Maine"}\NormalTok{,}\StringTok{"Maryland"}\NormalTok{, }
+                       \StringTok{"Massachusetts"}\NormalTok{, }\StringTok{"Michigan"}\NormalTok{, }\StringTok{"Minnesota"}\NormalTok{, }\StringTok{"Mississippi"}\NormalTok{, }\StringTok{"Missouri"}\NormalTok{, }
+                       \StringTok{"Montana"}\NormalTok{, }\StringTok{"Nebraska"}\NormalTok{, }\StringTok{"Nevada"}\NormalTok{, }\StringTok{"New Hampshire"}\NormalTok{,}\StringTok{"New Jersey"}\NormalTok{, }
+                       \StringTok{"New Mexico"}\NormalTok{, }\StringTok{"New York"}\NormalTok{, }\StringTok{"North Carolina"}\NormalTok{, }\StringTok{"North Dakota"}\NormalTok{, }\StringTok{"Ohio"}\NormalTok{, }
+                       \StringTok{"Oklahoma"}\NormalTok{, }\StringTok{"Oregon"}\NormalTok{, }\StringTok{"Pennsylvania"}\NormalTok{, }\StringTok{"Rhode Island"}\NormalTok{,}\StringTok{"South Carolina"}\NormalTok{, }
+                       \StringTok{"South Dakota"}\NormalTok{, }\StringTok{"Tennessee"}\NormalTok{, }\StringTok{"Texas"}\NormalTok{, }\StringTok{"Utah"}\NormalTok{, }\StringTok{"Vermont"}\NormalTok{, }\StringTok{"Virginia"}\NormalTok{, }
+                       \StringTok{"Washington"}\NormalTok{, }\StringTok{"West Virginia"}\NormalTok{, }\StringTok{"Wisconsin"}\NormalTok{,}\StringTok{"Wyoming"}\NormalTok{, }\StringTok{"Puerto Rico"}\NormalTok{)}
+\NormalTok{df\_states\_fips }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{fips =}\NormalTok{ fips\_list,}
+                                     \AttributeTok{state =}\NormalTok{ state\_list,}
+                                     \AttributeTok{state\_full =}\NormalTok{ states\_names\_list))}
+
+\CommentTok{\# loop through state df to get all ZIP codes w/in state}
+\NormalTok{df\_states\_zip\_codes }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{()}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq\_along}\NormalTok{(fips\_list))\{}
+\NormalTok{  state }\OtherTok{\textless{}{-}}\NormalTok{ zipcodeR}\SpecialCharTok{::}\FunctionTok{search\_fips}\NormalTok{(}\AttributeTok{state\_fips =}\NormalTok{ fips\_list[[i]]) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{select}\NormalTok{(zipcode, state)}
+\NormalTok{  df\_states\_zip\_codes }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(df\_states\_zip\_codes, state)}
+\NormalTok{\}}
+
+\CommentTok{\# add full state name and fips code to list of all ZIP codes for each state}
+\NormalTok{df\_states\_fips\_zip\_codes }\OtherTok{\textless{}{-}} 
+  \FunctionTok{left\_join}\NormalTok{(}\AttributeTok{x =}\NormalTok{ df\_states\_zip\_codes,}
+            \AttributeTok{y =}\NormalTok{ df\_states\_fips,}
+            \AttributeTok{by =} \StringTok{"state"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{fips) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{customer\_zip\_state =}\NormalTok{ state,}
+         \AttributeTok{customer\_zip\_state\_full =}\NormalTok{ state\_full,}
+         \AttributeTok{zip\_code =}\NormalTok{ zipcode)}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{u.s.-census-data}{%
 \subsubsection{U.S. Census Data}\label{u.s.-census-data}}
 
@@ -577,11 +845,13 @@ Due to time constraints, we were not able to implement all testing methods we wa
 \hypertarget{statistical-analysis-and-data-wrangling-for-plots}{%
 \subsection{Statistical Analysis and Data Wrangling for Plots}\label{statistical-analysis-and-data-wrangling-for-plots}}
 
-\hypertarget{data-summary-1}{%
-\subsubsection{Data Summary}\label{data-summary-1}}
+Each type of plot and map require unique data wrangling which is explained in this section.
 
-\hypertarget{data-relationships-1}{%
-\subsubsection{Data Relationships}\label{data-relationships-1}}
+\hypertarget{data-summary}{%
+\subsubsection{Data Summary}\label{data-summary}}
+
+\hypertarget{data-relationships}{%
+\subsubsection{Data Relationships}\label{data-relationships}}
 
 \hypertarget{spatial-analysis}{%
 \subsubsection{Spatial analysis}\label{spatial-analysis}}

@@ -58,6 +58,9 @@ library(tigris)
 library(googlesheets4) # read in metadata sheets
 
 #-- IMPORT DATA -- ##
+# RIDB raw data
+ridb_data <- read_csv(here::here("../../data_raw/reservations2018.csv"))
+
 ## CA prototype joined 2018
 data_joined_2018 <- readRDS("../outdoor-equity/outdoor-equity-app/oe_app/data/2018_joined_data.rds")
 
@@ -86,7 +89,8 @@ knitr::write_bib(
     "tidyverse", "janitor", "lubridate", "scales", "here", "vroom", 
     "tidycensus", "zipcodeR", "tigris", "plotly", "tmap", "sf", "rmapshaper", 
     "DT", "collections", "rsconnect", "bslib",  "shiny", "shinydashboard", 
-    "shinydashboardPlus", "shinyWidgets", "shinycssloaders", "shinyjs", "reactlog"
+    "shinydashboardPlus", "shinyWidgets", "shinycssloaders", "shinyjs", 
+    "reactlog", "shinytest"
     ), 
   'packages.bib')
 ```
