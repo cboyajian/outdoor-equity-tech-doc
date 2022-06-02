@@ -249,7 +249,7 @@ div.csl-indent {
 <div id="glossary-and-definitions" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Glossary and Definitions</h2>
 <p>Throughout this document we define “reservable sites” as traditional campgrounds, single remote campsites, overnight boat-in sites or mooring, equestrian sites, cabins, and other shelters listed in the <a href="https://ridb.recreation.gov/">RIDB data</a>.</p>
-<table>
+<table class="table table-responsive" style="width: auto !important; ">
 <caption>
 <span id="tab:glossary-table">Table 5.1: </span>A table of abbreviations, their definitions, and source URLS.
 </caption>
@@ -372,7 +372,7 @@ United States Forest Service
 <div id="access-clean-and-wrangle-data" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Access, Clean, and Wrangle Data</h2>
 <p><a href="https://ridb.recreation.gov/">RIDB data</a> and <a href="https://www.census.gov/programs-surveys/acs/data.html">US Census American Communities Survey (ACS) data</a> are freely available online to the public. We accessed, cleaned, and wrangled all data outside of the <a href="https://shinyapps.bren.ucsb.edu/oe_app/">Outdoor Equity App</a> using the <code>data_wrangle_and_clean.Rmd</code> document and 18 custom-made functions (Tables <a href="summary-of-solution-design.html#tab:func-table1">5.2</a>). We downloaded RIDB data in CSV format from Recreation.gov and ACS data through API using the R package <code>tidycensus</code> <span class="citation">(<a href="#ref-R-tidycensus" role="doc-biblioref">Walker and Herman 2021</a>)</span>. We first subsetted RIDB and ACS datasets to include only the variables relevant to our objectives. We then normalized, aggregated, and calculated variables as necessary. Once both datasets are cleaned and wrangled, we joined them using ZIP codes as the key (common value in both datasets). Finally we wrangled the joined RIDB and ACS dataset to ready them for creating data relationship plots.</p>
-<table>
+<table class="table table-responsive" style="width: auto !important; ">
 <caption>
 <span id="tab:func-table1">Table 5.2: </span>A table of the cleaning and wrangling functions created for the ACS and RIDB data and functions to create data sets for visitorshed maps and data relationship plots.
 </caption>

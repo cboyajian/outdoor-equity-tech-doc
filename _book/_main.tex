@@ -244,7 +244,6 @@ Throughout this document we define ``reservable sites'' as traditional campgroun
 \begin{table}
 
 \caption{\label{tab:glossary-table}A table of abbreviations, their definitions, and source URLS.}
-\centering
 \begin{tabular}[t]{l|l|l}
 \hline
 Abbreviation & Definition & Source\\
@@ -278,7 +277,6 @@ USFS & United States Forest Service & https://www.fs.usda.gov/\\
 \begin{table}
 
 \caption{\label{tab:func-table1}A table of the cleaning and wrangling functions created for the ACS and RIDB data and functions to create data sets for visitorshed maps and data relationship plots.}
-\centering
 \begin{tabular}[t]{l|l}
 \hline
 Script Location & Purpose\\
@@ -389,8 +387,6 @@ The \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App} was built
 \begin{table}
 
 \caption{\label{tab:unnamed-chunk-4}Metadata of joined RIDB-ACS dataset}
-\centering
-\resizebox{\linewidth}{!}{
 \begin{tabular}[t]{l|l|l|l|l|l|l|l|l}
 \hline
 Variable Name & Data Source & Definition & Unit & Class & Data Type & Provenance & Missing Value Code & Total Unique Values\\
@@ -471,7 +467,7 @@ english\_only & acs & estimated percentage of population that speak only english
 \hline
 not\_english\_only & acs & estimated percentage of population that speak a language other than english in the home in a zip code & percentage & numeric & continuous & data\_preparation/functions/function\_acs\_language.R & NA & 11469\\
 \hline
-\end{tabular}}
+\end{tabular}
 \end{table}
 
 \hypertarget{package-versions}{%
@@ -515,7 +511,7 @@ Due to time constraints, we were not able to implement all testing methods we wa
 \item
   Use the R package \texttt{testthat} \citep{R-testthat} to conduct unit tests on the scripts used to create Tidy datasets and for subsetted datasets for visualization. This type of testing may be important to avoid silent failures and to ensure that the datasets are aggregating correctly.
 \item
-  Use \href{https://github.com/marmelab/gremlins.js}{\texttt{gremlin.js}}), a JavaScript library used for ``Monkey testing'' to test the behavior of the R Shiny App. This package is compatible with \texttt{shiny} \citep{R-shiny} and does not require any external installation. ``Monkey testing'' is a type of testing where random, automated tests provide random inputs and then checks the behavior of the app (i.e.~if the system or application crashes). We were able to find some finicky bugs through our own testing of random inputs, but ``Monkey testing'' is the formal process.
+  Use \href{https://github.com/marmelab/gremlins.js}{\texttt{gremlin.js}}), a JavaScript library used for ``Monkey testing'' to test the behavior of the R Shiny App. This package is compatible with \texttt{shiny} \citep{R-shiny} and does not require any external installation. See \href{https://engineering-shiny.org/build-yourself-safety-net.html}{Chapter 11 in Engineering Production-Grade Shiny Apps} for more guidance. ``Monkey testing'' is a type of testing where random, automated tests provide random inputs and then checks the behavior of the app (i.e.~if the system or application crashes). We were able to find some finicky bugs through our own testing of random inputs, but ``Monkey testing'' is the formal process of testing app behavior.
 \item
   Employ user testing with federal public land managers, researchers, and those who are not familiar with RIDB data to further enhance the user experience and design.
 \end{itemize}

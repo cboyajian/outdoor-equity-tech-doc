@@ -22,7 +22,8 @@ glossary_df <-
 knitr::kable(glossary_df,
              align = "l",
              caption = "A table of abbreviations, their definitions, and source URLS.",
-             row.names = FALSE)
+             row.names = FALSE) %>% 
+  kable_styling(bootstrap_options = c("responsive"), full_width = F, position = "left")
 ```
 
 
@@ -58,7 +59,8 @@ acs_functions_df <-
 knitr::kable(acs_functions_df,
              align = "l",
              caption = "A table of the cleaning and wrangling functions created for the ACS and RIDB data and functions to create data sets for visitorshed maps and data relationship plots.",
-             row.names = FALSE)
+             row.names = FALSE) %>% 
+  kable_styling(bootstrap_options = c("responsive"), full_width = F, position = "left")
 ```
 
 

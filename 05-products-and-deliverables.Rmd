@@ -29,7 +29,7 @@ data_joined_2018_metadata_df <-
          Unit = unit,
          Class = class,
          "Data Type" = data_type,
-         Provenance = "provenance (which scripts to create this var) filepath",
+         Provenance = "provenance (which scripts if used to created this var)",
          "Missing Value Code" = missing_value_code,
          "Total Unique Values" = total_unique_values)
 ```
@@ -40,9 +40,8 @@ data_joined_2018_metadata_df <-
 knitr::kable(data_joined_2018_metadata_df,
              align = "l",
              caption = "Metadata of joined RIDB-ACS dataset",
-             row.names = FALSE) %>%
-  kable_styling(latex_options = "scale_down") %>% 
-  scroll_box(width = "500px")
+             row.names = FALSE) %>% 
+  kable_styling(bootstrap_options = c("responsive"), full_width = F, position = "left")
 ```
 
 
