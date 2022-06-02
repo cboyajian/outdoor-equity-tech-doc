@@ -55,6 +55,7 @@ library(tmap)
 library(sf)
 library(rmapshaper)
 library(tigris)
+library(googlesheets4) # read in metadata sheets
 
 #-- IMPORT DATA -- ##
 ## CA prototype joined 2018
