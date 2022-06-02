@@ -7,13 +7,29 @@
 
 ## Data Integrity
 
+We screened the data for outliers, by summarizing and visualizing the raw data, and assessed whether those outliers need to be removed. We consulted other researchers who are familiar with the RIDB datasets to confirm outliers or other anomalies in the data. 
 
+Additionally, we documented the percent loss from data wrangling to ensure that our cleaning and wrangling of the data were reasonable. 
 
 ## Code Review
 
+We conducted code reviews within the team, and with faculty or external advisers. We reviewed specific code chunks and scripts related to the Outdoor Equity App. 
 
+We also confirmed that the data matches how it is being described in the metadata. This confirmation is important as we want our client to be able to scale our product and workflows for future use.
 
 ## Product Testing
+
+We used three packages to test our R Shiny app. We used `shinytest` to ensure our app is visualized the way we expect it to using the package’s snapshot-based testing strategy. We used `shinyloadtest` to test the server hosting the R Shiny App to ensure that it responds in a reasonable amount of time based on the inputs a user provides. Similarly, we utilized the `tictoc` package during our data wrangling and cleaning, and when we initially created our plots, graphs, and maps to estimate an informed guess of how long it may take the app to run our scripts. Lastly, we used the `reactlog` package's diagnostic tool which creates a reactive visualizer for the app to make sure that reactive elements are working the way we expected them to. It is important to note that this diagnostic tool was not useful as our app functionality increased, as the reactive visualizer became impossible to read. There may be other options
+
+Additionally, we held multiple meetings with the Recreation One Stop team to obtain real-time and focused feedback to improve user design and experience. 
+
+We have added temporary print statements to all functions in the app to ensure that the functions are working correctly and are outputting what we expect. Additionally,  
+
+### Next steps for testing
+
+We used `gremlin.js`, a JavaScript library used for “Monkey testing” to test the behavior of the R Shiny App. This package is compatible with `shiny` and does not require any external installation.
+
+Finally, we will employ user testing with federal public land managers, researchers, and those who are not familiar with RIDB data. We will collect feedback in a survey. 
 
 
 
