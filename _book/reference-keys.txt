@@ -31,15 +31,12 @@ products-and-deliverables
 r-shiny-app
 metadata
 summary-of-testing
-unit-tests
 data-integrity
 code-review
 product-testing
 next-steps-for-testing
 user-documentation
-overview-of-the-outdoor-equity-application
-background-1
-purpose
+purpose-of-the-outdoor-equity-application
 how-to-use-the-outdoor-equity-app
 about-the-app
 metadata-1

@@ -188,21 +188,16 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="7" data-path="summary-of-testing.html"><a href="summary-of-testing.html"><i class="fa fa-check"></i><b>7</b> Summary of Testing</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="summary-of-testing.html"><a href="summary-of-testing.html#unit-tests"><i class="fa fa-check"></i><b>7.1</b> Unit Tests</a></li>
-<li class="chapter" data-level="7.2" data-path="summary-of-testing.html"><a href="summary-of-testing.html#data-integrity"><i class="fa fa-check"></i><b>7.2</b> Data Integrity</a></li>
-<li class="chapter" data-level="7.3" data-path="summary-of-testing.html"><a href="summary-of-testing.html#code-review"><i class="fa fa-check"></i><b>7.3</b> Code Review</a></li>
-<li class="chapter" data-level="7.4" data-path="summary-of-testing.html"><a href="summary-of-testing.html#product-testing"><i class="fa fa-check"></i><b>7.4</b> Product Testing</a>
+<li class="chapter" data-level="7.1" data-path="summary-of-testing.html"><a href="summary-of-testing.html#data-integrity"><i class="fa fa-check"></i><b>7.1</b> Data Integrity</a></li>
+<li class="chapter" data-level="7.2" data-path="summary-of-testing.html"><a href="summary-of-testing.html#code-review"><i class="fa fa-check"></i><b>7.2</b> Code Review</a></li>
+<li class="chapter" data-level="7.3" data-path="summary-of-testing.html"><a href="summary-of-testing.html#product-testing"><i class="fa fa-check"></i><b>7.3</b> Product Testing</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="summary-of-testing.html"><a href="summary-of-testing.html#next-steps-for-testing"><i class="fa fa-check"></i><b>7.4.1</b> Next steps for testing</a></li>
+<li class="chapter" data-level="7.3.1" data-path="summary-of-testing.html"><a href="summary-of-testing.html#next-steps-for-testing"><i class="fa fa-check"></i><b>7.3.1</b> Next steps for testing</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="user-documentation.html"><a href="user-documentation.html"><i class="fa fa-check"></i><b>8</b> User Documentation</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="user-documentation.html"><a href="user-documentation.html#overview-of-the-outdoor-equity-application"><i class="fa fa-check"></i><b>8.1</b> Overview of the Outdoor Equity Application</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="user-documentation.html"><a href="user-documentation.html#background-1"><i class="fa fa-check"></i><b>8.1.1</b> Background</a></li>
-<li class="chapter" data-level="8.1.2" data-path="user-documentation.html"><a href="user-documentation.html#purpose"><i class="fa fa-check"></i><b>8.1.2</b> Purpose</a></li>
-</ul></li>
+<li class="chapter" data-level="8.1" data-path="user-documentation.html"><a href="user-documentation.html#purpose-of-the-outdoor-equity-application"><i class="fa fa-check"></i><b>8.1</b> Purpose of the Outdoor Equity Application</a></li>
 <li class="chapter" data-level="8.2" data-path="user-documentation.html"><a href="user-documentation.html#how-to-use-the-outdoor-equity-app"><i class="fa fa-check"></i><b>8.2</b> How to Use the Outdoor Equity App</a>
 <ul>
 <li class="chapter" data-level="8.2.1" data-path="user-documentation.html"><a href="user-documentation.html#about-the-app"><i class="fa fa-check"></i><b>8.2.1</b> About the APP</a></li>
@@ -272,14 +267,6 @@ div.csl-indent {
 </div>
 <div id="metadata" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Metadata</h2>
-<pre><code>## ! Using an auto-discovered, cached token.</code></pre>
-<pre><code>##   To suppress this message, modify your code or options to clearly consent to
-##   the use of a cached token.</code></pre>
-<pre><code>##   See gargle&#39;s &quot;Non-interactive auth&quot; vignette for more details:</code></pre>
-<pre><code>##   &lt;https://gargle.r-lib.org/articles/non-interactive-auth.html&gt;</code></pre>
-<pre><code>## ℹ The googlesheets4 package is using a cached token for &#39;halina@ucsb.edu&#39;.</code></pre>
-<pre><code>## ✔ Reading from &quot;ridb-acs-joined-2018&quot;.</code></pre>
-<pre><code>## ✔ Range &#39;Sheet1&#39;.</code></pre>
 <pre><code>## Rows: 38 Columns: 9── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (7): variable name, data_source, definition, unit, class, data_type, pro...
@@ -287,11 +274,11 @@ div.csl-indent {
 ## lgl (1): missing_value_code
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="products-and-deliverables.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create table of metadata</span></span>
-<span id="cb9-2"><a href="products-and-deliverables.html#cb9-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data_joined_2018_metadata_df,</span>
-<span id="cb9-3"><a href="products-and-deliverables.html#cb9-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">align =</span> <span class="st">&quot;l&quot;</span>,</span>
-<span id="cb9-4"><a href="products-and-deliverables.html#cb9-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">&quot;Metadata of joined RIDB-ACS dataset&quot;</span>,</span>
-<span id="cb9-5"><a href="products-and-deliverables.html#cb9-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="products-and-deliverables.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create table of metadata</span></span>
+<span id="cb2-2"><a href="products-and-deliverables.html#cb2-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data_joined_2018_metadata_df,</span>
+<span id="cb2-3"><a href="products-and-deliverables.html#cb2-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">align =</span> <span class="st">&quot;l&quot;</span>,</span>
+<span id="cb2-4"><a href="products-and-deliverables.html#cb2-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">&quot;Metadata of joined RIDB-ACS dataset&quot;</span>,</span>
+<span id="cb2-5"><a href="products-and-deliverables.html#cb2-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <table style="width:100%;">
 <caption><span id="tab:unnamed-chunk-4">Table 6.1: </span>Metadata of joined RIDB-ACS dataset</caption>
 <colgroup>
