@@ -1,4 +1,10 @@
 # Additional Challenges
 
+## Technical Challenges
 
+- In the [Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/), there are behavioral bugs with the plots where plots will stop updating or being created after either an input has been changed multiple times or if the input chosen is associated with a large amount of data. We were not able to troubleshoot this completely, but believe this has to do with the functions that create the visuals.
+
+## Future Challenges
+
+- Adding in multiple years and adding in more spatial data (beyond California) will require a large server and likely more computing power. 
 
