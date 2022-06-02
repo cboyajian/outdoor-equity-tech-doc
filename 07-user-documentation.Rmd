@@ -1,31 +1,25 @@
 # User Documentation
 
-## Purpose of the Outdoor Equity Application
+## Purpose of the Outdoor Equity App
 
+The [Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/) provides users with tools to explore trends at different overnight reservable sites to analyze access to these sites. The intended audience is federal public land managers and researchers as well as nonprofit organizations and recreation users. 
+
+The [Recreation Information Database (RIDB) data](https://ridb.recreation.gov/landing) are comprehensive when it comes to information regarding the site and reservation, but do not include information about the visitor outside of their home ZIP code. [US Census American Community Survey (ACS) data](https://www.census.gov/programs-surveys/acs/data.html) is used to approximate socioeconomic demographics by joining information about the visitors’ home ZIP code to the RIDB data. 
 
 
 ## How to Use the Outdoor Equity App
 
-### About the APP
+### About the App
+
+The About tab of the [Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/) includes background information about what the App is, why outdoor recreation is important, the App creators, and what data is used in the App. These sections are similar to the [About Section][About] of this technical documentation. The About tab also includes example questions that a user might explore through the different parts of the Analysis tab. 
+
+The Analysis tab of the Outdoor Equity App consists of three parts Data Summary, Data Relationship and Visitorshed Maps. Each of these sections includes a brief explanatory section of how to interpret the plot or graph. 
 
 
 
-### Metadata
+that each require additional unique data wrangling outside of what is explained in the [Statistical Analysis and Data Wrangling for Plots Section][Statistical Analysis and Data Wrangling for Plots] of this document.
 
-
-
-### Data Summary
-
-
-
-### Data Relationships
-
-
-
-### Visitorshed Maps
-
-
-### Data Download
+To learn more about the data wrangling and cleaning necessary to create these plots
 
 
 
