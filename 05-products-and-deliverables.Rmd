@@ -1,10 +1,42 @@
 # Products and Deliverables
 
-
 ## R Shiny App
+The Outdoor Equity Shiny App has the following functionality:
 
+- Visualize statistical distributions of RIDB and US Census variables
+- Visualize relationships between RIDB and US census variables
+- Created visualizations can be downloaded as png
+- View visitorshed maps of reservable sites both nationally and within state site is located in
+- Download customized subsets of the data
+
+Help documentation:
+
+- User guide
+- Metadata 
+- Background 
 
 ## Metadata
+
+```{r, echo=FALSE}
+## Note (HD): Should I move this to index.Rmd? ##
+# get metadata csv and create csv in r
+data_joined_2018_metadata <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/19ZQiaTlSoo1-KlPibeIoVbo0IT0ZU2soFa0XGAEHF88/edit?usp=sharing")
+
+data_joined_2018_metadata_r <- data_joined_2018_metadata %>% 
+  write_csv(here("../outdoor-equity/outdoor-equity-app/oe_app/data/data_joined_2018_metadata.csv"))
+
+# read in metadata
+data_joined_2018_metadata_df <- read_csv(here("../outdoor-equity/outdoor-equity-app/oe_app/data/data_joined_2018_metadata.csv"))
+```
+
+
+```{r}
+# create table of metadata
+knitr::kable(data_joined_2018_metadata_df,
+             align = "l",
+             caption = "Metadata of joined RIDB-ACS dataset",
+             row.names = FALSE)
+```
 
 
 
