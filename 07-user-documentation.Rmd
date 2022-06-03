@@ -24,7 +24,11 @@ The Data Download section of the App allows a user to download a subset of data 
 
 ### Repository Directory Structure
 
-Our code is version controlled in a [GitHub repository](https://github.com/outdoor-equity/outdoor-equity). This includes the data cleaning, wrangling, and analysis, creation of plots and maps, and structure of the shiny app. An overview of the directory structure can be found [here]().
+Our code is version controlled in a [GitHub repository](https://github.com/outdoor-equity/outdoor-equity). This includes the data cleaning, wrangling, and analysis, creation of plots and maps, and structure of the shiny app. An overview of the directory structure can be seen below:
+
+```{r}
+# add image of repo diagram
+```
 
 
 ### Data Preparation Methods
@@ -332,7 +336,7 @@ race_df <-
       black = "B03002_004", #Black or African American alone
       native_american = "B03002_005", #American Indian and Alaska Native alone
       asian = "B03002_006", #Asian alone
-      pacific_islander = "B03002_007", #Native Hawaiian and Other Pacific Islander alone
+      pacific_islander = "B03002_007", #Native Hawaiian/Other Pacific Islander alone
       other = "B03002_008", #Some other race alone
       multiracial = "B03002_009", #Two or more races
       hispanic_latinx = "B03002_012" #Hispanic or Latino
@@ -437,20 +441,21 @@ caption_color <- c("#ac8d00")
 # plot for shiny app
 plotly <- ggplot(
   data = booking_window_rdf()) +
-  geom_histogram(aes(x = booking_window,
-                     text = paste0(percent(..count.. / nrow(booking_window_rdf()), 
-                                           accuracy = 0.1), 
-                                   " of all visits are reserved between ", xmin, 
-                                   " and ", xmax, 
-                                   " days before the start of the visit", 
-                                   "<br>",
-                                   "(Total reservations to site: ",
-                                   comma(nrow(booking_window_rdf()), accuracy = 1), 
-                                   ")")),
-                 binwidth = 7,
-                 center = 7 / 2,
-                 fill = hist_colors[[1]], 
-                 col = hist_colors[[2]], size = 0.05) +
+  geom_histogram(
+    aes(x = booking_window,
+        text = paste0(percent(..count.. / nrow(booking_window_rdf()), 
+                              accuracy = 0.1), 
+                      " of all visits are reserved between ", xmin, 
+                      " and ", xmax, 
+                      " days before the start of the visit", 
+                      "<br>",
+                      "(Total reservations to site: ",
+                      comma(nrow(booking_window_rdf()), accuracy = 1), 
+                      ")")),
+    binwidth = 7,
+    center = 7 / 2,
+    fill = hist_colors[[1]], 
+    col = hist_colors[[2]], size = 0.05) +
   labs(x = "Days in advance before visit (each bar = 1 week)",
        y = "") +
   scale_x_continuous(limits = c(0, x_max)) +
@@ -490,26 +495,31 @@ if (x_max <= 180) {
 ggplotly(plotly,
          tooltip = list("text"),
          dynamicTicks = TRUE) %>% 
-  layout(title = list(text = paste0('<b>', siteInput, '<br>', admin_unitInput, '</b>',
-                                    '<br>',
-                                    'Number of days from reservation to start of visit'),
-                      font = list(size = 15)),
+  layout(title = 
+           list(text = 
+                  paste0('<b>', siteInput, '<br>', admin_unitInput, '</b>',
+                         '<br>',
+                         'Number of days from reservation to start of visit'),
+                font = list(size = 15)),
          xaxis = list(separatethousands = TRUE),
          yaxis = list(separatethousands = TRUE),
          margin = list(b = 130, t = 100), 
-         annotations =  list(x = x_max/2, y = -0.6, 
-                             text = paste0("80% of reservations reserve their visit less than ", 
-                                           '<b>', quant_80, '</b>', 
-                                           " days before the start date", 
-                                           "<br>",
-                                           "(shown on plot with yellow dotted line)."), 
-                             showarrow = F, 
-                             xre = 'paper', yref = 'paper', 
+         annotations =  
+           list(x = x_max/2, y = -0.6, 
+                text = 
+                  paste0("80% of reservations reserve their visit less than ", 
+                         '<b>', quant_80, '</b>', 
+                         " days before the start date", 
+                         "<br>",
+                         "(shown on plot with yellow dotted line)."), 
+                showarrow = F, 
+                xre = 'paper', yref = 'paper', 
                              xanchor = 'middle', yanchor = 'auto', 
                              xshift = 0, yshift = 0,
                              font = list(size = 12, color = caption_color))) %>%
   config(modeBarButtonsToRemove = list("pan", "select", "lasso2d", "autoScale2d", 
-                                       "hoverClosestCartesian", "hoverCompareCartesian"))
+                                       "hoverClosestCartesian", 
+                                       "hoverCompareCartesian"))
 ```
 
 
@@ -524,10 +534,13 @@ source("r/function_acs_race.R")
 source("r/function_acs_median_income.R")
 
 # read in census data for CA
-acs_subset_calculate_race(geography = "zcta", year = 2018, state = "California")
-acs_subset_calculate_education(geography = "zcta", year = 2018, state = "California")
+acs_subset_calculate_race(geography = "zcta", year = 2018, 
+                          state = "California")
+acs_subset_calculate_education(geography = "zcta", year = 2018, 
+                               state = "California")
 acs_subset_calculate_language(geography = "zcta", state = "California")
-acs_subset_calculate_median_income(geography = "zcta", year = 2018, state = "California")
+acs_subset_calculate_median_income(geography = "zcta", year = 2018, 
+                                   state = "California")
 
 # combine all CA census variables
 acs_ca_all <- left_join(x = data_acs_2018_education_percent_California,
@@ -572,7 +585,6 @@ weighted_quartile <- weighted.mean(x = df_half$language_percentage,
                                    w = df_half$mean_zip_code_population)
 ```
 
-
 ```{r}
 source("r/function_acs_top_quartile_language.R")
 
@@ -590,7 +602,8 @@ language_quants_df <-
                                           pattern = "_",
                                           replacement = " "),
          language_group = str_to_title(language_group),
-         weighted_quartile = percent(as.numeric(weighted_quartile), accuracy = 0.01)) %>% 
+         weighted_quartile = percent(as.numeric(weighted_quartile), 
+                                     accuracy = 0.01)) %>% 
   rename("Language Group" = language_group,
          "Threshold" = weighted_quartile)
 ```
@@ -613,7 +626,8 @@ education_quants_df <-
                                            pattern = "_",
                                            replacement = " "),
          education_group = str_to_title(education_group),
-         weighted_quartile = percent(as.numeric(weighted_quartile), accuracy = 0.01)) %>% 
+         weighted_quartile = percent(as.numeric(weighted_quartile), 
+                                     accuracy = 0.01)) %>% 
   rename("Education Group" = education_group,
          "Threshold" = weighted_quartile)
 ```
@@ -637,7 +651,8 @@ race_quants_df <-
                                       pattern = "_",
                                       replacement = " "),
          race_group = str_to_title(race_group),
-         weighted_quartile = percent(as.numeric(weighted_quartile), accuracy = 0.01)) %>% 
+         weighted_quartile = percent(as.numeric(weighted_quartile), 
+                                     accuracy = 0.01)) %>% 
   rename("Race Group" = race_group,
          "Threshold" = weighted_quartile)
 ```
@@ -645,10 +660,15 @@ race_quants_df <-
 The thresholds used within the Outdoor Equity App can be seen in the table below:
 
 ```{r, echo=FALSE}
-knitr::kable(list(language_quants_df, education_quants_df,
-                  race_quants_df), 
-             caption = "Threshold values for ACS variables.")
+knitr::kable(list(language_quants_df, education_quants_df), 
+             caption = "Threshold values for ACS language and education variables.")
 ```
+
+```{r, echo=FALSE}
+knitr::kable(race_quants_df, 
+             caption = "Threshold values for ACS race variable.")
+```
+
 
 We create lollipop and bar plots to show the relationships of the data for each set of variables. We used the `plotly` package [@R-plotly] to allow a user to hover over the plot to view helper text. An example of the code used to create the education compared to booking window plot is show below:
 
@@ -683,7 +703,8 @@ rdf <- reactive ({
 validate(need(
   nrow(rdf()) > 0,
   paste0("There are no reservations to ", siteInput, ", ", admin_unitInput, 
-         " that come from communities in the high range for any educational categories.")
+         " that come from communities in the high range for any educational", 
+         "categories.")
 )) # EO validate
 
 ## -- create plot -- ##
@@ -707,9 +728,11 @@ plotly <- ggplot(data = rdf(),
       fill = education_y_lab,
       text = paste0(
         comma(count, accuracy = 1),
-        " unique visits were made by people who live in ZIP codes with high rates of",
+        " unique visits were made by people who live in ZIP codes with high ", 
+        " rates of",
         "<br>", education, 
-        " as the maximum level of education. Typically these visitors reserved their visit between",
+        " as the maximum level of education. ", 
+        "Typically these visitors reserved their visit between",
         "<br>", comma(quartile_lower, accuracy = 1), " and ", 
         comma(quartile_upper, accuracy = 1),
         " days before the start of their trip, with a median booking window of ", 
@@ -732,11 +755,13 @@ plotly <- ggplot(data = rdf(),
 ggplotly(plotly,
          tooltip = list("text")) %>%
   config(
-    modeBarButtonsToRemove = list("zoom", "pan", "select", "lasso2d", "autoScale2d",
-                                  "hoverClosestCartesian", "hoverCompareCartesian")) %>%
+    modeBarButtonsToRemove = 
+      list("zoom", "pan", "select", "lasso2d", "autoScale2d",
+           "hoverClosestCartesian", "hoverCompareCartesian")) %>%
   layout(title = list(
     text = paste0( '<b>', siteInput, '<br>', admin_unitInput, '</b>', '<br>',
-                   'Number of Days in Advance Site is Reserved by Visitors with Different Levels of Education'),
+                   'Number of Days in Advance Site is Reserved by Visitors with", 
+                   "Different Levels of Education'),
     font = list(size = 15) )) %>%
   add_annotations(
     text = "Reservations from ZIP codes<br>with high proportions of:",
@@ -824,7 +849,8 @@ rdf <- reactive ({
   
   ridb_df %>% 
     filter(park %in% siteInput) %>%
-    select(agency, admin_unit, park, customer_zip_state_full, customer_zip_state)
+    select(agency, admin_unit, park, customer_zip_state_full, 
+           customer_zip_state)
 })
 
 # value of total reservations for this park
@@ -834,7 +860,8 @@ total_reservations <- nrow(rdf())
 map_data <- rdf() %>% 
   group_by(customer_zip_state_full, customer_zip_state) %>%
   summarize(number_reservations = n(),
-            percentage_reservations = percent((number_reservations / total_reservations), 
+            percentage_reservations = 
+              percent((number_reservations / total_reservations), 
                                               accuracy = 0.01)) %>%
   filter(!is.na(customer_zip_state_full))
 
@@ -846,8 +873,10 @@ map_data_geometries <-
   mutate_at(vars(number_reservations), 
             ~replace(number_reservations, is.na(number_reservations), 0)) %>%
   mutate_at(vars(percentage_reservations), 
-            ~replace(percentage_reservations, is.na(percentage_reservations), 0)) %>% 
-  select(customer_zip_state_full, number_reservations, percentage_reservations, geometry)
+            ~replace(percentage_reservations, is.na(percentage_reservations), 
+                     0)) %>% 
+  select(customer_zip_state_full, number_reservations, 
+         percentage_reservations, geometry)
 
 ## -- create map -- ##
 tmap_mode("view")
@@ -861,7 +890,8 @@ tm_shape(map_data_geometries) +
           style = "jenks",
           id = "customer_zip_state_full",
           popup.vars = c("Total Visits" = "number_reservations",
-                         "Percentage of All Visits" = "percentage_reservations")) +
+                         "Percentage of All Visits" = "percentage_reservations")
+          ) +
   tm_view(set.view = c(-101.834335, 40.022356, 2)) +
   tmap_options(basemaps = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}')
 ```
@@ -920,7 +950,8 @@ df_states_fips_zip_codes <-
 
 
 ## -- CA ZIP geometries -- ##
-df_zip_geometries_ca <- get_acs(geography = "zcta", year = 2018, geometry = TRUE,
+df_zip_geometries_ca <- get_acs(geography = "zcta", year = 2018, 
+                                geometry = TRUE,
                                 state = "California",
                                 summary_var = "B01001_001",
                                 variables = c(male = "B01001_002")) %>%
@@ -946,7 +977,8 @@ rdf <- reactive ({
   ) # EO validate
   
   ridb_df %>% 
-    select(agency, admin_unit, park, customer_zip, facility_latitude, facility_longitude) %>% 
+    select(agency, admin_unit, park, customer_zip, facility_latitude, 
+           facility_longitude) %>% 
     filter(park %in% siteInput)
 })
 
@@ -969,9 +1001,12 @@ total_reservations <- sum(map_data_geometries$number_reservations)
 
 # add percentage of all CA reservations for each ZIP
 map_data_geometries <- map_data_geometries %>% 
-  mutate(percentage_reservations = percent((number_reservations / total_reservations), accuracy = 0.01)) %>%
+  mutate(percentage_reservations = 
+           percent((number_reservations / total_reservations), 
+                   accuracy = 0.01)) %>%
   mutate_at(vars(percentage_reservations), 
-            ~replace(percentage_reservations, is.na(percentage_reservations), 0))
+            ~replace(percentage_reservations, is.na(percentage_reservations), 
+                     0))
 
 # calculate location of park for point on map
 park_location_geom <- rdf() %>%
@@ -982,19 +1017,21 @@ park_location_geom <- rdf() %>%
            crs = 4326) %>%
   st_transform(crs = 4269) # using NAD83 because measured in meters
 
-print(paste("The site's location has been calculated and it is:", park_location_geom$geometry))
+print(paste("The site's location has been calculated and it is:", 
+            park_location_geom$geometry))
 
 ## -- create map -- ##
 tmap_mode("view")
 
 tm_shape(map_data_geometries) +
-  tm_fill(col = "number_reservations",
-          title = "Number of Visits",
-          palette = "PuRd",
-          style = "jenks",
-          n = 10,
-          popup.vars = c("Total Visits" = "number_reservations",
-                         "Percentage of All CA Visits" = "percentage_reservations")) +
+  tm_fill(
+    col = "number_reservations",
+    title = "Number of Visits",
+    palette = "PuRd",
+    style = "jenks",
+    n = 10,
+    popup.vars = c("Total Visits" = "number_reservations",
+                   "Percentage of All CA Visits" = "percentage_reservations")) +
   tm_shape(park_location_geom) +
   tm_dots(col = "darkgreen", size = 0.1) +
   tm_shape(park_location_geom) +
