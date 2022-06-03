@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.6.1)  3 JUN 2022 19:04
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.6.1)  3 JUN 2022 19:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -930,102 +930,102 @@ Overfull \hbox (1608.14098pt too wide) in paragraph at lines 398--481
 
 [18
 
-] [19] [20] [21]
+] [19] [20]
 Chapter 7.
 
-Package natbib Warning: Citation `R-tictoc' on page 22 undefined on input line 609.
+Package natbib Warning: Citation `R-tictoc' on page 21 undefined on input line 568.
 
-[22
+[21
 
-] [23]
+] [22]
 Chapter 8.
-[24
+[23
 
-] [25] [26]
-Overfull \hbox (21.25392pt too wide) in paragraph at lines 781--782
+] [24] [25]
+Overfull \hbox (21.25392pt too wide) in paragraph at lines 740--741
 []\TU/lmr/m/n/10.95 We create an administrative unit variable by combining the \TU/lmtt/m/n/10.95 parent_location \TU/lmr/m/n/10.95 and \TU/lmtt/m/n/10.95 region_description
  []
 
+[26]
+Underfull \vbox (badness 10000) detected at line 807
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 807
+ []
+
 [27]
-Underfull \vbox (badness 10000) detected at line 848
- []
-
-
-Underfull \vbox (badness 10000) detected at line 848
- []
-
-[28]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 924.
-[29]
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 883.
+[28]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[30] [31]
-Overfull \hbox (0.5847pt too wide) in paragraph at lines 996--1021
+[29] [30]
+Overfull \hbox (0.5847pt too wide) in paragraph at lines 955--980
  [][] 
  []
 
-[32] [33]
+[31] [32]
 
 LaTeX Font Warning: Font shape `TU/lmtt/bx/it' in size <10.95> not available
-(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 1118.
+(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 1077.
 
-[34]
-Underfull \vbox (badness 10000) detected at line 1207
+[33]
+Underfull \vbox (badness 10000) detected at line 1166
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1207
+Underfull \vbox (badness 10000) detected at line 1166
  []
 
-[35] [36] [37]
-Underfull \vbox (badness 10000) detected at line 1427
+[34] [35] [36]
+Underfull \vbox (badness 10000) detected at line 1386
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1427
+Underfull \vbox (badness 10000) detected at line 1386
  []
 
-[38]
+[37]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[39] [40] [41] [42]
-Underfull \vbox (badness 10000) detected at line 1626
+[38] [39] [40] [41]
+Underfull \vbox (badness 10000) detected at line 1585
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1626
+Underfull \vbox (badness 10000) detected at line 1585
  []
 
-[43] [44] [45] [46]
+[42] [43] [44] [45]
 Chapter 9.
 
 Underfull \vbox (badness 4366) has occurred while \output is active []
 
-[47
+[46
 
-] (./_main.bbl [48]
+] (./_main.bbl [47]
 Underfull \hbox (badness 2529) in paragraph at lines 94--99
 []\TU/lmr/m/n/10.95 Gavin Rozzi.  \TU/lmr/m/it/10.95 zipcodeR: Data & Functions for Working with US ZIP Codes\TU/lmr/m/n/10.95 , 2022.
  []
 
-[49
+[48
 
-] [50])
+] [49])
 
 Package natbib Warning: There were undefined citations.
 
-[51] (./_main.aux)
+[50] (./_main.aux)
 Package rerunfilecheck Info: File `_main.out' has not changed.
 (rerunfilecheck)             Checksum: 948EA4389E82560732C873C048798043;5161.
  ) 
 Here is how much of TeX's memory you used:
  19832 strings out of 478126
  362424 string characters out of 5853062
- 873079 words of memory out of 5000000
+ 875079 words of memory out of 5000000
  40173 multiletter control sequences out of 15000+600000
  475846 words of font info for 86 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  86i,9n,121p,1561b,555s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on _main.pdf (51 pages).
+Output written on _main.pdf (50 pages).

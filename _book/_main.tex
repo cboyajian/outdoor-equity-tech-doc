@@ -483,47 +483,6 @@ not\_english\_only & acs & estimated percentage of population that speak a langu
 \hypertarget{package-versions}{%
 \section{Package Versions}\label{package-versions}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{r\_packages\_df }\OtherTok{\textless{}{-}} 
-  \FunctionTok{tribble}\NormalTok{(}
-    \SpecialCharTok{\textasciitilde{}}\StringTok{"R Package"}\NormalTok{, }\SpecialCharTok{\textasciitilde{}}\NormalTok{Version, }\SpecialCharTok{\textasciitilde{}}\NormalTok{Purpose,}
-    \StringTok{"bslib"}\NormalTok{, }\StringTok{"0.3.1"}\NormalTok{, }\StringTok{"Web Application (theme)"}\NormalTok{,}
-    \StringTok{"collections"}\NormalTok{, }\StringTok{"0.3.5"}\NormalTok{, }\StringTok{"Web Application (dictionary)"}\NormalTok{,}
-    \StringTok{"DT"}\NormalTok{, }\StringTok{"0.20"}\NormalTok{, }\StringTok{"Web Application (tables)"}\NormalTok{,}
-    \StringTok{"formattable"}\NormalTok{, }\StringTok{"0.2.1"}\NormalTok{, }\StringTok{"Web Application (tables)"}\NormalTok{,}
-    \StringTok{"googlesheets4"}\NormalTok{, }\StringTok{"1.0.0"}\NormalTok{, }\StringTok{"Web Application (metadata)"}\NormalTok{,}
-    \StringTok{"here"}\NormalTok{, }\StringTok{"1.0.1"}\NormalTok{, }\StringTok{"Data cleaning (relative file paths)"}\NormalTok{,}
-    \StringTok{"janitor"}\NormalTok{, }\StringTok{"2.1.0"}\NormalTok{, }\StringTok{"Data cleaning (data frame)"}\NormalTok{,}
-    \StringTok{"lubridate"}\NormalTok{, }\StringTok{"1.7.10"}\NormalTok{, }\StringTok{"Data cleaning (dates)"}\NormalTok{,}
-    \StringTok{"plotly"}\NormalTok{, }\StringTok{"4.10.0"}\NormalTok{, }\StringTok{"Data visualiation (plots)"}\NormalTok{,}
-    \StringTok{"reactlog"}\NormalTok{, }\StringTok{"1.1.0"}\NormalTok{, }\StringTok{"Web Application (testing)"}\NormalTok{,}
-    \StringTok{"rmapshaper"}\NormalTok{, }\StringTok{"0.4.5"}\NormalTok{, }\StringTok{"Web Application (load time)"}\NormalTok{,}
-    \StringTok{"rsconnect"}\NormalTok{, }\StringTok{"0.8.25"}\NormalTok{, }\StringTok{"Web Application (deploy app)"}\NormalTok{,}
-    \StringTok{"scales"}\NormalTok{, }\StringTok{"1.1.1"}\NormalTok{, }\StringTok{"Data visualiation (plots)"}\NormalTok{,}
-    \StringTok{"sf"}\NormalTok{, }\StringTok{"1.0.7"}\NormalTok{, }\StringTok{"Data cleaning and visualization (maps)"}\NormalTok{,}
-    \StringTok{"shiny"}\NormalTok{, }\StringTok{"1.7.1"}\NormalTok{, }\StringTok{"Web Application (build app)"}\NormalTok{,}
-    \StringTok{"shinycssloaders"}\NormalTok{, }\StringTok{"1.0.0"}\NormalTok{, }\StringTok{"Web Application (plot loader)"}\NormalTok{,}
-    \StringTok{"shinydashboard"}\NormalTok{, }\StringTok{"0.7.2"}\NormalTok{, }\StringTok{"Web Application (dashboard layout elements)"}\NormalTok{,}
-    \StringTok{"shinydashboardPlus"}\NormalTok{, }\StringTok{"2.0.3"}\NormalTok{, }\StringTok{"Web Application (box elements)"}\NormalTok{,}
-    \StringTok{"shinyjs"}\NormalTok{, }\StringTok{"2.1.0"}\NormalTok{, }\StringTok{"Web Application (hide and show boxes in ui)"}\NormalTok{,}
-    \StringTok{"shinyWidgets"}\NormalTok{, }\StringTok{"0.6.4"}\NormalTok{, }\StringTok{"Web Application (inputs)"}\NormalTok{,}
-    \StringTok{"tidycensus"}\NormalTok{, }\StringTok{"1.2.1"}\NormalTok{, }\StringTok{"Data acquisition (US census data)"}\NormalTok{,}
-    \StringTok{"tidyverse"}\NormalTok{, }\StringTok{"1.3.1"}\NormalTok{, }\StringTok{"Data cleaning, analysis, and visualization"}\NormalTok{,}
-    \StringTok{"tigris"}\NormalTok{, }\StringTok{"1.6"}\NormalTok{, }\StringTok{"Data acquisition (state and ZIP code geometries)"}\NormalTok{,}
-    \StringTok{"tmap"}\NormalTok{, }\StringTok{"3.3.2"}\NormalTok{, }\StringTok{"Data visualization (maps)"}\NormalTok{,}
-    \StringTok{"vroom"}\NormalTok{, }\StringTok{"1.5.7"}\NormalTok{, }\StringTok{"Data cleaning (read in data)"}\NormalTok{,}
-    \StringTok{"zipcodeR"}\NormalTok{, }\StringTok{"0.3.3"}\NormalTok{, }\StringTok{"Data acquisition (state info about ZIP code)"}
-\NormalTok{  )}
-
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(r\_packages\_df,}
-             \AttributeTok{align =} \StringTok{"l"}\NormalTok{,}
-             \AttributeTok{caption =} \StringTok{"Table includes information on packages used to create the Outdoor Equity App."}\NormalTok{,}
-             \AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options =} \FunctionTok{c}\NormalTok{(}\StringTok{"responsive"}\NormalTok{), }\AttributeTok{full\_width =}\NormalTok{ F, }\AttributeTok{position =} \StringTok{"left"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{table}
 
 \caption{\label{tab:unnamed-chunk-5}Table includes information on packages used to create the Outdoor Equity App.}
