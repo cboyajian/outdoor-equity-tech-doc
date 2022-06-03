@@ -11,8 +11,8 @@ fig:app-screenshot4
 fig:app-screenshot5
 fig:app-screenshot6
 tab:unnamed-chunk-4
-tab:unnamed-chunk-19
-tab:unnamed-chunk-28
+tab:unnamed-chunk-20
+tab:unnamed-chunk-32
 about
 abstract
 about-the-authors
@@ -43,6 +43,7 @@ purpose-of-the-outdoor-equity-app
 how-to-use-the-outdoor-equity-app
 about-the-app
 how-to-maintain-the-outdoor-equity-app
+repository-directory-structure
 data-preparation-methods
 ridb-data
 u.s.-census-data
@@ -52,7 +53,6 @@ data-relationships
 spatial-analysis
 data-updates
 server-hosting
-shiny-code-directory
 how-to-expand-the-outdoor-equity-app
 temporal-expansions
 spatial-expansions

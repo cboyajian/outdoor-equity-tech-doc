@@ -22,13 +22,18 @@ The Data Download section of the App allows a user to download a subset of data 
 
 ## How to Maintain the Outdoor Equity App
 
+### Repository Directory Structure
+
+Our code is version controlled in a [GitHub repository](https://github.com/outdoor-equity/outdoor-equity). This includes the data cleaning, wrangling, and analysis, creation of plots and maps, and structure of the shiny app. An overview of the directory structure can be found [here]().
+
+
 ### Data Preparation Methods
 
 #### RIDB Data
 
-[RIDB data](https://ridb.recreation.gov/landing) data are available through direct download as CSV files or via the API as JSON files via Recreation.gov. API access requires creating a Recreation.gov account and requesting second tier API access via the Recreation.gov website’s Contact Us page. CSV files are readily available for download via the [Recreation.gov website](https://ridb.recreation.gov/download). Data are collected each time a visitor makes a reservation through Recreation.gov. Data packages are posted annually in the spring by R1S and contain the previous fiscal year’s reservations (ex: the 2018 package includes 2018-10-01 through 2018-09-30). Data packages are available for download from 2006 to present. Each annual data package file contains a range between 2 million and 5 million observations (or reservations) and includes variables in character, numeric, and date/time formats about each reservation. A shift in the data collection and storage processes occurred in 2019, changing what variables are available and how they are labeled. Currently, the Outdoor Equity App contains only data for reservable sites in California and reservations for fiscal year 2018. 
+[RIDB data](https://ridb.recreation.gov/landing) data are available through direct download as CSV files or via the API as JSON files via Recreation.gov. API access requires creating a Recreation.gov account and requesting second tier API access via the Recreation.gov website’s [Contact Us](https://recreationonestopprod.servicenowservices.com/external?id=external_contact_us) page. CSV files are readily available for download via the [Recreation.gov website](https://ridb.recreation.gov/download). Data are collected each time a visitor makes a reservation through Recreation.gov. Data packages are posted annually in the spring by Recreation One Stop (R1S) and contain the previous fiscal year’s reservations (ex: the 2018 package includes 2018-10-01 through 2018-09-30). Data packages are available for download from 2006 to present. Each annual data package file contains a range between 2 million and 5 million observations (or reservations) and includes variables in character, numeric, and date/time formats about each reservation. A shift in the data collection and storage processes occurred in 2019, changing what variables are available and how they are labeled. Currently, the Outdoor Equity App contains only data for reservable sites in California and reservations for fiscal year 2018 due to time limitations of this project. To see more about expanding the App temporally and spatially see the [How to Expand the Outdoor Equity App Section][How to Expand the Outdoor Equity App].
 
-A reproducible workflow for cleaning and wrangling data is employed in the `data_wrangle_and_clean.Rmd` document that sources custom functions to prepare RIDB data for joining with ACS data. All custom functions locations within the repository are listed in the [Access, Clean, and Wrangle Data Section][Access, Clean, and Wrangle Data] of this document. These functions rely heavily on functions from the `tidyverse` collection of packages [@R-tidyverse].
+We created a reproducible workflow for cleaning and wrangling data, which is employed in the `data_wrangle_and_clean.Rmd` document that sources custom functions to prepare RIDB data for joining with ACS data. All custom functions are listed in the [Access, Clean, and Wrangle Data Section][Access, Clean, and Wrangle Data] of this document. These functions rely heavily on functions from the `tidyverse` collection of packages [@R-tidyverse].
 
 ```{r, include=FALSE}
 ridb_data_ca_overnight_only <- ridb_data %>% 
@@ -37,7 +42,7 @@ ridb_data_ca_overnight_only <- ridb_data %>%
   filter(use_type == "Overnight")
 ```
 
-First, a the `function_ridb_subset-pre2018.R` is used to subset the RIDB data, filtering only reservations within the selected state that are listed as “Overnight” reservations within the `use_type` variable. For the 2018 California dataset this results in a starting "raw" data frame with `r comma(nrow(ridb_data_ca_overnight_only))` reservations 
+First, we use the `function_ridb_subset-pre2018.R` to subset the RIDB data, filtering only reservations within the selected state that are listed as “Overnight” reservations within the `use_type` variable. For the 2018 California dataset this results in a starting "raw" data frame with `r comma(nrow(ridb_data_ca_overnight_only))` reservations 
 
 ```{r, eval=FALSE}
 # filter for state
@@ -46,7 +51,7 @@ filter(facility_state == state_abbrev) %>%
   filter(use_type == "Overnight")
 ```
 
-The function then selects only the necessary variables, including information about the site (agency, park or forest name, site name, site type, and site location) and information about the reservation (home ZIP come, total paid, visit start and end dates, visit order date, and number of people in party).
+We then select only the necessary variables, including information about the site (agency, park or forest name, site name, site type, and site location) and information about the reservation (home ZIP come, total paid, visit start and end dates, visit order date, and number of people in party).
 
 ```{r, eval=FALSE}
 # select variables
@@ -62,7 +67,7 @@ select(c("agency", "parent_location", "region_description",
                            "entry point", "trailhead"))
 ```
 
-The customer ZIP code values are then normalized. This includes filtering for only US ZIP codes and shortening all 9 digit ZIP codes to include only the first 5 digits.
+Next we normalize the customer ZIP code values. This includes filtering for only US ZIP codes and shortening all 9 digit ZIP codes to include only the first 5 digits.
 
 ```{r, eval=FALSE}
 # filter out invalid ZIP codes
@@ -75,7 +80,6 @@ filter(str_detect(string = customer_zip,
                                     pattern = "[:digit:]{5}"))
 ```
 
-
 This function results in the removal of `r comma(nrow(ridb_data_ca_overnight_only) - nrow(data_joined_2018))` reservations (or `r percent((nrow(ridb_data_ca_overnight_only) - nrow(data_joined_2018)) / nrow(ridb_data_ca_overnight_only), accuracy = 0.01)`) from the original "raw" dataset that included all reservations for reservable overnight campsites in California. 
 
 ```{r, include=FALSE}
@@ -85,7 +89,7 @@ no_valid_booking_window <- data_joined_2018 %>%
   filter(booking_window < 0)
 ```
 
-A second custom function is then utilized to calculate and manipulate variables of interest. Start, end, and order dates calculate the lengths of stay and booking windows (number of days from order to start date) of each reservation. The booking window calculations return a number of results that are negative. This is a known issue that others working with the RIDB data have encountered. This resulted in `r comma(nrow(no_valid_booking_window))` reservations (or `r percent(nrow(no_valid_booking_window) / nrow(ridb_data_ca_overnight_only), accuracy = 0.01)`) without a valid booking window. 
+We created a second custom function `function_ridb_variable_calculate-pre2018.R` to calculate and manipulate variables of interest. We use start, end, and order dates to calculate the lengths of stay and booking windows (number of days from order to start date) of each reservation. The booking window calculations return a number of results that are negative. This is a known issue that others working with the RIDB data have encountered. This resulted in `r comma(nrow(no_valid_booking_window))` reservations (or `r percent(nrow(no_valid_booking_window) / nrow(ridb_data_ca_overnight_only), accuracy = 0.01)`) without a valid booking window, which are removed for plots that visualize the booking window variable. 
 
 ```{r, eval=FALSE}
 mutate(start_date = as.Date(start_date),
@@ -98,7 +102,7 @@ mutate(start_date = as.Date(start_date),
                                    units = "days"))
 ```
 
-Total costs are divided by lengths of stay to calculate cost per day and cost per day per visitor. 
+We calculate daily cost per reservation by dividing total costs by lengths of stay. We then calculated daily cost per visitor by dividing the daily cost by the number of visitors.
 
 ```{r, eval=FALSE}
 # calculate new variables
@@ -106,7 +110,7 @@ mutate(daily_cost = total_paid / length_of_stay,
        daily_cost_per_visitor = daily_cost / number_of_people)
 ```
 
-Site types are aggregated to create 7 broader site categories.
+We aggregate the `site_type` variable to create 7 broader site categories.
 
 ```{r, eval=FALSE}
 # aggregate site type
@@ -136,7 +140,7 @@ mutate(aggregated_site_type =
          ) ~ "tent only"))
 ```
 
-The administrative unit variable is created by combining the `parent_location` and `region_description` variables as different federal agencies track the administrative unit information in different variables. Then the `agency`, `admin_uni` and `park` variables character strings are updated using multiple functions from the `stringr` package [@R-stringr].
+We create an administrative unit variable by combining the `parent_location` and `region_description` variables as different federal agencies track the administrative unit information within different variables. Then we update the `agency`, `admin_uni` and `park` variable character strings using multiple functions from the `stringr` package [@R-stringr]. These updates expand acronyms, remove unnecessary characters (such as "--" or location codes), and normalize any discrepencies in characater strings.
 
 ```{r, eval=FALSE}
 mutate(admin_unit = 
@@ -203,7 +207,7 @@ mutate(admin_unit =
                        replacement = "Tunnel Mills"))
 ```
 
-Distance traveled is calculated by measuring the distance from the latitude and longitude facility coordinate locations to the centroid of the home ZIP code, which is accessed via the `tidycensus` package [@R-tidycensus].
+We calculate distance traveled by measuring the distance from the latitude and longitude coordinate facility locations to the centroid of the home ZIP code. Here we utilize both the `tidycensus` package [@R-tidycensus] and the `sf` package [@R-sf].
 
 ```{r, eval=FALSE}
 # bootstrap geometries and reproject to NAD 83
@@ -236,7 +240,7 @@ df_joined_geometries <-
          distance_traveled_m = as.numeric(distance_traveled_m)) 
 ```
 
-And finally, a variable is added indicating in which state or territory each customer zip code is located. This portion of the code utilizes the `zipcodeR` package [@R-zipcodeR]. 
+And finally, we add a variable indicating in which state or territory each customer zip code is located. This portion of the code utilizes the `zipcodeR` package [@R-zipcodeR]. 
 
 ```{r, eval=FALSE}
 # create df of fips and full state names
@@ -294,25 +298,29 @@ df_states_fips_zip_codes <-
 
 #### U.S. Census Data
 
-US Census data is publicly accessible in many ways. Our product utilizes the R package `tidycensus` [@R-tidycensus] to access the necessary variables from the 2018 [American Community Survey (ACS)](https://www.census.gov/programs-surveys/acs/data.html) via API. API access requires an api key, which can be . 
+US Census data is publicly accessible in many ways. Our product utilizes the R package `tidycensus` [@R-tidycensus] to access the necessary variables from the 2018 [American Community Survey (ACS)](https://www.census.gov/programs-surveys/acs/data.html) via API. API access requires an api key, which can then be saved into your RStudio environment. Learn more about API keys and working with `tidycensus` [here](https://walker-data.com/tidycensus/articles/basic-usage.html).
 
 ```{r, eval=FALSE, message=FALSE}
 # API set up
-# ONLY HAVE TO RUN THE FIRST TIME USING THIS RMD on a new machine
+# Only have to run this the first time using on a new machine
 census_api <- source("private/census-api.R")
 census_api_key(key = census_api[[1]], install = TRUE, overwrite = TRUE)
 # run in console:
 readRenviron("~/.Renviron")
-
-# look at option variables
-#View(load_variables(2018, "acs5", cache = TRUE))
 ```
 
-Sample data are collected for the ACS each year and includes many variables that cover social, economic, housing, and demographic characteristics. The Outdoor Equity App utilizes the [ACS 5-year data](https://www.census.gov/data/developers/data-sets/acs-5year.html), which is an estimate representing data collected over the designated 5 year period. We used the 5-year ACS data over the 1-year ACS data because it increases "statistical reliability of the data for less populated areas and small population subgroups" [@ACS].
+Sample data are collected for the ACS each year and includes many variables that cover social, economic, housing, and demographic characteristics. All variable options can be easily viewed using the code below:
 
-The variables included in the App include median-income, race, language(s) spoken at home, and highest level of education attained. All variables are represented as estimates in numeric format for a ZIP code tabulation area. Data are called by geographic region, in our case the ZIP code tabulation area, and include an estimated number of people that fall into each category within each ZIP code, a margin of error, and an estimated number of total people in the area. Within our custom functions `function_acs_education.R`, `function_acs_language.R`, `function_acs_median_income.R`, and `function_acs_race.R` we first imported just the necessary columns for each ACS variable. 
+```{r, eval=FALSE}
+# look at variable options
+View(load_variables(2018, "acs5", cache = TRUE))
+```
 
-```{r}
+The Outdoor Equity App utilizes the [ACS 5-year data](https://www.census.gov/data/developers/data-sets/acs-5year.html), which is an estimate representing data collected over the designated 5 year period. We used the 5-year ACS data over the 1-year ACS data because it increases "statistical reliability of the data for less populated areas and small population subgroups" [@ACS].
+
+The variables included in the App include median-income, race, language(s) spoken at home, and highest level of education attained. All variables are represented as estimates in numeric format for a census tract. Data are called by geographic region, in our case the ZIP code tabulation area, and include an estimated number of people that fall into each category within each ZIP code, a margin of error, and an estimated number of total people in the area. Within our custom functions `function_acs_education.R`, `function_acs_language.R`, `function_acs_median_income.R`, and `function_acs_race.R` we first imported just the necessary columns for each ACS variable. See below for an example of the race variable:
+
+```{r, message=FALSE}
 # import variables for race
 race_df <- 
   get_acs(
@@ -337,10 +345,10 @@ knitr::kable(head(race_df, 10),
              caption = "Example of raw ACS Race Variable.")
 ```
 
-Percentages for the categories within each ACS variable are calculated for race, language(s) spoken in the home, and highest level of education by dividing the estimate for a category by the estimated total population for that ZIP code. 
+We calculated percentages for the categories within each ACS variable for race, language(s) spoken in the home, and highest level of education by dividing the estimate for a category by the estimated total population for that ZIP code. 
 
 ```{r, eval=FALSE}
-df_percent <- 
+race_df_percent <- 
   race_df %>% 
   group_by(zip_code, race) %>% 
   summarise(estimate = sum(estimate),
@@ -350,10 +358,10 @@ df_percent <-
             percent = estimate / summary_est)
 ```
 
-For median-income, the estimated median-income is used as is, without further adjustments. 
+For median-income, we use the estimated median-income as is, without further adjustments. 
 
 ```{r, eval=FALSE}
-df <- 
+median_income_df <- 
   get_acs(geography = "zcta", year = 2018,
           state = "CA",
           variables = c(
@@ -365,7 +373,7 @@ df <-
   select(median_income, zip_code)
 ```
 
-ACS data are then pivoted wider, moving the different categories and percentages (ex: racial groups) to their own columns to create a single row for each ZIP code. This is necessary for joining the ACS data sets to the RIDS data set. 
+We transform teh ACS dataframe by pivoting wider, which moves the different categories and percentages (ex: racial groups) to their own columns to create a single row for each ZIP code. This is necessary for joining the ACS data sets to the RIDS data set. 
 
 ```{r, eval=FALSE}
 select(zip_code, summary_est, race, percent) %>% 
@@ -376,6 +384,20 @@ select(zip_code, summary_est, race, percent) %>%
               values_from = "percent")
 ```
 
+Finally, we use the `function_join_ridb_acs.R` custom functions to join the RIDB and ACS data to create the dataset that is available for download on the App and utilized for all plots and maps. 
+
+```{r, eval=FALSE}
+joined_df <- 
+  left_join(x = ridb_df,
+            y = acs_df_race,
+            by = c("customer_zip" = "zip_code")) %>% 
+  left_join(y = acs_df_education,
+            by = c("customer_zip" = "zip_code")) %>% 
+  left_join(y = acs_df_median_income,
+            by = c("customer_zip" = "zip_code")) %>% 
+  left_join(y = acs_df_language,
+            by = c("customer_zip" = "zip_code"))
+```
 
 
 ### Statistical Analysis and Data Wrangling for Plots
@@ -384,7 +406,7 @@ Each type of plot and map require unique data wrangling which is explained in th
 
 #### Data Summary
 
-We created custom functions for data wrangling and plotting for use within the R Shiny App code. Wrangling begins with filtering based on the user’s choice campsite input. We then further subset the dataset to include only the necessary columns for plotting. Histograms or bar charts show the distribution of the data for each variable. For ACS plots, data from reservations are plotted against data for the full California population in order to show where reservations either under- or over-represent that variable. 
+We created custom functions for data wrangling and plotting for use within the Outdoor Equity App code. Wrangling begins with filtering based on the user’s choice campsite input. We then further subset the dataset to include only the necessary columns for plotting. 
 
 ```{r, eval=FALSE}
 # example for booking window data summary
@@ -403,10 +425,97 @@ booking_window_rdf <- reactive({
 })
 ```
 
+We create histograms, bar charts, or density plots to show the distribution of the data for each variable. For ACS variables, data from reservations are plotted against data for the full California population. This allows a user to compare the distribution within the reservation data to that of the California census in order to see where reservations either under- or over-represent that variable as compared to California residents. We used the `plotly` package [@R-plotly] to allow a user to hover over the plot to view helper text. We also included additional helper text outside of the plots for more complicated plots.
+
+```{r, eval=FALSE}
+## -- example for booking window data summary -- ##
+# parameters
+hist_colors <- c("#64863C", "#466C04")
+quant_80_color <- c("#FACE00")
+caption_color <- c("#ac8d00")
+
+# plot for shiny app
+plotly <- ggplot(
+  data = booking_window_rdf()) +
+  geom_histogram(aes(x = booking_window,
+                     text = paste0(percent(..count.. / nrow(booking_window_rdf()), 
+                                           accuracy = 0.1), 
+                                   " of all visits are reserved between ", xmin, 
+                                   " and ", xmax, 
+                                   " days before the start of the visit", 
+                                   "<br>",
+                                   "(Total reservations to site: ",
+                                   comma(nrow(booking_window_rdf()), accuracy = 1), 
+                                   ")")),
+                 binwidth = 7,
+                 center = 7 / 2,
+                 fill = hist_colors[[1]], 
+                 col = hist_colors[[2]], size = 0.05) +
+  labs(x = "Days in advance before visit (each bar = 1 week)",
+       y = "") +
+  scale_x_continuous(limits = c(0, x_max)) +
+  geom_vline(xintercept = quant_80,
+             linetype = "dashed", alpha = 0.5, color = quant_80_color) +
+  theme_minimal() +
+  theme(plot.background = element_rect("white"),
+        panel.grid.major.y = element_blank())
+
+# add 6 month / 1 year annotation if data allows
+if (x_max <= 180) {
+  # don't include 6 month or 1 year annotation
+  plotly
+  
+} else if (x_max > 180 & x_max <= 360){
+  # include 6 month annotation
+  plotly <- plotly +
+    geom_vline(xintercept = 180, 
+               linetype = "dashed", size = .3, alpha = .5) +
+    annotate("text", label = "6 months",  size = 3,
+             x = 180, y = 5)
+  
+} else if (x_max >= 360) {
+  
+  # include 6 month and 1 year annotation
+  plotly <- plotly +
+    geom_vline(xintercept = 180, 
+               linetype = "dashed", size = .3, alpha = .5) +
+    annotate("text", label = "6 months", size = 3,
+             x = 180, y = 5) +
+    geom_vline(xintercept = 360,
+               linetype = "dashed", size = .3, alpha = .5) +
+    annotate("text", label = "1 year", size = 3,
+             x = 360, y = 5)
+} # EO else if for plotly
+
+ggplotly(plotly,
+         tooltip = list("text"),
+         dynamicTicks = TRUE) %>% 
+  layout(title = list(text = paste0('<b>', siteInput, '<br>', admin_unitInput, '</b>',
+                                    '<br>',
+                                    'Number of days from reservation to start of visit'),
+                      font = list(size = 15)),
+         xaxis = list(separatethousands = TRUE),
+         yaxis = list(separatethousands = TRUE),
+         margin = list(b = 130, t = 100), 
+         annotations =  list(x = x_max/2, y = -0.6, 
+                             text = paste0("80% of reservations reserve their visit less than ", 
+                                           '<b>', quant_80, '</b>', 
+                                           " days before the start date", 
+                                           "<br>",
+                                           "(shown on plot with yellow dotted line)."), 
+                             showarrow = F, 
+                             xre = 'paper', yref = 'paper', 
+                             xanchor = 'middle', yanchor = 'auto', 
+                             xshift = 0, yshift = 0,
+                             font = list(size = 12, color = caption_color))) %>%
+  config(modeBarButtonsToRemove = list("pan", "select", "lasso2d", "autoScale2d", 
+                                       "hoverClosestCartesian", "hoverCompareCartesian"))
+```
+
 
 #### Data Relationships
 
-Visualizing the relationship between RIDB and ACS variables is challenging because the socioeconomic data available are an estimate of the ZIP code population, rather than data of the individual making the reservation. In order to create simple, easy to interpret plots, we determined whether reservations were from a location with “high” percentages of a given ACS variable category (ex: one of the eight racial groups). We determined “high” as above the weighted 3rd quartile based on census data for all of California. This method allows for reservations to be included in the “high” category for multiple values within one ACS variable. By allowing a reservation to appear in multiple categories within a single ACS variable, the uncertainty of the reserver’s actual socioeconomic status is retained. 
+Visualizing the relationship between RIDB and ACS variables is challenging because the socioeconomic data available are an estimate of the ZIP code population, rather than data of the individual making the reservation. In order to create simple, easy to interpret plots, we determined whether reservations were from a location with “high” percentages of a given ACS variable category (ex: one of the eight racial groups). We determined “high” as anything above the weighted 3rd quartile (weighted based on the California census). This method allows for reservations to be included in the “high” category for multiple values within one ACS variable (ex: a reservation might be from a ZIP code that falls into the "high" category for both Black and Asian folks). By allowing a reservation to appear in multiple categories within a single ACS variable, the uncertainty of the reserver’s actual socioeconomic status is retained. 
 
 ```{r, include=FALSE}
 source("r/function_acs_education.R")
@@ -436,8 +545,35 @@ data_acs_ca_all <- acs_ca_all %>%
             "zip_code_population"))
 ```
 
+Example code for calculating the "high" threshold for language can be seen below:
 
-```{r, include=FALSE}
+```{r, eval=FALSE}
+# `function_acs_top_quartile_language.R` code
+threshold_df <- acs_df %>%
+  # filter variables of interest
+  select(zip_code, english_only, not_english_only, mean_zip_code_population) %>% 
+  pivot_longer(cols = 2:3,
+               names_to = "language",
+               values_to = "language_percentage") %>% 
+  # filter category of interest
+  filter(language == language_group) %>% 
+  drop_na(language_percentage)
+
+# weighted median value (weighted based on ZIP code populations)
+weighted_half <- weighted.mean(x = threshold_df$language_percentage, 
+                               w = threshold_df$mean_zip_code_population)
+
+# drop rows below weighted median
+df_half <- threshold_df %>% filter(language_percentage >= weighted_half)
+
+# weighted 3rd quartile
+## weighted median value of top half (weighted based on ZIP code populations)
+weighted_quartile <- weighted.mean(x = df_half$language_percentage, 
+                                   w = df_half$mean_zip_code_population)
+```
+
+
+```{r}
 source("r/function_acs_top_quartile_language.R")
 
 # language groups
@@ -506,36 +642,379 @@ race_quants_df <-
          "Threshold" = weighted_quartile)
 ```
 
+The thresholds used within the Outdoor Equity App can be seen in the table below:
+
 ```{r, echo=FALSE}
 knitr::kable(list(language_quants_df, education_quants_df,
                   race_quants_df), 
              caption = "Threshold values for ACS variables.")
 ```
 
+We create lollipop and bar plots to show the relationships of the data for each set of variables. We used the `plotly` package [@R-plotly] to allow a user to hover over the plot to view helper text. An example of the code used to create the education compared to booking window plot is show below:
+
+```{r, eval=FALSE}
+## -- data wrangle -- ##s
+# create reactive dataframe and further subset
+rdf <- reactive ({
+  
+  validate(
+    need(siteInput != "",
+         "Please select a reservable site to visualize.")
+  ) # EO validate
+  
+  education_top_quartile_df %>%
+    # filter to user site of choice
+    filter(park == siteInput) %>%
+    # select to variables of interest
+    select(park, customer_zip, 
+           education, education_percentage, education_y_lab, 
+           booking_window) %>% 
+    drop_na(booking_window, education_percentage) %>% 
+    filter(booking_window >= 0) %>% 
+    # summarize to inner quartile range, median, and total reservations
+    group_by(education, education_y_lab) %>% 
+    summarize(median_booking_window = median(booking_window),
+              quartile_lower = quantile(booking_window)[[2]],
+              quartile_upper = quantile(booking_window)[[4]],
+              count = n())
+  
+}) #EO reactive df
+
+validate(need(
+  nrow(rdf()) > 0,
+  paste0("There are no reservations to ", siteInput, ", ", admin_unitInput, 
+         " that come from communities in the high range for any educational categories.")
+)) # EO validate
+
+## -- create plot -- ##
+# parameters
+education_group_colors <-
+  c(
+    "HS, GED,\nor Below" = "#a6cee3",
+    "Some College or\nTrade School"  = "#1f78b4",
+    "Associates or\nBachelors Degree" = "#b2df8a",
+    "Masters Degree\nor Above" = "#33a02c"
+  )
+
+# create plot
+plotly <- ggplot(data = rdf(),
+                 aes(x = median_booking_window,
+                     y = education_y_lab)) +
+  geom_segment(aes(xend = 0, yend = education_y_lab)) +
+  geom_point(
+    aes(
+      color = education_y_lab,
+      fill = education_y_lab,
+      text = paste0(
+        comma(count, accuracy = 1),
+        " unique visits were made by people who live in ZIP codes with high rates of",
+        "<br>", education, 
+        " as the maximum level of education. Typically these visitors reserved their visit between",
+        "<br>", comma(quartile_lower, accuracy = 1), " and ", 
+        comma(quartile_upper, accuracy = 1),
+        " days before the start of their trip, with a median booking window of ", 
+        comma(median_booking_window, accuracy = 1),  " days."
+      )
+    ),
+    size = 3.5, shape = 21, stroke = 2 ) +
+  scale_y_discrete(expand = c(0.45, 0)) +
+  scale_fill_manual(values = education_group_colors) +
+  scale_color_manual(values = education_group_colors) +
+  labs(x = paste("Estimated Number of Days in Advance Site is Reserved"),
+       y = "") +
+  theme_minimal() +
+  theme(
+    plot.background = element_rect("white"),
+    panel.grid.major.y = element_blank(),
+    legend.position = "none")
+
+# create plotly
+ggplotly(plotly,
+         tooltip = list("text")) %>%
+  config(
+    modeBarButtonsToRemove = list("zoom", "pan", "select", "lasso2d", "autoScale2d",
+                                  "hoverClosestCartesian", "hoverCompareCartesian")) %>%
+  layout(title = list(
+    text = paste0( '<b>', siteInput, '<br>', admin_unitInput, '</b>', '<br>',
+                   'Number of Days in Advance Site is Reserved by Visitors with Different Levels of Education'),
+    font = list(size = 15) )) %>%
+  add_annotations(
+    text = "Reservations from ZIP codes<br>with high proportions of:",
+    x = -0.15, y = 0.9, 
+    font = list(size = 11),
+    xref = 'paper', yref = 'paper', 
+    showarrow = FALSE)
+```
 
 
 #### Spatial analysis
 
-A state-level visitorshed map shows the number of visitors to overnight reservable sites from each state. We use the  package `zipcodeR` [@R-zipcodeR] to determine the state in which each ZIP code, and thus visitor, is located, using the RIDB data. We calculate the number of reservations per state for the site (as chosen by the app user) and use the `tmaps` package [@R-tmap] to create an interactive map that colors states based on the total number of reservations for that state. 
+We created a state-level visitorshed map to show the number of visitors to overnight reservable sites from each state. We use the  package `zipcodeR` [@R-zipcodeR] to determine the state in which each ZIP code, and thus visitor, is located, using the RIDB data. We then create a dataframe with the necessary geometries using the `tigris` [@R-tigris] package. And finally we simplify the geometries to lower the load time within the App using the `rmapshaper` [@R-rmapshaper] package. 
 
-A ZIP-code level visitorshed map shows the number of visitors to sites for each ZIP code within California only due to computational load of calculating for all ZIP codes in the United States. We calculate the number of reservations per ZIP code for the site (as chosen by the app user) and use `tmaps` to create an interactive map that colors ZIP codes based on the total number of reservations for that ZIP code. 
+```{r, eval=FALSE}
+# ZIP codes and respective states
+fips_list <- 
+  c("01", "02", "04", "05", "06", "08", "09", "10", "11", "12", 
+    "13", "15", "16", "17", "18", "19", "20", "21", "22", "23", 
+    "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", 
+    "34", "35", "36", "37", "38", "39", "40", "41", "42", "44", 
+    "45", "46", "47", "48", "49", "50", "51", "53", "54", "55", 
+    "56", "72")
+state_list <- 
+  c("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL",
+    "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME",
+    "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH",
+    "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI",
+    "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI",
+    "WY", "PR")
+states_names_list <- 
+  c("Alabama", "Alaska", "Arizona", "Arkansas", "California", 
+    "Colorado", "Connecticut", "Delaware", "District of Columbia", 
+    "Florida","Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", 
+    "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine","Maryland", 
+    "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", 
+    "Montana", "Nebraska", "Nevada", "New Hampshire","New Jersey", 
+    "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", 
+    "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island","South Carolina", 
+    "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", 
+    "Washington", "West Virginia", "Wisconsin","Wyoming", "Puerto Rico")
+
+# create dataframe of states
+df_states_fips <- as.data.frame(list(fips = fips_list,
+                                     state = state_list,
+                                     state_full = states_names_list))
+
+# loop through state df to get all ZIP codes w/in state
+df_states_zip_codes <- data.frame()
+
+for (i in seq_along(fips_list)){
+  state <- zipcodeR::search_fips(state_fips = fips_list[[i]]) %>% 
+    select(zipcode, state)
+  df_states_zip_codes <- rbind(df_states_zip_codes, state)
+}
+
+# add full state name, fips code, etc. to list of all ZIP codes for each state
+df_states_fips_zip_codes <- 
+  left_join(x = df_states_zip_codes,
+            y = df_states_fips,
+            by = "state") %>% 
+  select(fips, zipcode) %>% 
+  rename(zip_code = zipcode)
+
+# get state geometries for full US
+df_state_geometries_us <- tigris::states(year = 2018) %>%
+  select(GEOID, STUSPS, NAME, geometry) %>% 
+  rename(fips = GEOID,
+         state_abbrev = STUSPS,
+         state = NAME) %>% 
+  rmapshaper::ms_simplify(keep = 0.005, keep_shapes = TRUE)
+```
+
+We then calculate the number of reservations per state for the site (as chosen by the app user) and use `tmaps` package [@R-tmap] to create an interactive map that colors states based on the total number of reservations for that state. 
+
+```{r, eval=FALSE}
+## -- data wrangle -- ##
+# reactive data frame for siteInput
+rdf <- reactive ({
+  
+  validate(
+    need(siteInput != "",
+         "Please select a reservable site to visualize.")
+  ) # EO validate
+  
+  ridb_df %>% 
+    filter(park %in% siteInput) %>%
+    select(agency, admin_unit, park, customer_zip_state_full, customer_zip_state)
+})
+
+# value of total reservations for this park
+total_reservations <- nrow(rdf())
+
+# number of reservations and % per state
+map_data <- rdf() %>% 
+  group_by(customer_zip_state_full, customer_zip_state) %>%
+  summarize(number_reservations = n(),
+            percentage_reservations = percent((number_reservations / total_reservations), 
+                                              accuracy = 0.01)) %>%
+  filter(!is.na(customer_zip_state_full))
+
+# add state geometries
+map_data_geometries <-
+  state_geometries_df %>%
+  left_join(y = map_data,
+            by = c("state_abbrev" = "customer_zip_state")) %>%
+  mutate_at(vars(number_reservations), 
+            ~replace(number_reservations, is.na(number_reservations), 0)) %>%
+  mutate_at(vars(percentage_reservations), 
+            ~replace(percentage_reservations, is.na(percentage_reservations), 0)) %>% 
+  select(customer_zip_state_full, number_reservations, percentage_reservations, geometry)
+
+## -- create map -- ##
+tmap_mode("view")
+
+tm_shape(map_data_geometries) +
+  tm_borders(col = "grey", alpha = 0.5) +
+  tm_fill(col = "number_reservations",
+          title = "Number of Visits",
+          palette = "YlGn",
+          n = 10,
+          style = "jenks",
+          id = "customer_zip_state_full",
+          popup.vars = c("Total Visits" = "number_reservations",
+                         "Percentage of All Visits" = "percentage_reservations")) +
+  tm_view(set.view = c(-101.834335, 40.022356, 2)) +
+  tmap_options(basemaps = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}')
+```
+
+A ZIP-code level visitorshed map shows the number of visitors to sites for each ZIP code within California only due to computational load of calculating for all ZIP codes in the United States. We then create a dataframe with the necessary geometries using the `tigris` [@R-tigris] package. And finally we simplify the geometries to lower the load time within the App using the `rmapshaper` [@R-rmapshaper] package. 
+
+```{r, eval=FALSE}
+## -- ZIP codes and respective states -- ##
+fips_list <- 
+  c("01", "02", "04", "05", "06", "08", "09", "10", "11", "12", 
+    "13", "15", "16", "17", "18", "19", "20", "21", "22", "23", 
+    "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", 
+    "34", "35", "36", "37", "38", "39", "40", "41", "42", "44", 
+    "45", "46", "47", "48", "49", "50", "51", "53", "54", "55", 
+    "56", "72")
+state_list <- 
+  c("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL",
+    "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME",
+    "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH",
+    "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI",
+    "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI",
+    "WY", "PR")
+states_names_list <- 
+  c("Alabama", "Alaska", "Arizona", "Arkansas", "California", 
+    "Colorado", "Connecticut", "Delaware", "District of Columbia", 
+    "Florida","Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", 
+    "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine","Maryland", 
+    "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", 
+    "Montana", "Nebraska", "Nevada", "New Hampshire","New Jersey", 
+    "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", 
+    "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island","South Carolina", 
+    "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", 
+    "Washington", "West Virginia", "Wisconsin","Wyoming", "Puerto Rico")
+
+# create dataframe of states
+df_states_fips <- as.data.frame(list(fips = fips_list,
+                                     state = state_list,
+                                     state_full = states_names_list))
+
+# loop through state df to get all ZIP codes w/in state
+df_states_zip_codes <- data.frame()
+
+for (i in seq_along(fips_list)){
+  state <- zipcodeR::search_fips(state_fips = fips_list[[i]]) %>% 
+    select(zipcode, state)
+  df_states_zip_codes <- rbind(df_states_zip_codes, state)
+}
+# add full state name, fips code, etc. to list of all ZIP codes for each state
+df_states_fips_zip_codes <- 
+  left_join(x = df_states_zip_codes,
+            y = df_states_fips,
+            by = "state") %>% 
+  rename(state_abbrev = state,
+         zip_code = zipcode) %>% 
+  relocate(fips, .before = 2)
+
+
+## -- CA ZIP geometries -- ##
+df_zip_geometries_ca <- get_acs(geography = "zcta", year = 2018, geometry = TRUE,
+                                state = "California",
+                                summary_var = "B01001_001",
+                                variables = c(male = "B01001_002")) %>%
+  select(NAME, geometry) %>%
+  mutate(zip_code = str_sub(NAME, start = -5, end = -1)) %>%
+  select(zip_code, geometry) %>% 
+  rmapshaper::ms_simplify(keep = 0.005, keep_shapes = TRUE) %>% 
+  left_join(y = df_states_fips_zip_codes,
+            by = "zip_code") %>% 
+  relocate(zip_code, .before = 1)
+```
+
+We calculate the number of reservations per ZIP code for the site (as chosen by the app user) and use `tmaps` to create an interactive map that colors ZIP codes based on the total number of reservations for that ZIP code. 
+
+```{r, eval=FALSE}
+## -- data wrangle -- ##
+# reactive data frame for siteInput
+rdf <- reactive ({
+  
+  validate(
+    need(siteInput != "",
+         "Please select a reservable site to visualize.")
+  ) # EO validate
+  
+  ridb_df %>% 
+    select(agency, admin_unit, park, customer_zip, facility_latitude, facility_longitude) %>% 
+    filter(park %in% siteInput)
+})
+
+# number of reservations per ZIP code
+map_data <- rdf() %>% 
+  group_by(customer_zip) %>%
+  summarize(number_reservations = n())
+
+# join with ZIP geometries
+map_data_geometries <-
+  zip_geometries_df %>% 
+  left_join(map_data,
+            by = c("zip_code" = "customer_zip")) %>%
+  mutate_at(vars(number_reservations), 
+            ~replace(number_reservations, is.na(number_reservations), 0))  %>% 
+  select(zip_code, number_reservations, geometry)
+
+# value of total CA reservations for this park
+total_reservations <- sum(map_data_geometries$number_reservations)
+
+# add percentage of all CA reservations for each ZIP
+map_data_geometries <- map_data_geometries %>% 
+  mutate(percentage_reservations = percent((number_reservations / total_reservations), accuracy = 0.01)) %>%
+  mutate_at(vars(percentage_reservations), 
+            ~replace(percentage_reservations, is.na(percentage_reservations), 0))
+
+# calculate location of park for point on map
+park_location_geom <- rdf() %>%
+  group_by(park) %>%
+  summarise(facility_latitude = median(facility_latitude),
+            facility_longitude = median(facility_longitude)) %>%
+  st_as_sf(coords = c("facility_latitude", "facility_longitude"),
+           crs = 4326) %>%
+  st_transform(crs = 4269) # using NAD83 because measured in meters
+
+print(paste("The site's location has been calculated and it is:", park_location_geom$geometry))
+
+## -- create map -- ##
+tmap_mode("view")
+
+tm_shape(map_data_geometries) +
+  tm_fill(col = "number_reservations",
+          title = "Number of Visits",
+          palette = "PuRd",
+          style = "jenks",
+          n = 10,
+          popup.vars = c("Total Visits" = "number_reservations",
+                         "Percentage of All CA Visits" = "percentage_reservations")) +
+  tm_shape(park_location_geom) +
+  tm_dots(col = "darkgreen", size = 0.1) +
+  tm_shape(park_location_geom) +
+  tm_symbols(shape = map_site_icon,
+             id = "park") +
+  tm_shape(ca_cities_df) +
+  tm_text(col = "black",
+          text = "city") +
+  tm_view(set.view = c(-119.559917, 37.061753, 6)) +
+  tmap_options(basemaps = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}')
+```
 
 
 ### Data updates
 
-The `data_wrangle_and_clean.Rmd` document is set up to create the combined dataset necessary for the Outdoor Equity App. To access the ACS data we use the `tidycensus` package [@R-tidycensus] to access the necessary data via API, meaning data updates are not necessary outside of the `.Rmd` document. The RIDB data is accesses via direct download from the [Recreation.gov](https://ridb.recreation.gov/download) website. See the [How to Expand the Outdoor Equity App Section][How to Expand the Outdoor Equity App] on expanding the time periods included in the App.
+The `data_wrangle_and_clean.Rmd` document is set up to create the joined dataset necessary for the Outdoor Equity App. To access the ACS data we use the `tidycensus` package [@R-tidycensus] to access the necessary data via API, meaning data updates are not necessary outside of the `.Rmd` document. The RIDB data is accesses via direct download from the [Recreation.gov](https://ridb.recreation.gov/download) website. See the [How to Expand the Outdoor Equity App Section][How to Expand the Outdoor Equity App] on expanding the time periods included in the App.
 
 ### Server Hosting
 
 The Outdoor Equity App is hosted on server owned by the Bren School at the University of California, Santa Barbara until the end of 2022. At that time the App will be moved to the shiny.io server for the duration of 2023.
-
-### Shiny Code Directory
-
-We created the following functions in the Outdoor Equity App to build out the ui and server outputs:
-
-```{r, echo=FALSE}
-# add diagram or table of shiny directory organization
-```
 
 
 ## How to Expand the Outdoor Equity App
