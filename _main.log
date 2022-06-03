@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.6.3)  3 JUN 2022 21:28
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.6.3)  3 JUN 2022 21:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1046,10 +1046,10 @@ Overfull \hbox (10.37935pt too wide) in paragraph at lines 1657--1657
  []
 
 [49] [50] [51] [52] [53]
-File: images/repo_directory.png Graphic file (type bmp)
-<images/repo_directory.png>
+File: images/repo_directory_medfont.png Graphic file (type bmp)
+<images/repo_directory_medfont.png>
 
-LaTeX Warning: Float too large for page by 25.83643pt on input line 1848.
+LaTeX Warning: Float too large for page by 25.83272pt on input line 1848.
 
 (./_main.bbl [54] [55] [56
 
@@ -1059,7 +1059,7 @@ Package rerunfilecheck Info: File `_main.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  19913 strings out of 478126
- 364238 string characters out of 5852738
+ 364382 string characters out of 5852738
  851521 words of memory out of 5000000
  40256 multiletter control sequences out of 15000+600000
  475846 words of font info for 86 fonts, out of 8000000 for 9000

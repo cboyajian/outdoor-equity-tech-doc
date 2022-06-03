@@ -145,6 +145,6 @@ knitr::kable(r_packages_df,
 ## Repository Directory Structure
 
 ```{r, repo-directory, echo=FALSE, fig.cap = "Screenshot of the Metadata page of the Outdoor Equity App"}
-knitr::include_graphics("images/repo_directory.png", dpi = 275)
+knitr::include_graphics("images/repo_directory_medfont.png", dpi = 275)
 ```
 
