@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 10 Appendix | Outdoor Equity App Technical Documentation</title>
+  <meta name="description" content="Section 10 Appendix | Outdoor Equity App Technical Documentation" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 10 Appendix | Outdoor Equity App Technical Documentation" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="cboyajian/outdoor-equity-tech-doc" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 10 Appendix | Outdoor Equity App Technical Documentation" />
+  
+  
+  
+
+<meta name="author" content="Clarissa Boyajian and Halina Do-Linh" />
+
+
+<meta name="date" content="2022-06-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="additional-challenges.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/header-attrs-2.10.6/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Outdoor Equity App</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#abstract"><i class="fa fa-check"></i><b>1.1</b> Abstract</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#about-the-authors"><i class="fa fa-check"></i><b>1.2</b> About the Authors</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#helpful-links-and-resources"><i class="fa fa-check"></i><b>1.3</b> Helpful Links and Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="executive-summary.html"><a href="executive-summary.html"><i class="fa fa-check"></i><b>2</b> Executive Summary</a></li>
+<li class="chapter" data-level="3" data-path="problem-statement.html"><a href="problem-statement.html"><i class="fa fa-check"></i><b>3</b> Problem Statement</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="problem-statement.html"><a href="problem-statement.html#background"><i class="fa fa-check"></i><b>3.1</b> Background</a></li>
+<li class="chapter" data-level="3.2" data-path="problem-statement.html"><a href="problem-statement.html#significance"><i class="fa fa-check"></i><b>3.2</b> Significance</a></li>
+<li class="chapter" data-level="3.3" data-path="problem-statement.html"><a href="problem-statement.html#figures"><i class="fa fa-check"></i><b>3.3</b> Figures</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="specific-objectives.html"><a href="specific-objectives.html"><i class="fa fa-check"></i><b>4</b> Specific Objectives</a></li>
+<li class="chapter" data-level="5" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html"><i class="fa fa-check"></i><b>5</b> Summary of Solution Design</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#glossary-and-definitions"><i class="fa fa-check"></i><b>5.1</b> Glossary and Definitions</a></li>
+<li class="chapter" data-level="5.2" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#access-clean-and-wrangle-data"><i class="fa fa-check"></i><b>5.2</b> Access, Clean, and Wrangle Data</a></li>
+<li class="chapter" data-level="5.3" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#analysis-and-visualizations"><i class="fa fa-check"></i><b>5.3</b> Analysis and Visualizations</a></li>
+<li class="chapter" data-level="5.4" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#outdoor-equity-app"><i class="fa fa-check"></i><b>5.4</b> Outdoor Equity App</a></li>
+<li class="chapter" data-level="5.5" data-path="summary-of-solution-design.html"><a href="summary-of-solution-design.html#user-guide-and-technical-documentation"><i class="fa fa-check"></i><b>5.5</b> User Guide and Technical Documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html"><i class="fa fa-check"></i><b>6</b> Products and Deliverables</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html#r-shiny-app"><i class="fa fa-check"></i><b>6.1</b> R Shiny App</a></li>
+<li class="chapter" data-level="6.2" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html#metadata"><i class="fa fa-check"></i><b>6.2</b> Metadata</a></li>
+<li class="chapter" data-level="6.3" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html#packages-and-versions-used"><i class="fa fa-check"></i><b>6.3</b> Packages and Versions Used</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="summary-of-testing.html"><a href="summary-of-testing.html"><i class="fa fa-check"></i><b>7</b> Summary of Testing</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="summary-of-testing.html"><a href="summary-of-testing.html#data-integrity"><i class="fa fa-check"></i><b>7.1</b> Data Integrity</a></li>
+<li class="chapter" data-level="7.2" data-path="summary-of-testing.html"><a href="summary-of-testing.html#code-review"><i class="fa fa-check"></i><b>7.2</b> Code Review</a></li>
+<li class="chapter" data-level="7.3" data-path="summary-of-testing.html"><a href="summary-of-testing.html#product-testing"><i class="fa fa-check"></i><b>7.3</b> Product Testing</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="summary-of-testing.html"><a href="summary-of-testing.html#next-steps-for-testing"><i class="fa fa-check"></i><b>7.3.1</b> Next steps for testing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="user-documentation.html"><a href="user-documentation.html"><i class="fa fa-check"></i><b>8</b> User Documentation</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="user-documentation.html"><a href="user-documentation.html#purpose-of-the-outdoor-equity-app"><i class="fa fa-check"></i><b>8.1</b> Purpose of the Outdoor Equity App</a></li>
+<li class="chapter" data-level="8.2" data-path="user-documentation.html"><a href="user-documentation.html#how-to-use-the-outdoor-equity-app"><i class="fa fa-check"></i><b>8.2</b> How to Use the Outdoor Equity App</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="user-documentation.html"><a href="user-documentation.html#about-the-app"><i class="fa fa-check"></i><b>8.2.1</b> About the App</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="user-documentation.html"><a href="user-documentation.html#how-to-maintain-the-outdoor-equity-app"><i class="fa fa-check"></i><b>8.3</b> How to Maintain the Outdoor Equity App</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="user-documentation.html"><a href="user-documentation.html#repository-directory-structure"><i class="fa fa-check"></i><b>8.3.1</b> Repository Directory Structure</a></li>
+<li class="chapter" data-level="8.3.2" data-path="user-documentation.html"><a href="user-documentation.html#data-preparation-methods"><i class="fa fa-check"></i><b>8.3.2</b> Data Preparation Methods</a></li>
+<li class="chapter" data-level="8.3.3" data-path="user-documentation.html"><a href="user-documentation.html#statistical-analysis-and-data-wrangling-for-plots"><i class="fa fa-check"></i><b>8.3.3</b> Statistical Analysis and Data Wrangling for Plots</a></li>
+<li class="chapter" data-level="8.3.4" data-path="user-documentation.html"><a href="user-documentation.html#data-updates"><i class="fa fa-check"></i><b>8.3.4</b> Data updates</a></li>
+<li class="chapter" data-level="8.3.5" data-path="user-documentation.html"><a href="user-documentation.html#server-hosting"><i class="fa fa-check"></i><b>8.3.5</b> Server Hosting</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="user-documentation.html"><a href="user-documentation.html#how-to-expand-the-outdoor-equity-app"><i class="fa fa-check"></i><b>8.4</b> How to Expand the Outdoor Equity App</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="user-documentation.html"><a href="user-documentation.html#temporal-expansions"><i class="fa fa-check"></i><b>8.4.1</b> Temporal Expansions</a></li>
+<li class="chapter" data-level="8.4.2" data-path="user-documentation.html"><a href="user-documentation.html#spatial-expansions"><i class="fa fa-check"></i><b>8.4.2</b> Spatial Expansions</a></li>
+<li class="chapter" data-level="8.4.3" data-path="user-documentation.html"><a href="user-documentation.html#statistical-analysis"><i class="fa fa-check"></i><b>8.4.3</b> Statistical Analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="additional-challenges.html"><a href="additional-challenges.html"><i class="fa fa-check"></i><b>9</b> Additional Challenges</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="additional-challenges.html"><a href="additional-challenges.html#data-limitations"><i class="fa fa-check"></i><b>9.1</b> Data Limitations</a></li>
+<li class="chapter" data-level="9.2" data-path="additional-challenges.html"><a href="additional-challenges.html#technical-challenges"><i class="fa fa-check"></i><b>9.2</b> Technical Challenges</a></li>
+<li class="chapter" data-level="9.3" data-path="additional-challenges.html"><a href="additional-challenges.html#future-challenges"><i class="fa fa-check"></i><b>9.3</b> Future Challenges</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>10</b> Appendix</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="appendix.html"><a href="appendix.html#glossary-table"><i class="fa fa-check"></i><b>10.1</b> Glossary Table</a></li>
+<li class="chapter" data-level="10.2" data-path="appendix.html"><a href="appendix.html#functions-table"><i class="fa fa-check"></i><b>10.2</b> Functions Table</a></li>
+<li class="chapter" data-level="10.3" data-path="appendix.html"><a href="appendix.html#metadata-table"><i class="fa fa-check"></i><b>10.3</b> Metadata Table</a></li>
+<li class="chapter" data-level="10.4" data-path="appendix.html"><a href="appendix.html#packages-table"><i class="fa fa-check"></i><b>10.4</b> Packages Table</a></li>
+<li class="chapter" data-level="10.5" data-path="appendix.html"><a href="appendix.html#repository-directory-structure-1"><i class="fa fa-check"></i><b>10.5</b> Repository Directory Structure</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Outdoor Equity App Technical Documentation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="appendix" class="section level1" number="10">
+<h1><span class="header-section-number">Section 10</span> Appendix</h1>
+<div style="page-break-after: always;"></div>
+<div id="glossary-table" class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> Glossary Table</h2>
+<table class="table table-responsive" style>
+<caption>
+<span id="tab:glossary-table">Table 10.1: </span>A table of abbreviations, their definitions, and source URLS.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Abbreviation
+</th>
+<th style="text-align:left;">
+Definition
+</th>
+<th style="text-align:left;">
+Source
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+ACS
+</td>
+<td style="text-align:left;">
+American Community Survey
+</td>
+<td style="text-align:left;">
+<a href="https://www.census.gov/programs-surveys/acs" class="uri">https://www.census.gov/programs-surveys/acs</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BLM
+</td>
+<td style="text-align:left;">
+Bureau of Land Management
+</td>
+<td style="text-align:left;">
+<a href="https://www.blm.gov/" class="uri">https://www.blm.gov/</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BOR
+</td>
+<td style="text-align:left;">
+Bureau of Reclamation
+</td>
+<td style="text-align:left;">
+<a href="https://www.usbr.gov/" class="uri">https://www.usbr.gov/</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MEDS
+</td>
+<td style="text-align:left;">
+Master of Environmental Data Science
+</td>
+<td style="text-align:left;">
+<a href="https://bren.ucsb.edu/masters-programs/master-environmental-data-science" class="uri">https://bren.ucsb.edu/masters-programs/master-environmental-data-science</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NPS
+</td>
+<td style="text-align:left;">
+National Park Service
+</td>
+<td style="text-align:left;">
+<a href="https://www.nps.gov/index.htm" class="uri">https://www.nps.gov/index.htm</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R1S
+</td>
+<td style="text-align:left;">
+Recreation One Stop
+</td>
+<td style="text-align:left;">
+<a href="https://www.recreation.gov/" class="uri">https://www.recreation.gov/</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UCSB
+</td>
+<td style="text-align:left;">
+University of California, Santa Barbara
+</td>
+<td style="text-align:left;">
+<a href="https://www.ucsb.edu/" class="uri">https://www.ucsb.edu/</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+USACE
+</td>
+<td style="text-align:left;">
+United States Army Corps of Engineers
+</td>
+<td style="text-align:left;">
+<a href="https://www.usace.army.mil/" class="uri">https://www.usace.army.mil/</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+USFS
+</td>
+<td style="text-align:left;">
+United States Forest Service
+</td>
+<td style="text-align:left;">
+<a href="https://www.fs.usda.gov/" class="uri">https://www.fs.usda.gov/</a>
+</td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="functions-table" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> Functions Table</h2>
+<table class="table table-responsive" style>
+<caption>
+<span id="tab:func-table1">Table 10.2: </span>A table of the cleaning and wrangling functions created for the ACS and RIDB data and functions to create data sets for visitorshed maps and data relationship plots.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Script
+</th>
+<th style="text-align:left;">
+Purpose
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+function_acs_deciles_median_income.R
+</td>
+<td style="text-align:left;">
+Calculate decile values of California census household median-income
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+function_acs_education.R
+</td>
+<td style="text-align:left;">
+Call and calculate education percentages for given geographic area and state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+function_acs_language.R
+</td>
+<td style="text-align:left;">
+Call and calculate language percentages for given geographic area and state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+function_acs_median_income.R
+</td>
+<td style="text-align:left;">
+Call and calculate median-income percentages for given geographic area and state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+function_acs_race.R
+</td>
+<td style="text-align:left;">
+Call and calculate race percentages for given geographic area and state
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+function_acs_top_quartile_education.R
+</td>
+<td style="text-align:left;">
+Calculate weighted third quartile value of California census education percentages
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+function_acs_top_quartile_language.R
+</td>
+<td style="text-align:left;">
+Calculate weighted third quartile value of California census language percentages
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+function_acs_top_quartile_race.R
+</td>
+<td style="text-align:left;">
+Calculate weighted third quartile value of California census race percentages
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+function_ridb_subset-pre2018.R
+</td>
+<td style="text-align:left;">
+Subset RIDB data
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+function_ridb_variable_calculate-pre2018.R
+</td>
+<td style="text-align:left;">
+Define, standardize, and aggregate values and calculated additional derived variables
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+function_join_ridb_acs.R
+</td>
+<td style="text-align:left;">
+Join RIDB and ACS data
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+function_map_ca_data.R
+</td>
+<td style="text-align:left;">
+Create dataset for California ZIP code visitorshed map
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+function_map_us_data.R
+</td>
+<td style="text-align:left;">
+Create dataset for US State visitorshed map
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+function_ridb_deciles_median_income.R
+</td>
+<td style="text-align:left;">
+Create dataset for median-income data relationship plots
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+function_ridb_top_quartile_education.R
+</td>
+<td style="text-align:left;">
+Create dataset for education data relationship plots
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+function_ridb_top_quartile_language.R
+</td>
+<td style="text-align:left;">
+Create dataset for language data relationship plots
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+function_ridb_top_quartile_race.R
+</td>
+<td style="text-align:left;">
+Create dataset for race data relationship plots
+</td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="metadata-table" class="section level2" number="10.3">
+<h2><span class="header-section-number">10.3</span> Metadata Table</h2>
+<table class="table table-responsive" style>
+<caption>
+<span id="tab:metadata-tab">Table 10.3: </span>A table of metadata for the joined RIDB-ACS dataset
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable Name
+</th>
+<th style="text-align:left;">
+Definition
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+agency
+</td>
+<td style="text-align:left;">
+the governing body that manages a type of US public land (i.e. national park, national forest)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+admin_unit
+</td>
+<td style="text-align:left;">
+the parent location or region description that a campsite belongs within
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+park
+</td>
+<td style="text-align:left;">
+the name of a campsite
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+aggregated_site_type
+</td>
+<td style="text-align:left;">
+type of site at a campsite; a campsite can have multiple site types
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+facility_id
+</td>
+<td style="text-align:left;">
+unique id given to a campsite
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+facility_state
+</td>
+<td style="text-align:left;">
+the state that a campsite is located in
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+customer_zip
+</td>
+<td style="text-align:left;">
+the numeric code of the area from where a visitor lives
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+customer_zip_state
+</td>
+<td style="text-align:left;">
+state acronym for home state of visitor
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+customer_zip_state_full
+</td>
+<td style="text-align:left;">
+full name of state for home state of visitor
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+total_paid
+</td>
+<td style="text-align:left;">
+total amount of dollars paid for a reservation
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+start_date
+</td>
+<td style="text-align:left;">
+date when booked reservation begins
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+end_date
+</td>
+<td style="text-align:left;">
+date when booked reservation ends
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+order_date
+</td>
+<td style="text-align:left;">
+date when reservation was booked and purchased
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+number_of_people
+</td>
+<td style="text-align:left;">
+number of people reported when booking reservation
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+length_of_stay
+</td>
+<td style="text-align:left;">
+the number of days a visit is; difference of end date from start date
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+booking_window
+</td>
+<td style="text-align:left;">
+the number of days a reservation is made before the start of the visit; difference of start date from order date
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+daily_cost
+</td>
+<td style="text-align:left;">
+the total amount paid per day for a reservation
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+daily_cost_per_visitor
+</td>
+<td style="text-align:left;">
+the total amount paid per day for one person
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+facility_latitude
+</td>
+<td style="text-align:left;">
+latitude of the campsite, but note this may not be the center of the campsite
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+facility_longitude
+</td>
+<td style="text-align:left;">
+longitude of the campsite, but note this may not be the center of the campsite
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+distance_traveled_m
+</td>
+<td style="text-align:left;">
+distance between visitor home zip code and campsite
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+zip_code_population.x
+</td>
+<td style="text-align:left;">
+the zip code population when get_acs() from tidycensus pulls in data for education variable. Note we take the average of zip code population x, zip code population y, and zip code population in our data wrangling script
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+asian
+</td>
+<td style="text-align:left;">
+estimated percentage of asian population in a zip code
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+black
+</td>
+<td style="text-align:left;">
+estimated percentage of black population in a zip code
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hispanic_latinx
+</td>
+<td style="text-align:left;">
+estimated percentage of hispanic latinx population in a zip code
+</td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="packages-table" class="section level2" number="10.4">
+<h2><span class="header-section-number">10.4</span> Packages Table</h2>
+<table class="table table-responsive" style="width: auto !important; ">
+<caption>
+<span id="tab:packages-tab">Table 10.4: </span>A table of information on packages used to create the Outdoor Equity App.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+R Package
+</th>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Purpose
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+bslib
+</td>
+<td style="text-align:left;">
+0.3.1
+</td>
+<td style="text-align:left;">
+Web Application (theme)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+collections
+</td>
+<td style="text-align:left;">
+0.3.5
+</td>
+<td style="text-align:left;">
+Web Application (dictionary)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DT
+</td>
+<td style="text-align:left;">
+0.20
+</td>
+<td style="text-align:left;">
+Web Application (tables)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+formattable
+</td>
+<td style="text-align:left;">
+0.2.1
+</td>
+<td style="text-align:left;">
+Web Application (tables)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+googlesheets4
+</td>
+<td style="text-align:left;">
+1.0.0
+</td>
+<td style="text-align:left;">
+Web Application (metadata)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+here
+</td>
+<td style="text-align:left;">
+1.0.1
+</td>
+<td style="text-align:left;">
+Data cleaning (relative file paths)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+janitor
+</td>
+<td style="text-align:left;">
+2.1.0
+</td>
+<td style="text-align:left;">
+Data cleaning (data frame)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lubridate
+</td>
+<td style="text-align:left;">
+1.7.10
+</td>
+<td style="text-align:left;">
+Data cleaning (dates)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+plotly
+</td>
+<td style="text-align:left;">
+4.10.0
+</td>
+<td style="text-align:left;">
+Data visualiation (plots)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+reactlog
+</td>
+<td style="text-align:left;">
+1.1.0
+</td>
+<td style="text-align:left;">
+Web Application (testing)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+rmapshaper
+</td>
+<td style="text-align:left;">
+0.4.5
+</td>
+<td style="text-align:left;">
+Web Application (load time)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+rsconnect
+</td>
+<td style="text-align:left;">
+0.8.25
+</td>
+<td style="text-align:left;">
+Web Application (deploy app)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+scales
+</td>
+<td style="text-align:left;">
+1.1.1
+</td>
+<td style="text-align:left;">
+Data visualiation (plots)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sf
+</td>
+<td style="text-align:left;">
+1.0.7
+</td>
+<td style="text-align:left;">
+Data cleaning and visualization (maps)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+shiny
+</td>
+<td style="text-align:left;">
+1.7.1
+</td>
+<td style="text-align:left;">
+Web Application (build app)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+shinycssloaders
+</td>
+<td style="text-align:left;">
+1.0.0
+</td>
+<td style="text-align:left;">
+Web Application (plot loader)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+shinydashboard
+</td>
+<td style="text-align:left;">
+0.7.2
+</td>
+<td style="text-align:left;">
+Web Application (dashboard layout elements)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+shinydashboardPlus
+</td>
+<td style="text-align:left;">
+2.0.3
+</td>
+<td style="text-align:left;">
+Web Application (box elements)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+shinyjs
+</td>
+<td style="text-align:left;">
+2.1.0
+</td>
+<td style="text-align:left;">
+Web Application (hide and show boxes in ui)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+shinyWidgets
+</td>
+<td style="text-align:left;">
+0.6.4
+</td>
+<td style="text-align:left;">
+Web Application (inputs)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tidycensus
+</td>
+<td style="text-align:left;">
+1.2.1
+</td>
+<td style="text-align:left;">
+Data acquisition (US census data)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tidyverse
+</td>
+<td style="text-align:left;">
+1.3.1
+</td>
+<td style="text-align:left;">
+Data cleaning, analysis, and visualization
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tigris
+</td>
+<td style="text-align:left;">
+1.6
+</td>
+<td style="text-align:left;">
+Data acquisition (state and ZIP code geometries)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tmap
+</td>
+<td style="text-align:left;">
+3.3.2
+</td>
+<td style="text-align:left;">
+Data visualization (maps)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+vroom
+</td>
+<td style="text-align:left;">
+1.5.7
+</td>
+<td style="text-align:left;">
+Data cleaning (read in data)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+zipcodeR
+</td>
+<td style="text-align:left;">
+0.3.3
+</td>
+<td style="text-align:left;">
+Data acquisition (state info about ZIP code)
+</td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="repository-directory-structure-1" class="section level2" number="10.5">
+<h2><span class="header-section-number">10.5</span> Repository Directory Structure</h2>
+<div class="figure"><span style="display:block;" id="fig:repo-directory"></span>
+<img src="images/repo_directory.png" alt="Screenshot of the Metadata page of the Outdoor Equity App" width="1776" />
+<p class="caption">
+Figure 10.1: Screenshot of the Metadata page of the Outdoor Equity App
+</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="additional-challenges.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/09-appendix.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
