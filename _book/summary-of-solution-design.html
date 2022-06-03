@@ -226,7 +226,14 @@ div.csl-indent {
 <li class="chapter" data-level="9.2" data-path="additional-challenges.html"><a href="additional-challenges.html#technical-challenges"><i class="fa fa-check"></i><b>9.2</b> Technical Challenges</a></li>
 <li class="chapter" data-level="9.3" data-path="additional-challenges.html"><a href="additional-challenges.html#future-challenges"><i class="fa fa-check"></i><b>9.3</b> Future Challenges</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="appedix.html"><a href="appedix.html"><i class="fa fa-check"></i>Appedix</a></li>
+<li class="chapter" data-level="10" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>10</b> Appendix</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="appendix.html"><a href="appendix.html#glossary-table"><i class="fa fa-check"></i><b>10.1</b> Glossary Table</a></li>
+<li class="chapter" data-level="10.2" data-path="appendix.html"><a href="appendix.html#functions-table"><i class="fa fa-check"></i><b>10.2</b> Functions Table</a></li>
+<li class="chapter" data-level="10.3" data-path="appendix.html"><a href="appendix.html#metadata-table"><i class="fa fa-check"></i><b>10.3</b> Metadata Table</a></li>
+<li class="chapter" data-level="10.4" data-path="appendix.html"><a href="appendix.html#packages-table"><i class="fa fa-check"></i><b>10.4</b> Packages Table</a></li>
+<li class="chapter" data-level="10.5" data-path="appendix.html"><a href="appendix.html#repository-directory-structure-1"><i class="fa fa-check"></i><b>10.5</b> Repository Directory Structure</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -253,12 +260,12 @@ div.csl-indent {
 <div id="glossary-and-definitions" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Glossary and Definitions</h2>
 <p>Throughout this document we define “reservable sites” as traditional campgrounds, single remote campsites, overnight boat-in sites or mooring, equestrian sites, cabins, and other shelters listed in the <a href="https://ridb.recreation.gov/">RIDB data</a>.</p>
-<p>A full glossary can be found in the <a href="appedix.html#appedix">Appendix Section</a>.</p>
+<p>A full glossary can be found in the <a href="appendix.html#glossary-table">Appendix Section</a>.</p>
 </div>
 <div id="access-clean-and-wrangle-data" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Access, Clean, and Wrangle Data</h2>
-<p><a href="https://ridb.recreation.gov/">RIDB data</a> and <a href="https://www.census.gov/programs-surveys/acs/data.html">US Census American Communities Survey (ACS) data</a> are freely available online to the public. We accessed, cleaned, and wrangled all data outside of the <a href="https://shinyapps.bren.ucsb.edu/oe_app/">Outdoor Equity App</a> using the <code>data_wrangle_and_clean.Rmd</code> document and 18 custom-made functions (Appendix Table <a href="appedix.html#tab:func-table1">9.2</a>). We downloaded RIDB data in CSV format from Recreation.gov and ACS data through API using the R package <code>tidycensus</code> <span class="citation">(<a href="#ref-R-tidycensus" role="doc-biblioref">Walker and Herman 2021</a>)</span>. We first subsetted RIDB and ACS datasets to include only the variables relevant to our objectives. We then normalized, aggregated, and calculated variables as necessary. Once both datasets are cleaned and wrangled, we joined them using ZIP codes as the key (common value in both datasets). Finally we wrangled the joined RIDB and ACS dataset to ready them for creating data relationship plots.</p>
-<p>See the <a href="appedix.html#appedix">Appendix Section</a> for a full table of all functions.</p>
+<p><a href="https://ridb.recreation.gov/">RIDB data</a> and <a href="https://www.census.gov/programs-surveys/acs/data.html">US Census American Communities Survey (ACS) data</a> are freely available online to the public. We accessed, cleaned, and wrangled all data outside of the <a href="https://shinyapps.bren.ucsb.edu/oe_app/">Outdoor Equity App</a> using the <code>data_wrangle_and_clean.Rmd</code> document and 18 custom-made functions (Appendix Table <a href="appendix.html#tab:func-table1">10.2</a>). We downloaded RIDB data in CSV format from Recreation.gov and ACS data through API using the R package <code>tidycensus</code> <span class="citation">(<a href="#ref-R-tidycensus" role="doc-biblioref">Walker and Herman 2021</a>)</span>. We first subsetted RIDB and ACS datasets to include only the variables relevant to our objectives. We then normalized, aggregated, and calculated variables as necessary. Once both datasets are cleaned and wrangled, we joined them using ZIP codes as the key (common value in both datasets). Finally we wrangled the joined RIDB and ACS dataset to ready them for creating data relationship plots.</p>
+<p>See the <a href="appendix.html#functions-table">Appendix Section</a> for a full table of all functions.</p>
 </div>
 <div id="analysis-and-visualizations" class="section level2" number="5.3">
 <h2><span class="header-section-number">5.3</span> Analysis and Visualizations</h2>

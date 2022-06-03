@@ -249,14 +249,14 @@ Federal lands in the United States provide important recreation opportunities to
 
 Throughout this document we define ``reservable sites'' as traditional campgrounds, single remote campsites, overnight boat-in sites or mooring, equestrian sites, cabins, and other shelters listed in the \href{https://ridb.recreation.gov/}{RIDB data}.
 
-A full glossary can be found in the \protect\hyperlink{appedix}{Appendix Section}.
+A full glossary can be found in the \protect\hyperlink{glossary-table}{Appendix Section}.
 
 \hypertarget{access-clean-and-wrangle-data}{%
 \section{Access, Clean, and Wrangle Data}\label{access-clean-and-wrangle-data}}
 
 \href{https://ridb.recreation.gov/}{RIDB data} and \href{https://www.census.gov/programs-surveys/acs/data.html}{US Census American Communities Survey (ACS) data} are freely available online to the public. We accessed, cleaned, and wrangled all data outside of the \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App} using the \texttt{data\_wrangle\_and\_clean.Rmd} document and 18 custom-made functions (Appendix Table \ref{tab:func-table1}). We downloaded RIDB data in CSV format from Recreation.gov and ACS data through API using the R package \texttt{tidycensus} \citep{R-tidycensus}. We first subsetted RIDB and ACS datasets to include only the variables relevant to our objectives. We then normalized, aggregated, and calculated variables as necessary. Once both datasets are cleaned and wrangled, we joined them using ZIP codes as the key (common value in both datasets). Finally we wrangled the joined RIDB and ACS dataset to ready them for creating data relationship plots.
 
-See the \protect\hyperlink{appedix}{Appendix Section} for a full table of all functions.
+See the \protect\hyperlink{functions-table}{Appendix Section} for a full table of all functions.
 
 \hypertarget{analysis-and-visualizations}{%
 \section{Analysis and Visualizations}\label{analysis-and-visualizations}}
@@ -324,12 +324,12 @@ The \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App} was built
 \hypertarget{metadata}{%
 \section{Metadata}\label{metadata}}
 
-A condensed list of all metadata can be found in the \protect\hyperlink{appedix}{Appendix Section}. A full list of all metadata can be found in the \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App} on the Metadata tab.
+A condensed list of all metadata can be found in the \protect\hyperlink{metadata-table}{Appendix Section}. A full list of all metadata can be found in the \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App} on the Metadata tab.
 
 \hypertarget{packages-and-versions-used}{%
 \section{Packages and Versions Used}\label{packages-and-versions-used}}
 
-See the \protect\hyperlink{appedix}{Appendix Section} for the full list of packages used.
+See the \protect\hyperlink{packages-table}{Appendix Section} for a full list of packages used.
 
 \hypertarget{summary-of-testing}{%
 \chapter{Summary of Testing}\label{summary-of-testing}}
@@ -402,13 +402,7 @@ The Data Download section of the App allows a user to download a subset of data 
 \hypertarget{repository-directory-structure}{%
 \subsection{Repository Directory Structure}\label{repository-directory-structure}}
 
-Our code is version controlled in a \href{https://github.com/outdoor-equity/outdoor-equity}{GitHub repository}. This includes the data cleaning, wrangling, and analysis, creation of plots and maps, and structure of the shiny app. An overview of the directory structure can be seen below:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# add image of repo diagram}
-\end{Highlighting}
-\end{Shaded}
+Our code is version controlled in a \href{https://github.com/outdoor-equity/outdoor-equity}{GitHub repository}. This includes the data cleaning, wrangling, and analysis, creation of plots and maps, and structure of the shiny app. An overview of the directory structure can be found in the \protect\hyperlink{repository-directory-structure-1}{Appendix Section}.
 
 \hypertarget{data-preparation-methods}{%
 \subsection{Data Preparation Methods}\label{data-preparation-methods}}
@@ -1478,14 +1472,84 @@ For RIDB data from 2019 and later, users must update the \texttt{function\_ridb\
 
 RIDB data from 2019 and later may have additional variables available, so we also recommend exploring all available variables to decide if adding in additional variables is appropriate. If users decide to add additional variables, edits will have to be made to all custom functions within the \texttt{data\_preparation} and \texttt{outdoor-equity-app} directories.
 
-\href{https://ridb.recreation.gov/standards}{Data standards for the RIDB data} is in the processing of being updated as of June 2022. Users should check to see if this impacts any decisions in adding additional years to the Outdoor Equity App.
+\href{https://ridb.recreation.gov/standards}{Data standards for the RIDB data} is in the process of being updated as of June 2022. Users should check to see if this impacts any decisions in adding additional years to the Outdoor Equity App.
+
+For the Outdoor Equity App consider these updates to these files:
+
+\begin{itemize}
+\item
+  \texttt{global.R}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Add any new functions, packages, or data
+  \end{itemize}
+\item
+  \texttt{ui.R}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Create input widgets in Analysis tabs (data summary, data relationships, and visitorsheds) that allow for a user to select a specific year or mulitple years (consider making a function for this if the input is the same across all tabs)
+  \end{itemize}
+\item
+  \texttt{server.R}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Update plot or map functions that use a reactive data frame that includes the temporal input from \texttt{ui.R}
+  \end{itemize}
+\end{itemize}
+
+Additionally, for the entire App consider how load time will be affected by adding more years of data. It might be helpful to consider creating separated datasets or creating functions that create datasets that contain only the necessary data needed to create the visual(s).
 
 \hypertarget{spatial-expansions}{%
 \subsection{Spatial Expansions}\label{spatial-expansions}}
 
 To expand the states included in the Outdoor Equity App, users must update the \texttt{data\_wrangle\_and\_clean.Rmd} where all data cleaning and wrangling occurs outside of the shiny app code.
 
-The \texttt{function\_ridb\_variable\_calculate-pre2018.R} function has a section manipulates the character strings of the \texttt{agency}, \texttt{admin\_unit}, and \texttt{park} variables. This code would likely need to be changed for additional states as the specific irregularities in character strings may differ state to state. We recommend creating a new function for each additional state. See the \protect\hyperlink{ridb-data}{RIDB Data Section} for a more detailed description of this function code. Once a new custom function is created for each state, code chunks can be added to the \texttt{.Rmd} document to clean and wrangle data for additional states.
+The \texttt{function\_ridb\_variable\_calculate-pre2018.R} function has a section that manipulates the character strings of the \texttt{agency}, \texttt{admin\_unit}, and \texttt{park} variables. This code would likely need to be changed for additional states as the specific irregularities in character strings may differ state to state. We recommend creating a new function for each additional state. See the \protect\hyperlink{ridb-data}{RIDB Data Section} for a more detailed description of this function code. Once a new custom function is created for each state, code chunks can be added to the \texttt{.Rmd} document to clean and wrangle data for additional states.
+
+For the Outdoor Equity App consider these updates to these files:
+
+\begin{itemize}
+\item
+  \texttt{global.R}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Add any new functions, packages or data
+  \item
+    Update or create new objects that contain information about sites and agencies
+  \item
+    Update agency to administrative unit dictionary, and administrative unit to park dictionary so that these key value pairs appear for states beyond California
+  \end{itemize}
+\item
+  \texttt{ui.R}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Create an input widget that allows for someone to select a year or multiple years
+  \item
+    Build out an informational box that contains basic information about the site chosen
+  \end{itemize}
+\item
+  \texttt{server.\ R}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Update \texttt{state\_visitorshed\_map()} function if the time input or other data needs to be added to this function
+  \item
+    Update \texttt{ca\_zip\_code\_visitorshed\_map()} function to allow for a specific state to be called and the data associated with it
+  \end{itemize}
+\end{itemize}
+
+Additionally, for the entire App consider load time especially because spatial data is much larger and therefore takes much longer to load. It might be helpful to consider the structure of the data and which data gets loaded into the App to make the visuals, so that only the necessary data is being used in the back end of the App. See \protect\hyperlink{technical-challenges}{Technical Challenges Section} for more insight and suggestions.
 
 \hypertarget{statistical-analysis}{%
 \subsection{Statistical Analysis}\label{statistical-analysis}}
@@ -1499,6 +1563,43 @@ Currently the Outdoor Equity App only visualizes patterns in the data, but does 
 \item
   Ability to combine multiple campsites in a single plot or map to explore patterns and trends across geographic areas and years
 \end{itemize}
+
+For the Outdoor Equity App consider these updates to these files:
+
+\begin{itemize}
+\item
+  \texttt{global.R}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Add any new functions, packages, or data
+  \end{itemize}
+\item
+  \texttt{ui.R}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Create and add a new tab to the \texttt{navbarPage()} layout using the function \texttt{tabPanel()} for the statistical analysis
+  \item
+    Build out layout in the new tab. To match the layout of the other tabs use \texttt{fluidRow()} and \texttt{box()} within \texttt{tabPanel()}
+  \item
+    Create necessary inputs to create visuals or run statistical tests
+  \end{itemize}
+\item
+  \texttt{server.R}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Create necessary objects to render the visuals desired (i.e.~reactive data frames, render plots or tables)
+  \item
+    Create necessary conditional outputs based on an input using \texttt{observeEvents()}
+  \end{itemize}
+\end{itemize}
+
+Because statistical analysis was beyond the scope of our project, please note that these updates are not an exhaustive list of what needs to be done to successfully add statistical analysis to the App.
 
 \hypertarget{additional-challenges}{%
 \chapter{Additional Challenges}\label{additional-challenges}}
@@ -1520,9 +1621,13 @@ Load time for all plots especially maps is a challenge that we were able to part
 
 Adding in multiple years and adding in more spatial data (beyond California) will require a larger server and likely more computing power. Refer to \protect\hyperlink{how-to-expand-the-outdoor-equity-app}{How to Expand the Outdoor Equity App Section} to learn more.
 
-\hypertarget{appedix}{%
-\chapter*{Appedix}\label{appedix}}
-\addcontentsline{toc}{chapter}{Appedix}
+\hypertarget{appendix}{%
+\chapter{Appendix}\label{appendix}}
+
+\newpage
+
+\hypertarget{glossary-table}{%
+\section{Glossary Table}\label{glossary-table}}
 
 \begin{table}
 
@@ -1551,6 +1656,11 @@ USFS & United States Forest Service & https://www.fs.usda.gov/\\
 \hline
 \end{tabu}
 \end{table}
+
+\newpage
+
+\hypertarget{functions-table}{%
+\section{Functions Table}\label{functions-table}}
 
 \begin{table}
 
@@ -1596,97 +1706,79 @@ function\_ridb\_top\_quartile\_race.R & Create dataset for race data relationshi
 \end{tabu}
 \end{table}
 
+\newpage
+
+\hypertarget{metadata-table}{%
+\section{Metadata Table}\label{metadata-table}}
+
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-34}Metadata of joined RIDB-ACS dataset}
-\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X}
+\caption{\label{tab:metadata-tab}A table of metadata for the joined RIDB-ACS dataset}
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X}
 \hline
-Variable Name & Definition & Unit & Data Type\\
+Variable Name & Definition\\
 \hline
-agency & the governing body that manages a type of US public land (i.e. national park, national forest) & NA & categorical\\
+agency & the governing body that manages a type of US public land (i.e. national park, national forest)\\
 \hline
-admin\_unit & the parent location or region description that a campsite belongs within & NA & categorical\\
+admin\_unit & the parent location or region description that a campsite belongs within\\
 \hline
-park & the name of a campsite & NA & categorical\\
+park & the name of a campsite\\
 \hline
-aggregated\_site\_type & type of site at a campsite; a campsite can have multiple site types & NA & categorical\\
+aggregated\_site\_type & type of site at a campsite; a campsite can have multiple site types\\
 \hline
-facility\_id & unique id given to a campsite & NA & discrete\\
+facility\_id & unique id given to a campsite\\
 \hline
-facility\_state & the state that a campsite is located in & NA & categorical\\
+facility\_state & the state that a campsite is located in\\
 \hline
-customer\_zip & the numeric code of the area from where a visitor lives & NA & categorical\\
+customer\_zip & the numeric code of the area from where a visitor lives\\
 \hline
-customer\_zip\_state & state acronym for home state of visitor & NA & categorical\\
+customer\_zip\_state & state acronym for home state of visitor\\
 \hline
-customer\_zip\_state\_full & full name of state for home state of visitor & NA & categorical\\
+customer\_zip\_state\_full & full name of state for home state of visitor\\
 \hline
-total\_paid & total amount of dollars paid for a reservation & dollars & continuous\\
+total\_paid & total amount of dollars paid for a reservation\\
 \hline
-start\_date & date when booked reservation begins & yyyy-mm-dd & discrete\\
+start\_date & date when booked reservation begins\\
 \hline
-end\_date & date when booked reservation ends & yyyy-mm-dd & discrete\\
+end\_date & date when booked reservation ends\\
 \hline
-order\_date & date when reservation was booked and purchased & yyyy-mm-dd & discrete\\
+order\_date & date when reservation was booked and purchased\\
 \hline
-number\_of\_people & number of people reported when booking reservation & person & discrete\\
+number\_of\_people & number of people reported when booking reservation\\
 \hline
-length\_of\_stay & the number of days a visit is; difference of end date from start date & days & discrete\\
+length\_of\_stay & the number of days a visit is; difference of end date from start date\\
 \hline
-booking\_window & the number of days a reservation is made before the start of the visit; difference of start date from order date & days & discrete\\
+booking\_window & the number of days a reservation is made before the start of the visit; difference of start date from order date\\
 \hline
-daily\_cost & the total amount paid per day for a reservation & dollars & continuous\\
+daily\_cost & the total amount paid per day for a reservation\\
 \hline
-daily\_cost\_per\_visitor & the total amount paid per day for one person & dollars & continuous\\
+daily\_cost\_per\_visitor & the total amount paid per day for one person\\
 \hline
-facility\_latitude & latitude of the campsite, but note this may not be the center of the campsite & degrees & continuous\\
+facility\_latitude & latitude of the campsite, but note this may not be the center of the campsite\\
 \hline
-facility\_longitude & longitude of the campsite, but note this may not be the center of the campsite & degrees & continuous\\
+facility\_longitude & longitude of the campsite, but note this may not be the center of the campsite\\
 \hline
-distance\_traveled\_m & distance between visitor home zip code and campsite & meters & continuous\\
+distance\_traveled\_m & distance between visitor home zip code and campsite\\
 \hline
-zip\_code\_population.x & the zip code population when get\_acs()  from tidycensus pulls in data for education variable. Note we take the average of zip code population x, zip code population y, and zip code population  in our data wrangling script & person & discrete\\
+zip\_code\_population.x & the zip code population when get\_acs()  from tidycensus pulls in data for education variable. Note we take the average of zip code population x, zip code population y, and zip code population  in our data wrangling script\\
 \hline
-asian & estimated percentage of asian population in a zip code & percentage & continuous\\
+asian & estimated percentage of asian population in a zip code\\
 \hline
-black & estimated percentage of black population in a zip code & percentage & continuous\\
+black & estimated percentage of black population in a zip code\\
 \hline
-hispanic\_latinx & estimated percentage of hispanic latinx population in a zip code & percentage & continuous\\
-\hline
-multiracial & estimated percentage of multiracial population in a zip code & percentage & continuous\\
-\hline
-native\_american & estimated percentage of native american population in a zip code & percentage & continuous\\
-\hline
-other & estimated percentage of other population in a zip code & percentage & continuous\\
-\hline
-pacific\_islander & estimated percentage of pacific islander population in a zip code & percentage & continuous\\
-\hline
-white & estimated percentage of white population in a zip code & percentage & continuous\\
-\hline
-zip\_code\_population.y & the zip code population when get\_acs()  from tidycensus pulls in data for language variable. Note we take the average of zip code population x, zip code population y, and zip code population  in our data wrangling script & person & discrete\\
-\hline
-college & estimated percentage of population with a college degree in a zip code & percentage & continuous\\
-\hline
-hs\_GED\_or\_below & estimated percentage of population with a high school General Educational Development (GED) degree or below in a zip code & percentage & continuous\\
-\hline
-master\_or\_above & estimated percentage of population with a master degree or above in a zip code & percentage & continuous\\
-\hline
-some\_college & estimated percentage of population with some college education in a zip code & percentage & continuous\\
-\hline
-median\_income & median household income in the past 12 months in 2019 inflation-adjusted dollars & dollars & continuous\\
-\hline
-zip\_code\_population & total number of people living in a zip code when get\_acs() from tidycensus pulls in race variable.  Note we take the average of zip code population x, zip code population y, and zip code population  in our data wrangling script & person & discrete\\
-\hline
-english\_only & estimated percentage of population that speak only english in the home in a zip code & percentage & continuous\\
-\hline
-not\_english\_only & estimated percentage of population that speak a language other than english in the home in a zip code & percentage & continuous\\
+hispanic\_latinx & estimated percentage of hispanic latinx population in a zip code\\
 \hline
 \end{tabu}
 \end{table}
 
+\newpage
+
+\hypertarget{packages-table}{%
+\section{Packages Table}\label{packages-table}}
+
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-35}Table includes information on packages used to create the Outdoor Equity App.}
+\caption{\label{tab:packages-tab}A table of information on packages used to create the Outdoor Equity App.}
 \begin{tabular}[t]{l|l|l}
 \hline
 R Package & Version & Purpose\\
@@ -1745,6 +1837,15 @@ zipcodeR & 0.3.3 & Data acquisition (state info about ZIP code)\\
 \hline
 \end{tabular}
 \end{table}
+
+\newpage
+
+\hypertarget{repository-directory-structure-1}{%
+\section{Repository Directory Structure}\label{repository-directory-structure-1}}
+
+\begin{figure}
+\includegraphics[width=18.5in]{images/repo_directory} \caption{Screenshot of the Metadata page of the Outdoor Equity App}\label{fig:repo-directory}
+\end{figure}
 
   \bibliography{book.bib,packages.bib}
 

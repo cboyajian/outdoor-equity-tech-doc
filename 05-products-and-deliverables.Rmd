@@ -12,10 +12,10 @@ The [Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/) was built usin
 
 ## Metadata
 
-A condensed list of all metadata can be found in the [Appendix Section][Appedix]. A full list of all metadata can be found in the [Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/) on the Metadata tab.
+A condensed list of all metadata can be found in the [Appendix Section][Metadata Table]. A full list of all metadata can be found in the [Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/) on the Metadata tab.
 
 
 ## Packages and Versions Used
 
-See the [Appendix Section][Appedix] for the full list of packages used.
+See the [Appendix Section][Packages Table] for a full list of packages used.
 

@@ -22,11 +22,8 @@ The Data Download section of the App allows a user to download a subset of data 
 
 ### Repository Directory Structure
 
-Our code is version controlled in a [GitHub repository](https://github.com/outdoor-equity/outdoor-equity). This includes the data cleaning, wrangling, and analysis, creation of plots and maps, and structure of the shiny app. An overview of the directory structure can be seen below:
+Our code is version controlled in a [GitHub repository](https://github.com/outdoor-equity/outdoor-equity). This includes the data cleaning, wrangling, and analysis, creation of plots and maps, and structure of the shiny app. An overview of the directory structure can be found in the [Appendix Section][Repository Directory Structure].
 
-```{r}
-# add image of repo diagram
-```
 
 ### Data Preparation Methods
 

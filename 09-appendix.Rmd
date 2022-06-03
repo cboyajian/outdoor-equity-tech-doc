@@ -1,5 +1,8 @@
-# Appendix {-}
+# Appendix
 
+\newpage
+
+## Glossary Table
 
 ```{r, glossary-table, echo=FALSE}
 glossary_df <- 
@@ -25,7 +28,9 @@ knitr::kable(glossary_df,
                 position = "left")
 ```
 
+\newpage
 
+## Functions Table
 
 ```{r, func-table1, echo=FALSE}
 acs_functions_df <- 
@@ -59,9 +64,11 @@ knitr::kable(acs_functions_df,
                 position = "left")
 ```
 
+\newpage
 
+## Metadata Table
 
-```{r, echo=FALSE, message=FALSE}
+```{r, metadata-tab, echo=FALSE, message=FALSE}
 # read in metadata
 data_joined_2018_metadata_df <- 
   read_csv(here("../outdoor-equity/outdoor-equity-app/oe_app/data/data_joined_2018_metadata.csv")) %>% 
@@ -74,22 +81,24 @@ data_joined_2018_metadata_df <-
          Provenance = provenance_filepath,
          "Missing Value Code" = missing_value_code,
          "Total Unique Values" = total_unique_values) %>% 
-  select("Variable Name", Definition, Unit, "Data Type")
+  select("Variable Name", Definition)
 
 
 # create table of metadata
-knitr::kable(data_joined_2018_metadata_df,
+knitr::kable(head(data_joined_2018_metadata_df, 25),
              align = "l",
-             caption = "Metadata of joined RIDB-ACS dataset",
+             caption = "A table of metadata for the joined RIDB-ACS dataset",
              row.names = FALSE) %>% 
   kable_styling(bootstrap_options = c("responsive"), 
                 full_width = TRUE, 
                 position = "left")
 ```
 
+\newpage
 
+## Packages Table
 
-```{r, echo=FALSE}
+```{r, packages-tab, echo=FALSE}
 r_packages_df <- 
   tribble(
     ~"R Package", ~Version, ~Purpose,
@@ -123,7 +132,7 @@ r_packages_df <-
 
 knitr::kable(r_packages_df,
              align = "l",
-             caption = "Table includes information on packages used to create the Outdoor Equity App.",
+             caption = "A table of information on packages used to create the Outdoor Equity App.",
              row.names = FALSE) %>% 
   kable_styling(bootstrap_options = c("responsive"), 
                 full_width = F,
@@ -131,4 +140,11 @@ knitr::kable(r_packages_df,
 ```
 
 
+\newpage
+
+## Repository Directory Structure
+
+```{r, repo-directory, echo=FALSE, fig.cap = "Screenshot of the Metadata page of the Outdoor Equity App"}
+knitr::include_graphics("images/repo_directory.png", dpi = 275)
+```
 

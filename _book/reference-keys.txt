@@ -13,8 +13,9 @@ tab:thres-tab1
 tab:thres-tab2
 tab:glossary-table
 tab:func-table1
-tab:unnamed-chunk-34
-tab:unnamed-chunk-35
+tab:metadata-tab
+tab:packages-tab
+fig:repo-directory
 about
 abstract
 about-the-authors
@@ -63,3 +64,9 @@ additional-challenges
 data-limitations
 technical-challenges
 future-challenges
+appendix
+glossary-table
+functions-table
+metadata-table
+packages-table
+repository-directory-structure-1

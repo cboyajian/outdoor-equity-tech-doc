@@ -4,13 +4,13 @@
 
 Throughout this document we define “reservable sites” as traditional campgrounds, single remote campsites, overnight boat-in sites or mooring, equestrian sites, cabins, and other shelters listed in the [RIDB data](https://ridb.recreation.gov/).
 
-A full glossary can be found in the [Appendix Section][Appedix].
+A full glossary can be found in the [Appendix Section][Glossary Table].
 
 ## Access, Clean, and Wrangle Data
 
 [RIDB data](https://ridb.recreation.gov/) and [US Census American Communities Survey (ACS) data](https://www.census.gov/programs-surveys/acs/data.html) are freely available online to the public. We accessed, cleaned, and wrangled all data outside of the [Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/) using the `data_wrangle_and_clean.Rmd` document and 18 custom-made functions (Appendix Table \@ref(tab:func-table1)). We downloaded RIDB data in CSV format from Recreation.gov and ACS data through API using the R package `tidycensus` [@R-tidycensus]. We first subsetted RIDB and ACS datasets to include only the variables relevant to our objectives. We then normalized, aggregated, and calculated variables as necessary. Once both datasets are cleaned and wrangled, we joined them using ZIP codes as the key (common value in both datasets). Finally we wrangled the joined RIDB and ACS dataset to ready them for creating data relationship plots.
 
-See the [Appendix Section][Appedix] for a full table of all functions.
+See the [Appendix Section][Functions Table] for a full table of all functions.
 
 
 ## Analysis and Visualizations

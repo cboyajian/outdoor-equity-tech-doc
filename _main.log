@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.6.3)  3 JUN 2022 20:13
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.6.3)  3 JUN 2022 21:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -924,161 +924,146 @@ Chapter 8.
 [21
 
 ] [22] [23]
-Overfull \hbox (21.25392pt too wide) in paragraph at lines 526--527
+Overfull \hbox (21.25392pt too wide) in paragraph at lines 520--521
 []\TU/lmr/m/n/10.95 We create an administrative unit variable by combining the \TU/lmtt/m/n/10.95 parent_location \TU/lmr/m/n/10.95 and \TU/lmtt/m/n/10.95 region_description
  []
 
 [24]
-Underfull \vbox (badness 10000) detected at line 593
+Underfull \vbox (badness 10000) detected at line 587
  []
 
 
-Underfull \vbox (badness 10000) detected at line 593
+Underfull \vbox (badness 10000) detected at line 587
  []
 
 [25]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 669.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 663.
 [26]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [27] [28]
-Overfull \hbox (0.5847pt too wide) in paragraph at lines 741--766
+Overfull \hbox (0.5847pt too wide) in paragraph at lines 735--760
  [][] 
  []
 
 [29] [30]
 
 LaTeX Font Warning: Font shape `TU/lmtt/bx/it' in size <10.95> not available
-(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 863.
+(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 857.
 
 [31]
-Underfull \vbox (badness 10000) detected at line 952
+Underfull \vbox (badness 10000) detected at line 946
  []
 
 
-Underfull \vbox (badness 10000) detected at line 952
+Underfull \vbox (badness 10000) detected at line 946
  []
 
 [32] [33] [34]
-Underfull \vbox (badness 10000) detected at line 1172
+Underfull \vbox (badness 10000) detected at line 1166
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1172
+Underfull \vbox (badness 10000) detected at line 1166
  []
 
 [35]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [36] [37] [38] [39]
-Underfull \vbox (badness 10000) detected at line 1371
+Underfull \vbox (badness 10000) detected at line 1365
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1371
+Underfull \vbox (badness 10000) detected at line 1365
  []
 
 [40] [41] [42]
-Underfull \hbox (badness 3612) in paragraph at lines 1475--1476
+Underfull \hbox (badness 3612) in paragraph at lines 1469--1470
 \TU/lmr/m/n/10.95 year: \TU/lmtt/m/n/10.95 function_ridb_subset-pre2018.R\TU/lmr/m/n/10.95 , \TU/lmtt/m/n/10.95 function_ridb_variable_calculate-pre2018.R\TU/lmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1475--1476
+Underfull \hbox (badness 10000) in paragraph at lines 1469--1470
 \TU/lmtt/m/n/10.95 function_acs_race.R\TU/lmr/m/n/10.95 , \TU/lmtt/m/n/10.95 function_acs_median_income.R\TU/lmr/m/n/10.95 , \TU/lmtt/m/n/10.95 function_acs_education.R\TU/lmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 1163) in paragraph at lines 1477--1478
+Underfull \hbox (badness 1163) in paragraph at lines 1471--1472
 \TU/lmr/m/n/10.95 2018 data in the App. We recommend updating this function to first select only the
  []
 
 
-Underfull \hbox (badness 2065) in paragraph at lines 1477--1478
+Underfull \hbox (badness 2065) in paragraph at lines 1471--1472
 \TU/lmr/m/n/10.95 necessary variables, then rename the variables so that they match the 2018 and ear-
  []
 
 
-Underfull \hbox (badness 2600) in paragraph at lines 1477--1478
+Underfull \hbox (badness 2600) in paragraph at lines 1471--1472
 \TU/lmr/m/n/10.95 lier naming conventions, and finally copy and paste the remaining code used in the
  []
 
 
-Underfull \hbox (badness 1147) in paragraph at lines 1477--1478
+Underfull \hbox (badness 1147) in paragraph at lines 1471--1472
 \TU/lmr/m/n/10.95 year: \TU/lmtt/m/n/10.95 function_ridb_subset-post2019.R\TU/lmr/m/n/10.95 , \TU/lmtt/m/n/10.95 function_ridb_variable_calculate-pre2018.R\TU/lmr/m/n/10.95 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1477--1478
+Underfull \hbox (badness 10000) in paragraph at lines 1471--1472
 \TU/lmtt/m/n/10.95 function_acs_race.R\TU/lmr/m/n/10.95 , \TU/lmtt/m/n/10.95 function_acs_median_income.R\TU/lmr/m/n/10.95 , \TU/lmtt/m/n/10.95 function_acs_education.R\TU/lmr/m/n/10.95 ,
  []
 
-
-Overfull \hbox (59.81108pt too wide) in paragraph at lines 1486--1487
+[43]
+Overfull \hbox (59.81108pt too wide) in paragraph at lines 1511--1512
 \TU/lmr/m/n/10.95 To expand the states included in the Outdoor Equity App, users must update the \TU/lmtt/m/n/10.95 data_wrangle_and_clean.Rmd
  []
 
-[43] [44]
+[44] [45]
 Chapter 9.
 
 Underfull \vbox (badness 4366) has occurred while \output is active []
 
-[45
+[46
 
-] [46]
-Overfull \hbox (24.52675pt too wide) in paragraph at lines 1552--1552
+] [47]
+Chapter 10.
+[48
+
+]
+Overfull \hbox (24.52675pt too wide) in paragraph at lines 1657--1657
 []\TU/lmr/m/n/10.95 https://www.census.gov/programs- 
  []
 
 
-Overfull \hbox (5.68181pt too wide) in paragraph at lines 1552--1552
+Overfull \hbox (5.68181pt too wide) in paragraph at lines 1657--1657
 []\TU/lmr/m/n/10.95 https://bren.ucsb.edu/masters- 
  []
 
 
-Overfull \hbox (10.37935pt too wide) in paragraph at lines 1552--1552
+Overfull \hbox (10.37935pt too wide) in paragraph at lines 1657--1657
 []\TU/lmr/m/n/10.95 https://www.nps.gov/index.htm|  
  []
 
+[49] [50] [51] [52] [53]
+File: images/repo_directory.png Graphic file (type bmp)
+<images/repo_directory.png>
 
-Overfull \hbox (15.16452pt too wide) in paragraph at lines 1684--1684
-[]\TU/lmr/m/n/10.95 customer_zip_state_full|  
- []
+LaTeX Warning: Float too large for page by 25.83643pt on input line 1848.
 
+(./_main.bbl [54] [55] [56
 
-Overfull \hbox (7.30243pt too wide) in paragraph at lines 1684--1684
-[]\TU/lmr/m/n/10.95 daily_cost_per_visitor|  
- []
-
-
-Overfull \hbox (6.83157pt too wide) in paragraph at lines 1684--1684
-[]\TU/lmr/m/n/10.95 zip_code_population.x|  
- []
-
-
-Overfull \hbox (6.83157pt too wide) in paragraph at lines 1684--1684
-[]\TU/lmr/m/n/10.95 zip_code_population.y|  
- []
-
-
-LaTeX Warning: Float too large for page by 1576.37479pt on input line 1685.
-
-(./_main.bbl [47
-
-] [48] [49] [50] [51] [52
-
-] [53]) [54] (./_main.aux)
+] [57]) [58] (./_main.aux)
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: 9D146C5756B210E0F4A5BED63D0B49E5;5297.
+(rerunfilecheck)             Checksum: 40B9A43A341A0D3A993EFF9310C2549B;6040.
  ) 
 Here is how much of TeX's memory you used:
- 19916 strings out of 478126
- 363868 string characters out of 5852738
- 873178 words of memory out of 5000000
- 40260 multiletter control sequences out of 15000+600000
+ 19913 strings out of 478126
+ 364238 string characters out of 5852738
+ 851521 words of memory out of 5000000
+ 40256 multiletter control sequences out of 15000+600000
  475846 words of font info for 86 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  86i,15n,121p,1561b,557s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on _main.pdf (54 pages).
+Output written on _main.pdf (58 pages).
