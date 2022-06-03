@@ -40,7 +40,7 @@ knitr::kable(data_joined_2018_metadata_df,
 
 ## Package Versions
 
-```{r}
+```{r, echo=FALSE}
 r_packages_df <- 
   tribble(
     ~"R Package", ~Version, ~Purpose,
