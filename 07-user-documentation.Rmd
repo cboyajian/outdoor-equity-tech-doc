@@ -314,10 +314,10 @@ The variables included in the App include median-income, race, language(s) spoke
 
 ```{r}
 # import variables for race
-acs_df <- 
+race_df <- 
   get_acs(
     geography = "zcta", year = 2018,
-    state = "CA", survey = "acs5",
+    state = "CA",
     summary_var = "B03002_001", #Estimate!!Total: 
     variables = c(
       white = "B03002_003", #White alone
@@ -332,31 +332,49 @@ acs_df <-
 ```
 
 
-```{r, message=FALSE,echo=FALSE, fig.cap="Example of raw ACS Race Variable."}
-knitr::kable(head(acs_df, 10))
+```{r, message=FALSE, echo=FALSE}
+knitr::kable(head(race_df, 10),
+             caption = "Example of raw ACS Race Variable.")
 ```
 
 Percentages for the categories within each ACS variable are calculated for race, language(s) spoken in the home, and highest level of education by dividing the estimate for a category by the estimated total population for that ZIP code. 
 
-```{r}
-
+```{r, eval=FALSE}
+df_percent <- 
+  race_df %>% 
+  group_by(zip_code, race) %>% 
+  summarise(estimate = sum(estimate),
+            moe = sum(moe),
+            summary_est = unique(summary_est),
+            summary_moe = unique(summary_moe),
+            percent = estimate / summary_est)
 ```
 
 For median-income, the estimated median-income is used as is, without further adjustments. 
 
-```{r}
-
+```{r, eval=FALSE}
+df <- 
+  get_acs(geography = "zcta", year = 2018,
+          state = "CA",
+          variables = c(
+            median_income = "B19013_001" 
+          )) %>% 
+  clean_names() %>% 
+  rename(median_income = estimate) %>% 
+  mutate(zip_code = str_sub(name, start = -5, end = -1)) %>% 
+  select(median_income, zip_code)
 ```
 
 ACS data are then pivoted wider, moving the different categories and percentages (ex: racial groups) to their own columns to create a single row for each ZIP code. This is necessary for joining the ACS data sets to the RIDS data set. 
 
-```{r}
-
+```{r, eval=FALSE}
+select(zip_code, summary_est, race, percent) %>% 
+  rename(zip_code_population = summary_est) %>% 
+  # create column for each percentage for each group (pivot_wider)
+  # necessary to be able to left_join() with RIDB data
+  pivot_wider(names_from = "race",
+              values_from = "percent")
 ```
-
-
-
-#### Data Joining
 
 
 
@@ -366,9 +384,133 @@ Each type of plot and map require unique data wrangling which is explained in th
 
 #### Data Summary
 
+We created custom functions for data wrangling and plotting for use within the R Shiny App code. Wrangling begins with filtering based on the user’s choice campsite input. We then further subset the dataset to include only the necessary columns for plotting. Histograms or bar charts show the distribution of the data for each variable. For ACS plots, data from reservations are plotted against data for the full California population in order to show where reservations either under- or over-represent that variable. 
+
+```{r, eval=FALSE}
+# example for booking window data summary
+booking_window_rdf <- reactive({
+  validate(
+    need(siteInput != "",
+         "Please select a reservable site to visualize.")
+  ) # EO validate
+  
+  ridb_df %>%
+    filter(park %in% siteInput,
+           booking_window > 0,
+           booking_window != "Inf") %>% 
+    select(park, booking_window) %>% 
+    filter(!is.na(booking_window))
+})
+```
 
 
 #### Data Relationships
+
+Visualizing the relationship between RIDB and ACS variables is challenging because the socioeconomic data available are an estimate of the ZIP code population, rather than data of the individual making the reservation. In order to create simple, easy to interpret plots, we determined whether reservations were from a location with “high” percentages of a given ACS variable category (ex: one of the eight racial groups). We determined “high” as above the weighted 3rd quartile based on census data for all of California. This method allows for reservations to be included in the “high” category for multiple values within one ACS variable. By allowing a reservation to appear in multiple categories within a single ACS variable, the uncertainty of the reserver’s actual socioeconomic status is retained. 
+
+```{r, include=FALSE}
+source("r/function_acs_education.R")
+source("r/function_acs_language.R")
+source("r/function_acs_race.R")
+source("r/function_acs_median_income.R")
+
+# read in census data for CA
+acs_subset_calculate_race(geography = "zcta", year = 2018, state = "California")
+acs_subset_calculate_education(geography = "zcta", year = 2018, state = "California")
+acs_subset_calculate_language(geography = "zcta", state = "California")
+acs_subset_calculate_median_income(geography = "zcta", year = 2018, state = "California")
+
+# combine all CA census variables
+acs_ca_all <- left_join(x = data_acs_2018_education_percent_California,
+                     y = data_acs_2018_median_income_California,
+                     by = "zip_code") %>% 
+  left_join(y = data_acs_2018_race_percent_California,
+            by = "zip_code") %>% 
+  left_join(y = data_acs_2020_language_percent_California,
+            by = "zip_code")
+
+data_acs_ca_all <- acs_ca_all %>% 
+  mutate(mean_zip_code_population = rowMeans(acs_ca_all[,c(2,8,17)])) %>% 
+  select(-c("zip_code_population.x", 
+            "zip_code_population.y",
+            "zip_code_population"))
+```
+
+
+```{r, include=FALSE}
+source("r/function_acs_top_quartile_language.R")
+
+# language groups
+language_group <- c("english_only", "not_english_only")
+
+# calculate value of 3rd quartile for each language group
+language_quants_df <-
+  language_group %>%
+  map_dbl(language_top_quartile, acs_df = data_acs_ca_all) %>%
+  cbind("language_group" = language_group,
+        "weighted_quartile" = .) %>%
+  as.data.frame() %>% 
+  mutate(language_group = str_replace_all(string = language_group,
+                                          pattern = "_",
+                                          replacement = " "),
+         language_group = str_to_title(language_group),
+         weighted_quartile = percent(as.numeric(weighted_quartile), accuracy = 0.01)) %>% 
+  rename("Language Group" = language_group,
+         "Threshold" = weighted_quartile)
+```
+
+```{r, include=FALSE}
+source("r/function_acs_top_quartile_education.R")
+
+# education groups
+education_group <-
+  c("hs_GED_or_below", "some_college",  "college", "master_or_above")
+
+# calculate value of 3rd quartile for each educational group
+education_quants_df <-
+  education_group %>%
+  map_dbl(education_top_quartile, acs_df = data_acs_ca_all) %>%
+  cbind("education_group" = education_group,
+        "weighted_quartile" = .) %>%
+  as.data.frame() %>% 
+  mutate(education_group = str_replace_all(string = education_group,
+                                           pattern = "_",
+                                           replacement = " "),
+         education_group = str_to_title(education_group),
+         weighted_quartile = percent(as.numeric(weighted_quartile), accuracy = 0.01)) %>% 
+  rename("Education Group" = education_group,
+         "Threshold" = weighted_quartile)
+```
+
+```{r, include=FALSE}
+source("r/function_acs_top_quartile_race.R")
+
+# race groups
+race_group <- c(
+  "other", "pacific_islander",  "multiracial",  "asian",
+  "black",  "white", "native_american", "hispanic_latinx")
+
+# calculate value of 3rd quartile for each racial group
+race_quants_df <-
+  race_group %>%
+  map_dbl(race_top_quartile, acs_df = data_acs_ca_all) %>%
+  cbind("race_group" = race_group,
+        "weighted_quartile" = .) %>%
+  as.data.frame() %>% 
+  mutate(race_group = str_replace_all(string = race_group,
+                                      pattern = "_",
+                                      replacement = " "),
+         race_group = str_to_title(race_group),
+         weighted_quartile = percent(as.numeric(weighted_quartile), accuracy = 0.01)) %>% 
+  rename("Race Group" = race_group,
+         "Threshold" = weighted_quartile)
+```
+
+```{r, echo=FALSE}
+knitr::kable(list(language_quants_df, education_quants_df,
+                  race_quants_df), 
+             caption = "Threshold values for ACS variables.")
+```
 
 
 
@@ -377,13 +519,9 @@ Each type of plot and map require unique data wrangling which is explained in th
 
 
 
-### Data Limitations
-
-
-
 ### Data updates
 
-
+The `data_wrangle_and_clean.Rmd` document is set up to create the combined dataset necessary for the Outdoor Equity App. To access the ACS data we use the `tidycensus` package [@R-tidycensus] to access the necessary data via API, meaning data updates are not necessary outside of the `.Rmd` document. The RIDB data is accesses via direct download from the [Recreation.gov](https://ridb.recreation.gov/download) website. See the [How to Expand the Outdoor Equity App Section][How to Expand the Outdoor Equity App] on expanding the time periods included in the App.
 
 ### Server Hosting
 

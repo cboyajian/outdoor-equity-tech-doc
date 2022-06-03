@@ -24,7 +24,7 @@
 <meta name="author" content="Clarissa Boyajian and Halina Do-Linh" />
 
 
-<meta name="date" content="2022-06-02" />
+<meta name="date" content="2022-06-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -209,10 +209,9 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="8.3.1" data-path="user-documentation.html"><a href="user-documentation.html#data-preparation-methods"><i class="fa fa-check"></i><b>8.3.1</b> Data Preparation Methods</a></li>
 <li class="chapter" data-level="8.3.2" data-path="user-documentation.html"><a href="user-documentation.html#statistical-analysis-and-data-wrangling-for-plots"><i class="fa fa-check"></i><b>8.3.2</b> Statistical Analysis and Data Wrangling for Plots</a></li>
-<li class="chapter" data-level="8.3.3" data-path="user-documentation.html"><a href="user-documentation.html#data-limitations"><i class="fa fa-check"></i><b>8.3.3</b> Data Limitations</a></li>
-<li class="chapter" data-level="8.3.4" data-path="user-documentation.html"><a href="user-documentation.html#data-updates"><i class="fa fa-check"></i><b>8.3.4</b> Data updates</a></li>
-<li class="chapter" data-level="8.3.5" data-path="user-documentation.html"><a href="user-documentation.html#server-hosting"><i class="fa fa-check"></i><b>8.3.5</b> Server Hosting</a></li>
-<li class="chapter" data-level="8.3.6" data-path="user-documentation.html"><a href="user-documentation.html#shiny-code-directory"><i class="fa fa-check"></i><b>8.3.6</b> Shiny Code Directory</a></li>
+<li class="chapter" data-level="8.3.3" data-path="user-documentation.html"><a href="user-documentation.html#data-updates"><i class="fa fa-check"></i><b>8.3.3</b> Data updates</a></li>
+<li class="chapter" data-level="8.3.4" data-path="user-documentation.html"><a href="user-documentation.html#server-hosting"><i class="fa fa-check"></i><b>8.3.4</b> Server Hosting</a></li>
+<li class="chapter" data-level="8.3.5" data-path="user-documentation.html"><a href="user-documentation.html#shiny-code-directory"><i class="fa fa-check"></i><b>8.3.5</b> Shiny Code Directory</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="user-documentation.html"><a href="user-documentation.html#how-to-expand-the-outdoor-equity-app"><i class="fa fa-check"></i><b>8.4</b> How to Expand the Outdoor Equity App</a>
 <ul>
@@ -223,8 +222,9 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9" data-path="additional-challenges.html"><a href="additional-challenges.html"><i class="fa fa-check"></i><b>9</b> Additional Challenges</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="additional-challenges.html"><a href="additional-challenges.html#technical-challenges"><i class="fa fa-check"></i><b>9.1</b> Technical Challenges</a></li>
-<li class="chapter" data-level="9.2" data-path="additional-challenges.html"><a href="additional-challenges.html#future-challenges"><i class="fa fa-check"></i><b>9.2</b> Future Challenges</a></li>
+<li class="chapter" data-level="9.1" data-path="additional-challenges.html"><a href="additional-challenges.html#data-limitations"><i class="fa fa-check"></i><b>9.1</b> Data Limitations</a></li>
+<li class="chapter" data-level="9.2" data-path="additional-challenges.html"><a href="additional-challenges.html#technical-challenges"><i class="fa fa-check"></i><b>9.2</b> Technical Challenges</a></li>
+<li class="chapter" data-level="9.3" data-path="additional-challenges.html"><a href="additional-challenges.html#future-challenges"><i class="fa fa-check"></i><b>9.3</b> Future Challenges</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="archive-access.html"><a href="archive-access.html"><i class="fa fa-check"></i><b>10</b> Archive Access</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -250,14 +250,18 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="additional-challenges" class="section level1" number="9">
 <h1><span class="header-section-number">Section 9</span> Additional Challenges</h1>
-<div id="technical-challenges" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> Technical Challenges</h2>
+<div id="data-limitations" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> Data Limitations</h2>
+<p>Socioeconomic data are not available within the <a href="https://ridb.recreation.gov/landing">RIDB data</a> for each person making a reservation. This means that we must instead use the socioeconomic data available through <a href="https://www.census.gov/programs-surveys/acs/data.html">American Community Survey (ACS)</a>, which are estimates for an entire ZIP code. Therefore, we must characterize the racial breakdown of the ZIP code associated with a reservation (e.g., 60% white, 30% Hispanic Latinx, 5% Asian, and 5% black), rather than assign a reservation to a given racial group. This creates limitations when creating plots that visualize any ACS variables.</p>
+</div>
+<div id="technical-challenges" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Technical Challenges</h2>
 <ul>
 <li>In the <a href="https://shinyapps.bren.ucsb.edu/oe_app/">Outdoor Equity App</a>, there are behavioral bugs with the plots where plots will stop updating or being created after either an input has been changed multiple times or if the input chosen is associated with a large amount of data. We were not able to troubleshoot this completely, but believe this has to do with the functions that create the visuals.</li>
 </ul>
 </div>
-<div id="future-challenges" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> Future Challenges</h2>
+<div id="future-challenges" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> Future Challenges</h2>
 <ul>
 <li>Adding in multiple years and adding in more spatial data (beyond California) will require a large server and likely more computing power.</li>
 </ul>

@@ -1,5 +1,9 @@
 # Additional Challenges
 
+## Data Limitations
+
+Socioeconomic data are not available within the [RIDB data](https://ridb.recreation.gov/landing) for each person making a reservation. This means that we must instead use the socioeconomic data available through [American Community Survey (ACS)](https://www.census.gov/programs-surveys/acs/data.html), which are estimates for an entire ZIP code. Therefore, we must characterize the racial breakdown of the ZIP code associated with a reservation (e.g., 60% white, 30% Hispanic Latinx, 5% Asian, and 5% black), rather than assign a reservation to a given racial group. This creates limitations when creating plots that visualize any ACS variables. 
+
 ## Technical Challenges
 
 - In the [Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/), there are behavioral bugs with the plots where plots will stop updating or being created after either an input has been changed multiple times or if the input chosen is associated with a large amount of data. We were not able to troubleshoot this completely, but believe this has to do with the functions that create the visuals.

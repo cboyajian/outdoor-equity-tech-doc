@@ -131,7 +131,7 @@
 
 \title{Outdoor Equity App Technical Documentation}
 \author{Clarissa Boyajian and Halina Do-Linh}
-\date{2022-06-02}
+\date{2022-06-03}
 
 \begin{document}
 \maketitle
@@ -845,10 +845,10 @@ The variables included in the App include median-income, race, language(s) spoke
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# import variables for race}
-\NormalTok{acs\_df }\OtherTok{\textless{}{-}} 
+\NormalTok{race\_df }\OtherTok{\textless{}{-}} 
   \FunctionTok{get\_acs}\NormalTok{(}
     \AttributeTok{geography =} \StringTok{"zcta"}\NormalTok{, }\AttributeTok{year =} \DecValTok{2018}\NormalTok{,}
-    \AttributeTok{state =} \StringTok{"CA"}\NormalTok{, }\AttributeTok{survey =} \StringTok{"acs5"}\NormalTok{,}
+    \AttributeTok{state =} \StringTok{"CA"}\NormalTok{,}
     \AttributeTok{summary\_var =} \StringTok{"B03002\_001"}\NormalTok{, }\CommentTok{\#Estimate!!Total: }
     \AttributeTok{variables =} \FunctionTok{c}\NormalTok{(}
       \AttributeTok{white =} \StringTok{"B03002\_003"}\NormalTok{, }\CommentTok{\#White alone}
@@ -867,7 +867,11 @@ The variables included in the App include median-income, race, language(s) spoke
 ## Getting data from the 2014-2018 5-year ACS
 \end{verbatim}
 
-\begin{tabular}{l|l|l|r|r|r|r}
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-19}Example of raw ACS Race Variable.}
+\centering
+\begin{tabular}[t]{l|l|l|r|r|r|r}
 \hline
 GEOID & NAME & variable & estimate & moe & summary\_est & summary\_moe\\
 \hline
@@ -892,15 +896,52 @@ GEOID & NAME & variable & estimate & moe & summary\_est & summary\_moe\\
 90002 & ZCTA5 90002 & black & 10110 & 876 & 53111 & 2031\\
 \hline
 \end{tabular}
+\end{table}
 
 Percentages for the categories within each ACS variable are calculated for race, language(s) spoken in the home, and highest level of education by dividing the estimate for a category by the estimated total population for that ZIP code.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_percent }\OtherTok{\textless{}{-}} 
+\NormalTok{  race\_df }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(zip\_code, race) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{estimate =} \FunctionTok{sum}\NormalTok{(estimate),}
+            \AttributeTok{moe =} \FunctionTok{sum}\NormalTok{(moe),}
+            \AttributeTok{summary\_est =} \FunctionTok{unique}\NormalTok{(summary\_est),}
+            \AttributeTok{summary\_moe =} \FunctionTok{unique}\NormalTok{(summary\_moe),}
+            \AttributeTok{percent =}\NormalTok{ estimate }\SpecialCharTok{/}\NormalTok{ summary\_est)}
+\end{Highlighting}
+\end{Shaded}
+
 For median-income, the estimated median-income is used as is, without further adjustments.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}} 
+  \FunctionTok{get\_acs}\NormalTok{(}\AttributeTok{geography =} \StringTok{"zcta"}\NormalTok{, }\AttributeTok{year =} \DecValTok{2018}\NormalTok{,}
+          \AttributeTok{state =} \StringTok{"CA"}\NormalTok{,}
+          \AttributeTok{variables =} \FunctionTok{c}\NormalTok{(}
+            \AttributeTok{median\_income =} \StringTok{"B19013\_001"} 
+\NormalTok{          )) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{clean\_names}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{median\_income =}\NormalTok{ estimate) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{zip\_code =} \FunctionTok{str\_sub}\NormalTok{(name, }\AttributeTok{start =} \SpecialCharTok{{-}}\DecValTok{5}\NormalTok{, }\AttributeTok{end =} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(median\_income, zip\_code)}
+\end{Highlighting}
+\end{Shaded}
 
 ACS data are then pivoted wider, moving the different categories and percentages (ex: racial groups) to their own columns to create a single row for each ZIP code. This is necessary for joining the ACS data sets to the RIDS data set.
 
-\hypertarget{data-joining}{%
-\subsubsection{Data Joining}\label{data-joining}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{select}\NormalTok{(zip\_code, summary\_est, race, percent) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{zip\_code\_population =}\NormalTok{ summary\_est) }\SpecialCharTok{\%\textgreater{}\%} 
+  \CommentTok{\# create column for each percentage for each group (pivot\_wider)}
+  \CommentTok{\# necessary to be able to left\_join() with RIDB data}
+  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =} \StringTok{"race"}\NormalTok{,}
+              \AttributeTok{values\_from =} \StringTok{"percent"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{statistical-analysis-and-data-wrangling-for-plots}{%
 \subsection{Statistical Analysis and Data Wrangling for Plots}\label{statistical-analysis-and-data-wrangling-for-plots}}
@@ -910,17 +951,90 @@ Each type of plot and map require unique data wrangling which is explained in th
 \hypertarget{data-summary}{%
 \subsubsection{Data Summary}\label{data-summary}}
 
+We created custom functions for data wrangling and plotting for use within the R Shiny App code. Wrangling begins with filtering based on the user's choice campsite input. We then further subset the dataset to include only the necessary columns for plotting. Histograms or bar charts show the distribution of the data for each variable. For ACS plots, data from reservations are plotted against data for the full California population in order to show where reservations either under- or over-represent that variable.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# example for booking window data summary}
+\NormalTok{booking\_window\_rdf }\OtherTok{\textless{}{-}} \FunctionTok{reactive}\NormalTok{(\{}
+  \FunctionTok{validate}\NormalTok{(}
+    \FunctionTok{need}\NormalTok{(siteInput }\SpecialCharTok{!=} \StringTok{""}\NormalTok{,}
+         \StringTok{"Please select a reservable site to visualize."}\NormalTok{)}
+\NormalTok{  ) }\CommentTok{\# EO validate}
+  
+\NormalTok{  ridb\_df }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{filter}\NormalTok{(park }\SpecialCharTok{\%in\%}\NormalTok{ siteInput,}
+\NormalTok{           booking\_window }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{,}
+\NormalTok{           booking\_window }\SpecialCharTok{!=} \StringTok{"Inf"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{select}\NormalTok{(park, booking\_window) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(booking\_window))}
+\NormalTok{\})}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{data-relationships}{%
 \subsubsection{Data Relationships}\label{data-relationships}}
+
+Visualizing the relationship between RIDB and ACS variables is challenging because the socioeconomic data available are an estimate of the ZIP code population, rather than data of the individual making the reservation. In order to create simple, easy to interpret plots, we determined whether reservations were from a location with ``high'' percentages of a given ACS variable category (ex: one of the eight racial groups). We determined ``high'' as above the weighted 3rd quartile based on census data for all of California. This method allows for reservations to be included in the ``high'' category for multiple values within one ACS variable. By allowing a reservation to appear in multiple categories within a single ACS variable, the uncertainty of the reserver's actual socioeconomic status is retained.
+
+\begin{table}
+\caption{\label{tab:unnamed-chunk-28}Threshold values for ACS variables.}
+
+\centering
+\begin{tabular}[t]{l|l}
+\hline
+Language Group & Threshold\\
+\hline
+English Only & 72.98\%\\
+\hline
+Not English Only & 62.75\%\\
+\hline
+\end{tabular}
+\centering
+\begin{tabular}[t]{l|l}
+\hline
+Education Group & Threshold\\
+\hline
+Hs Ged Or Below & 54.21\%\\
+\hline
+Some College & 25.62\%\\
+\hline
+College & 36.85\%\\
+\hline
+Master Or Above & 22.02\%\\
+\hline
+\end{tabular}
+\centering
+\begin{tabular}[t]{l|l}
+\hline
+Race Group & Threshold\\
+\hline
+Other & 0.52\%\\
+\hline
+Pacific Islander & 0.87\%\\
+\hline
+Multiracial & 4.38\%\\
+\hline
+Asian & 30.29\%\\
+\hline
+Black & 13.16\%\\
+\hline
+White & 59.08\%\\
+\hline
+Native American & 0.93\%\\
+\hline
+Hispanic Latinx & 62.07\%\\
+\hline
+\end{tabular}
+\end{table}
 
 \hypertarget{spatial-analysis}{%
 \subsubsection{Spatial analysis}\label{spatial-analysis}}
 
-\hypertarget{data-limitations}{%
-\subsection{Data Limitations}\label{data-limitations}}
-
 \hypertarget{data-updates}{%
 \subsection{Data updates}\label{data-updates}}
+
+The \texttt{data\_wrangle\_and\_clean.Rmd} document is set up to create the combined dataset necessary for the Outdoor Equity App. To access the ACS data we use the \texttt{tidycensus} package \citep{R-tidycensus} to access the necessary data via API, meaning data updates are not necessary outside of the \texttt{.Rmd} document. The RIDB data is accesses via direct download from the \href{https://ridb.recreation.gov/download}{Recreation.gov} website. See the \protect\hyperlink{how-to-expand-the-outdoor-equity-app}{How to Expand the Outdoor Equity App Section} on expanding the time periods included in the App.
 
 \hypertarget{server-hosting}{%
 \subsection{Server Hosting}\label{server-hosting}}
@@ -942,6 +1056,11 @@ Each type of plot and map require unique data wrangling which is explained in th
 
 \hypertarget{additional-challenges}{%
 \chapter{Additional Challenges}\label{additional-challenges}}
+
+\hypertarget{data-limitations}{%
+\section{Data Limitations}\label{data-limitations}}
+
+Socioeconomic data are not available within the \href{https://ridb.recreation.gov/landing}{RIDB data} for each person making a reservation. This means that we must instead use the socioeconomic data available through \href{https://www.census.gov/programs-surveys/acs/data.html}{American Community Survey (ACS)}, which are estimates for an entire ZIP code. Therefore, we must characterize the racial breakdown of the ZIP code associated with a reservation (e.g., 60\% white, 30\% Hispanic Latinx, 5\% Asian, and 5\% black), rather than assign a reservation to a given racial group. This creates limitations when creating plots that visualize any ACS variables.
 
 \hypertarget{technical-challenges}{%
 \section{Technical Challenges}\label{technical-challenges}}
