@@ -287,41 +287,41 @@ USFS & United States Forest Service & https://www.fs.usda.gov/\\
 \caption{\label{tab:func-table1}A table of the cleaning and wrangling functions created for the ACS and RIDB data and functions to create data sets for visitorshed maps and data relationship plots.}
 \begin{tabular}[t]{l|l}
 \hline
-Script Location & Purpose\\
+Script & Purpose\\
 \hline
-data\_preparation/functions/function\_acs\_deciles\_median\_income.R & Calculate decile values of California census household median-income\\
+function\_acs\_deciles\_median\_income.R & Calculate decile values of California census household median-income\\
 \hline
-data\_preparation/functions/function\_acs\_education.R & Call and calculate education percentages for given geographic area and state\\
+function\_acs\_education.R & Call and calculate education percentages for given geographic area and state\\
 \hline
-data\_preparation/functions/function\_acs\_language.R & Call and calculate language percentages for given geographic area and state\\
+function\_acs\_language.R & Call and calculate language percentages for given geographic area and state\\
 \hline
-data\_preparation/functions/function\_acs\_median\_income.R & Call and calculate median-income percentages for given geographic area and state\\
+function\_acs\_median\_income.R & Call and calculate median-income percentages for given geographic area and state\\
 \hline
-data\_preparation/functions/function\_acs\_race.R & Call and calculate race percentages for given geographic area and state\\
+function\_acs\_race.R & Call and calculate race percentages for given geographic area and state\\
 \hline
-data\_preparation/functions/function\_acs\_top\_quartile\_education.R & Calculate weighted third quartile value of California census education percentages\\
+function\_acs\_top\_quartile\_education.R & Calculate weighted third quartile value of California census education percentages\\
 \hline
-data\_preparation/functions/function\_acs\_top\_quartile\_language.R & Calculate weighted third quartile value of California census language percentages\\
+function\_acs\_top\_quartile\_language.R & Calculate weighted third quartile value of California census language percentages\\
 \hline
-data\_preparation/functions/function\_acs\_top\_quartile\_race.R & Calculate weighted third quartile value of California census race percentages\\
+function\_acs\_top\_quartile\_race.R & Calculate weighted third quartile value of California census race percentages\\
 \hline
-data\_preparation/functions/function\_ridb\_subset-pre2018.R & Subset RIDB data\\
+function\_ridb\_subset-pre2018.R & Subset RIDB data\\
 \hline
-data\_preparation/functions/function\_ridb\_variable\_calculate-pre2018.R & Define, standardize, and aggregate values and calculated additional derived variables\\
+function\_ridb\_variable\_calculate-pre2018.R & Define, standardize, and aggregate values and calculated additional derived variables\\
 \hline
-data\_preparation/functions/function\_join\_ridb\_acs.R & Join RIDB and ACS data\\
+function\_join\_ridb\_acs.R & Join RIDB and ACS data\\
 \hline
-data\_preparation/functions/function\_map\_ca\_data.R & Create dataset for California ZIP code visitorshed map\\
+function\_map\_ca\_data.R & Create dataset for California ZIP code visitorshed map\\
 \hline
-data\_preparation/functions/function\_map\_us\_data.R & Create dataset for US State visitorshed map\\
+function\_map\_us\_data.R & Create dataset for US State visitorshed map\\
 \hline
-data\_preparation/functions/function\_ridb\_deciles\_median\_income.R & Create dataset for median-income data relationship plots\\
+function\_ridb\_deciles\_median\_income.R & Create dataset for median-income data relationship plots\\
 \hline
-data\_preparation/functions/function\_ridb\_top\_quartile\_education.R & Create dataset for education data relationship plots\\
+function\_ridb\_top\_quartile\_education.R & Create dataset for education data relationship plots\\
 \hline
-data\_preparation/functions/function\_ridb\_top\_quartile\_language.R & Create dataset for language data relationship plots\\
+function\_ridb\_top\_quartile\_language.R & Create dataset for language data relationship plots\\
 \hline
-data\_preparation/functions/function\_ridb\_top\_quartile\_race.R & Create dataset for race data relationship plots\\
+function\_ridb\_top\_quartile\_race.R & Create dataset for race data relationship plots\\
 \hline
 \end{tabular}
 \end{table}
@@ -556,7 +556,13 @@ The Data Download section of the App allows a user to download a subset of data 
 \hypertarget{repository-directory-structure}{%
 \subsection{Repository Directory Structure}\label{repository-directory-structure}}
 
-Our code is version controlled in a \href{https://github.com/outdoor-equity/outdoor-equity}{GitHub repository}. This includes the data cleaning, wrangling, and analysis, creation of plots and maps, and structure of the shiny app. An overview of the directory structure can be found \href{}{here}.
+Our code is version controlled in a \href{https://github.com/outdoor-equity/outdoor-equity}{GitHub repository}. This includes the data cleaning, wrangling, and analysis, creation of plots and maps, and structure of the shiny app. An overview of the directory structure can be seen below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# add image of repo diagram}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{data-preparation-methods}{%
 \subsection{Data Preparation Methods}\label{data-preparation-methods}}
@@ -859,7 +865,7 @@ Sample data are collected for the ACS each year and includes many variables that
 
 The Outdoor Equity App utilizes the \href{https://www.census.gov/data/developers/data-sets/acs-5year.html}{ACS 5-year data}, which is an estimate representing data collected over the designated 5 year period. We used the 5-year ACS data over the 1-year ACS data because it increases ``statistical reliability of the data for less populated areas and small population subgroups'' \citep{ACS}.
 
-The variables included in the App include median-income, race, language(s) spoken at home, and highest level of education attained. All variables are represented as estimates in numeric format for a census tract. Data are called by geographic region, in our case the ZIP code tabulation area, and include an estimated number of people that fall into each category within each ZIP code, a margin of error, and an estimated number of total people in the area. Within our custom functions \texttt{function\_acs\_education.R}, \texttt{function\_acs\_language.R}, \texttt{function\_acs\_median\_income.R}, and \texttt{function\_acs\_race.R} we first imported just the necessary columns for each ACS variable. See below for an example of the race variable:
+The variables included in the App include median-income, race, language(s) spoken at home, and highest level of education attained. All variables are represented as estimates in numeric format for a census tract. Data are called by geographic region, in our case the ZIP code tabulation area, and include an estimated number of people that fall into each category within each ZIP code, a margin of error, and an estimated number of total people in the area. Within our custom functions \texttt{function\_acs\_education.R}, \texttt{function\_acs\_language.R}, \texttt{function\_acs\_median\_income.R}, and \texttt{function\_acs\_race.R} we first imported just the necessary columns for each ACS variable. See Table \ref{tab:acs-race-tab} for an example of the race variable.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -874,7 +880,7 @@ The variables included in the App include median-income, race, language(s) spoke
       \AttributeTok{black =} \StringTok{"B03002\_004"}\NormalTok{, }\CommentTok{\#Black or African American alone}
       \AttributeTok{native\_american =} \StringTok{"B03002\_005"}\NormalTok{, }\CommentTok{\#American Indian and Alaska Native alone}
       \AttributeTok{asian =} \StringTok{"B03002\_006"}\NormalTok{, }\CommentTok{\#Asian alone}
-      \AttributeTok{pacific\_islander =} \StringTok{"B03002\_007"}\NormalTok{, }\CommentTok{\#Native Hawaiian and Other Pacific Islander alone}
+      \AttributeTok{pacific\_islander =} \StringTok{"B03002\_007"}\NormalTok{, }\CommentTok{\#Native Hawaiian/Other Pacific Islander alone}
       \AttributeTok{other =} \StringTok{"B03002\_008"}\NormalTok{, }\CommentTok{\#Some other race alone}
       \AttributeTok{multiracial =} \StringTok{"B03002\_009"}\NormalTok{, }\CommentTok{\#Two or more races}
       \AttributeTok{hispanic\_latinx =} \StringTok{"B03002\_012"} \CommentTok{\#Hispanic or Latino}
@@ -884,7 +890,7 @@ The variables included in the App include median-income, race, language(s) spoke
 
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-20}Example of raw ACS Race Variable.}
+\caption{\label{tab:acs-race-tab}Example of raw ACS Race Variable.}
 \centering
 \begin{tabular}[t]{l|l|l|r|r|r|r}
 \hline
@@ -1017,20 +1023,21 @@ We create histograms, bar charts, or density plots to show the distribution of t
 \CommentTok{\# plot for shiny app}
 \NormalTok{plotly }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}
   \AttributeTok{data =} \FunctionTok{booking\_window\_rdf}\NormalTok{()) }\SpecialCharTok{+}
-  \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ booking\_window,}
-                     \AttributeTok{text =} \FunctionTok{paste0}\NormalTok{(}\FunctionTok{percent}\NormalTok{(..count.. }\SpecialCharTok{/} \FunctionTok{nrow}\NormalTok{(}\FunctionTok{booking\_window\_rdf}\NormalTok{()), }
-                                           \AttributeTok{accuracy =} \FloatTok{0.1}\NormalTok{), }
-                                   \StringTok{" of all visits are reserved between "}\NormalTok{, xmin, }
-                                   \StringTok{" and "}\NormalTok{, xmax, }
-                                   \StringTok{" days before the start of the visit"}\NormalTok{, }
-                                   \StringTok{"\textless{}br\textgreater{}"}\NormalTok{,}
-                                   \StringTok{"(Total reservations to site: "}\NormalTok{,}
-                                   \FunctionTok{comma}\NormalTok{(}\FunctionTok{nrow}\NormalTok{(}\FunctionTok{booking\_window\_rdf}\NormalTok{()), }\AttributeTok{accuracy =} \DecValTok{1}\NormalTok{), }
-                                   \StringTok{")"}\NormalTok{)),}
-                 \AttributeTok{binwidth =} \DecValTok{7}\NormalTok{,}
-                 \AttributeTok{center =} \DecValTok{7} \SpecialCharTok{/} \DecValTok{2}\NormalTok{,}
-                 \AttributeTok{fill =}\NormalTok{ hist\_colors[[}\DecValTok{1}\NormalTok{]], }
-                 \AttributeTok{col =}\NormalTok{ hist\_colors[[}\DecValTok{2}\NormalTok{]], }\AttributeTok{size =} \FloatTok{0.05}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}
+    \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ booking\_window,}
+        \AttributeTok{text =} \FunctionTok{paste0}\NormalTok{(}\FunctionTok{percent}\NormalTok{(..count.. }\SpecialCharTok{/} \FunctionTok{nrow}\NormalTok{(}\FunctionTok{booking\_window\_rdf}\NormalTok{()), }
+                              \AttributeTok{accuracy =} \FloatTok{0.1}\NormalTok{), }
+                      \StringTok{" of all visits are reserved between "}\NormalTok{, xmin, }
+                      \StringTok{" and "}\NormalTok{, xmax, }
+                      \StringTok{" days before the start of the visit"}\NormalTok{, }
+                      \StringTok{"\textless{}br\textgreater{}"}\NormalTok{,}
+                      \StringTok{"(Total reservations to site: "}\NormalTok{,}
+                      \FunctionTok{comma}\NormalTok{(}\FunctionTok{nrow}\NormalTok{(}\FunctionTok{booking\_window\_rdf}\NormalTok{()), }\AttributeTok{accuracy =} \DecValTok{1}\NormalTok{), }
+                      \StringTok{")"}\NormalTok{)),}
+    \AttributeTok{binwidth =} \DecValTok{7}\NormalTok{,}
+    \AttributeTok{center =} \DecValTok{7} \SpecialCharTok{/} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{fill =}\NormalTok{ hist\_colors[[}\DecValTok{1}\NormalTok{]], }
+    \AttributeTok{col =}\NormalTok{ hist\_colors[[}\DecValTok{2}\NormalTok{]], }\AttributeTok{size =} \FloatTok{0.05}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Days in advance before visit (each bar = 1 week)"}\NormalTok{,}
        \AttributeTok{y =} \StringTok{""}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{limits =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, x\_max)) }\SpecialCharTok{+}
@@ -1070,26 +1077,31 @@ We create histograms, bar charts, or density plots to show the distribution of t
 \FunctionTok{ggplotly}\NormalTok{(plotly,}
          \AttributeTok{tooltip =} \FunctionTok{list}\NormalTok{(}\StringTok{"text"}\NormalTok{),}
          \AttributeTok{dynamicTicks =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{layout}\NormalTok{(}\AttributeTok{title =} \FunctionTok{list}\NormalTok{(}\AttributeTok{text =} \FunctionTok{paste0}\NormalTok{(}\StringTok{\textquotesingle{}\textless{}b\textgreater{}\textquotesingle{}}\NormalTok{, siteInput, }\StringTok{\textquotesingle{}\textless{}br\textgreater{}\textquotesingle{}}\NormalTok{, admin\_unitInput, }\StringTok{\textquotesingle{}\textless{}/b\textgreater{}\textquotesingle{}}\NormalTok{,}
-                                    \StringTok{\textquotesingle{}\textless{}br\textgreater{}\textquotesingle{}}\NormalTok{,}
-                                    \StringTok{\textquotesingle{}Number of days from reservation to start of visit\textquotesingle{}}\NormalTok{),}
-                      \AttributeTok{font =} \FunctionTok{list}\NormalTok{(}\AttributeTok{size =} \DecValTok{15}\NormalTok{)),}
+  \FunctionTok{layout}\NormalTok{(}\AttributeTok{title =} 
+           \FunctionTok{list}\NormalTok{(}\AttributeTok{text =} 
+                  \FunctionTok{paste0}\NormalTok{(}\StringTok{\textquotesingle{}\textless{}b\textgreater{}\textquotesingle{}}\NormalTok{, siteInput, }\StringTok{\textquotesingle{}\textless{}br\textgreater{}\textquotesingle{}}\NormalTok{, admin\_unitInput, }\StringTok{\textquotesingle{}\textless{}/b\textgreater{}\textquotesingle{}}\NormalTok{,}
+                         \StringTok{\textquotesingle{}\textless{}br\textgreater{}\textquotesingle{}}\NormalTok{,}
+                         \StringTok{\textquotesingle{}Number of days from reservation to start of visit\textquotesingle{}}\NormalTok{),}
+                \AttributeTok{font =} \FunctionTok{list}\NormalTok{(}\AttributeTok{size =} \DecValTok{15}\NormalTok{)),}
          \AttributeTok{xaxis =} \FunctionTok{list}\NormalTok{(}\AttributeTok{separatethousands =} \ConstantTok{TRUE}\NormalTok{),}
          \AttributeTok{yaxis =} \FunctionTok{list}\NormalTok{(}\AttributeTok{separatethousands =} \ConstantTok{TRUE}\NormalTok{),}
          \AttributeTok{margin =} \FunctionTok{list}\NormalTok{(}\AttributeTok{b =} \DecValTok{130}\NormalTok{, }\AttributeTok{t =} \DecValTok{100}\NormalTok{), }
-         \AttributeTok{annotations =}  \FunctionTok{list}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x\_max}\SpecialCharTok{/}\DecValTok{2}\NormalTok{, }\AttributeTok{y =} \SpecialCharTok{{-}}\FloatTok{0.6}\NormalTok{, }
-                             \AttributeTok{text =} \FunctionTok{paste0}\NormalTok{(}\StringTok{"80\% of reservations reserve their visit less than "}\NormalTok{, }
-                                           \StringTok{\textquotesingle{}\textless{}b\textgreater{}\textquotesingle{}}\NormalTok{, quant\_80, }\StringTok{\textquotesingle{}\textless{}/b\textgreater{}\textquotesingle{}}\NormalTok{, }
-                                           \StringTok{" days before the start date"}\NormalTok{, }
-                                           \StringTok{"\textless{}br\textgreater{}"}\NormalTok{,}
-                                           \StringTok{"(shown on plot with yellow dotted line)."}\NormalTok{), }
-                             \AttributeTok{showarrow =}\NormalTok{ F, }
-                             \AttributeTok{xre =} \StringTok{\textquotesingle{}paper\textquotesingle{}}\NormalTok{, }\AttributeTok{yref =} \StringTok{\textquotesingle{}paper\textquotesingle{}}\NormalTok{, }
+         \AttributeTok{annotations =}  
+           \FunctionTok{list}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x\_max}\SpecialCharTok{/}\DecValTok{2}\NormalTok{, }\AttributeTok{y =} \SpecialCharTok{{-}}\FloatTok{0.6}\NormalTok{, }
+                \AttributeTok{text =} 
+                  \FunctionTok{paste0}\NormalTok{(}\StringTok{"80\% of reservations reserve their visit less than "}\NormalTok{, }
+                         \StringTok{\textquotesingle{}\textless{}b\textgreater{}\textquotesingle{}}\NormalTok{, quant\_80, }\StringTok{\textquotesingle{}\textless{}/b\textgreater{}\textquotesingle{}}\NormalTok{, }
+                         \StringTok{" days before the start date"}\NormalTok{, }
+                         \StringTok{"\textless{}br\textgreater{}"}\NormalTok{,}
+                         \StringTok{"(shown on plot with yellow dotted line)."}\NormalTok{), }
+                \AttributeTok{showarrow =}\NormalTok{ F, }
+                \AttributeTok{xre =} \StringTok{\textquotesingle{}paper\textquotesingle{}}\NormalTok{, }\AttributeTok{yref =} \StringTok{\textquotesingle{}paper\textquotesingle{}}\NormalTok{, }
                              \AttributeTok{xanchor =} \StringTok{\textquotesingle{}middle\textquotesingle{}}\NormalTok{, }\AttributeTok{yanchor =} \StringTok{\textquotesingle{}auto\textquotesingle{}}\NormalTok{, }
                              \AttributeTok{xshift =} \DecValTok{0}\NormalTok{, }\AttributeTok{yshift =} \DecValTok{0}\NormalTok{,}
                              \AttributeTok{font =} \FunctionTok{list}\NormalTok{(}\AttributeTok{size =} \DecValTok{12}\NormalTok{, }\AttributeTok{color =}\NormalTok{ caption\_color))) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{config}\NormalTok{(}\AttributeTok{modeBarButtonsToRemove =} \FunctionTok{list}\NormalTok{(}\StringTok{"pan"}\NormalTok{, }\StringTok{"select"}\NormalTok{, }\StringTok{"lasso2d"}\NormalTok{, }\StringTok{"autoScale2d"}\NormalTok{, }
-                                       \StringTok{"hoverClosestCartesian"}\NormalTok{, }\StringTok{"hoverCompareCartesian"}\NormalTok{))}
+                                       \StringTok{"hoverClosestCartesian"}\NormalTok{, }
+                                       \StringTok{"hoverCompareCartesian"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1145,16 +1157,17 @@ Example code for calculating the ``high'' threshold for language can be seen bel
                                           \AttributeTok{pattern =} \StringTok{"\_"}\NormalTok{,}
                                           \AttributeTok{replacement =} \StringTok{" "}\NormalTok{),}
          \AttributeTok{language\_group =} \FunctionTok{str\_to\_title}\NormalTok{(language\_group),}
-         \AttributeTok{weighted\_quartile =} \FunctionTok{percent}\NormalTok{(}\FunctionTok{as.numeric}\NormalTok{(weighted\_quartile), }\AttributeTok{accuracy =} \FloatTok{0.01}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+         \AttributeTok{weighted\_quartile =} \FunctionTok{percent}\NormalTok{(}\FunctionTok{as.numeric}\NormalTok{(weighted\_quartile), }
+                                     \AttributeTok{accuracy =} \FloatTok{0.01}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
   \FunctionTok{rename}\NormalTok{(}\StringTok{"Language Group"} \OtherTok{=}\NormalTok{ language\_group,}
          \StringTok{"Threshold"} \OtherTok{=}\NormalTok{ weighted\_quartile)}
 \end{Highlighting}
 \end{Shaded}
 
-The thresholds used within the Outdoor Equity App can be seen in the table below:
+The thresholds used within the Outdoor Equity App can be seen in Table \ref{tab:thres-tab1} and Table \ref{tab:thres-tab2}.
 
 \begin{table}
-\caption{\label{tab:unnamed-chunk-32}Threshold values for ACS variables.}
+\caption{\label{tab:thres-tab1}Threshold values for ACS language and education variables.}
 
 \centering
 \begin{tabular}[t]{l|l}
@@ -1180,6 +1193,11 @@ College & 36.85\%\\
 Master Or Above & 22.02\%\\
 \hline
 \end{tabular}
+\end{table}
+
+\begin{table}
+
+\caption{\label{tab:thres-tab2}Threshold values for ACS race variable.}
 \centering
 \begin{tabular}[t]{l|l}
 \hline
@@ -1238,7 +1256,8 @@ We create lollipop and bar plots to show the relationships of the data for each 
 \FunctionTok{validate}\NormalTok{(}\FunctionTok{need}\NormalTok{(}
   \FunctionTok{nrow}\NormalTok{(}\FunctionTok{rdf}\NormalTok{()) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{,}
   \FunctionTok{paste0}\NormalTok{(}\StringTok{"There are no reservations to "}\NormalTok{, siteInput, }\StringTok{", "}\NormalTok{, admin\_unitInput, }
-         \StringTok{" that come from communities in the high range for any educational categories."}\NormalTok{)}
+         \StringTok{" that come from communities in the high range for any educational"}\NormalTok{, }
+         \StringTok{"categories."}\NormalTok{)}
 \NormalTok{)) }\CommentTok{\# EO validate}
 
 \DocumentationTok{\#\# {-}{-} create plot {-}{-} \#\#}
@@ -1262,9 +1281,11 @@ We create lollipop and bar plots to show the relationships of the data for each 
       \AttributeTok{fill =}\NormalTok{ education\_y\_lab,}
       \AttributeTok{text =} \FunctionTok{paste0}\NormalTok{(}
         \FunctionTok{comma}\NormalTok{(count, }\AttributeTok{accuracy =} \DecValTok{1}\NormalTok{),}
-        \StringTok{" unique visits were made by people who live in ZIP codes with high rates of"}\NormalTok{,}
+        \StringTok{" unique visits were made by people who live in ZIP codes with high "}\NormalTok{, }
+        \StringTok{" rates of"}\NormalTok{,}
         \StringTok{"\textless{}br\textgreater{}"}\NormalTok{, education, }
-        \StringTok{" as the maximum level of education. Typically these visitors reserved their visit between"}\NormalTok{,}
+        \StringTok{" as the maximum level of education. "}\NormalTok{, }
+        \StringTok{"Typically these visitors reserved their visit between"}\NormalTok{,}
         \StringTok{"\textless{}br\textgreater{}"}\NormalTok{, }\FunctionTok{comma}\NormalTok{(quartile\_lower, }\AttributeTok{accuracy =} \DecValTok{1}\NormalTok{), }\StringTok{" and "}\NormalTok{, }
         \FunctionTok{comma}\NormalTok{(quartile\_upper, }\AttributeTok{accuracy =} \DecValTok{1}\NormalTok{),}
         \StringTok{" days before the start of their trip, with a median booking window of "}\NormalTok{, }
@@ -1287,11 +1308,13 @@ We create lollipop and bar plots to show the relationships of the data for each 
 \FunctionTok{ggplotly}\NormalTok{(plotly,}
          \AttributeTok{tooltip =} \FunctionTok{list}\NormalTok{(}\StringTok{"text"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{config}\NormalTok{(}
-    \AttributeTok{modeBarButtonsToRemove =} \FunctionTok{list}\NormalTok{(}\StringTok{"zoom"}\NormalTok{, }\StringTok{"pan"}\NormalTok{, }\StringTok{"select"}\NormalTok{, }\StringTok{"lasso2d"}\NormalTok{, }\StringTok{"autoScale2d"}\NormalTok{,}
-                                  \StringTok{"hoverClosestCartesian"}\NormalTok{, }\StringTok{"hoverCompareCartesian"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+    \AttributeTok{modeBarButtonsToRemove =} 
+      \FunctionTok{list}\NormalTok{(}\StringTok{"zoom"}\NormalTok{, }\StringTok{"pan"}\NormalTok{, }\StringTok{"select"}\NormalTok{, }\StringTok{"lasso2d"}\NormalTok{, }\StringTok{"autoScale2d"}\NormalTok{,}
+           \StringTok{"hoverClosestCartesian"}\NormalTok{, }\StringTok{"hoverCompareCartesian"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{layout}\NormalTok{(}\AttributeTok{title =} \FunctionTok{list}\NormalTok{(}
     \AttributeTok{text =} \FunctionTok{paste0}\NormalTok{( }\StringTok{\textquotesingle{}\textless{}b\textgreater{}\textquotesingle{}}\NormalTok{, siteInput, }\StringTok{\textquotesingle{}\textless{}br\textgreater{}\textquotesingle{}}\NormalTok{, admin\_unitInput, }\StringTok{\textquotesingle{}\textless{}/b\textgreater{}\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}\textless{}br\textgreater{}\textquotesingle{}}\NormalTok{,}
-                   \StringTok{\textquotesingle{}Number of Days in Advance Site is Reserved by Visitors with Different Levels of Education\textquotesingle{}}\NormalTok{),}
+                   \StringTok{\textquotesingle{}Number of Days in Advance Site is Reserved by Visitors with", }
+\StringTok{                   "Different Levels of Education\textquotesingle{}}\NormalTok{),}
     \AttributeTok{font =} \FunctionTok{list}\NormalTok{(}\AttributeTok{size =} \DecValTok{15}\NormalTok{) )) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{add\_annotations}\NormalTok{(}
     \AttributeTok{text =} \StringTok{"Reservations from ZIP codes\textless{}br\textgreater{}with high proportions of:"}\NormalTok{,}
@@ -1383,7 +1406,8 @@ We then calculate the number of reservations per state for the site (as chosen b
   
 \NormalTok{  ridb\_df }\SpecialCharTok{\%\textgreater{}\%} 
     \FunctionTok{filter}\NormalTok{(park }\SpecialCharTok{\%in\%}\NormalTok{ siteInput) }\SpecialCharTok{\%\textgreater{}\%}
-    \FunctionTok{select}\NormalTok{(agency, admin\_unit, park, customer\_zip\_state\_full, customer\_zip\_state)}
+    \FunctionTok{select}\NormalTok{(agency, admin\_unit, park, customer\_zip\_state\_full, }
+\NormalTok{           customer\_zip\_state)}
 \NormalTok{\})}
 
 \CommentTok{\# value of total reservations for this park}
@@ -1393,7 +1417,8 @@ We then calculate the number of reservations per state for the site (as chosen b
 \NormalTok{map\_data }\OtherTok{\textless{}{-}} \FunctionTok{rdf}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
   \FunctionTok{group\_by}\NormalTok{(customer\_zip\_state\_full, customer\_zip\_state) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{summarize}\NormalTok{(}\AttributeTok{number\_reservations =} \FunctionTok{n}\NormalTok{(),}
-            \AttributeTok{percentage\_reservations =} \FunctionTok{percent}\NormalTok{((number\_reservations }\SpecialCharTok{/}\NormalTok{ total\_reservations), }
+            \AttributeTok{percentage\_reservations =} 
+              \FunctionTok{percent}\NormalTok{((number\_reservations }\SpecialCharTok{/}\NormalTok{ total\_reservations), }
                                               \AttributeTok{accuracy =} \FloatTok{0.01}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(customer\_zip\_state\_full))}
 
@@ -1405,8 +1430,10 @@ We then calculate the number of reservations per state for the site (as chosen b
   \FunctionTok{mutate\_at}\NormalTok{(}\FunctionTok{vars}\NormalTok{(number\_reservations), }
             \SpecialCharTok{\textasciitilde{}}\FunctionTok{replace}\NormalTok{(number\_reservations, }\FunctionTok{is.na}\NormalTok{(number\_reservations), }\DecValTok{0}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{mutate\_at}\NormalTok{(}\FunctionTok{vars}\NormalTok{(percentage\_reservations), }
-            \SpecialCharTok{\textasciitilde{}}\FunctionTok{replace}\NormalTok{(percentage\_reservations, }\FunctionTok{is.na}\NormalTok{(percentage\_reservations), }\DecValTok{0}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{select}\NormalTok{(customer\_zip\_state\_full, number\_reservations, percentage\_reservations, geometry)}
+            \SpecialCharTok{\textasciitilde{}}\FunctionTok{replace}\NormalTok{(percentage\_reservations, }\FunctionTok{is.na}\NormalTok{(percentage\_reservations), }
+                     \DecValTok{0}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(customer\_zip\_state\_full, number\_reservations, }
+\NormalTok{         percentage\_reservations, geometry)}
 
 \DocumentationTok{\#\# {-}{-} create map {-}{-} \#\#}
 \FunctionTok{tmap\_mode}\NormalTok{(}\StringTok{"view"}\NormalTok{)}
@@ -1420,7 +1447,8 @@ We then calculate the number of reservations per state for the site (as chosen b
           \AttributeTok{style =} \StringTok{"jenks"}\NormalTok{,}
           \AttributeTok{id =} \StringTok{"customer\_zip\_state\_full"}\NormalTok{,}
           \AttributeTok{popup.vars =} \FunctionTok{c}\NormalTok{(}\StringTok{"Total Visits"} \OtherTok{=} \StringTok{"number\_reservations"}\NormalTok{,}
-                         \StringTok{"Percentage of All Visits"} \OtherTok{=} \StringTok{"percentage\_reservations"}\NormalTok{)) }\SpecialCharTok{+}
+                         \StringTok{"Percentage of All Visits"} \OtherTok{=} \StringTok{"percentage\_reservations"}\NormalTok{)}
+\NormalTok{          ) }\SpecialCharTok{+}
   \FunctionTok{tm\_view}\NormalTok{(}\AttributeTok{set.view =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{101.834335}\NormalTok{, }\FloatTok{40.022356}\NormalTok{, }\DecValTok{2}\NormalTok{)) }\SpecialCharTok{+}
   \FunctionTok{tmap\_options}\NormalTok{(}\AttributeTok{basemaps =} \StringTok{\textquotesingle{}https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World\_Light\_Gray\_Base/MapServer/tile/\{z\}/\{y\}/\{x\}\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
@@ -1481,7 +1509,8 @@ A ZIP-code level visitorshed map shows the number of visitors to sites for each 
 
 
 \DocumentationTok{\#\# {-}{-} CA ZIP geometries {-}{-} \#\#}
-\NormalTok{df\_zip\_geometries\_ca }\OtherTok{\textless{}{-}} \FunctionTok{get\_acs}\NormalTok{(}\AttributeTok{geography =} \StringTok{"zcta"}\NormalTok{, }\AttributeTok{year =} \DecValTok{2018}\NormalTok{, }\AttributeTok{geometry =} \ConstantTok{TRUE}\NormalTok{,}
+\NormalTok{df\_zip\_geometries\_ca }\OtherTok{\textless{}{-}} \FunctionTok{get\_acs}\NormalTok{(}\AttributeTok{geography =} \StringTok{"zcta"}\NormalTok{, }\AttributeTok{year =} \DecValTok{2018}\NormalTok{, }
+                                \AttributeTok{geometry =} \ConstantTok{TRUE}\NormalTok{,}
                                 \AttributeTok{state =} \StringTok{"California"}\NormalTok{,}
                                 \AttributeTok{summary\_var =} \StringTok{"B01001\_001"}\NormalTok{,}
                                 \AttributeTok{variables =} \FunctionTok{c}\NormalTok{(}\AttributeTok{male =} \StringTok{"B01001\_002"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
@@ -1509,7 +1538,8 @@ We calculate the number of reservations per ZIP code for the site (as chosen by 
 \NormalTok{  ) }\CommentTok{\# EO validate}
   
 \NormalTok{  ridb\_df }\SpecialCharTok{\%\textgreater{}\%} 
-    \FunctionTok{select}\NormalTok{(agency, admin\_unit, park, customer\_zip, facility\_latitude, facility\_longitude) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{select}\NormalTok{(agency, admin\_unit, park, customer\_zip, facility\_latitude, }
+\NormalTok{           facility\_longitude) }\SpecialCharTok{\%\textgreater{}\%} 
     \FunctionTok{filter}\NormalTok{(park }\SpecialCharTok{\%in\%}\NormalTok{ siteInput)}
 \NormalTok{\})}
 
@@ -1532,9 +1562,12 @@ We calculate the number of reservations per ZIP code for the site (as chosen by 
 
 \CommentTok{\# add percentage of all CA reservations for each ZIP}
 \NormalTok{map\_data\_geometries }\OtherTok{\textless{}{-}}\NormalTok{ map\_data\_geometries }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{percentage\_reservations =} \FunctionTok{percent}\NormalTok{((number\_reservations }\SpecialCharTok{/}\NormalTok{ total\_reservations), }\AttributeTok{accuracy =} \FloatTok{0.01}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{percentage\_reservations =} 
+           \FunctionTok{percent}\NormalTok{((number\_reservations }\SpecialCharTok{/}\NormalTok{ total\_reservations), }
+                   \AttributeTok{accuracy =} \FloatTok{0.01}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{mutate\_at}\NormalTok{(}\FunctionTok{vars}\NormalTok{(percentage\_reservations), }
-            \SpecialCharTok{\textasciitilde{}}\FunctionTok{replace}\NormalTok{(percentage\_reservations, }\FunctionTok{is.na}\NormalTok{(percentage\_reservations), }\DecValTok{0}\NormalTok{))}
+            \SpecialCharTok{\textasciitilde{}}\FunctionTok{replace}\NormalTok{(percentage\_reservations, }\FunctionTok{is.na}\NormalTok{(percentage\_reservations), }
+                     \DecValTok{0}\NormalTok{))}
 
 \CommentTok{\# calculate location of park for point on map}
 \NormalTok{park\_location\_geom }\OtherTok{\textless{}{-}} \FunctionTok{rdf}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
@@ -1545,19 +1578,21 @@ We calculate the number of reservations per ZIP code for the site (as chosen by 
            \AttributeTok{crs =} \DecValTok{4326}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{st\_transform}\NormalTok{(}\AttributeTok{crs =} \DecValTok{4269}\NormalTok{) }\CommentTok{\# using NAD83 because measured in meters}
 
-\FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"The site\textquotesingle{}s location has been calculated and it is:"}\NormalTok{, park\_location\_geom}\SpecialCharTok{$}\NormalTok{geometry))}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"The site\textquotesingle{}s location has been calculated and it is:"}\NormalTok{, }
+\NormalTok{            park\_location\_geom}\SpecialCharTok{$}\NormalTok{geometry))}
 
 \DocumentationTok{\#\# {-}{-} create map {-}{-} \#\#}
 \FunctionTok{tmap\_mode}\NormalTok{(}\StringTok{"view"}\NormalTok{)}
 
 \FunctionTok{tm\_shape}\NormalTok{(map\_data\_geometries) }\SpecialCharTok{+}
-  \FunctionTok{tm\_fill}\NormalTok{(}\AttributeTok{col =} \StringTok{"number\_reservations"}\NormalTok{,}
-          \AttributeTok{title =} \StringTok{"Number of Visits"}\NormalTok{,}
-          \AttributeTok{palette =} \StringTok{"PuRd"}\NormalTok{,}
-          \AttributeTok{style =} \StringTok{"jenks"}\NormalTok{,}
-          \AttributeTok{n =} \DecValTok{10}\NormalTok{,}
-          \AttributeTok{popup.vars =} \FunctionTok{c}\NormalTok{(}\StringTok{"Total Visits"} \OtherTok{=} \StringTok{"number\_reservations"}\NormalTok{,}
-                         \StringTok{"Percentage of All CA Visits"} \OtherTok{=} \StringTok{"percentage\_reservations"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{tm\_fill}\NormalTok{(}
+    \AttributeTok{col =} \StringTok{"number\_reservations"}\NormalTok{,}
+    \AttributeTok{title =} \StringTok{"Number of Visits"}\NormalTok{,}
+    \AttributeTok{palette =} \StringTok{"PuRd"}\NormalTok{,}
+    \AttributeTok{style =} \StringTok{"jenks"}\NormalTok{,}
+    \AttributeTok{n =} \DecValTok{10}\NormalTok{,}
+    \AttributeTok{popup.vars =} \FunctionTok{c}\NormalTok{(}\StringTok{"Total Visits"} \OtherTok{=} \StringTok{"number\_reservations"}\NormalTok{,}
+                   \StringTok{"Percentage of All CA Visits"} \OtherTok{=} \StringTok{"percentage\_reservations"}\NormalTok{)) }\SpecialCharTok{+}
   \FunctionTok{tm\_shape}\NormalTok{(park\_location\_geom) }\SpecialCharTok{+}
   \FunctionTok{tm\_dots}\NormalTok{(}\AttributeTok{col =} \StringTok{"darkgreen"}\NormalTok{, }\AttributeTok{size =} \FloatTok{0.1}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{tm\_shape}\NormalTok{(park\_location\_geom) }\SpecialCharTok{+}
@@ -1604,20 +1639,14 @@ Socioeconomic data are not available within the \href{https://ridb.recreation.go
 \hypertarget{technical-challenges}{%
 \section{Technical Challenges}\label{technical-challenges}}
 
-\begin{itemize}
-\tightlist
-\item
-  In the \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App}, there are behavioral bugs with the plots where plots will stop updating or being created after either an input has been changed multiple times or if the input chosen is associated with a large amount of data. We were not able to troubleshoot this completely, but believe this has to do with the functions that create the visuals.
-\end{itemize}
+In the \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App}, there are behavioral bugs with the plots where plots will stop updating or being created after either an input has been changed multiple times or if the input chosen is associated with a large amount of data. We were not able to troubleshoot this completely, but believe this has to do with the functions that create the visuals.
+
+Load time for all plots especially maps is a challenge that we were able to partially tackle, but not completely. For example, we used the package \texttt{rmapshaper} \citep{R-rmapshaper} to simplify the geometries of the zip code and state polygons. This helped with load time significantly, but there may be other functions in \texttt{rmapshaper} \citep{R-rmapshaper} that may help with reducing load time in the future. This will be crucial to consider as the spatial data will grow as the data expands. For plots, we reduced load time by doing as much data wrangling as possible outside of the App so that the functions creating the plots could update more quickly. We also used the package \texttt{purr}\citep{R-purrr} in our functions to iterate faster than for loops. Refer to \protect\hyperlink{data-preparation-methods}{Data Preparation Methods Section} to see examples of code we used for data wrangling. In the future, there is likely room to improve our functions so that they are more efficient and will therefore run faster and reduce load time in the App.
 
 \hypertarget{future-challenges}{%
 \section{Future Challenges}\label{future-challenges}}
 
-\begin{itemize}
-\tightlist
-\item
-  Adding in multiple years and adding in more spatial data (beyond California) will require a large server and likely more computing power.
-\end{itemize}
+Adding in multiple years and adding in more spatial data (beyond California) will require a larger server and likely more computing power. Refer to \protect\hyperlink{how-to-expand-the-outdoor-equity-app}{How to Expand the Outdoor Equity App Section} to learn more.
 
   \bibliography{book.bib,packages.bib}
 

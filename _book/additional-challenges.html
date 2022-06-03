@@ -255,16 +255,22 @@ div.csl-indent {
 </div>
 <div id="technical-challenges" class="section level2" number="9.2">
 <h2><span class="header-section-number">9.2</span> Technical Challenges</h2>
-<ul>
-<li>In the <a href="https://shinyapps.bren.ucsb.edu/oe_app/">Outdoor Equity App</a>, there are behavioral bugs with the plots where plots will stop updating or being created after either an input has been changed multiple times or if the input chosen is associated with a large amount of data. We were not able to troubleshoot this completely, but believe this has to do with the functions that create the visuals.</li>
-</ul>
+<p>In the <a href="https://shinyapps.bren.ucsb.edu/oe_app/">Outdoor Equity App</a>, there are behavioral bugs with the plots where plots will stop updating or being created after either an input has been changed multiple times or if the input chosen is associated with a large amount of data. We were not able to troubleshoot this completely, but believe this has to do with the functions that create the visuals.</p>
+<p>Load time for all plots especially maps is a challenge that we were able to partially tackle, but not completely. For example, we used the package <code>rmapshaper</code> <span class="citation">(<a href="#ref-R-rmapshaper" role="doc-biblioref">Teucher and Russell 2021</a>)</span> to simplify the geometries of the zip code and state polygons. This helped with load time significantly, but there may be other functions in <code>rmapshaper</code> <span class="citation">(<a href="#ref-R-rmapshaper" role="doc-biblioref">Teucher and Russell 2021</a>)</span> that may help with reducing load time in the future. This will be crucial to consider as the spatial data will grow as the data expands. For plots, we reduced load time by doing as much data wrangling as possible outside of the App so that the functions creating the plots could update more quickly. We also used the package <code>purr</code><span class="citation">(<a href="#ref-R-purrr" role="doc-biblioref">Henry and Wickham 2020</a>)</span> in our functions to iterate faster than for loops. Refer to <a href="user-documentation.html#data-preparation-methods">Data Preparation Methods Section</a> to see examples of code we used for data wrangling. In the future, there is likely room to improve our functions so that they are more efficient and will therefore run faster and reduce load time in the App.</p>
 </div>
 <div id="future-challenges" class="section level2" number="9.3">
 <h2><span class="header-section-number">9.3</span> Future Challenges</h2>
-<ul>
-<li>Adding in multiple years and adding in more spatial data (beyond California) will require a large server and likely more computing power.</li>
-</ul>
+<p>Adding in multiple years and adding in more spatial data (beyond California) will require a larger server and likely more computing power. Refer to <a href="user-documentation.html#how-to-expand-the-outdoor-equity-app">How to Expand the Outdoor Equity App Section</a> to learn more.</p>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-purrr" class="csl-entry">
+Henry, Lionel, and Hadley Wickham. 2020. <em>Purrr: Functional Programming Tools</em>. <a href="https://CRAN.R-project.org/package=purrr">https://CRAN.R-project.org/package=purrr</a>.
+</div>
+<div id="ref-R-rmapshaper" class="csl-entry">
+Teucher, Andy, and Kenton Russell. 2021. <em>Rmapshaper: Client for Mapshaper for Geospatial Operations</em>. <a href="https://github.com/ateucher/rmapshaper">https://github.com/ateucher/rmapshaper</a>.
 </div>
 </div>
             </section>

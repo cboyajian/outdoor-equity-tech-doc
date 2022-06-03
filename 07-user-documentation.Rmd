@@ -322,7 +322,7 @@ View(load_variables(2018, "acs5", cache = TRUE))
 
 The Outdoor Equity App utilizes the [ACS 5-year data](https://www.census.gov/data/developers/data-sets/acs-5year.html), which is an estimate representing data collected over the designated 5 year period. We used the 5-year ACS data over the 1-year ACS data because it increases "statistical reliability of the data for less populated areas and small population subgroups" [@ACS].
 
-The variables included in the App include median-income, race, language(s) spoken at home, and highest level of education attained. All variables are represented as estimates in numeric format for a census tract. Data are called by geographic region, in our case the ZIP code tabulation area, and include an estimated number of people that fall into each category within each ZIP code, a margin of error, and an estimated number of total people in the area. Within our custom functions `function_acs_education.R`, `function_acs_language.R`, `function_acs_median_income.R`, and `function_acs_race.R` we first imported just the necessary columns for each ACS variable. See below for an example of the race variable:
+The variables included in the App include median-income, race, language(s) spoken at home, and highest level of education attained. All variables are represented as estimates in numeric format for a census tract. Data are called by geographic region, in our case the ZIP code tabulation area, and include an estimated number of people that fall into each category within each ZIP code, a margin of error, and an estimated number of total people in the area. Within our custom functions `function_acs_education.R`, `function_acs_language.R`, `function_acs_median_income.R`, and `function_acs_race.R` we first imported just the necessary columns for each ACS variable. See Table \@ref(tab:acs-race-tab) for an example of the race variable.
 
 ```{r, message=FALSE}
 # import variables for race
@@ -344,7 +344,7 @@ race_df <-
 ```
 
 
-```{r, message=FALSE, echo=FALSE}
+```{r, acs-race-tab, message=FALSE, echo=FALSE}
 knitr::kable(head(race_df, 10),
              caption = "Example of raw ACS Race Variable.")
 ```
@@ -657,14 +657,14 @@ race_quants_df <-
          "Threshold" = weighted_quartile)
 ```
 
-The thresholds used within the Outdoor Equity App can be seen in the table below:
+The thresholds used within the Outdoor Equity App can be seen in Table \@ref(tab:thres-tab1) and Table \@ref(tab:thres-tab2).
 
-```{r, echo=FALSE}
+```{r, thres-tab1, echo=FALSE}
 knitr::kable(list(language_quants_df, education_quants_df), 
              caption = "Threshold values for ACS language and education variables.")
 ```
 
-```{r, echo=FALSE}
+```{r, thres-tab2, echo=FALSE}
 knitr::kable(race_quants_df, 
              caption = "Threshold values for ACS race variable.")
 ```
