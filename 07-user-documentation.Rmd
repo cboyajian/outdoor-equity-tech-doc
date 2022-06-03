@@ -2,23 +2,21 @@
 
 ## Purpose of the Outdoor Equity App
 
-The [Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/) provides users with tools to explore trends at different overnight reservable sites to analyze access to these sites. The intended audience is federal public land managers and researchers as well as nonprofit organizations and recreation users. 
+The [Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/) provides users with tools to explore trends at different overnight reservable sites to analyze access to these sites. The intended audience is federal public land managers and researchers as well as nonprofit organizations and recreation users.
 
-The [Recreation Information Database (RIDB) data](https://ridb.recreation.gov/landing) are comprehensive when it comes to information regarding the site and reservation, but do not include information about the visitor outside of their home ZIP code. [US Census American Community Survey (ACS) data](https://www.census.gov/programs-surveys/acs/data.html) is used to approximate socioeconomic demographics by joining information about the visitors’ home ZIP code to the RIDB data. 
-
+The [Recreation Information Database (RIDB) data](https://ridb.recreation.gov/landing) are comprehensive when it comes to information regarding the site and reservation, but do not include information about the visitor outside of their home ZIP code. [US Census American Community Survey (ACS) data](https://www.census.gov/programs-surveys/acs/data.html) is used to approximate socioeconomic demographics by joining information about the visitors' home ZIP code to the RIDB data.
 
 ## How to Use the Outdoor Equity App
 
 ### About the App
 
-The About tab of the [Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/) includes background information about what the App is, why outdoor recreation is important, the App creators, and what data is used in the App. These sections are similar to the [About Section][About] of this technical documentation. The About tab also includes example questions that a user might explore through the different parts of the Analysis tab. 
+The About tab of the [Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/) includes background information about what the App is, why outdoor recreation is important, the App creators, and what data is used in the App. These sections are similar to the [About Section][About] of this technical documentation. The About tab also includes example questions that a user might explore through the different parts of the Analysis tab.
 
 The Analysis tab of the App consists of three parts Data Summary, Data Relationship and Visitorshed Maps. Each of these pages includes a brief explanatory section of how to interpret the plot or graph, a section to subset the data to the desired campsite, and the plot or map outputs.
 
-The Metadata tab of the App includes metadata for all variables in the combined RIDB and ACS dataset. This section mirrors the Metadata section in the [Products and Deliverables Section][Products and Deliverables] of this document. 
+The Metadata tab of the App includes metadata for all variables in the combined RIDB and ACS dataset. This section mirrors the Metadata section in the [Products and Deliverables Section][Products and Deliverables] of this document.
 
 The Data Download section of the App allows a user to download a subset of data include as many or as few campsites and variables as they require for further analysis or use.
-
 
 ## How to Maintain the Outdoor Equity App
 
@@ -30,12 +28,11 @@ Our code is version controlled in a [GitHub repository](https://github.com/outdo
 # add image of repo diagram
 ```
 
-
 ### Data Preparation Methods
 
-#### RIDB Data
+#### RIDB Data {#ridb-data}
 
-[RIDB data](https://ridb.recreation.gov/landing) data are available through direct download as CSV files or via the API as JSON files via Recreation.gov. API access requires creating a Recreation.gov account and requesting second tier API access via the Recreation.gov website’s [Contact Us](https://recreationonestopprod.servicenowservices.com/external?id=external_contact_us) page. CSV files are readily available for download via the [Recreation.gov website](https://ridb.recreation.gov/download). Data are collected each time a visitor makes a reservation through Recreation.gov. Data packages are posted annually in the spring by Recreation One Stop (R1S) and contain the previous fiscal year’s reservations (ex: the 2018 package includes 2018-10-01 through 2018-09-30). Data packages are available for download from 2006 to present. Each annual data package file contains a range between 2 million and 5 million observations (or reservations) and includes variables in character, numeric, and date/time formats about each reservation. A shift in the data collection and storage processes occurred in 2019, changing what variables are available and how they are labeled. Currently, the Outdoor Equity App contains only data for reservable sites in California and reservations for fiscal year 2018 due to time limitations of this project. To see more about expanding the App temporally and spatially see the [How to Expand the Outdoor Equity App Section][How to Expand the Outdoor Equity App].
+[RIDB data](https://ridb.recreation.gov/landing) data are available through direct download as CSV files or via the API as JSON files via Recreation.gov. API access requires creating a Recreation.gov account and requesting second tier API access via the Recreation.gov website's [Contact Us](https://recreationonestopprod.servicenowservices.com/external?id=external_contact_us) page. CSV files are readily available for download via the [Recreation.gov website](https://ridb.recreation.gov/download). Data are collected each time a visitor makes a reservation through Recreation.gov. Data packages are posted annually in the spring by Recreation One Stop (R1S) and contain the previous fiscal year's reservations (ex: the 2018 package includes 2018-10-01 through 2018-09-30). Data packages are available for download from 2006 to present. Each annual data package file contains a range between 2 million and 5 million observations (or reservations) and includes variables in character, numeric, and date/time formats about each reservation. A shift in the data collection and storage processes occurred in 2019, changing what variables are available and how they are labeled. Currently, the Outdoor Equity App contains only data for reservable sites in California and reservations for fiscal year 2018 due to time limitations of this project. To see more about expanding the App temporally and spatially see the [How to Expand the Outdoor Equity App Section](#how-to-expand-the-outdoor-equity-app).
 
 We created a reproducible workflow for cleaning and wrangling data, which is employed in the `data_wrangle_and_clean.Rmd` document that sources custom functions to prepare RIDB data for joining with ACS data. All custom functions are listed in the [Access, Clean, and Wrangle Data Section][Access, Clean, and Wrangle Data] of this document. These functions rely heavily on functions from the `tidyverse` collection of packages [@R-tidyverse].
 
@@ -46,7 +43,7 @@ ridb_data_ca_overnight_only <- ridb_data %>%
   filter(use_type == "Overnight")
 ```
 
-First, we use the `function_ridb_subset-pre2018.R` to subset the RIDB data, filtering only reservations within the selected state that are listed as “Overnight” reservations within the `use_type` variable. For the 2018 California dataset this results in a starting "raw" data frame with `r comma(nrow(ridb_data_ca_overnight_only))` reservations 
+First, we use the `function_ridb_subset-pre2018.R` to subset the RIDB data, filtering only reservations within the selected state that are listed as "Overnight" reservations within the `use_type` variable. For the 2018 California dataset this results in a starting "raw" data frame with `r comma(nrow(ridb_data_ca_overnight_only))` reservations
 
 ```{r, eval=FALSE}
 # filter for state
@@ -84,7 +81,7 @@ filter(str_detect(string = customer_zip,
                                     pattern = "[:digit:]{5}"))
 ```
 
-This function results in the removal of `r comma(nrow(ridb_data_ca_overnight_only) - nrow(data_joined_2018))` reservations (or `r percent((nrow(ridb_data_ca_overnight_only) - nrow(data_joined_2018)) / nrow(ridb_data_ca_overnight_only), accuracy = 0.01)`) from the original "raw" dataset that included all reservations for reservable overnight campsites in California. 
+This function results in the removal of `r comma(nrow(ridb_data_ca_overnight_only) - nrow(data_joined_2018))` reservations (or `r percent((nrow(ridb_data_ca_overnight_only) - nrow(data_joined_2018)) / nrow(ridb_data_ca_overnight_only), accuracy = 0.01)`) from the original "raw" dataset that included all reservations for reservable overnight campsites in California.
 
 ```{r, include=FALSE}
 no_valid_booking_window <- data_joined_2018 %>% 
@@ -93,7 +90,7 @@ no_valid_booking_window <- data_joined_2018 %>%
   filter(booking_window < 0)
 ```
 
-We created a second custom function `function_ridb_variable_calculate-pre2018.R` to calculate and manipulate variables of interest. We use start, end, and order dates to calculate the lengths of stay and booking windows (number of days from order to start date) of each reservation. The booking window calculations return a number of results that are negative. This is a known issue that others working with the RIDB data have encountered. This resulted in `r comma(nrow(no_valid_booking_window))` reservations (or `r percent(nrow(no_valid_booking_window) / nrow(ridb_data_ca_overnight_only), accuracy = 0.01)`) without a valid booking window, which are removed for plots that visualize the booking window variable. 
+We created a second custom function `function_ridb_variable_calculate-pre2018.R` to calculate and manipulate variables of interest. We use start, end, and order dates to calculate the lengths of stay and booking windows (number of days from order to start date) of each reservation. The booking window calculations return a number of results that are negative. This is a known issue that others working with the RIDB data have encountered. This resulted in `r comma(nrow(no_valid_booking_window))` reservations (or `r percent(nrow(no_valid_booking_window) / nrow(ridb_data_ca_overnight_only), accuracy = 0.01)`) without a valid booking window, which are removed for plots that visualize the booking window variable.
 
 ```{r, eval=FALSE}
 mutate(start_date = as.Date(start_date),
@@ -244,7 +241,7 @@ df_joined_geometries <-
          distance_traveled_m = as.numeric(distance_traveled_m)) 
 ```
 
-And finally, we add a variable indicating in which state or territory each customer zip code is located. This portion of the code utilizes the `zipcodeR` package [@R-zipcodeR]. 
+And finally, we add a variable indicating in which state or territory each customer zip code is located. This portion of the code utilizes the `zipcodeR` package [@R-zipcodeR].
 
 ```{r, eval=FALSE}
 # create df of fips and full state names
@@ -299,7 +296,6 @@ df_states_fips_zip_codes <-
          zip_code = zipcode)
 ```
 
-
 #### U.S. Census Data
 
 US Census data is publicly accessible in many ways. Our product utilizes the R package `tidycensus` [@R-tidycensus] to access the necessary variables from the 2018 [American Community Survey (ACS)](https://www.census.gov/programs-surveys/acs/data.html) via API. API access requires an api key, which can then be saved into your RStudio environment. Learn more about API keys and working with `tidycensus` [here](https://walker-data.com/tidycensus/articles/basic-usage.html).
@@ -343,13 +339,12 @@ race_df <-
     ))
 ```
 
-
 ```{r, acs-race-tab, message=FALSE, echo=FALSE}
 knitr::kable(head(race_df, 10),
              caption = "Example of raw ACS Race Variable.")
 ```
 
-We calculated percentages for the categories within each ACS variable for race, language(s) spoken in the home, and highest level of education by dividing the estimate for a category by the estimated total population for that ZIP code. 
+We calculated percentages for the categories within each ACS variable for race, language(s) spoken in the home, and highest level of education by dividing the estimate for a category by the estimated total population for that ZIP code.
 
 ```{r, eval=FALSE}
 race_df_percent <- 
@@ -362,7 +357,7 @@ race_df_percent <-
             percent = estimate / summary_est)
 ```
 
-For median-income, we use the estimated median-income as is, without further adjustments. 
+For median-income, we use the estimated median-income as is, without further adjustments.
 
 ```{r, eval=FALSE}
 median_income_df <- 
@@ -377,7 +372,7 @@ median_income_df <-
   select(median_income, zip_code)
 ```
 
-We transform teh ACS dataframe by pivoting wider, which moves the different categories and percentages (ex: racial groups) to their own columns to create a single row for each ZIP code. This is necessary for joining the ACS data sets to the RIDS data set. 
+We transform teh ACS dataframe by pivoting wider, which moves the different categories and percentages (ex: racial groups) to their own columns to create a single row for each ZIP code. This is necessary for joining the ACS data sets to the RIDS data set.
 
 ```{r, eval=FALSE}
 select(zip_code, summary_est, race, percent) %>% 
@@ -388,7 +383,7 @@ select(zip_code, summary_est, race, percent) %>%
               values_from = "percent")
 ```
 
-Finally, we use the `function_join_ridb_acs.R` custom functions to join the RIDB and ACS data to create the dataset that is available for download on the App and utilized for all plots and maps. 
+Finally, we use the `function_join_ridb_acs.R` custom functions to join the RIDB and ACS data to create the dataset that is available for download on the App and utilized for all plots and maps.
 
 ```{r, eval=FALSE}
 joined_df <- 
@@ -403,14 +398,13 @@ joined_df <-
             by = c("customer_zip" = "zip_code"))
 ```
 
-
 ### Statistical Analysis and Data Wrangling for Plots
 
 Each type of plot and map require unique data wrangling which is explained in this section.
 
 #### Data Summary
 
-We created custom functions for data wrangling and plotting for use within the Outdoor Equity App code. Wrangling begins with filtering based on the user’s choice campsite input. We then further subset the dataset to include only the necessary columns for plotting. 
+We created custom functions for data wrangling and plotting for use within the Outdoor Equity App code. Wrangling begins with filtering based on the user's choice campsite input. We then further subset the dataset to include only the necessary columns for plotting.
 
 ```{r, eval=FALSE}
 # example for booking window data summary
@@ -522,10 +516,9 @@ ggplotly(plotly,
                                        "hoverCompareCartesian"))
 ```
 
-
 #### Data Relationships
 
-Visualizing the relationship between RIDB and ACS variables is challenging because the socioeconomic data available are an estimate of the ZIP code population, rather than data of the individual making the reservation. In order to create simple, easy to interpret plots, we determined whether reservations were from a location with “high” percentages of a given ACS variable category (ex: one of the eight racial groups). We determined “high” as anything above the weighted 3rd quartile (weighted based on the California census). This method allows for reservations to be included in the “high” category for multiple values within one ACS variable (ex: a reservation might be from a ZIP code that falls into the "high" category for both Black and Asian folks). By allowing a reservation to appear in multiple categories within a single ACS variable, the uncertainty of the reserver’s actual socioeconomic status is retained. 
+Visualizing the relationship between RIDB and ACS variables is challenging because the socioeconomic data available are an estimate of the ZIP code population, rather than data of the individual making the reservation. In order to create simple, easy to interpret plots, we determined whether reservations were from a location with "high" percentages of a given ACS variable category (ex: one of the eight racial groups). We determined "high" as anything above the weighted 3rd quartile (weighted based on the California census). This method allows for reservations to be included in the "high" category for multiple values within one ACS variable (ex: a reservation might be from a ZIP code that falls into the "high" category for both Black and Asian folks). By allowing a reservation to appear in multiple categories within a single ACS variable, the uncertainty of the reserver's actual socioeconomic status is retained.
 
 ```{r, include=FALSE}
 source("r/function_acs_education.R")
@@ -669,7 +662,6 @@ knitr::kable(race_quants_df,
              caption = "Threshold values for ACS race variable.")
 ```
 
-
 We create lollipop and bar plots to show the relationships of the data for each set of variables. We used the `plotly` package [@R-plotly] to allow a user to hover over the plot to view helper text. An example of the code used to create the education compared to booking window plot is show below:
 
 ```{r, eval=FALSE}
@@ -771,10 +763,9 @@ ggplotly(plotly,
     showarrow = FALSE)
 ```
 
-
 #### Spatial analysis
 
-We created a state-level visitorshed map to show the number of visitors to overnight reservable sites from each state. We use the  package `zipcodeR` [@R-zipcodeR] to determine the state in which each ZIP code, and thus visitor, is located, using the RIDB data. We then create a dataframe with the necessary geometries using the `tigris` [@R-tigris] package. And finally we simplify the geometries to lower the load time within the App using the `rmapshaper` [@R-rmapshaper] package. 
+We created a state-level visitorshed map to show the number of visitors to overnight reservable sites from each state. We use the package `zipcodeR` [@R-zipcodeR] to determine the state in which each ZIP code, and thus visitor, is located, using the RIDB data. We then create a dataframe with the necessary geometries using the `tigris` [@R-tigris] package. And finally we simplify the geometries to lower the load time within the App using the `rmapshaper` [@R-rmapshaper] package.
 
 ```{r, eval=FALSE}
 # ZIP codes and respective states
@@ -835,7 +826,7 @@ df_state_geometries_us <- tigris::states(year = 2018) %>%
   rmapshaper::ms_simplify(keep = 0.005, keep_shapes = TRUE)
 ```
 
-We then calculate the number of reservations per state for the site (as chosen by the app user) and use `tmaps` package [@R-tmap] to create an interactive map that colors states based on the total number of reservations for that state. 
+We then calculate the number of reservations per state for the site (as chosen by the app user) and use `tmaps` package [@R-tmap] to create an interactive map that colors states based on the total number of reservations for that state.
 
 ```{r, eval=FALSE}
 ## -- data wrangle -- ##
@@ -896,7 +887,7 @@ tm_shape(map_data_geometries) +
   tmap_options(basemaps = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}')
 ```
 
-A ZIP-code level visitorshed map shows the number of visitors to sites for each ZIP code within California only due to computational load of calculating for all ZIP codes in the United States. We then create a dataframe with the necessary geometries using the `tigris` [@R-tigris] package. And finally we simplify the geometries to lower the load time within the App using the `rmapshaper` [@R-rmapshaper] package. 
+A ZIP-code level visitorshed map shows the number of visitors to sites for each ZIP code within California only due to computational load of calculating for all ZIP codes in the United States. We then create a dataframe with the necessary geometries using the `tigris` [@R-tigris] package. And finally we simplify the geometries to lower the load time within the App using the `rmapshaper` [@R-rmapshaper] package.
 
 ```{r, eval=FALSE}
 ## -- ZIP codes and respective states -- ##
@@ -964,7 +955,7 @@ df_zip_geometries_ca <- get_acs(geography = "zcta", year = 2018,
   relocate(zip_code, .before = 1)
 ```
 
-We calculate the number of reservations per ZIP code for the site (as chosen by the app user) and use `tmaps` to create an interactive map that colors ZIP codes based on the total number of reservations for that ZIP code. 
+We calculate the number of reservations per ZIP code for the site (as chosen by the app user) and use `tmaps` to create an interactive map that colors ZIP codes based on the total number of reservations for that ZIP code.
 
 ```{r, eval=FALSE}
 ## -- data wrangle -- ##
@@ -1044,44 +1035,94 @@ tm_shape(map_data_geometries) +
   tmap_options(basemaps = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}')
 ```
 
-
 ### Data updates
 
-The `data_wrangle_and_clean.Rmd` document is set up to create the joined dataset necessary for the Outdoor Equity App. To access the ACS data we use the `tidycensus` package [@R-tidycensus] to access the necessary data via API, meaning data updates are not necessary outside of the `.Rmd` document. The RIDB data is accesses via direct download from the [Recreation.gov](https://ridb.recreation.gov/download) website. See the [How to Expand the Outdoor Equity App Section][How to Expand the Outdoor Equity App] on expanding the time periods included in the App.
+The `data_wrangle_and_clean.Rmd` document is set up to create the joined dataset necessary for the Outdoor Equity App. To access the ACS data we use the `tidycensus` package [@R-tidycensus] to access the necessary data via API, meaning data updates are not necessary outside of the `.Rmd` document. The RIDB data is accesses via direct download from the [Recreation.gov](https://ridb.recreation.gov/download) website. See the [How to Expand the Outdoor Equity App Section](#how-to-expand-the-outdoor-equity-app) on expanding the time periods included in the App.
 
 ### Server Hosting
 
 The Outdoor Equity App is hosted on server owned by the Bren School at the University of California, Santa Barbara until the end of 2022. At that time the App will be moved to the shiny.io server for the duration of 2023.
 
+## How to Expand the Outdoor Equity App {#how-to-expand-the-outdoor-equity-app}
 
-## How to Expand the Outdoor Equity App
-
-The Outdoor Equity App currently only includes reservation data from California for 2018 due to server hosting capabilities. Expanding the App to include additional years and states  will require a larger server and likely more computing power.
+The Outdoor Equity App currently only includes reservation data from California for 2018 due to server hosting capabilities. Expanding the App to include additional years and states will require a larger server and likely more computing power.
 
 ### Temporal Expansions
 
-To expand the years of data included in the Outdoor Equity App, users must first update the `data_wrangle_and_clean.Rmd` where all data cleaning and wrangling occurs outside of the shiny app code. 
+To expand the years of data included in the Outdoor Equity App, users must first update the `data_wrangle_and_clean.Rmd` where all data cleaning and wrangling occurs outside of the shiny app code.
 
 For RIDB data from 2018 and early, users can simply include new code chunks in the `.Rmd` document that use the following functions to create a joined dataset for each new year: `function_ridb_subset-pre2018.R`, `function_ridb_variable_calculate-pre2018.R`, `function_acs_race.R`, `function_acs_median_income.R`, `function_acs_education.R`, `function_acs_language.R`, and `function_join_ridb_acs.R`.
 
-For RIDB data from 2019 and later, users must update the `function_ridb_subset-post2019.R` function. We did not continue to update this function once we decided to include only 2018 data in the App. We recommend updating this function to first select only the necessary variables, then rename the variables so that they match the 2018 and earlier naming conventions, and finally copy and paste the remaining code used in the `function_ridb_subset-pre2018.R` function. Users can then add new code chunks to the `.Rmd` document that use the following functions to create a joined dataset for each new year: `function_ridb_subset-post2019.R`, `function_ridb_variable_calculate-pre2018.R`, `function_acs_race.R`, `function_acs_median_income.R`, `function_acs_education.R`, `function_acs_language.R`, and `function_join_ridb_acs.R`. 
+For RIDB data from 2019 and later, users must update the `function_ridb_subset-post2019.R` function. We did not continue to update this function once we decided to include only 2018 data in the App. We recommend updating this function to first select only the necessary variables, then rename the variables so that they match the 2018 and earlier naming conventions, and finally copy and paste the remaining code used in the `function_ridb_subset-pre2018.R` function. Users can then add new code chunks to the `.Rmd` document that use the following functions to create a joined dataset for each new year: `function_ridb_subset-post2019.R`, `function_ridb_variable_calculate-pre2018.R`, `function_acs_race.R`, `function_acs_median_income.R`, `function_acs_education.R`, `function_acs_language.R`, and `function_join_ridb_acs.R`.
 
-RIDB data from 2019 and later may have additional variables available, so we also recommend exploring all available variables to decide if adding in additional variables is appropriate. If users decide to add additional variables, edits will have to be made to all custom functions within the `data_preparation` and `outdoor-equity-app` directories. 
+RIDB data from 2019 and later may have additional variables available, so we also recommend exploring all available variables to decide if adding in additional variables is appropriate. If users decide to add additional variables, edits will have to be made to all custom functions within the `data_preparation` and `outdoor-equity-app` directories.
 
-[Data standards for the RIDB data](https://ridb.recreation.gov/standards) is in the processing of being updated as of June 2022. Users should check to see if this impacts any decisions in adding additional years to the Outdoor Equity App.
+[Data standards for the RIDB data](https://ridb.recreation.gov/standards) is in the process of being updated as of June 2022. Users should check to see if this impacts any decisions in adding additional years to the Outdoor Equity App.
 
+For the Outdoor Equity App consider these updates to these files:
+
+- `global.R`:
+
+    - Add any new functions, packages, or data
+
+- `ui.R`:
+
+    - Create input widgets in Analysis tabs (data summary, data relationships, and visitorsheds) that allow for a user to select a specific year or mulitple years (consider making a function for this if the input is the same across all tabs)
+
+- `server.R`:
+
+    - Update plot or map functions that use a reactive data frame that includes the temporal input from `ui.R`
+    
+Additionally, for the entire App consider how load time will be affected by adding more years of data. It might be helpful to consider creating separated datasets or creating functions that create datasets that contain only the necessary data needed to create the visual(s). 
 
 ### Spatial Expansions
 
-To expand the states included in the Outdoor Equity App, users must update the `data_wrangle_and_clean.Rmd` where all data cleaning and wrangling occurs outside of the shiny app code. 
+To expand the states included in the Outdoor Equity App, users must update the `data_wrangle_and_clean.Rmd` where all data cleaning and wrangling occurs outside of the shiny app code.
 
-The `function_ridb_variable_calculate-pre2018.R` function has a section manipulates the character strings of the `agency`, `admin_unit`, and `park` variables. This code would likely need to be changed for additional states as the specific irregularities in character strings may differ state to state. We recommend creating a new function for each additional state. See the [RIDB Data Section][RIDB Data] for a more detailed description of this function code. Once a new custom function is created for each state, code chunks can be added to the `.Rmd` document to clean and wrangle data for additional states. 
+The `function_ridb_variable_calculate-pre2018.R` function has a section that manipulates the character strings of the `agency`, `admin_unit`, and `park` variables. This code would likely need to be changed for additional states as the specific irregularities in character strings may differ state to state. We recommend creating a new function for each additional state. See the [RIDB Data Section](#ridb-data) for a more detailed description of this function code. Once a new custom function is created for each state, code chunks can be added to the `.Rmd` document to clean and wrangle data for additional states.
 
+For the Outdoor Equity App consider these updates to these files:
+
+-   `global.R`:
+
+    -   Add any new functions, packages or data
+    -   Update or create new objects that contain information about sites and agencies
+    -   Update agency to administrative unit dictionary, and administrative unit to park dictionary so that these key value pairs appear for states beyond California
+
+-   `ui.R`:
+
+    -   Create an input widget that allows for someone to select a year or multiple years
+    -   Build out an informational box that contains basic information about the site chosen
+
+-   `server. R`:
+
+    -   Update `state_visitorshed_map()` function if the time input or other data needs to be added to this function
+    -   Update `ca_zip_code_visitorshed_map()` function to allow for a specific state to be called and the data associated with it
+
+Additionally, for the entire App consider load time especially because spatial data is much larger and therefore takes much longer to load. It might be helpful to consider the structure of the data and which data gets loaded into the App to make the visuals, so that only the necessary data is being used in the back end of the App. See [Technical Challenges Section][Technical Challenges] for more insight and suggestions.
 
 ### Statistical Analysis
 
 Currently the Outdoor Equity App only visualizes patterns in the data, but does not allow a user to explore why these patterns are occurring. We recommend considering the following additions to expand the statistical analysis abilities of the App:
 
-- Simple statistical analysis (such as linear regressions, ANOVA, etc.) to accompany all plots
-- Ability to combine multiple campsites in a single plot or map to explore patterns and trends across geographic areas and years
+-   Simple statistical analysis (such as linear regressions, ANOVA, etc.) to accompany all plots
+-   Ability to combine multiple campsites in a single plot or map to explore patterns and trends across geographic areas and years
 
+For the Outdoor Equity App consider these updates to these files:
+
+- `global.R`:
+
+    - Add any new functions, packages, or data
+
+- `ui.R`:
+
+    - Create and add a new tab to the `navbarPage()` layout using the function `tabPanel()` for the statistical analysis
+    - Build out layout in the new tab. To match the layout of the other tabs use `fluidRow()` and `box()` within `tabPanel()`
+    - Create necessary inputs to create visuals or run statistical tests
+
+- `server.R`: 
+
+    - Create necessary objects to render the visuals desired (i.e. reactive data frames, render plots or tables)
+    - Create necessary conditional outputs based on an input using `observeEvents()`
+  
+Because statistical analysis was beyond the scope of our project, please note that these updates are not an exhaustive list of what needs to be done to successfully add statistical analysis to the App. 
