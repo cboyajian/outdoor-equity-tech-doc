@@ -1,9 +1,11 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
 %
 \documentclass[
-]{book}
+  11 pt,
+  openany]{book}
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
 \usepackage{ifxetex,ifluatex}
@@ -38,9 +40,14 @@
 \hypersetup{
   pdftitle={Outdoor Equity App Technical Documentation},
   pdfauthor={Clarissa Boyajian and Halina Do-Linh},
-  hidelinks,
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=Maroon,
+  citecolor=Blue,
+  urlcolor=blue,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -137,6 +144,7 @@
 \maketitle
 
 {
+\hypersetup{linkcolor=}
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
