@@ -11,6 +11,7 @@ fig:app-screenshot4
 fig:app-screenshot5
 fig:app-screenshot6
 tab:unnamed-chunk-4
+tab:unnamed-chunk-5
 tab:acs-race-tab
 tab:thres-tab1
 tab:thres-tab2

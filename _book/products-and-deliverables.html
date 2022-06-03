@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Section 6 Products and Deliverables | Outdoor Equity App Technical Documentation</title>
   <meta name="description" content="Section 6 Products and Deliverables | Outdoor Equity App Technical Documentation" />
-  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Section 6 Products and Deliverables | Outdoor Equity App Technical Documentation" />
   <meta property="og:type" content="book" />
@@ -33,8 +33,9 @@
   
 <link rel="prev" href="summary-of-solution-design.html"/>
 <link rel="next" href="summary-of-testing.html"/>
-<script src="libs/header-attrs-2.10.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -42,7 +43,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -1434,7 +1434,348 @@ NA
 </div>
 <div id="package-versions" class="section level2" number="6.3">
 <h2><span class="header-section-number">6.3</span> Package Versions</h2>
-<p>The table below includes information on the specific package versions used to create the Outdoor Equity App.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="products-and-deliverables.html#cb1-1" aria-hidden="true" tabindex="-1"></a>r_packages_df <span class="ot">&lt;-</span> </span>
+<span id="cb1-2"><a href="products-and-deliverables.html#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tribble</span>(</span>
+<span id="cb1-3"><a href="products-and-deliverables.html#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span><span class="st">&quot;R Package&quot;</span>, <span class="sc">~</span>Version, <span class="sc">~</span>Purpose,</span>
+<span id="cb1-4"><a href="products-and-deliverables.html#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;bslib&quot;</span>, <span class="st">&quot;0.3.1&quot;</span>, <span class="st">&quot;Web Application (theme)&quot;</span>,</span>
+<span id="cb1-5"><a href="products-and-deliverables.html#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;collections&quot;</span>, <span class="st">&quot;0.3.5&quot;</span>, <span class="st">&quot;Web Application (dictionary)&quot;</span>,</span>
+<span id="cb1-6"><a href="products-and-deliverables.html#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;DT&quot;</span>, <span class="st">&quot;0.20&quot;</span>, <span class="st">&quot;Web Application (tables)&quot;</span>,</span>
+<span id="cb1-7"><a href="products-and-deliverables.html#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;formattable&quot;</span>, <span class="st">&quot;0.2.1&quot;</span>, <span class="st">&quot;Web Application (tables)&quot;</span>,</span>
+<span id="cb1-8"><a href="products-and-deliverables.html#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;googlesheets4&quot;</span>, <span class="st">&quot;1.0.0&quot;</span>, <span class="st">&quot;Web Application (metadata)&quot;</span>,</span>
+<span id="cb1-9"><a href="products-and-deliverables.html#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;here&quot;</span>, <span class="st">&quot;1.0.1&quot;</span>, <span class="st">&quot;Data cleaning (relative file paths)&quot;</span>,</span>
+<span id="cb1-10"><a href="products-and-deliverables.html#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;janitor&quot;</span>, <span class="st">&quot;2.1.0&quot;</span>, <span class="st">&quot;Data cleaning (data frame)&quot;</span>,</span>
+<span id="cb1-11"><a href="products-and-deliverables.html#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;lubridate&quot;</span>, <span class="st">&quot;1.7.10&quot;</span>, <span class="st">&quot;Data cleaning (dates)&quot;</span>,</span>
+<span id="cb1-12"><a href="products-and-deliverables.html#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;plotly&quot;</span>, <span class="st">&quot;4.10.0&quot;</span>, <span class="st">&quot;Data visualiation (plots)&quot;</span>,</span>
+<span id="cb1-13"><a href="products-and-deliverables.html#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;reactlog&quot;</span>, <span class="st">&quot;1.1.0&quot;</span>, <span class="st">&quot;Web Application (testing)&quot;</span>,</span>
+<span id="cb1-14"><a href="products-and-deliverables.html#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;rmapshaper&quot;</span>, <span class="st">&quot;0.4.5&quot;</span>, <span class="st">&quot;Web Application (load time)&quot;</span>,</span>
+<span id="cb1-15"><a href="products-and-deliverables.html#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;rsconnect&quot;</span>, <span class="st">&quot;0.8.25&quot;</span>, <span class="st">&quot;Web Application (deploy app)&quot;</span>,</span>
+<span id="cb1-16"><a href="products-and-deliverables.html#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;scales&quot;</span>, <span class="st">&quot;1.1.1&quot;</span>, <span class="st">&quot;Data visualiation (plots)&quot;</span>,</span>
+<span id="cb1-17"><a href="products-and-deliverables.html#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;sf&quot;</span>, <span class="st">&quot;1.0.7&quot;</span>, <span class="st">&quot;Data cleaning and visualization (maps)&quot;</span>,</span>
+<span id="cb1-18"><a href="products-and-deliverables.html#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;shiny&quot;</span>, <span class="st">&quot;1.7.1&quot;</span>, <span class="st">&quot;Web Application (build app)&quot;</span>,</span>
+<span id="cb1-19"><a href="products-and-deliverables.html#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;shinycssloaders&quot;</span>, <span class="st">&quot;1.0.0&quot;</span>, <span class="st">&quot;Web Application (plot loader)&quot;</span>,</span>
+<span id="cb1-20"><a href="products-and-deliverables.html#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;shinydashboard&quot;</span>, <span class="st">&quot;0.7.2&quot;</span>, <span class="st">&quot;Web Application (dashboard layout elements)&quot;</span>,</span>
+<span id="cb1-21"><a href="products-and-deliverables.html#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;shinydashboardPlus&quot;</span>, <span class="st">&quot;2.0.3&quot;</span>, <span class="st">&quot;Web Application (box elements)&quot;</span>,</span>
+<span id="cb1-22"><a href="products-and-deliverables.html#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;shinyjs&quot;</span>, <span class="st">&quot;2.1.0&quot;</span>, <span class="st">&quot;Web Application (hide and show boxes in ui)&quot;</span>,</span>
+<span id="cb1-23"><a href="products-and-deliverables.html#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;shinyWidgets&quot;</span>, <span class="st">&quot;0.6.4&quot;</span>, <span class="st">&quot;Web Application (inputs)&quot;</span>,</span>
+<span id="cb1-24"><a href="products-and-deliverables.html#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;tidycensus&quot;</span>, <span class="st">&quot;1.2.1&quot;</span>, <span class="st">&quot;Data acquisition (US census data)&quot;</span>,</span>
+<span id="cb1-25"><a href="products-and-deliverables.html#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;1.3.1&quot;</span>, <span class="st">&quot;Data cleaning, analysis, and visualization&quot;</span>,</span>
+<span id="cb1-26"><a href="products-and-deliverables.html#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;tigris&quot;</span>, <span class="st">&quot;1.6&quot;</span>, <span class="st">&quot;Data acquisition (state and ZIP code geometries)&quot;</span>,</span>
+<span id="cb1-27"><a href="products-and-deliverables.html#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;tmap&quot;</span>, <span class="st">&quot;3.3.2&quot;</span>, <span class="st">&quot;Data visualization (maps)&quot;</span>,</span>
+<span id="cb1-28"><a href="products-and-deliverables.html#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;vroom&quot;</span>, <span class="st">&quot;1.5.7&quot;</span>, <span class="st">&quot;Data cleaning (read in data)&quot;</span>,</span>
+<span id="cb1-29"><a href="products-and-deliverables.html#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;zipcodeR&quot;</span>, <span class="st">&quot;0.3.3&quot;</span>, <span class="st">&quot;Data acquisition (state info about ZIP code)&quot;</span></span>
+<span id="cb1-30"><a href="products-and-deliverables.html#cb1-30" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-31"><a href="products-and-deliverables.html#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="products-and-deliverables.html#cb1-32" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(r_packages_df,</span>
+<span id="cb1-33"><a href="products-and-deliverables.html#cb1-33" aria-hidden="true" tabindex="-1"></a>             <span class="at">align =</span> <span class="st">&quot;l&quot;</span>,</span>
+<span id="cb1-34"><a href="products-and-deliverables.html#cb1-34" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">&quot;Table includes information on packages used to create the Outdoor Equity App.&quot;</span>,</span>
+<span id="cb1-35"><a href="products-and-deliverables.html#cb1-35" aria-hidden="true" tabindex="-1"></a>             <span class="at">row.names =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-36"><a href="products-and-deliverables.html#cb1-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;responsive&quot;</span>), <span class="at">full_width =</span> F, <span class="at">position =</span> <span class="st">&quot;left&quot;</span>)</span></code></pre></div>
+<table class="table table-responsive" style="width: auto !important; ">
+<caption>
+<span id="tab:unnamed-chunk-5">Table 6.2: </span>Table includes information on packages used to create the Outdoor Equity App.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+R Package
+</th>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Purpose
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+bslib
+</td>
+<td style="text-align:left;">
+0.3.1
+</td>
+<td style="text-align:left;">
+Web Application (theme)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+collections
+</td>
+<td style="text-align:left;">
+0.3.5
+</td>
+<td style="text-align:left;">
+Web Application (dictionary)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DT
+</td>
+<td style="text-align:left;">
+0.20
+</td>
+<td style="text-align:left;">
+Web Application (tables)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+formattable
+</td>
+<td style="text-align:left;">
+0.2.1
+</td>
+<td style="text-align:left;">
+Web Application (tables)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+googlesheets4
+</td>
+<td style="text-align:left;">
+1.0.0
+</td>
+<td style="text-align:left;">
+Web Application (metadata)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+here
+</td>
+<td style="text-align:left;">
+1.0.1
+</td>
+<td style="text-align:left;">
+Data cleaning (relative file paths)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+janitor
+</td>
+<td style="text-align:left;">
+2.1.0
+</td>
+<td style="text-align:left;">
+Data cleaning (data frame)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lubridate
+</td>
+<td style="text-align:left;">
+1.7.10
+</td>
+<td style="text-align:left;">
+Data cleaning (dates)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+plotly
+</td>
+<td style="text-align:left;">
+4.10.0
+</td>
+<td style="text-align:left;">
+Data visualiation (plots)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+reactlog
+</td>
+<td style="text-align:left;">
+1.1.0
+</td>
+<td style="text-align:left;">
+Web Application (testing)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+rmapshaper
+</td>
+<td style="text-align:left;">
+0.4.5
+</td>
+<td style="text-align:left;">
+Web Application (load time)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+rsconnect
+</td>
+<td style="text-align:left;">
+0.8.25
+</td>
+<td style="text-align:left;">
+Web Application (deploy app)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+scales
+</td>
+<td style="text-align:left;">
+1.1.1
+</td>
+<td style="text-align:left;">
+Data visualiation (plots)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sf
+</td>
+<td style="text-align:left;">
+1.0.7
+</td>
+<td style="text-align:left;">
+Data cleaning and visualization (maps)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+shiny
+</td>
+<td style="text-align:left;">
+1.7.1
+</td>
+<td style="text-align:left;">
+Web Application (build app)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+shinycssloaders
+</td>
+<td style="text-align:left;">
+1.0.0
+</td>
+<td style="text-align:left;">
+Web Application (plot loader)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+shinydashboard
+</td>
+<td style="text-align:left;">
+0.7.2
+</td>
+<td style="text-align:left;">
+Web Application (dashboard layout elements)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+shinydashboardPlus
+</td>
+<td style="text-align:left;">
+2.0.3
+</td>
+<td style="text-align:left;">
+Web Application (box elements)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+shinyjs
+</td>
+<td style="text-align:left;">
+2.1.0
+</td>
+<td style="text-align:left;">
+Web Application (hide and show boxes in ui)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+shinyWidgets
+</td>
+<td style="text-align:left;">
+0.6.4
+</td>
+<td style="text-align:left;">
+Web Application (inputs)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tidycensus
+</td>
+<td style="text-align:left;">
+1.2.1
+</td>
+<td style="text-align:left;">
+Data acquisition (US census data)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tidyverse
+</td>
+<td style="text-align:left;">
+1.3.1
+</td>
+<td style="text-align:left;">
+Data cleaning, analysis, and visualization
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tigris
+</td>
+<td style="text-align:left;">
+1.6
+</td>
+<td style="text-align:left;">
+Data acquisition (state and ZIP code geometries)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tmap
+</td>
+<td style="text-align:left;">
+3.3.2
+</td>
+<td style="text-align:left;">
+Data visualization (maps)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+vroom
+</td>
+<td style="text-align:left;">
+1.5.7
+</td>
+<td style="text-align:left;">
+Data cleaning (read in data)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+zipcodeR
+</td>
+<td style="text-align:left;">
+0.3.3
+</td>
+<td style="text-align:left;">
+Data acquisition (state info about ZIP code)
+</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>
@@ -1454,7 +1795,6 @@ Chang, Winston, Joe Cheng, JJ Allaire, Carson Sievert, Barret Schloerke, Yihui X
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1495,7 +1835,7 @@ gitbook.start({
 },
 "download": ["_main.pdf", "_main.epub"],
 "search": {
-"engine": "lunr",
+"engine": "fuse",
 "options": null
 },
 "toc": {
