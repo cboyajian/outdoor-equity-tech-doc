@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Section 5 Summary of Solution Design | Outdoor Equity App Technical Documentation</title>
   <meta name="description" content="Section 5 Summary of Solution Design | Outdoor Equity App Technical Documentation" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Section 5 Summary of Solution Design | Outdoor Equity App Technical Documentation" />
   <meta property="og:type" content="book" />
@@ -33,9 +33,8 @@
   
 <link rel="prev" href="specific-objectives.html"/>
 <link rel="next" href="products-and-deliverables.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/header-attrs-2.10.6/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -43,6 +42,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
 
 
 
@@ -187,7 +187,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="6.1" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html#r-shiny-app"><i class="fa fa-check"></i><b>6.1</b> R Shiny App</a></li>
 <li class="chapter" data-level="6.2" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html#metadata"><i class="fa fa-check"></i><b>6.2</b> Metadata</a></li>
-<li class="chapter" data-level="6.3" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html#package-versions"><i class="fa fa-check"></i><b>6.3</b> Package Versions</a></li>
+<li class="chapter" data-level="6.3" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html#packages-and-versions-used"><i class="fa fa-check"></i><b>6.3</b> Packages and Versions Used</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="summary-of-testing.html"><a href="summary-of-testing.html"><i class="fa fa-check"></i><b>7</b> Summary of Testing</a>
 <ul>
@@ -226,6 +226,7 @@ div.csl-indent {
 <li class="chapter" data-level="9.2" data-path="additional-challenges.html"><a href="additional-challenges.html#technical-challenges"><i class="fa fa-check"></i><b>9.2</b> Technical Challenges</a></li>
 <li class="chapter" data-level="9.3" data-path="additional-challenges.html"><a href="additional-challenges.html#future-challenges"><i class="fa fa-check"></i><b>9.3</b> Future Challenges</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="appedix.html"><a href="appedix.html"><i class="fa fa-check"></i>Appedix</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -252,282 +253,12 @@ div.csl-indent {
 <div id="glossary-and-definitions" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Glossary and Definitions</h2>
 <p>Throughout this document we define “reservable sites” as traditional campgrounds, single remote campsites, overnight boat-in sites or mooring, equestrian sites, cabins, and other shelters listed in the <a href="https://ridb.recreation.gov/">RIDB data</a>.</p>
-<table class="table table-responsive" style="width: auto !important; ">
-<caption>
-<span id="tab:glossary-table">Table 5.1: </span>A table of abbreviations, their definitions, and source URLS.
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-Abbreviation
-</th>
-<th style="text-align:left;">
-Definition
-</th>
-<th style="text-align:left;">
-Source
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-ACS
-</td>
-<td style="text-align:left;">
-American Community Survey
-</td>
-<td style="text-align:left;">
-<a href="https://www.census.gov/programs-surveys/acs" class="uri">https://www.census.gov/programs-surveys/acs</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-BLM
-</td>
-<td style="text-align:left;">
-Bureau of Land Management
-</td>
-<td style="text-align:left;">
-<a href="https://www.blm.gov/" class="uri">https://www.blm.gov/</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-BOR
-</td>
-<td style="text-align:left;">
-Bureau of Reclamation
-</td>
-<td style="text-align:left;">
-<a href="https://www.usbr.gov/" class="uri">https://www.usbr.gov/</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-MEDS
-</td>
-<td style="text-align:left;">
-Master of Environmental Data Science
-</td>
-<td style="text-align:left;">
-<a href="https://bren.ucsb.edu/masters-programs/master-environmental-data-science" class="uri">https://bren.ucsb.edu/masters-programs/master-environmental-data-science</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-NPS
-</td>
-<td style="text-align:left;">
-National Park Service
-</td>
-<td style="text-align:left;">
-<a href="https://www.nps.gov/index.htm" class="uri">https://www.nps.gov/index.htm</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-R1S
-</td>
-<td style="text-align:left;">
-Recreation One Stop
-</td>
-<td style="text-align:left;">
-<a href="https://www.recreation.gov/" class="uri">https://www.recreation.gov/</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-UCSB
-</td>
-<td style="text-align:left;">
-University of California, Santa Barbara
-</td>
-<td style="text-align:left;">
-<a href="https://www.ucsb.edu/" class="uri">https://www.ucsb.edu/</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-USACE
-</td>
-<td style="text-align:left;">
-United States Army Corps of Engineers
-</td>
-<td style="text-align:left;">
-<a href="https://www.usace.army.mil/" class="uri">https://www.usace.army.mil/</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-USFS
-</td>
-<td style="text-align:left;">
-United States Forest Service
-</td>
-<td style="text-align:left;">
-<a href="https://www.fs.usda.gov/" class="uri">https://www.fs.usda.gov/</a>
-</td>
-</tr>
-</tbody>
-</table>
+<p>A full glossary can be found in the <a href="appedix.html#appedix">Appendix Section</a>.</p>
 </div>
 <div id="access-clean-and-wrangle-data" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Access, Clean, and Wrangle Data</h2>
-<p><a href="https://ridb.recreation.gov/">RIDB data</a> and <a href="https://www.census.gov/programs-surveys/acs/data.html">US Census American Communities Survey (ACS) data</a> are freely available online to the public. We accessed, cleaned, and wrangled all data outside of the <a href="https://shinyapps.bren.ucsb.edu/oe_app/">Outdoor Equity App</a> using the <code>data_wrangle_and_clean.Rmd</code> document and 18 custom-made functions (Tables <a href="summary-of-solution-design.html#tab:func-table1">5.2</a>). We downloaded RIDB data in CSV format from Recreation.gov and ACS data through API using the R package <code>tidycensus</code> <span class="citation">(<a href="#ref-R-tidycensus" role="doc-biblioref">Walker and Herman 2022</a>)</span>. We first subsetted RIDB and ACS datasets to include only the variables relevant to our objectives. We then normalized, aggregated, and calculated variables as necessary. Once both datasets are cleaned and wrangled, we joined them using ZIP codes as the key (common value in both datasets). Finally we wrangled the joined RIDB and ACS dataset to ready them for creating data relationship plots.</p>
-<table class="table table-responsive" style="width: auto !important; ">
-<caption>
-<span id="tab:func-table1">Table 5.2: </span>A table of the cleaning and wrangling functions created for the ACS and RIDB data and functions to create data sets for visitorshed maps and data relationship plots.
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-Script
-</th>
-<th style="text-align:left;">
-Purpose
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-function_acs_deciles_median_income.R
-</td>
-<td style="text-align:left;">
-Calculate decile values of California census household median-income
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-function_acs_education.R
-</td>
-<td style="text-align:left;">
-Call and calculate education percentages for given geographic area and state
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-function_acs_language.R
-</td>
-<td style="text-align:left;">
-Call and calculate language percentages for given geographic area and state
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-function_acs_median_income.R
-</td>
-<td style="text-align:left;">
-Call and calculate median-income percentages for given geographic area and state
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-function_acs_race.R
-</td>
-<td style="text-align:left;">
-Call and calculate race percentages for given geographic area and state
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-function_acs_top_quartile_education.R
-</td>
-<td style="text-align:left;">
-Calculate weighted third quartile value of California census education percentages
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-function_acs_top_quartile_language.R
-</td>
-<td style="text-align:left;">
-Calculate weighted third quartile value of California census language percentages
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-function_acs_top_quartile_race.R
-</td>
-<td style="text-align:left;">
-Calculate weighted third quartile value of California census race percentages
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-function_ridb_subset-pre2018.R
-</td>
-<td style="text-align:left;">
-Subset RIDB data
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-function_ridb_variable_calculate-pre2018.R
-</td>
-<td style="text-align:left;">
-Define, standardize, and aggregate values and calculated additional derived variables
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-function_join_ridb_acs.R
-</td>
-<td style="text-align:left;">
-Join RIDB and ACS data
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-function_map_ca_data.R
-</td>
-<td style="text-align:left;">
-Create dataset for California ZIP code visitorshed map
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-function_map_us_data.R
-</td>
-<td style="text-align:left;">
-Create dataset for US State visitorshed map
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-function_ridb_deciles_median_income.R
-</td>
-<td style="text-align:left;">
-Create dataset for median-income data relationship plots
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-function_ridb_top_quartile_education.R
-</td>
-<td style="text-align:left;">
-Create dataset for education data relationship plots
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-function_ridb_top_quartile_language.R
-</td>
-<td style="text-align:left;">
-Create dataset for language data relationship plots
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-function_ridb_top_quartile_race.R
-</td>
-<td style="text-align:left;">
-Create dataset for race data relationship plots
-</td>
-</tr>
-</tbody>
-</table>
+<p><a href="https://ridb.recreation.gov/">RIDB data</a> and <a href="https://www.census.gov/programs-surveys/acs/data.html">US Census American Communities Survey (ACS) data</a> are freely available online to the public. We accessed, cleaned, and wrangled all data outside of the <a href="https://shinyapps.bren.ucsb.edu/oe_app/">Outdoor Equity App</a> using the <code>data_wrangle_and_clean.Rmd</code> document and 18 custom-made functions (Appendix Table <a href="appedix.html#tab:func-table1">9.2</a>). We downloaded RIDB data in CSV format from Recreation.gov and ACS data through API using the R package <code>tidycensus</code> <span class="citation">(<a href="#ref-R-tidycensus" role="doc-biblioref">Walker and Herman 2021</a>)</span>. We first subsetted RIDB and ACS datasets to include only the variables relevant to our objectives. We then normalized, aggregated, and calculated variables as necessary. Once both datasets are cleaned and wrangled, we joined them using ZIP codes as the key (common value in both datasets). Finally we wrangled the joined RIDB and ACS dataset to ready them for creating data relationship plots.</p>
+<p>See the <a href="appedix.html#appedix">Appendix Section</a> for a full table of all functions.</p>
 </div>
 <div id="analysis-and-visualizations" class="section level2" number="5.3">
 <h2><span class="header-section-number">5.3</span> Analysis and Visualizations</h2>
@@ -583,7 +314,7 @@ Figure 5.6: Screenshot of the Metadata page of the Outdoor Equity App
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-R-tidycensus" class="csl-entry">
-Walker, Kyle, and Matt Herman. 2022. <em>Tidycensus: Load US Census Boundary and Attribute Data as Tidyverse and Sf-Ready Data Frames</em>. <a href="https://walker-data.com/tidycensus/">https://walker-data.com/tidycensus/</a>.
+Walker, Kyle, and Matt Herman. 2021. <em>Tidycensus: Load US Census Boundary and Attribute Data as Tidyverse and Sf-Ready Data Frames</em>. <a href="https://walker-data.com/tidycensus/">https://walker-data.com/tidycensus/</a>.
 </div>
 <div id="ref-R-bookdown" class="csl-entry">
 Xie, Yihui. 2021. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.
@@ -599,6 +330,7 @@ Xie, Yihui. 2021. <em>Bookdown: Authoring Books and Technical Documents with r M
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -639,7 +371,7 @@ gitbook.start({
 },
 "download": ["_main.pdf", "_main.epub"],
 "search": {
-"engine": "fuse",
+"engine": "lunr",
 "options": null
 },
 "toc": {

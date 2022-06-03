@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Section 8 User Documentation | Outdoor Equity App Technical Documentation</title>
   <meta name="description" content="Section 8 User Documentation | Outdoor Equity App Technical Documentation" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Section 8 User Documentation | Outdoor Equity App Technical Documentation" />
   <meta property="og:type" content="book" />
@@ -33,9 +33,8 @@
   
 <link rel="prev" href="summary-of-testing.html"/>
 <link rel="next" href="additional-challenges.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/header-attrs-2.10.6/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -43,6 +42,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
 
 
 
@@ -187,7 +187,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="6.1" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html#r-shiny-app"><i class="fa fa-check"></i><b>6.1</b> R Shiny App</a></li>
 <li class="chapter" data-level="6.2" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html#metadata"><i class="fa fa-check"></i><b>6.2</b> Metadata</a></li>
-<li class="chapter" data-level="6.3" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html#package-versions"><i class="fa fa-check"></i><b>6.3</b> Package Versions</a></li>
+<li class="chapter" data-level="6.3" data-path="products-and-deliverables.html"><a href="products-and-deliverables.html#packages-and-versions-used"><i class="fa fa-check"></i><b>6.3</b> Packages and Versions Used</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="summary-of-testing.html"><a href="summary-of-testing.html"><i class="fa fa-check"></i><b>7</b> Summary of Testing</a>
 <ul>
@@ -226,6 +226,7 @@ div.csl-indent {
 <li class="chapter" data-level="9.2" data-path="additional-challenges.html"><a href="additional-challenges.html#technical-challenges"><i class="fa fa-check"></i><b>9.2</b> Technical Challenges</a></li>
 <li class="chapter" data-level="9.3" data-path="additional-challenges.html"><a href="additional-challenges.html#future-challenges"><i class="fa fa-check"></i><b>9.3</b> Future Challenges</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="appedix.html"><a href="appedix.html"><i class="fa fa-check"></i>Appedix</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -406,7 +407,7 @@ div.csl-indent {
 <span id="cb8-60"><a href="user-documentation.html#cb8-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">park =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> park,</span>
 <span id="cb8-61"><a href="user-documentation.html#cb8-61" aria-hidden="true" tabindex="-1"></a>                       <span class="at">pattern =</span> <span class="st">&quot;Tunnel Mills Il&quot;</span>,</span>
 <span id="cb8-62"><a href="user-documentation.html#cb8-62" aria-hidden="true" tabindex="-1"></a>                       <span class="at">replacement =</span> <span class="st">&quot;Tunnel Mills&quot;</span>))</span></code></pre></div>
-<p>We calculate distance traveled by measuring the distance from the latitude and longitude coordinate facility locations to the centroid of the home ZIP code. Here we utilize both the <code>tidycensus</code> package <span class="citation">(<a href="#ref-R-tidycensus" role="doc-biblioref">Walker and Herman 2022</a>)</span> and the <code>sf</code> package <span class="citation">(<a href="#ref-R-sf" role="doc-biblioref">Pebesma 2022</a>)</span>.</p>
+<p>We calculate distance traveled by measuring the distance from the latitude and longitude coordinate facility locations to the centroid of the home ZIP code. Here we utilize both the <code>tidycensus</code> package <span class="citation">(<a href="#ref-R-tidycensus" role="doc-biblioref">Walker and Herman 2021</a>)</span> and the <code>sf</code> package <span class="citation">(<a href="#ref-R-sf" role="doc-biblioref">Pebesma 2022</a>)</span>.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="user-documentation.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bootstrap geometries and reproject to NAD 83</span></span>
 <span id="cb9-2"><a href="user-documentation.html#cb9-2" aria-hidden="true" tabindex="-1"></a>df_geometries <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
 <span id="cb9-3"><a href="user-documentation.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;facility_longitude&quot;</span>, <span class="st">&quot;facility_latitude&quot;</span>),</span>
@@ -435,7 +436,7 @@ div.csl-indent {
 <span id="cb9-26"><a href="user-documentation.html#cb9-26" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">y =</span> geometry.y,</span>
 <span id="cb9-27"><a href="user-documentation.html#cb9-27" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">by_element =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb9-28"><a href="user-documentation.html#cb9-28" aria-hidden="true" tabindex="-1"></a>         <span class="at">distance_traveled_m =</span> <span class="fu">as.numeric</span>(distance_traveled_m)) </span></code></pre></div>
-<p>And finally, we add a variable indicating in which state or territory each customer zip code is located. This portion of the code utilizes the <code>zipcodeR</code> package <span class="citation">(<a href="#ref-R-zipcodeR" role="doc-biblioref">Rozzi 2022</a>)</span>.</p>
+<p>And finally, we add a variable indicating in which state or territory each customer zip code is located. This portion of the code utilizes the <code>zipcodeR</code> package <span class="citation">(<a href="#ref-R-zipcodeR" role="doc-biblioref">Rozzi 2021</a>)</span>.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="user-documentation.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create df of fips and full state names</span></span>
 <span id="cb10-2"><a href="user-documentation.html#cb10-2" aria-hidden="true" tabindex="-1"></a>fips_list <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
 <span id="cb10-3"><a href="user-documentation.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;01&quot;</span>, <span class="st">&quot;02&quot;</span>, <span class="st">&quot;04&quot;</span>, <span class="st">&quot;05&quot;</span>, <span class="st">&quot;06&quot;</span>, <span class="st">&quot;08&quot;</span>, <span class="st">&quot;09&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;11&quot;</span>, <span class="st">&quot;12&quot;</span>, </span>
@@ -489,7 +490,7 @@ div.csl-indent {
 </div>
 <div id="u.s.-census-data" class="section level4" number="8.3.2.2">
 <h4><span class="header-section-number">8.3.2.2</span> U.S. Census Data</h4>
-<p>US Census data is publicly accessible in many ways. Our product utilizes the R package <code>tidycensus</code> <span class="citation">(<a href="#ref-R-tidycensus" role="doc-biblioref">Walker and Herman 2022</a>)</span> to access the necessary variables from the 2018 <a href="https://www.census.gov/programs-surveys/acs/data.html">American Community Survey (ACS)</a> via API. API access requires an api key, which can then be saved into your RStudio environment. Learn more about API keys and working with <code>tidycensus</code> <a href="https://walker-data.com/tidycensus/articles/basic-usage.html">here</a>.</p>
+<p>US Census data is publicly accessible in many ways. Our product utilizes the R package <code>tidycensus</code> <span class="citation">(<a href="#ref-R-tidycensus" role="doc-biblioref">Walker and Herman 2021</a>)</span> to access the necessary variables from the 2018 <a href="https://www.census.gov/programs-surveys/acs/data.html">American Community Survey (ACS)</a> via API. API access requires an api key, which can then be saved into your RStudio environment. Learn more about API keys and working with <code>tidycensus</code> <a href="https://walker-data.com/tidycensus/articles/basic-usage.html">here</a>.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="user-documentation.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># API set up</span></span>
 <span id="cb11-2"><a href="user-documentation.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Only have to run this the first time using on a new machine</span></span>
 <span id="cb11-3"><a href="user-documentation.html#cb11-3" aria-hidden="true" tabindex="-1"></a>census_api <span class="ot">&lt;-</span> <span class="fu">source</span>(<span class="st">&quot;private/census-api.R&quot;</span>)</span>
@@ -1246,7 +1247,7 @@ Hispanic Latinx
 </div>
 <div id="spatial-analysis" class="section level4" number="8.3.3.3">
 <h4><span class="header-section-number">8.3.3.3</span> Spatial analysis</h4>
-<p>We created a state-level visitorshed map to show the number of visitors to overnight reservable sites from each state. We use the package <code>zipcodeR</code> <span class="citation">(<a href="#ref-R-zipcodeR" role="doc-biblioref">Rozzi 2022</a>)</span> to determine the state in which each ZIP code, and thus visitor, is located, using the RIDB data. We then create a dataframe with the necessary geometries using the <code>tigris</code> <span class="citation">(<a href="#ref-R-tigris" role="doc-biblioref">Walker 2022</a>)</span> package. And finally we simplify the geometries to lower the load time within the App using the <code>rmapshaper</code> <span class="citation">(<a href="#ref-R-rmapshaper" role="doc-biblioref">Teucher and Russell 2021</a>)</span> package.</p>
+<p>We created a state-level visitorshed map to show the number of visitors to overnight reservable sites from each state. We use the package <code>zipcodeR</code> <span class="citation">(<a href="#ref-R-zipcodeR" role="doc-biblioref">Rozzi 2021</a>)</span> to determine the state in which each ZIP code, and thus visitor, is located, using the RIDB data. We then create a dataframe with the necessary geometries using the <code>tigris</code> <span class="citation">(<a href="#ref-R-tigris" role="doc-biblioref">Walker 2022</a>)</span> package. And finally we simplify the geometries to lower the load time within the App using the <code>rmapshaper</code> <span class="citation">(<a href="#ref-R-rmapshaper" role="doc-biblioref">Teucher and Russell 2021</a>)</span> package.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="user-documentation.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ZIP codes and respective states</span></span>
 <span id="cb23-2"><a href="user-documentation.html#cb23-2" aria-hidden="true" tabindex="-1"></a>fips_list <span class="ot">&lt;-</span> </span>
 <span id="cb23-3"><a href="user-documentation.html#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;01&quot;</span>, <span class="st">&quot;02&quot;</span>, <span class="st">&quot;04&quot;</span>, <span class="st">&quot;05&quot;</span>, <span class="st">&quot;06&quot;</span>, <span class="st">&quot;08&quot;</span>, <span class="st">&quot;09&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;11&quot;</span>, <span class="st">&quot;12&quot;</span>, </span>
@@ -1303,7 +1304,7 @@ Hispanic Latinx
 <span id="cb23-54"><a href="user-documentation.html#cb23-54" aria-hidden="true" tabindex="-1"></a>         <span class="at">state_abbrev =</span> STUSPS,</span>
 <span id="cb23-55"><a href="user-documentation.html#cb23-55" aria-hidden="true" tabindex="-1"></a>         <span class="at">state =</span> NAME) <span class="sc">%&gt;%</span> </span>
 <span id="cb23-56"><a href="user-documentation.html#cb23-56" aria-hidden="true" tabindex="-1"></a>  rmapshaper<span class="sc">::</span><span class="fu">ms_simplify</span>(<span class="at">keep =</span> <span class="fl">0.005</span>, <span class="at">keep_shapes =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p>We then calculate the number of reservations per state for the site (as chosen by the app user) and use <code>tmaps</code> package <span class="citation">(<a href="#ref-R-tmap" role="doc-biblioref">Tennekes 2021</a>)</span> to create an interactive map that colors states based on the total number of reservations for that state.</p>
+<p>We then calculate the number of reservations per state for the site (as chosen by the app user) and use <code>tmaps</code> package <span class="citation">(<a href="#ref-R-tmap" role="doc-biblioref">Tennekes 2022</a>)</span> to create an interactive map that colors states based on the total number of reservations for that state.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="user-documentation.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="do">## -- data wrangle -- ##</span></span>
 <span id="cb24-2"><a href="user-documentation.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># reactive data frame for siteInput</span></span>
 <span id="cb24-3"><a href="user-documentation.html#cb24-3" aria-hidden="true" tabindex="-1"></a>rdf <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
@@ -1504,7 +1505,7 @@ Hispanic Latinx
 </div>
 <div id="data-updates" class="section level3" number="8.3.4">
 <h3><span class="header-section-number">8.3.4</span> Data updates</h3>
-<p>The <code>data_wrangle_and_clean.Rmd</code> document is set up to create the joined dataset necessary for the Outdoor Equity App. To access the ACS data we use the <code>tidycensus</code> package <span class="citation">(<a href="#ref-R-tidycensus" role="doc-biblioref">Walker and Herman 2022</a>)</span> to access the necessary data via API, meaning data updates are not necessary outside of the <code>.Rmd</code> document. The RIDB data is accesses via direct download from the <a href="https://ridb.recreation.gov/download">Recreation.gov</a> website. See the <a href="user-documentation.html#how-to-expand-the-outdoor-equity-app">How to Expand the Outdoor Equity App Section</a> on expanding the time periods included in the App.</p>
+<p>The <code>data_wrangle_and_clean.Rmd</code> document is set up to create the joined dataset necessary for the Outdoor Equity App. To access the ACS data we use the <code>tidycensus</code> package <span class="citation">(<a href="#ref-R-tidycensus" role="doc-biblioref">Walker and Herman 2021</a>)</span> to access the necessary data via API, meaning data updates are not necessary outside of the <code>.Rmd</code> document. The RIDB data is accesses via direct download from the <a href="https://ridb.recreation.gov/download">Recreation.gov</a> website. See the <a href="user-documentation.html#how-to-expand-the-outdoor-equity-app">How to Expand the Outdoor Equity App Section</a> on expanding the time periods included in the App.</p>
 </div>
 <div id="server-hosting" class="section level3" number="8.3.5">
 <h3><span class="header-section-number">8.3.5</span> Server Hosting</h3>
@@ -1513,14 +1514,27 @@ Hispanic Latinx
 </div>
 <div id="how-to-expand-the-outdoor-equity-app" class="section level2" number="8.4">
 <h2><span class="header-section-number">8.4</span> How to Expand the Outdoor Equity App</h2>
+<p>The Outdoor Equity App currently only includes reservation data from California for 2018 due to server hosting capabilities. Expanding the App to include additional years and states will require a larger server and likely more computing power.</p>
 <div id="temporal-expansions" class="section level3" number="8.4.1">
 <h3><span class="header-section-number">8.4.1</span> Temporal Expansions</h3>
+<p>To expand the years of data included in the Outdoor Equity App, users must first update the <code>data_wrangle_and_clean.Rmd</code> where all data cleaning and wrangling occurs outside of the shiny app code.</p>
+<p>For RIDB data from 2018 and early, users can simply include new code chunks in the <code>.Rmd</code> document that use the following functions to create a joined dataset for each new year: <code>function_ridb_subset-pre2018.R</code>, <code>function_ridb_variable_calculate-pre2018.R</code>, <code>function_acs_race.R</code>, <code>function_acs_median_income.R</code>, <code>function_acs_education.R</code>, <code>function_acs_language.R</code>, and <code>function_join_ridb_acs.R</code>.</p>
+<p>For RIDB data from 2019 and later, users must update the <code>function_ridb_subset-post2019.R</code> function. We did not continue to update this function once we decided to include only 2018 data in the App. We recommend updating this function to first select only the necessary variables, then rename the variables so that they match the 2018 and earlier naming conventions, and finally copy and paste the remaining code used in the <code>function_ridb_subset-pre2018.R</code> function. Users can then add new code chunks to the <code>.Rmd</code> document that use the following functions to create a joined dataset for each new year: <code>function_ridb_subset-post2019.R</code>, <code>function_ridb_variable_calculate-pre2018.R</code>, <code>function_acs_race.R</code>, <code>function_acs_median_income.R</code>, <code>function_acs_education.R</code>, <code>function_acs_language.R</code>, and <code>function_join_ridb_acs.R</code>.</p>
+<p>RIDB data from 2019 and later may have additional variables available, so we also recommend exploring all available variables to decide if adding in additional variables is appropriate. If users decide to add additional variables, edits will have to be made to all custom functions within the <code>data_preparation</code> and <code>outdoor-equity-app</code> directories.</p>
+<p><a href="https://ridb.recreation.gov/standards">Data standards for the RIDB data</a> is in the processing of being updated as of June 2022. Users should check to see if this impacts any decisions in adding additional years to the Outdoor Equity App.</p>
 </div>
 <div id="spatial-expansions" class="section level3" number="8.4.2">
 <h3><span class="header-section-number">8.4.2</span> Spatial Expansions</h3>
+<p>To expand the states included in the Outdoor Equity App, users must update the <code>data_wrangle_and_clean.Rmd</code> where all data cleaning and wrangling occurs outside of the shiny app code.</p>
+<p>The <code>function_ridb_variable_calculate-pre2018.R</code> function has a section manipulates the character strings of the <code>agency</code>, <code>admin_unit</code>, and <code>park</code> variables. This code would likely need to be changed for additional states as the specific irregularities in character strings may differ state to state. We recommend creating a new function for each additional state. See the <a href="user-documentation.html#ridb-data">RIDB Data Section</a> for a more detailed description of this function code. Once a new custom function is created for each state, code chunks can be added to the <code>.Rmd</code> document to clean and wrangle data for additional states.</p>
 </div>
 <div id="statistical-analysis" class="section level3" number="8.4.3">
 <h3><span class="header-section-number">8.4.3</span> Statistical Analysis</h3>
+<p>Currently the Outdoor Equity App only visualizes patterns in the data, but does not allow a user to explore why these patterns are occurring. We recommend considering the following additions to expand the statistical analysis abilities of the App:</p>
+<ul>
+<li>Simple statistical analysis (such as linear regressions, ANOVA, etc.) to accompany all plots</li>
+<li>Ability to combine multiple campsites in a single plot or map to explore patterns and trends across geographic areas and years</li>
+</ul>
 
 </div>
 </div>
@@ -1534,13 +1548,13 @@ Bureau, United States Census. 2022. <span>“American Community Survey 5-Year Da
 Pebesma, Edzer. 2022. <em>Sf: Simple Features for r</em>. <a href="https://CRAN.R-project.org/package=sf">https://CRAN.R-project.org/package=sf</a>.
 </div>
 <div id="ref-R-zipcodeR" class="csl-entry">
-Rozzi, Gavin. 2022. <em>zipcodeR: Data &amp; Functions for Working with US ZIP Codes</em>.
+Rozzi, Gavin. 2021. <em>zipcodeR: Data &amp; Functions for Working with US ZIP Codes</em>. <a href="https://CRAN.R-project.org/package=zipcodeR">https://CRAN.R-project.org/package=zipcodeR</a>.
 </div>
 <div id="ref-R-plotly" class="csl-entry">
 Sievert, Carson, Chris Parmer, Toby Hocking, Scott Chamberlain, Karthik Ram, Marianne Corvellec, and Pedro Despouy. 2021. <em>Plotly: Create Interactive Web Graphics via Plotly.js</em>. <a href="https://CRAN.R-project.org/package=plotly">https://CRAN.R-project.org/package=plotly</a>.
 </div>
 <div id="ref-R-tmap" class="csl-entry">
-Tennekes, Martijn. 2021. <em>Tmap: Thematic Maps</em>. <a href="https://github.com/mtennekes/tmap">https://github.com/mtennekes/tmap</a>.
+Tennekes, Martijn. 2022. <em>Tmap: Thematic Maps</em>. <a href="https://github.com/r-tmap/tmap">https://github.com/r-tmap/tmap</a>.
 </div>
 <div id="ref-R-rmapshaper" class="csl-entry">
 Teucher, Andy, and Kenton Russell. 2021. <em>Rmapshaper: Client for Mapshaper for Geospatial Operations</em>. <a href="https://github.com/ateucher/rmapshaper">https://github.com/ateucher/rmapshaper</a>.
@@ -1549,7 +1563,7 @@ Teucher, Andy, and Kenton Russell. 2021. <em>Rmapshaper: Client for Mapshaper fo
 Walker, Kyle. 2022. <em>Tigris: Load Census TIGER/Line Shapefiles</em>. <a href="https://github.com/walkerke/tigris">https://github.com/walkerke/tigris</a>.
 </div>
 <div id="ref-R-tidycensus" class="csl-entry">
-Walker, Kyle, and Matt Herman. 2022. <em>Tidycensus: Load US Census Boundary and Attribute Data as Tidyverse and Sf-Ready Data Frames</em>. <a href="https://walker-data.com/tidycensus/">https://walker-data.com/tidycensus/</a>.
+Walker, Kyle, and Matt Herman. 2021. <em>Tidycensus: Load US Census Boundary and Attribute Data as Tidyverse and Sf-Ready Data Frames</em>. <a href="https://walker-data.com/tidycensus/">https://walker-data.com/tidycensus/</a>.
 </div>
 <div id="ref-R-stringr" class="csl-entry">
 Wickham, Hadley. 2019. <em>Stringr: Simple, Consistent Wrappers for Common String Operations</em>. <a href="https://CRAN.R-project.org/package=stringr">https://CRAN.R-project.org/package=stringr</a>.
@@ -1568,6 +1582,7 @@ Wickham, Hadley. 2019. <em>Stringr: Simple, Consistent Wrappers for Common Strin
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1608,7 +1623,7 @@ gitbook.start({
 },
 "download": ["_main.pdf", "_main.epub"],
 "search": {
-"engine": "fuse",
+"engine": "lunr",
 "options": null
 },
 "toc": {

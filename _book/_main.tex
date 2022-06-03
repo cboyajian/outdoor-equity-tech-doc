@@ -249,82 +249,14 @@ Federal lands in the United States provide important recreation opportunities to
 
 Throughout this document we define ``reservable sites'' as traditional campgrounds, single remote campsites, overnight boat-in sites or mooring, equestrian sites, cabins, and other shelters listed in the \href{https://ridb.recreation.gov/}{RIDB data}.
 
-\begin{table}
-
-\caption{\label{tab:glossary-table}A table of abbreviations, their definitions, and source URLS.}
-\begin{tabular}[t]{l|l|l}
-\hline
-Abbreviation & Definition & Source\\
-\hline
-ACS & American Community Survey & https://www.census.gov/programs-surveys/acs\\
-\hline
-BLM & Bureau of Land Management & https://www.blm.gov/\\
-\hline
-BOR & Bureau of Reclamation & https://www.usbr.gov/\\
-\hline
-MEDS & Master of Environmental Data Science & https://bren.ucsb.edu/masters-programs/master-environmental-data-science\\
-\hline
-NPS & National Park Service & https://www.nps.gov/index.htm\\
-\hline
-R1S & Recreation One Stop & https://www.recreation.gov/\\
-\hline
-UCSB & University of California, Santa Barbara & https://www.ucsb.edu/\\
-\hline
-USACE & United States Army Corps of Engineers & https://www.usace.army.mil/\\
-\hline
-USFS & United States Forest Service & https://www.fs.usda.gov/\\
-\hline
-\end{tabular}
-\end{table}
+A full glossary can be found in the \protect\hyperlink{appedix}{Appendix Section}.
 
 \hypertarget{access-clean-and-wrangle-data}{%
 \section{Access, Clean, and Wrangle Data}\label{access-clean-and-wrangle-data}}
 
-\href{https://ridb.recreation.gov/}{RIDB data} and \href{https://www.census.gov/programs-surveys/acs/data.html}{US Census American Communities Survey (ACS) data} are freely available online to the public. We accessed, cleaned, and wrangled all data outside of the \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App} using the \texttt{data\_wrangle\_and\_clean.Rmd} document and 18 custom-made functions (Tables \ref{tab:func-table1}). We downloaded RIDB data in CSV format from Recreation.gov and ACS data through API using the R package \texttt{tidycensus} \citep{R-tidycensus}. We first subsetted RIDB and ACS datasets to include only the variables relevant to our objectives. We then normalized, aggregated, and calculated variables as necessary. Once both datasets are cleaned and wrangled, we joined them using ZIP codes as the key (common value in both datasets). Finally we wrangled the joined RIDB and ACS dataset to ready them for creating data relationship plots.
+\href{https://ridb.recreation.gov/}{RIDB data} and \href{https://www.census.gov/programs-surveys/acs/data.html}{US Census American Communities Survey (ACS) data} are freely available online to the public. We accessed, cleaned, and wrangled all data outside of the \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App} using the \texttt{data\_wrangle\_and\_clean.Rmd} document and 18 custom-made functions (Appendix Table \ref{tab:func-table1}). We downloaded RIDB data in CSV format from Recreation.gov and ACS data through API using the R package \texttt{tidycensus} \citep{R-tidycensus}. We first subsetted RIDB and ACS datasets to include only the variables relevant to our objectives. We then normalized, aggregated, and calculated variables as necessary. Once both datasets are cleaned and wrangled, we joined them using ZIP codes as the key (common value in both datasets). Finally we wrangled the joined RIDB and ACS dataset to ready them for creating data relationship plots.
 
-\begin{table}
-
-\caption{\label{tab:func-table1}A table of the cleaning and wrangling functions created for the ACS and RIDB data and functions to create data sets for visitorshed maps and data relationship plots.}
-\begin{tabular}[t]{l|l}
-\hline
-Script & Purpose\\
-\hline
-function\_acs\_deciles\_median\_income.R & Calculate decile values of California census household median-income\\
-\hline
-function\_acs\_education.R & Call and calculate education percentages for given geographic area and state\\
-\hline
-function\_acs\_language.R & Call and calculate language percentages for given geographic area and state\\
-\hline
-function\_acs\_median\_income.R & Call and calculate median-income percentages for given geographic area and state\\
-\hline
-function\_acs\_race.R & Call and calculate race percentages for given geographic area and state\\
-\hline
-function\_acs\_top\_quartile\_education.R & Calculate weighted third quartile value of California census education percentages\\
-\hline
-function\_acs\_top\_quartile\_language.R & Calculate weighted third quartile value of California census language percentages\\
-\hline
-function\_acs\_top\_quartile\_race.R & Calculate weighted third quartile value of California census race percentages\\
-\hline
-function\_ridb\_subset-pre2018.R & Subset RIDB data\\
-\hline
-function\_ridb\_variable\_calculate-pre2018.R & Define, standardize, and aggregate values and calculated additional derived variables\\
-\hline
-function\_join\_ridb\_acs.R & Join RIDB and ACS data\\
-\hline
-function\_map\_ca\_data.R & Create dataset for California ZIP code visitorshed map\\
-\hline
-function\_map\_us\_data.R & Create dataset for US State visitorshed map\\
-\hline
-function\_ridb\_deciles\_median\_income.R & Create dataset for median-income data relationship plots\\
-\hline
-function\_ridb\_top\_quartile\_education.R & Create dataset for education data relationship plots\\
-\hline
-function\_ridb\_top\_quartile\_language.R & Create dataset for language data relationship plots\\
-\hline
-function\_ridb\_top\_quartile\_race.R & Create dataset for race data relationship plots\\
-\hline
-\end{tabular}
-\end{table}
+See the \protect\hyperlink{appedix}{Appendix Section} for a full table of all functions.
 
 \hypertarget{analysis-and-visualizations}{%
 \section{Analysis and Visualizations}\label{analysis-and-visualizations}}
@@ -392,158 +324,12 @@ The \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App} was built
 \hypertarget{metadata}{%
 \section{Metadata}\label{metadata}}
 
-\begin{table}
+A condensed list of all metadata can be found in the \protect\hyperlink{appedix}{Appendix Section}. A full list of all metadata can be found in the \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App} on the Metadata tab.
 
-\caption{\label{tab:unnamed-chunk-4}Metadata of joined RIDB-ACS dataset}
-\begin{tabular}[t]{l|l|l|l|l|l|l|l|l}
-\hline
-Variable Name & Data Source & Definition & Unit & Class & Data Type & Provenance & Missing Value Code & Total Unique Values\\
-\hline
-agency & ridb & the governing body that manages a type of US public land (i.e. national park, national forest) & NA & character & categorical & data\_preparation/functions/function\_ridb\_variable\_calculate-pre2018.R & NA & 4\\
-\hline
-admin\_unit & ridb & the parent location or region description that a campsite belongs within & NA & character & categorical & data\_preparation/functions/function\_ridb\_variable\_calculate-pre2018.R & NA & 43\\
-\hline
-park & ridb & the name of a campsite & NA & character & categorical & data\_preparation/functions/function\_ridb\_variable\_calculate-pre2018.R & NA & 448\\
-\hline
-aggregated\_site\_type & ridb & type of site at a campsite; a campsite can have multiple site types & NA & character & categorical & data\_preparation/functions/function\_ridb\_variable\_calculate-pre2018.R & NA & 7\\
-\hline
-facility\_id & ridb & unique id given to a campsite & NA & numeric & discrete & none & NA & 451\\
-\hline
-facility\_state & ridb & the state that a campsite is located in & NA & character & categorical & none & NA & 1\\
-\hline
-customer\_zip & ridb & the numeric code of the area from where a visitor lives & NA & character & categorical & data\_preparation/functions/function\_ridb\_subset-pre2018.R & NA & 15861\\
-\hline
-customer\_zip\_state & acs & state acronym for home state of visitor & NA & character & categorical & data\_preparation/functions/function\_ridb\_variable\_calculate-pre2018.R & NA & 53\\
-\hline
-customer\_zip\_state\_full & acs & full name of state for home state of visitor & NA & character & categorical & data\_preparation/functions/function\_ridb\_variable\_calculate-pre2018.R & NA & 53\\
-\hline
-total\_paid & ridb & total amount of dollars paid for a reservation & dollars & numeric & continuous & none & NA & 1567\\
-\hline
-start\_date & ridb & date when booked reservation begins & yyyy-mm-dd & date & discrete & data\_preparation/functions/function\_ridb\_variable\_calculate-pre2018.R & NA & 734\\
-\hline
-end\_date & ridb & date when booked reservation ends & yyyy-mm-dd & date & discrete & data\_preparation/functions/function\_ridb\_variable\_calculate-pre2018.R & NA & 731\\
-\hline
-order\_date & ridb & date when reservation was booked and purchased & yyyy-mm-dd & date & discrete & data\_preparation/functions/function\_ridb\_variable\_calculate-pre2018.R & NA & 364\\
-\hline
-number\_of\_people & ridb & number of people reported when booking reservation & person & numeric & discrete & none & NA & 80\\
-\hline
-length\_of\_stay & ridb & the number of days a visit is; difference of end date from start date & days & numeric & discrete & data\_preparation/functions/function\_ridb\_variable\_calculate-pre2018.R & NA & 21\\
-\hline
-booking\_window & ridb & the number of days a reservation is made before the start of the visit; difference of start date from order date & days & numeric & discrete & data\_preparation/functions/function\_ridb\_variable\_calculate-pre2018.R & NA & 444\\
-\hline
-daily\_cost & ridb & the total amount paid per day for a reservation & dollars & numeric & continuous & data\_preparation/functions/function\_ridb\_variable\_calculate-pre2018.R & NA & 2321\\
-\hline
-daily\_cost\_per\_visitor & ridb & the total amount paid per day for one person & dollars & numeric & continuous & data\_preparation/functions/function\_ridb\_variable\_calculate-pre2018.R & NA & 5112\\
-\hline
-facility\_latitude & ridb & latitude of the campsite, but note this may not be the center of the campsite & degrees & numeric & continuous & none & NA & 421\\
-\hline
-facility\_longitude & ridb & longitude of the campsite, but note this may not be the center of the campsite & degrees & numeric & continuous & none & NA & 419\\
-\hline
-distance\_traveled\_m & ridb & distance between visitor home zip code and campsite & meters & numeric & continuous & data\_preparation/functions/function\_ridb\_variable\_calculate-pre2018.R & NA & 144980\\
-\hline
-zip\_code\_population.x & acs & the zip code population when get\_acs()  from tidycensus pulls in data for education variable. Note we take the average of zip code population x, zip code population y, and zip code population  in our data wrangling script & person & numeric & discrete & data\_preparation/functions/function\_join\_ridb\_acs.R & NA & 10286\\
-\hline
-asian & acs & estimated percentage of asian population in a zip code & percentage & numeric & continuous & data\_preparation/functions/function\_acs\_race.R & NA & 10188\\
-\hline
-black & acs & estimated percentage of black population in a zip code & percentage & numeric & continuous & data\_preparation/functions/function\_acs\_race.R & NA & 10336\\
-\hline
-hispanic\_latinx & acs & estimated percentage of hispanic latinx population in a zip code & percentage & numeric & continuous & data\_preparation/functions/function\_acs\_race.R & NA & 11299\\
-\hline
-multiracial & acs & estimated percentage of multiracial population in a zip code & percentage & numeric & continuous & data\_preparation/functions/function\_acs\_race.R & NA & 10919\\
-\hline
-native\_american & acs & estimated percentage of native american population in a zip code & percentage & numeric & continuous & data\_preparation/functions/function\_acs\_race.R & NA & 8514\\
-\hline
-other & acs & estimated percentage of other population in a zip code & percentage & numeric & continuous & data\_preparation/functions/function\_acs\_race.R & NA & 6564\\
-\hline
-pacific\_islander & acs & estimated percentage of pacific islander population in a zip code & percentage & numeric & continuous & data\_preparation/functions/function\_acs\_race.R & NA & 4217\\
-\hline
-white & acs & estimated percentage of white population in a zip code & percentage & numeric & continuous & data\_preparation/functions/function\_acs\_race.R & NA & 11598\\
-\hline
-zip\_code\_population.y & acs & the zip code population when get\_acs()  from tidycensus pulls in data for language variable. Note we take the average of zip code population x, zip code population y, and zip code population  in our data wrangling script & person & numeric & discrete & data\_preparation/functions/function\_join\_ridb\_acs.R & NA & 9654\\
-\hline
-college & acs & estimated percentage of population with a college degree in a zip code & percentage & numeric & continuous & data\_preparation/functions/function\_acs\_education.R & NA & 11641\\
-\hline
-hs\_GED\_or\_below & acs & estimated percentage of population with a high school General Educational Development (GED) degree or below in a zip code & percentage & numeric & continuous & data\_preparation/functions/function\_acs\_education.R & NA & 11705\\
-\hline
-master\_or\_above & acs & estimated percentage of population with a master degree or above in a zip code & percentage & numeric & continuous & data\_preparation/functions/function\_acs\_education.R & NA & 11445\\
-\hline
-some\_college & acs & estimated percentage of population with some college education in a zip code & percentage & numeric & continuous & data\_preparation/functions/function\_acs\_education.R & NA & 11631\\
-\hline
-median\_income & acs & median household income in the past 12 months in 2019 inflation-adjusted dollars & dollars & numeric & continuous & data\_preparation/functions/function\_acs\_median\_income.R & NA & 10439\\
-\hline
-zip\_code\_population & acs & total number of people living in a zip code when get\_acs() from tidycensus pulls in race variable.  Note we take the average of zip code population x, zip code population y, and zip code population  in our data wrangling script & person & numeric & discrete & data\_preparation/functions/function\_join\_ridb\_acs.R & NA & 10153\\
-\hline
-english\_only & acs & estimated percentage of population that speak only english in the home in a zip code & percentage & numeric & continuous & data\_preparation/functions/function\_acs\_language.R & NA & 11469\\
-\hline
-not\_english\_only & acs & estimated percentage of population that speak a language other than english in the home in a zip code & percentage & numeric & continuous & data\_preparation/functions/function\_acs\_language.R & NA & 11469\\
-\hline
-\end{tabular}
-\end{table}
+\hypertarget{packages-and-versions-used}{%
+\section{Packages and Versions Used}\label{packages-and-versions-used}}
 
-\hypertarget{package-versions}{%
-\section{Package Versions}\label{package-versions}}
-
-\begin{table}
-
-\caption{\label{tab:unnamed-chunk-5}Table includes information on packages used to create the Outdoor Equity App.}
-\begin{tabular}[t]{l|l|l}
-\hline
-R Package & Version & Purpose\\
-\hline
-bslib & 0.3.1 & Web Application (theme)\\
-\hline
-collections & 0.3.5 & Web Application (dictionary)\\
-\hline
-DT & 0.20 & Web Application (tables)\\
-\hline
-formattable & 0.2.1 & Web Application (tables)\\
-\hline
-googlesheets4 & 1.0.0 & Web Application (metadata)\\
-\hline
-here & 1.0.1 & Data cleaning (relative file paths)\\
-\hline
-janitor & 2.1.0 & Data cleaning (data frame)\\
-\hline
-lubridate & 1.7.10 & Data cleaning (dates)\\
-\hline
-plotly & 4.10.0 & Data visualiation (plots)\\
-\hline
-reactlog & 1.1.0 & Web Application (testing)\\
-\hline
-rmapshaper & 0.4.5 & Web Application (load time)\\
-\hline
-rsconnect & 0.8.25 & Web Application (deploy app)\\
-\hline
-scales & 1.1.1 & Data visualiation (plots)\\
-\hline
-sf & 1.0.7 & Data cleaning and visualization (maps)\\
-\hline
-shiny & 1.7.1 & Web Application (build app)\\
-\hline
-shinycssloaders & 1.0.0 & Web Application (plot loader)\\
-\hline
-shinydashboard & 0.7.2 & Web Application (dashboard layout elements)\\
-\hline
-shinydashboardPlus & 2.0.3 & Web Application (box elements)\\
-\hline
-shinyjs & 2.1.0 & Web Application (hide and show boxes in ui)\\
-\hline
-shinyWidgets & 0.6.4 & Web Application (inputs)\\
-\hline
-tidycensus & 1.2.1 & Data acquisition (US census data)\\
-\hline
-tidyverse & 1.3.1 & Data cleaning, analysis, and visualization\\
-\hline
-tigris & 1.6 & Data acquisition (state and ZIP code geometries)\\
-\hline
-tmap & 3.3.2 & Data visualization (maps)\\
-\hline
-vroom & 1.5.7 & Data cleaning (read in data)\\
-\hline
-zipcodeR & 0.3.3 & Data acquisition (state info about ZIP code)\\
-\hline
-\end{tabular}
-\end{table}
+See the \protect\hyperlink{appedix}{Appendix Section} for the full list of packages used.
 
 \hypertarget{summary-of-testing}{%
 \chapter{Summary of Testing}\label{summary-of-testing}}
@@ -1679,14 +1465,40 @@ The Outdoor Equity App is hosted on server owned by the Bren School at the Unive
 \hypertarget{how-to-expand-the-outdoor-equity-app}{%
 \section{How to Expand the Outdoor Equity App}\label{how-to-expand-the-outdoor-equity-app}}
 
+The Outdoor Equity App currently only includes reservation data from California for 2018 due to server hosting capabilities. Expanding the App to include additional years and states will require a larger server and likely more computing power.
+
 \hypertarget{temporal-expansions}{%
 \subsection{Temporal Expansions}\label{temporal-expansions}}
+
+To expand the years of data included in the Outdoor Equity App, users must first update the \texttt{data\_wrangle\_and\_clean.Rmd} where all data cleaning and wrangling occurs outside of the shiny app code.
+
+For RIDB data from 2018 and early, users can simply include new code chunks in the \texttt{.Rmd} document that use the following functions to create a joined dataset for each new year: \texttt{function\_ridb\_subset-pre2018.R}, \texttt{function\_ridb\_variable\_calculate-pre2018.R}, \texttt{function\_acs\_race.R}, \texttt{function\_acs\_median\_income.R}, \texttt{function\_acs\_education.R}, \texttt{function\_acs\_language.R}, and \texttt{function\_join\_ridb\_acs.R}.
+
+For RIDB data from 2019 and later, users must update the \texttt{function\_ridb\_subset-post2019.R} function. We did not continue to update this function once we decided to include only 2018 data in the App. We recommend updating this function to first select only the necessary variables, then rename the variables so that they match the 2018 and earlier naming conventions, and finally copy and paste the remaining code used in the \texttt{function\_ridb\_subset-pre2018.R} function. Users can then add new code chunks to the \texttt{.Rmd} document that use the following functions to create a joined dataset for each new year: \texttt{function\_ridb\_subset-post2019.R}, \texttt{function\_ridb\_variable\_calculate-pre2018.R}, \texttt{function\_acs\_race.R}, \texttt{function\_acs\_median\_income.R}, \texttt{function\_acs\_education.R}, \texttt{function\_acs\_language.R}, and \texttt{function\_join\_ridb\_acs.R}.
+
+RIDB data from 2019 and later may have additional variables available, so we also recommend exploring all available variables to decide if adding in additional variables is appropriate. If users decide to add additional variables, edits will have to be made to all custom functions within the \texttt{data\_preparation} and \texttt{outdoor-equity-app} directories.
+
+\href{https://ridb.recreation.gov/standards}{Data standards for the RIDB data} is in the processing of being updated as of June 2022. Users should check to see if this impacts any decisions in adding additional years to the Outdoor Equity App.
 
 \hypertarget{spatial-expansions}{%
 \subsection{Spatial Expansions}\label{spatial-expansions}}
 
+To expand the states included in the Outdoor Equity App, users must update the \texttt{data\_wrangle\_and\_clean.Rmd} where all data cleaning and wrangling occurs outside of the shiny app code.
+
+The \texttt{function\_ridb\_variable\_calculate-pre2018.R} function has a section manipulates the character strings of the \texttt{agency}, \texttt{admin\_unit}, and \texttt{park} variables. This code would likely need to be changed for additional states as the specific irregularities in character strings may differ state to state. We recommend creating a new function for each additional state. See the \protect\hyperlink{ridb-data}{RIDB Data Section} for a more detailed description of this function code. Once a new custom function is created for each state, code chunks can be added to the \texttt{.Rmd} document to clean and wrangle data for additional states.
+
 \hypertarget{statistical-analysis}{%
 \subsection{Statistical Analysis}\label{statistical-analysis}}
+
+Currently the Outdoor Equity App only visualizes patterns in the data, but does not allow a user to explore why these patterns are occurring. We recommend considering the following additions to expand the statistical analysis abilities of the App:
+
+\begin{itemize}
+\tightlist
+\item
+  Simple statistical analysis (such as linear regressions, ANOVA, etc.) to accompany all plots
+\item
+  Ability to combine multiple campsites in a single plot or map to explore patterns and trends across geographic areas and years
+\end{itemize}
 
 \hypertarget{additional-challenges}{%
 \chapter{Additional Challenges}\label{additional-challenges}}
@@ -1707,6 +1519,232 @@ Load time for all plots especially maps is a challenge that we were able to part
 \section{Future Challenges}\label{future-challenges}}
 
 Adding in multiple years and adding in more spatial data (beyond California) will require a larger server and likely more computing power. Refer to \protect\hyperlink{how-to-expand-the-outdoor-equity-app}{How to Expand the Outdoor Equity App Section} to learn more.
+
+\hypertarget{appedix}{%
+\chapter*{Appedix}\label{appedix}}
+\addcontentsline{toc}{chapter}{Appedix}
+
+\begin{table}
+
+\caption{\label{tab:glossary-table}A table of abbreviations, their definitions, and source URLS.}
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X>{\raggedright}X}
+\hline
+Abbreviation & Definition & Source\\
+\hline
+ACS & American Community Survey & https://www.census.gov/programs-surveys/acs\\
+\hline
+BLM & Bureau of Land Management & https://www.blm.gov/\\
+\hline
+BOR & Bureau of Reclamation & https://www.usbr.gov/\\
+\hline
+MEDS & Master of Environmental Data Science & https://bren.ucsb.edu/masters-programs/master-environmental-data-science\\
+\hline
+NPS & National Park Service & https://www.nps.gov/index.htm\\
+\hline
+R1S & Recreation One Stop & https://www.recreation.gov/\\
+\hline
+UCSB & University of California, Santa Barbara & https://www.ucsb.edu/\\
+\hline
+USACE & United States Army Corps of Engineers & https://www.usace.army.mil/\\
+\hline
+USFS & United States Forest Service & https://www.fs.usda.gov/\\
+\hline
+\end{tabu}
+\end{table}
+
+\begin{table}
+
+\caption{\label{tab:func-table1}A table of the cleaning and wrangling functions created for the ACS and RIDB data and functions to create data sets for visitorshed maps and data relationship plots.}
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X}
+\hline
+Script & Purpose\\
+\hline
+function\_acs\_deciles\_median\_income.R & Calculate decile values of California census household median-income\\
+\hline
+function\_acs\_education.R & Call and calculate education percentages for given geographic area and state\\
+\hline
+function\_acs\_language.R & Call and calculate language percentages for given geographic area and state\\
+\hline
+function\_acs\_median\_income.R & Call and calculate median-income percentages for given geographic area and state\\
+\hline
+function\_acs\_race.R & Call and calculate race percentages for given geographic area and state\\
+\hline
+function\_acs\_top\_quartile\_education.R & Calculate weighted third quartile value of California census education percentages\\
+\hline
+function\_acs\_top\_quartile\_language.R & Calculate weighted third quartile value of California census language percentages\\
+\hline
+function\_acs\_top\_quartile\_race.R & Calculate weighted third quartile value of California census race percentages\\
+\hline
+function\_ridb\_subset-pre2018.R & Subset RIDB data\\
+\hline
+function\_ridb\_variable\_calculate-pre2018.R & Define, standardize, and aggregate values and calculated additional derived variables\\
+\hline
+function\_join\_ridb\_acs.R & Join RIDB and ACS data\\
+\hline
+function\_map\_ca\_data.R & Create dataset for California ZIP code visitorshed map\\
+\hline
+function\_map\_us\_data.R & Create dataset for US State visitorshed map\\
+\hline
+function\_ridb\_deciles\_median\_income.R & Create dataset for median-income data relationship plots\\
+\hline
+function\_ridb\_top\_quartile\_education.R & Create dataset for education data relationship plots\\
+\hline
+function\_ridb\_top\_quartile\_language.R & Create dataset for language data relationship plots\\
+\hline
+function\_ridb\_top\_quartile\_race.R & Create dataset for race data relationship plots\\
+\hline
+\end{tabu}
+\end{table}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-34}Metadata of joined RIDB-ACS dataset}
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X}
+\hline
+Variable Name & Definition & Unit & Data Type\\
+\hline
+agency & the governing body that manages a type of US public land (i.e. national park, national forest) & NA & categorical\\
+\hline
+admin\_unit & the parent location or region description that a campsite belongs within & NA & categorical\\
+\hline
+park & the name of a campsite & NA & categorical\\
+\hline
+aggregated\_site\_type & type of site at a campsite; a campsite can have multiple site types & NA & categorical\\
+\hline
+facility\_id & unique id given to a campsite & NA & discrete\\
+\hline
+facility\_state & the state that a campsite is located in & NA & categorical\\
+\hline
+customer\_zip & the numeric code of the area from where a visitor lives & NA & categorical\\
+\hline
+customer\_zip\_state & state acronym for home state of visitor & NA & categorical\\
+\hline
+customer\_zip\_state\_full & full name of state for home state of visitor & NA & categorical\\
+\hline
+total\_paid & total amount of dollars paid for a reservation & dollars & continuous\\
+\hline
+start\_date & date when booked reservation begins & yyyy-mm-dd & discrete\\
+\hline
+end\_date & date when booked reservation ends & yyyy-mm-dd & discrete\\
+\hline
+order\_date & date when reservation was booked and purchased & yyyy-mm-dd & discrete\\
+\hline
+number\_of\_people & number of people reported when booking reservation & person & discrete\\
+\hline
+length\_of\_stay & the number of days a visit is; difference of end date from start date & days & discrete\\
+\hline
+booking\_window & the number of days a reservation is made before the start of the visit; difference of start date from order date & days & discrete\\
+\hline
+daily\_cost & the total amount paid per day for a reservation & dollars & continuous\\
+\hline
+daily\_cost\_per\_visitor & the total amount paid per day for one person & dollars & continuous\\
+\hline
+facility\_latitude & latitude of the campsite, but note this may not be the center of the campsite & degrees & continuous\\
+\hline
+facility\_longitude & longitude of the campsite, but note this may not be the center of the campsite & degrees & continuous\\
+\hline
+distance\_traveled\_m & distance between visitor home zip code and campsite & meters & continuous\\
+\hline
+zip\_code\_population.x & the zip code population when get\_acs()  from tidycensus pulls in data for education variable. Note we take the average of zip code population x, zip code population y, and zip code population  in our data wrangling script & person & discrete\\
+\hline
+asian & estimated percentage of asian population in a zip code & percentage & continuous\\
+\hline
+black & estimated percentage of black population in a zip code & percentage & continuous\\
+\hline
+hispanic\_latinx & estimated percentage of hispanic latinx population in a zip code & percentage & continuous\\
+\hline
+multiracial & estimated percentage of multiracial population in a zip code & percentage & continuous\\
+\hline
+native\_american & estimated percentage of native american population in a zip code & percentage & continuous\\
+\hline
+other & estimated percentage of other population in a zip code & percentage & continuous\\
+\hline
+pacific\_islander & estimated percentage of pacific islander population in a zip code & percentage & continuous\\
+\hline
+white & estimated percentage of white population in a zip code & percentage & continuous\\
+\hline
+zip\_code\_population.y & the zip code population when get\_acs()  from tidycensus pulls in data for language variable. Note we take the average of zip code population x, zip code population y, and zip code population  in our data wrangling script & person & discrete\\
+\hline
+college & estimated percentage of population with a college degree in a zip code & percentage & continuous\\
+\hline
+hs\_GED\_or\_below & estimated percentage of population with a high school General Educational Development (GED) degree or below in a zip code & percentage & continuous\\
+\hline
+master\_or\_above & estimated percentage of population with a master degree or above in a zip code & percentage & continuous\\
+\hline
+some\_college & estimated percentage of population with some college education in a zip code & percentage & continuous\\
+\hline
+median\_income & median household income in the past 12 months in 2019 inflation-adjusted dollars & dollars & continuous\\
+\hline
+zip\_code\_population & total number of people living in a zip code when get\_acs() from tidycensus pulls in race variable.  Note we take the average of zip code population x, zip code population y, and zip code population  in our data wrangling script & person & discrete\\
+\hline
+english\_only & estimated percentage of population that speak only english in the home in a zip code & percentage & continuous\\
+\hline
+not\_english\_only & estimated percentage of population that speak a language other than english in the home in a zip code & percentage & continuous\\
+\hline
+\end{tabu}
+\end{table}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-35}Table includes information on packages used to create the Outdoor Equity App.}
+\begin{tabular}[t]{l|l|l}
+\hline
+R Package & Version & Purpose\\
+\hline
+bslib & 0.3.1 & Web Application (theme)\\
+\hline
+collections & 0.3.5 & Web Application (dictionary)\\
+\hline
+DT & 0.20 & Web Application (tables)\\
+\hline
+formattable & 0.2.1 & Web Application (tables)\\
+\hline
+googlesheets4 & 1.0.0 & Web Application (metadata)\\
+\hline
+here & 1.0.1 & Data cleaning (relative file paths)\\
+\hline
+janitor & 2.1.0 & Data cleaning (data frame)\\
+\hline
+lubridate & 1.7.10 & Data cleaning (dates)\\
+\hline
+plotly & 4.10.0 & Data visualiation (plots)\\
+\hline
+reactlog & 1.1.0 & Web Application (testing)\\
+\hline
+rmapshaper & 0.4.5 & Web Application (load time)\\
+\hline
+rsconnect & 0.8.25 & Web Application (deploy app)\\
+\hline
+scales & 1.1.1 & Data visualiation (plots)\\
+\hline
+sf & 1.0.7 & Data cleaning and visualization (maps)\\
+\hline
+shiny & 1.7.1 & Web Application (build app)\\
+\hline
+shinycssloaders & 1.0.0 & Web Application (plot loader)\\
+\hline
+shinydashboard & 0.7.2 & Web Application (dashboard layout elements)\\
+\hline
+shinydashboardPlus & 2.0.3 & Web Application (box elements)\\
+\hline
+shinyjs & 2.1.0 & Web Application (hide and show boxes in ui)\\
+\hline
+shinyWidgets & 0.6.4 & Web Application (inputs)\\
+\hline
+tidycensus & 1.2.1 & Data acquisition (US census data)\\
+\hline
+tidyverse & 1.3.1 & Data cleaning, analysis, and visualization\\
+\hline
+tigris & 1.6 & Data acquisition (state and ZIP code geometries)\\
+\hline
+tmap & 3.3.2 & Data visualization (maps)\\
+\hline
+vroom & 1.5.7 & Data cleaning (read in data)\\
+\hline
+zipcodeR & 0.3.3 & Data acquisition (state info about ZIP code)\\
+\hline
+\end{tabular}
+\end{table}
 
   \bibliography{book.bib,packages.bib}
 

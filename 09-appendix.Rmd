@@ -1,0 +1,134 @@
+# Appendix {-}
+
+
+```{r, glossary-table, echo=FALSE}
+glossary_df <- 
+  tribble(
+    ~Abbreviation, ~Definition, ~Source,
+    "ACS", "American Community Survey", "https://www.census.gov/programs-surveys/acs",
+    "BLM", "Bureau of Land Management", "https://www.blm.gov/",
+    "BOR", "Bureau of Reclamation", "https://www.usbr.gov/",
+    "MEDS", "Master of Environmental Data Science", "https://bren.ucsb.edu/masters-programs/master-environmental-data-science",
+    "NPS", "National Park Service", "https://www.nps.gov/index.htm",
+    "R1S", "Recreation One Stop", "https://www.recreation.gov/",
+    "UCSB", "University of California, Santa Barbara", "https://www.ucsb.edu/",
+    "USACE", "United States Army Corps of Engineers", "https://www.usace.army.mil/",
+    "USFS", "United States Forest Service", "https://www.fs.usda.gov/"
+  )
+
+knitr::kable(glossary_df,
+             align = "l",
+             caption = "A table of abbreviations, their definitions, and source URLS.",
+             row.names = FALSE) %>% 
+  kable_styling(bootstrap_options = c("responsive"), 
+                full_width = TRUE, 
+                position = "left")
+```
+
+
+
+```{r, func-table1, echo=FALSE}
+acs_functions_df <- 
+  tribble(
+    ~Script, ~Purpose,
+    "function_acs_deciles_median_income.R", "Calculate decile values of California census household median-income", 
+    "function_acs_education.R", "Call and calculate education percentages for given geographic area and state",
+    "function_acs_language.R", "Call and calculate language percentages for given geographic area and state",
+    "function_acs_median_income.R", "Call and calculate median-income percentages for given geographic area and state",
+    "function_acs_race.R", "Call and calculate race percentages for given geographic area and state",
+    "function_acs_top_quartile_education.R", "Calculate weighted third quartile value of California census education percentages",
+    "function_acs_top_quartile_language.R", "Calculate weighted third quartile value of California census language percentages",
+    "function_acs_top_quartile_race.R", "Calculate weighted third quartile value of California census race percentages",
+    "function_ridb_subset-pre2018.R", "Subset RIDB data",
+    "function_ridb_variable_calculate-pre2018.R", "Define, standardize, and aggregate values and calculated additional derived variables",
+    "function_join_ridb_acs.R", "Join RIDB and ACS data",
+    "function_map_ca_data.R", "Create dataset for California ZIP code visitorshed map",
+    "function_map_us_data.R", "Create dataset for US State visitorshed map",
+    "function_ridb_deciles_median_income.R", "Create dataset for median-income data relationship plots",
+    "function_ridb_top_quartile_education.R", "Create dataset for education data relationship plots",
+    "function_ridb_top_quartile_language.R", "Create dataset for language data relationship plots",
+    "function_ridb_top_quartile_race.R", "Create dataset for race data relationship plots"
+  )
+
+knitr::kable(acs_functions_df,
+             align = "l",
+             caption = "A table of the cleaning and wrangling functions created for the ACS and RIDB data and functions to create data sets for visitorshed maps and data relationship plots.",
+             row.names = FALSE) %>% 
+  kable_styling(bootstrap_options = c("responsive"), 
+                full_width = TRUE,
+                position = "left")
+```
+
+
+
+```{r, echo=FALSE, message=FALSE}
+# read in metadata
+data_joined_2018_metadata_df <- 
+  read_csv(here("../outdoor-equity/outdoor-equity-app/oe_app/data/data_joined_2018_metadata.csv")) %>% 
+  rename("Variable Name" = variable_name,
+         "Data Source" = data_source,
+         Definition = definition,
+         Unit = unit,
+         Class = class,
+         "Data Type" = data_type,
+         Provenance = provenance_filepath,
+         "Missing Value Code" = missing_value_code,
+         "Total Unique Values" = total_unique_values) %>% 
+  select("Variable Name", Definition, Unit, "Data Type")
+
+
+# create table of metadata
+knitr::kable(data_joined_2018_metadata_df,
+             align = "l",
+             caption = "Metadata of joined RIDB-ACS dataset",
+             row.names = FALSE) %>% 
+  kable_styling(bootstrap_options = c("responsive"), 
+                full_width = TRUE, 
+                position = "left")
+```
+
+
+
+```{r, echo=FALSE}
+r_packages_df <- 
+  tribble(
+    ~"R Package", ~Version, ~Purpose,
+    "bslib", "0.3.1", "Web Application (theme)",
+    "collections", "0.3.5", "Web Application (dictionary)",
+    "DT", "0.20", "Web Application (tables)",
+    "formattable", "0.2.1", "Web Application (tables)",
+    "googlesheets4", "1.0.0", "Web Application (metadata)",
+    "here", "1.0.1", "Data cleaning (relative file paths)",
+    "janitor", "2.1.0", "Data cleaning (data frame)",
+    "lubridate", "1.7.10", "Data cleaning (dates)",
+    "plotly", "4.10.0", "Data visualiation (plots)",
+    "reactlog", "1.1.0", "Web Application (testing)",
+    "rmapshaper", "0.4.5", "Web Application (load time)",
+    "rsconnect", "0.8.25", "Web Application (deploy app)",
+    "scales", "1.1.1", "Data visualiation (plots)",
+    "sf", "1.0.7", "Data cleaning and visualization (maps)",
+    "shiny", "1.7.1", "Web Application (build app)",
+    "shinycssloaders", "1.0.0", "Web Application (plot loader)",
+    "shinydashboard", "0.7.2", "Web Application (dashboard layout elements)",
+    "shinydashboardPlus", "2.0.3", "Web Application (box elements)",
+    "shinyjs", "2.1.0", "Web Application (hide and show boxes in ui)",
+    "shinyWidgets", "0.6.4", "Web Application (inputs)",
+    "tidycensus", "1.2.1", "Data acquisition (US census data)",
+    "tidyverse", "1.3.1", "Data cleaning, analysis, and visualization",
+    "tigris", "1.6", "Data acquisition (state and ZIP code geometries)",
+    "tmap", "3.3.2", "Data visualization (maps)",
+    "vroom", "1.5.7", "Data cleaning (read in data)",
+    "zipcodeR", "0.3.3", "Data acquisition (state info about ZIP code)"
+  )
+
+knitr::kable(r_packages_df,
+             align = "l",
+             caption = "Table includes information on packages used to create the Outdoor Equity App.",
+             row.names = FALSE) %>% 
+  kable_styling(bootstrap_options = c("responsive"), 
+                full_width = F,
+                position = "left")
+```
+
+
+

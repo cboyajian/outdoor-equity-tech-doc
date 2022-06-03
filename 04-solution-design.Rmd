@@ -4,64 +4,13 @@
 
 Throughout this document we define “reservable sites” as traditional campgrounds, single remote campsites, overnight boat-in sites or mooring, equestrian sites, cabins, and other shelters listed in the [RIDB data](https://ridb.recreation.gov/).
 
-```{r, glossary-table, echo=FALSE}
-glossary_df <- 
-  tribble(
-    ~Abbreviation, ~Definition, ~Source,
-    "ACS", "American Community Survey", "https://www.census.gov/programs-surveys/acs",
-    "BLM", "Bureau of Land Management", "https://www.blm.gov/",
-    "BOR", "Bureau of Reclamation", "https://www.usbr.gov/",
-    "MEDS", "Master of Environmental Data Science", "https://bren.ucsb.edu/masters-programs/master-environmental-data-science",
-    "NPS", "National Park Service", "https://www.nps.gov/index.htm",
-    "R1S", "Recreation One Stop", "https://www.recreation.gov/",
-    "UCSB", "University of California, Santa Barbara", "https://www.ucsb.edu/",
-    "USACE", "United States Army Corps of Engineers", "https://www.usace.army.mil/",
-    "USFS", "United States Forest Service", "https://www.fs.usda.gov/"
-  )
-
-knitr::kable(glossary_df,
-             align = "l",
-             caption = "A table of abbreviations, their definitions, and source URLS.",
-             row.names = FALSE) %>% 
-  kable_styling(bootstrap_options = c("responsive"), full_width = F, position = "left")
-```
-
-
+A full glossary can be found in the [Appendix Section][Appedix].
 
 ## Access, Clean, and Wrangle Data
 
-[RIDB data](https://ridb.recreation.gov/) and [US Census American Communities Survey (ACS) data](https://www.census.gov/programs-surveys/acs/data.html) are freely available online to the public. We accessed, cleaned, and wrangled all data outside of the [Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/) using the `data_wrangle_and_clean.Rmd` document and 18 custom-made functions (Tables \@ref(tab:func-table1)). We downloaded RIDB data in CSV format from Recreation.gov and ACS data through API using the R package `tidycensus` [@R-tidycensus]. We first subsetted RIDB and ACS datasets to include only the variables relevant to our objectives. We then normalized, aggregated, and calculated variables as necessary. Once both datasets are cleaned and wrangled, we joined them using ZIP codes as the key (common value in both datasets). Finally we wrangled the joined RIDB and ACS dataset to ready them for creating data relationship plots.
+[RIDB data](https://ridb.recreation.gov/) and [US Census American Communities Survey (ACS) data](https://www.census.gov/programs-surveys/acs/data.html) are freely available online to the public. We accessed, cleaned, and wrangled all data outside of the [Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/) using the `data_wrangle_and_clean.Rmd` document and 18 custom-made functions (Appendix Table \@ref(tab:func-table1)). We downloaded RIDB data in CSV format from Recreation.gov and ACS data through API using the R package `tidycensus` [@R-tidycensus]. We first subsetted RIDB and ACS datasets to include only the variables relevant to our objectives. We then normalized, aggregated, and calculated variables as necessary. Once both datasets are cleaned and wrangled, we joined them using ZIP codes as the key (common value in both datasets). Finally we wrangled the joined RIDB and ACS dataset to ready them for creating data relationship plots.
 
-
-```{r, func-table1, echo=FALSE}
-acs_functions_df <- 
-  tribble(
-    ~Script, ~Purpose,
-    "function_acs_deciles_median_income.R", "Calculate decile values of California census household median-income", 
-    "function_acs_education.R", "Call and calculate education percentages for given geographic area and state",
-    "function_acs_language.R", "Call and calculate language percentages for given geographic area and state",
-    "function_acs_median_income.R", "Call and calculate median-income percentages for given geographic area and state",
-    "function_acs_race.R", "Call and calculate race percentages for given geographic area and state",
-    "function_acs_top_quartile_education.R", "Calculate weighted third quartile value of California census education percentages",
-    "function_acs_top_quartile_language.R", "Calculate weighted third quartile value of California census language percentages",
-    "function_acs_top_quartile_race.R", "Calculate weighted third quartile value of California census race percentages",
-    "function_ridb_subset-pre2018.R", "Subset RIDB data",
-    "function_ridb_variable_calculate-pre2018.R", "Define, standardize, and aggregate values and calculated additional derived variables",
-    "function_join_ridb_acs.R", "Join RIDB and ACS data",
-    "function_map_ca_data.R", "Create dataset for California ZIP code visitorshed map",
-    "function_map_us_data.R", "Create dataset for US State visitorshed map",
-    "function_ridb_deciles_median_income.R", "Create dataset for median-income data relationship plots",
-    "function_ridb_top_quartile_education.R", "Create dataset for education data relationship plots",
-    "function_ridb_top_quartile_language.R", "Create dataset for language data relationship plots",
-    "function_ridb_top_quartile_race.R", "Create dataset for race data relationship plots"
-  )
-
-knitr::kable(acs_functions_df,
-             align = "l",
-             caption = "A table of the cleaning and wrangling functions created for the ACS and RIDB data and functions to create data sets for visitorshed maps and data relationship plots.",
-             row.names = FALSE) %>% 
-  kable_styling(bootstrap_options = c("responsive"), full_width = F, position = "left")
-```
+See the [Appendix Section][Appedix] for a full table of all functions.
 
 
 ## Analysis and Visualizations
