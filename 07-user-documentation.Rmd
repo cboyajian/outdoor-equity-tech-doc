@@ -1056,13 +1056,32 @@ The Outdoor Equity App is hosted on server owned by the Bren School at the Unive
 
 ## How to Expand the Outdoor Equity App
 
+The Outdoor Equity App currently only includes reservation data from California for 2018 due to server hosting capabilities. Expanding the App to include additional years and states  will require a larger server and likely more computing power.
+
 ### Temporal Expansions
 
+To expand the years of data included in the Outdoor Equity App, users must first update the `data_wrangle_and_clean.Rmd` where all data cleaning and wrangling occurs outside of the shiny app code. 
+
+For RIDB data from 2018 and early, users can simply include new code chunks in the `.Rmd` document that use the following functions to create a joined dataset for each new year: `function_ridb_subset-pre2018.R`, `function_ridb_variable_calculate-pre2018.R`, `function_acs_race.R`, `function_acs_median_income.R`, `function_acs_education.R`, `function_acs_language.R`, and `function_join_ridb_acs.R`.
+
+For RIDB data from 2019 and later, users must update the `function_ridb_subset-post2019.R` function. We did not continue to update this function once we decided to include only 2018 data in the App. We recommend updating this function to first select only the necessary variables, then rename the variables so that they match the 2018 and earlier naming conventions, and finally copy and paste the remaining code used in the `function_ridb_subset-pre2018.R` function. Users can then add new code chunks to the `.Rmd` document that use the following functions to create a joined dataset for each new year: `function_ridb_subset-post2019.R`, `function_ridb_variable_calculate-pre2018.R`, `function_acs_race.R`, `function_acs_median_income.R`, `function_acs_education.R`, `function_acs_language.R`, and `function_join_ridb_acs.R`. 
+
+RIDB data from 2019 and later may have additional variables available, so we also recommend exploring all available variables to decide if adding in additional variables is appropriate. If users decide to add additional variables, edits will have to be made to all custom functions within the `data_preparation` and `outdoor-equity-app` directories. 
+
+[Data standards for the RIDB data](https://ridb.recreation.gov/standards) is in the processing of being updated as of June 2022. Users should check to see if this impacts any decisions in adding additional years to the Outdoor Equity App.
 
 
 ### Spatial Expansions
 
+To expand the states included in the Outdoor Equity App, users must update the `data_wrangle_and_clean.Rmd` where all data cleaning and wrangling occurs outside of the shiny app code. 
+
+The `function_ridb_variable_calculate-pre2018.R` function has a section manipulates the character strings of the `agency`, `admin_unit`, and `park` variables. This code would likely need to be changed for additional states as the specific irregularities in character strings may differ state to state. We recommend creating a new function for each additional state. See the [RIDB Data Section][RIDB Data] for a more detailed description of this function code. Once a new custom function is created for each state, code chunks can be added to the `.Rmd` document to clean and wrangle data for additional states. 
 
 
 ### Statistical Analysis
+
+Currently the Outdoor Equity App only visualizes patterns in the data, but does not allow a user to explore why these patterns are occurring. We recommend considering the following additions to expand the statistical analysis abilities of the App:
+
+- Simple statistical analysis (such as linear regressions, ANOVA, etc.) to accompany all plots
+- Ability to combine multiple campsites in a single plot or map to explore patterns and trends across geographic areas and years
 
