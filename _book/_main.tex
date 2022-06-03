@@ -1031,6 +1031,10 @@ Hispanic Latinx & 62.07\%\\
 \hypertarget{spatial-analysis}{%
 \subsubsection{Spatial analysis}\label{spatial-analysis}}
 
+A state-level visitorshed map shows the number of visitors to overnight reservable sites from each state. We use the package \texttt{zipcodeR} \citep{R-zipcodeR} to determine the state in which each ZIP code, and thus visitor, is located, using the RIDB data. We calculate the number of reservations per state for the site (as chosen by the app user) and use the \texttt{tmaps} package \citep{R-tmap} to create an interactive map that colors states based on the total number of reservations for that state.
+
+A ZIP-code level visitorshed map shows the number of visitors to sites for each ZIP code within California only due to computational load of calculating for all ZIP codes in the United States. We calculate the number of reservations per ZIP code for the site (as chosen by the app user) and use \texttt{tmaps} to create an interactive map that colors ZIP codes based on the total number of reservations for that ZIP code.
+
 \hypertarget{data-updates}{%
 \subsection{Data updates}\label{data-updates}}
 
@@ -1039,8 +1043,12 @@ The \texttt{data\_wrangle\_and\_clean.Rmd} document is set up to create the comb
 \hypertarget{server-hosting}{%
 \subsection{Server Hosting}\label{server-hosting}}
 
+The Outdoor Equity App is hosted on server owned by the Bren School at the University of California, Santa Barbara until the end of 2022. At that time the App will be moved to the shiny.io server for the duration of 2023.
+
 \hypertarget{shiny-code-directory}{%
 \subsection{Shiny Code Directory}\label{shiny-code-directory}}
+
+We created the following functions in the Outdoor Equity App to build out the ui and server outputs:
 
 \hypertarget{how-to-expand-the-outdoor-equity-app}{%
 \section{How to Expand the Outdoor Equity App}\label{how-to-expand-the-outdoor-equity-app}}
@@ -1079,9 +1087,6 @@ Socioeconomic data are not available within the \href{https://ridb.recreation.go
 \item
   Adding in multiple years and adding in more spatial data (beyond California) will require a large server and likely more computing power.
 \end{itemize}
-
-\hypertarget{archive-access}{%
-\chapter{Archive Access}\label{archive-access}}
 
   \bibliography{book.bib,packages.bib}
 

@@ -226,7 +226,6 @@ div.csl-indent {
 <li class="chapter" data-level="9.2" data-path="additional-challenges.html"><a href="additional-challenges.html#technical-challenges"><i class="fa fa-check"></i><b>9.2</b> Technical Challenges</a></li>
 <li class="chapter" data-level="9.3" data-path="additional-challenges.html"><a href="additional-challenges.html#future-challenges"><i class="fa fa-check"></i><b>9.3</b> Future Challenges</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="archive-access.html"><a href="archive-access.html"><i class="fa fa-check"></i><b>10</b> Archive Access</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1001,6 +1000,8 @@ Hispanic Latinx
 </div>
 <div id="spatial-analysis" class="section level4" number="8.3.2.3">
 <h4><span class="header-section-number">8.3.2.3</span> Spatial analysis</h4>
+<p>A state-level visitorshed map shows the number of visitors to overnight reservable sites from each state. We use the package <code>zipcodeR</code> <span class="citation">(<a href="#ref-R-zipcodeR" role="doc-biblioref">Rozzi 2021</a>)</span> to determine the state in which each ZIP code, and thus visitor, is located, using the RIDB data. We calculate the number of reservations per state for the site (as chosen by the app user) and use the <code>tmaps</code> package <span class="citation">(<a href="#ref-R-tmap" role="doc-biblioref">Tennekes 2022</a>)</span> to create an interactive map that colors states based on the total number of reservations for that state.</p>
+<p>A ZIP-code level visitorshed map shows the number of visitors to sites for each ZIP code within California only due to computational load of calculating for all ZIP codes in the United States. We calculate the number of reservations per ZIP code for the site (as chosen by the app user) and use <code>tmaps</code> to create an interactive map that colors ZIP codes based on the total number of reservations for that ZIP code.</p>
 </div>
 </div>
 <div id="data-updates" class="section level3" number="8.3.3">
@@ -1009,9 +1010,11 @@ Hispanic Latinx
 </div>
 <div id="server-hosting" class="section level3" number="8.3.4">
 <h3><span class="header-section-number">8.3.4</span> Server Hosting</h3>
+<p>The Outdoor Equity App is hosted on server owned by the Bren School at the University of California, Santa Barbara until the end of 2022. At that time the App will be moved to the shiny.io server for the duration of 2023.</p>
 </div>
 <div id="shiny-code-directory" class="section level3" number="8.3.5">
 <h3><span class="header-section-number">8.3.5</span> Shiny Code Directory</h3>
+<p>We created the following functions in the Outdoor Equity App to build out the ui and server outputs:</p>
 </div>
 </div>
 <div id="how-to-expand-the-outdoor-equity-app" class="section level2" number="8.4">
@@ -1035,6 +1038,9 @@ Bureau, United States Census. 2022. <span>“American Community Survey 5-Year Da
 </div>
 <div id="ref-R-zipcodeR" class="csl-entry">
 Rozzi, Gavin. 2021. <em>zipcodeR: Data &amp; Functions for Working with US ZIP Codes</em>. <a href="https://CRAN.R-project.org/package=zipcodeR">https://CRAN.R-project.org/package=zipcodeR</a>.
+</div>
+<div id="ref-R-tmap" class="csl-entry">
+Tennekes, Martijn. 2022. <em>Tmap: Thematic Maps</em>. <a href="https://github.com/r-tmap/tmap">https://github.com/r-tmap/tmap</a>.
 </div>
 <div id="ref-R-tidycensus" class="csl-entry">
 Walker, Kyle, and Matt Herman. 2021. <em>Tidycensus: Load US Census Boundary and Attribute Data as Tidyverse and Sf-Ready Data Frames</em>. <a href="https://walker-data.com/tidycensus/">https://walker-data.com/tidycensus/</a>.
