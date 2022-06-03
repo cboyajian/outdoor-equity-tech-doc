@@ -483,7 +483,108 @@ not\_english\_only & acs & estimated percentage of population that speak a langu
 \hypertarget{package-versions}{%
 \section{Package Versions}\label{package-versions}}
 
-The table below includes information on the specific package versions used to create the Outdoor Equity App.
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{r\_packages\_df }\OtherTok{\textless{}{-}} 
+  \FunctionTok{tribble}\NormalTok{(}
+    \SpecialCharTok{\textasciitilde{}}\StringTok{"R Package"}\NormalTok{, }\SpecialCharTok{\textasciitilde{}}\NormalTok{Version, }\SpecialCharTok{\textasciitilde{}}\NormalTok{Purpose,}
+    \StringTok{"bslib"}\NormalTok{, }\StringTok{"0.3.1"}\NormalTok{, }\StringTok{"Web Application (theme)"}\NormalTok{,}
+    \StringTok{"collections"}\NormalTok{, }\StringTok{"0.3.5"}\NormalTok{, }\StringTok{"Web Application (dictionary)"}\NormalTok{,}
+    \StringTok{"DT"}\NormalTok{, }\StringTok{"0.20"}\NormalTok{, }\StringTok{"Web Application (tables)"}\NormalTok{,}
+    \StringTok{"formattable"}\NormalTok{, }\StringTok{"0.2.1"}\NormalTok{, }\StringTok{"Web Application (tables)"}\NormalTok{,}
+    \StringTok{"googlesheets4"}\NormalTok{, }\StringTok{"1.0.0"}\NormalTok{, }\StringTok{"Web Application (metadata)"}\NormalTok{,}
+    \StringTok{"here"}\NormalTok{, }\StringTok{"1.0.1"}\NormalTok{, }\StringTok{"Data cleaning (relative file paths)"}\NormalTok{,}
+    \StringTok{"janitor"}\NormalTok{, }\StringTok{"2.1.0"}\NormalTok{, }\StringTok{"Data cleaning (data frame)"}\NormalTok{,}
+    \StringTok{"lubridate"}\NormalTok{, }\StringTok{"1.7.10"}\NormalTok{, }\StringTok{"Data cleaning (dates)"}\NormalTok{,}
+    \StringTok{"plotly"}\NormalTok{, }\StringTok{"4.10.0"}\NormalTok{, }\StringTok{"Data visualiation (plots)"}\NormalTok{,}
+    \StringTok{"reactlog"}\NormalTok{, }\StringTok{"1.1.0"}\NormalTok{, }\StringTok{"Web Application (testing)"}\NormalTok{,}
+    \StringTok{"rmapshaper"}\NormalTok{, }\StringTok{"0.4.5"}\NormalTok{, }\StringTok{"Web Application (load time)"}\NormalTok{,}
+    \StringTok{"rsconnect"}\NormalTok{, }\StringTok{"0.8.25"}\NormalTok{, }\StringTok{"Web Application (deploy app)"}\NormalTok{,}
+    \StringTok{"scales"}\NormalTok{, }\StringTok{"1.1.1"}\NormalTok{, }\StringTok{"Data visualiation (plots)"}\NormalTok{,}
+    \StringTok{"sf"}\NormalTok{, }\StringTok{"1.0.7"}\NormalTok{, }\StringTok{"Data cleaning and visualization (maps)"}\NormalTok{,}
+    \StringTok{"shiny"}\NormalTok{, }\StringTok{"1.7.1"}\NormalTok{, }\StringTok{"Web Application (build app)"}\NormalTok{,}
+    \StringTok{"shinycssloaders"}\NormalTok{, }\StringTok{"1.0.0"}\NormalTok{, }\StringTok{"Web Application (plot loader)"}\NormalTok{,}
+    \StringTok{"shinydashboard"}\NormalTok{, }\StringTok{"0.7.2"}\NormalTok{, }\StringTok{"Web Application (dashboard layout elements)"}\NormalTok{,}
+    \StringTok{"shinydashboardPlus"}\NormalTok{, }\StringTok{"2.0.3"}\NormalTok{, }\StringTok{"Web Application (box elements)"}\NormalTok{,}
+    \StringTok{"shinyjs"}\NormalTok{, }\StringTok{"2.1.0"}\NormalTok{, }\StringTok{"Web Application (hide and show boxes in ui)"}\NormalTok{,}
+    \StringTok{"shinyWidgets"}\NormalTok{, }\StringTok{"0.6.4"}\NormalTok{, }\StringTok{"Web Application (inputs)"}\NormalTok{,}
+    \StringTok{"tidycensus"}\NormalTok{, }\StringTok{"1.2.1"}\NormalTok{, }\StringTok{"Data acquisition (US census data)"}\NormalTok{,}
+    \StringTok{"tidyverse"}\NormalTok{, }\StringTok{"1.3.1"}\NormalTok{, }\StringTok{"Data cleaning, analysis, and visualization"}\NormalTok{,}
+    \StringTok{"tigris"}\NormalTok{, }\StringTok{"1.6"}\NormalTok{, }\StringTok{"Data acquisition (state and ZIP code geometries)"}\NormalTok{,}
+    \StringTok{"tmap"}\NormalTok{, }\StringTok{"3.3.2"}\NormalTok{, }\StringTok{"Data visualization (maps)"}\NormalTok{,}
+    \StringTok{"vroom"}\NormalTok{, }\StringTok{"1.5.7"}\NormalTok{, }\StringTok{"Data cleaning (read in data)"}\NormalTok{,}
+    \StringTok{"zipcodeR"}\NormalTok{, }\StringTok{"0.3.3"}\NormalTok{, }\StringTok{"Data acquisition (state info about ZIP code)"}
+\NormalTok{  )}
+
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(r\_packages\_df,}
+             \AttributeTok{align =} \StringTok{"l"}\NormalTok{,}
+             \AttributeTok{caption =} \StringTok{"Table includes information on packages used to create the Outdoor Equity App."}\NormalTok{,}
+             \AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options =} \FunctionTok{c}\NormalTok{(}\StringTok{"responsive"}\NormalTok{), }\AttributeTok{full\_width =}\NormalTok{ F, }\AttributeTok{position =} \StringTok{"left"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-5}Table includes information on packages used to create the Outdoor Equity App.}
+\begin{tabular}[t]{l|l|l}
+\hline
+R Package & Version & Purpose\\
+\hline
+bslib & 0.3.1 & Web Application (theme)\\
+\hline
+collections & 0.3.5 & Web Application (dictionary)\\
+\hline
+DT & 0.20 & Web Application (tables)\\
+\hline
+formattable & 0.2.1 & Web Application (tables)\\
+\hline
+googlesheets4 & 1.0.0 & Web Application (metadata)\\
+\hline
+here & 1.0.1 & Data cleaning (relative file paths)\\
+\hline
+janitor & 2.1.0 & Data cleaning (data frame)\\
+\hline
+lubridate & 1.7.10 & Data cleaning (dates)\\
+\hline
+plotly & 4.10.0 & Data visualiation (plots)\\
+\hline
+reactlog & 1.1.0 & Web Application (testing)\\
+\hline
+rmapshaper & 0.4.5 & Web Application (load time)\\
+\hline
+rsconnect & 0.8.25 & Web Application (deploy app)\\
+\hline
+scales & 1.1.1 & Data visualiation (plots)\\
+\hline
+sf & 1.0.7 & Data cleaning and visualization (maps)\\
+\hline
+shiny & 1.7.1 & Web Application (build app)\\
+\hline
+shinycssloaders & 1.0.0 & Web Application (plot loader)\\
+\hline
+shinydashboard & 0.7.2 & Web Application (dashboard layout elements)\\
+\hline
+shinydashboardPlus & 2.0.3 & Web Application (box elements)\\
+\hline
+shinyjs & 2.1.0 & Web Application (hide and show boxes in ui)\\
+\hline
+shinyWidgets & 0.6.4 & Web Application (inputs)\\
+\hline
+tidycensus & 1.2.1 & Data acquisition (US census data)\\
+\hline
+tidyverse & 1.3.1 & Data cleaning, analysis, and visualization\\
+\hline
+tigris & 1.6 & Data acquisition (state and ZIP code geometries)\\
+\hline
+tmap & 3.3.2 & Data visualization (maps)\\
+\hline
+vroom & 1.5.7 & Data cleaning (read in data)\\
+\hline
+zipcodeR & 0.3.3 & Data acquisition (state info about ZIP code)\\
+\hline
+\end{tabular}
+\end{table}
 
 \hypertarget{summary-of-testing}{%
 \chapter{Summary of Testing}\label{summary-of-testing}}
@@ -1641,7 +1742,7 @@ Socioeconomic data are not available within the \href{https://ridb.recreation.go
 
 In the \href{https://shinyapps.bren.ucsb.edu/oe_app/}{Outdoor Equity App}, there are behavioral bugs with the plots where plots will stop updating or being created after either an input has been changed multiple times or if the input chosen is associated with a large amount of data. We were not able to troubleshoot this completely, but believe this has to do with the functions that create the visuals.
 
-Load time for all plots especially maps is a challenge that we were able to partially tackle, but not completely. For example, we used the package \texttt{rmapshaper} \citep{R-rmapshaper} to simplify the geometries of the zip code and state polygons. This helped with load time significantly, but there may be other functions in \texttt{rmapshaper} \citep{R-rmapshaper} that may help with reducing load time in the future. This will be crucial to consider as the spatial data will grow as the data expands. For plots, we reduced load time by doing as much data wrangling as possible outside of the App so that the functions creating the plots could update more quickly. We also used the package \texttt{purr}\citep{R-purrr} in our functions to iterate faster than for loops. Refer to \protect\hyperlink{data-preparation-methods}{Data Preparation Methods Section} to see examples of code we used for data wrangling. In the future, there is likely room to improve our functions so that they are more efficient and will therefore run faster and reduce load time in the App.
+Load time for all plots especially maps is a challenge that we were able to partially tackle, but not completely. For example, we used the package \texttt{rmapshaper} \citep{R-rmapshaper} to simplify the geometries of the zip code and state polygons. This helped with load time significantly, but there may be other functions in \texttt{rmapshaper} \citep{R-rmapshaper} that may help with reducing load time in the future. This will be crucial to consider as the spatial data will grow as the data expands. For plots, we reduced load time by doing as much data wrangling as possible outside of the App so that the functions creating the plots could update more quickly. We also used the package \texttt{purr} \citep{R-purrr} in our functions to iterate faster than for loops. Refer to \protect\hyperlink{data-preparation-methods}{Data Preparation Methods Section} to see examples of code we used for data wrangling. In the future, there is likely room to improve our functions so that they are more efficient and will therefore run faster and reduce load time in the App.
 
 \hypertarget{future-challenges}{%
 \section{Future Challenges}\label{future-challenges}}

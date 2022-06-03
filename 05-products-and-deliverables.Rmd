@@ -40,9 +40,42 @@ knitr::kable(data_joined_2018_metadata_df,
 
 ## Package Versions
 
-The table below includes information on the specific package versions used to create the Outdoor Equity App. 
+```{r, echo=FALSE}
+r_packages_df <- 
+  tribble(
+    ~"R Package", ~Version, ~Purpose,
+    "bslib", "0.3.1", "Web Application (theme)",
+    "collections", "0.3.5", "Web Application (dictionary)",
+    "DT", "0.20", "Web Application (tables)",
+    "formattable", "0.2.1", "Web Application (tables)",
+    "googlesheets4", "1.0.0", "Web Application (metadata)",
+    "here", "1.0.1", "Data cleaning (relative file paths)",
+    "janitor", "2.1.0", "Data cleaning (data frame)",
+    "lubridate", "1.7.10", "Data cleaning (dates)",
+    "plotly", "4.10.0", "Data visualiation (plots)",
+    "reactlog", "1.1.0", "Web Application (testing)",
+    "rmapshaper", "0.4.5", "Web Application (load time)",
+    "rsconnect", "0.8.25", "Web Application (deploy app)",
+    "scales", "1.1.1", "Data visualiation (plots)",
+    "sf", "1.0.7", "Data cleaning and visualization (maps)",
+    "shiny", "1.7.1", "Web Application (build app)",
+    "shinycssloaders", "1.0.0", "Web Application (plot loader)",
+    "shinydashboard", "0.7.2", "Web Application (dashboard layout elements)",
+    "shinydashboardPlus", "2.0.3", "Web Application (box elements)",
+    "shinyjs", "2.1.0", "Web Application (hide and show boxes in ui)",
+    "shinyWidgets", "0.6.4", "Web Application (inputs)",
+    "tidycensus", "1.2.1", "Data acquisition (US census data)",
+    "tidyverse", "1.3.1", "Data cleaning, analysis, and visualization",
+    "tigris", "1.6", "Data acquisition (state and ZIP code geometries)",
+    "tmap", "3.3.2", "Data visualization (maps)",
+    "vroom", "1.5.7", "Data cleaning (read in data)",
+    "zipcodeR", "0.3.3", "Data acquisition (state info about ZIP code)"
+  )
 
-```{r}
-
+knitr::kable(r_packages_df,
+             align = "l",
+             caption = "Table includes information on packages used to create the Outdoor Equity App.",
+             row.names = FALSE) %>% 
+  kable_styling(bootstrap_options = c("responsive"), full_width = F, position = "left")
 ```
 
