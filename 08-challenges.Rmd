@@ -12,5 +12,5 @@ Load time for all plots especially maps is a challenge that we were able to part
 
 ## Future Challenges
 
-Adding in multiple years and adding in more spatial data (beyond California) will require a larger server and likely more computing power. 
+Adding in multiple years and adding in more spatial data (beyond California) will require a larger server and likely more computing power. Refer to [How to Expand the Outdoor Equity App Section][How to Expand the Outdoor Equity App] to learn more. 
 
